@@ -4,9 +4,9 @@
     <div class="row mt-3">
       <card
         v-for="(cat, catIndex) of catList"
-        class="col-sm-2 m-2"
-        :key="`cat-index-${catIndex}`"
         :id="cat.id"
+        :key="`cat-index-${catIndex}`"
+        class="col-sm-2 m-2"
         :name="cat.name"
         :img="cat.img"
         :breed="cat.breed"
@@ -22,17 +22,19 @@ export default {
   components: {
     Card,
   },
-  data() {
-    return {
-      // catList: []
-    }
-  },
+
   // Note: This happens on backend (server) side
   async asyncData({ $axios }) {
     // const { data } = await $axios.get('http://localhost:3000/api/cats')
     const { data } = await $axios.get('/api/cats')
     return {
       catList: data,
+    }
+  },
+  
+  data() {
+    return {
+      // catList: []
     }
   },
 

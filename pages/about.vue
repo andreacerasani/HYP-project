@@ -9,9 +9,6 @@ export default {
   components: {
     CustomPage,
   },
-  data() {
-    return {}
-  },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/page-info/about')
     const title = data.title
@@ -22,6 +19,9 @@ export default {
       description,
       image,
     }
+  },
+  data() {
+    return {}
   },
 }
 </script>

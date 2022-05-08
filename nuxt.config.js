@@ -8,7 +8,7 @@ export default {
     }
   ],
   head: {
-    title: 'lesson16',
+    title: 'Website name',
     htmlAttrs: {
       lang: 'en',
     },

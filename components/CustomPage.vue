@@ -9,21 +9,6 @@
   </div>
 </template>
 
-<style scoped>
-img {
-  height: 300px;
-  margin: 20px 0;
-}
-.page {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-p {
-  text-align: left;
-}
-</style>
-
 <script>
 export default {
   name: 'CustomPage',
@@ -43,3 +28,18 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+img {
+  height: 300px;
+  margin: 20px 0;
+}
+.page {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+p {
+  text-align: left;
+}
+</style>
