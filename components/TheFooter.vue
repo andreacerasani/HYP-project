@@ -1,12 +1,12 @@
 <template>
-  <div class="link-primary text-center">
+  <footer class="link-primary text-center footer">
     <a class="test">
       <nuxt-link :to="pippo.path">
         {{ pippo.name }}
       </nuxt-link>
     </a>
     <p class="polimiText">Politecnico Di Milano <br>Hypermedia Application - 2022</p>
-  </div>
+  </footer>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
     return {
       pippo: {
         name: 'ContactUs',
-        path: '/about',
+        path: '/contact',
       },
     }
   },
