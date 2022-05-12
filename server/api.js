@@ -56,8 +56,8 @@ const pageContentObject = {
         Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`
     },
     contactUs:{
-        title: "Contact Us",
-        image: "https://fs.i3lab.group/hypermedia/images/about.jpeg",
+        title_img: "https://dummyimage.com/800x200/ff",
+        bg_img: "https://dummyimage.com/1500x500",
         description:"this is a description of a contatct us page blablac balbclabclab clacb"
     }
 }

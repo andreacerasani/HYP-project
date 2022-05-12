@@ -1,23 +1,21 @@
 <template>
-  <info-page :title="title" :image="image" :description="description" />
+  <top-image :title-img="titleImg" :bg-img="bgImg"/>
 </template>
 
 <script>
-import InfoPage from '~/components/InfoPage.vue'
+import TopImage from '~/components/TopImage.vue'
 export default {
   name: 'ContactPage',
   components: {
-    InfoPage,
+    TopImage,
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/page-info/contactUs')
-    const title = data.title
-    const image = data.image
-    const description = data.description
+    const titleImg = data.title_img
+    const bgImg = data.bg_img
     return {
-      title,
-      image,
-      description,
+      titleImg,
+      bgImg,
     }
   },
   data() {
