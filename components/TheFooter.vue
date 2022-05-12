@@ -1,8 +1,8 @@
 <template>
   <footer class="link-primary text-center footer">
-    <a class="test">
-      <nuxt-link :to="pippo.path">
-        {{ pippo.name }}
+    <a>
+      <nuxt-link :to="FooterLink.path">
+        {{ FooterLink.name }}
       </nuxt-link>
     </a>
     <p class="polimiText">Politecnico Di Milano <br>Hypermedia Application - 2022</p>
@@ -14,7 +14,7 @@ export default {
   name: 'TheFooterComponent',
   data() {
     return {
-      pippo: {
+      FooterLink: {
         name: 'ContactUs',
         path: '/contact',
       },
