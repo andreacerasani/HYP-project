@@ -58,8 +58,8 @@ const pageContentObject = {
   contactUs: {
     title_img: 'https://dummyimage.com/800x200/ff',
     bg_img: 'https://dummyimage.com/1500x500',
-    description:
-      'this is a description of a contatct us page blablac balbclabclab clacb',
+    title: 'feel free to contact us',
+    description: 'this is a description of a contatct us page blablac balbclabclab clacb',
   },
   city: {
     title: 'History',
