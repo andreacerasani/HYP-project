@@ -2,11 +2,13 @@
   <span>
     <top-image :title-img="titleImg" :bg-img="bgImg" />
     <simple-content :title="title" :description="description" />
-    <ul id="list-padding" class="list-group list-group-flush" >
-      <li v-for="(cat) in catList" :key="cat.id" class="list-group-item " >
-        {{cat.name}}
-      </li>
-    </ul>
+    <div class="container-md">
+      <ul class="list-group list-group-flush ">
+        <li v-for="cat in catList" :key="cat.id" class="list-group-item">
+          {{ cat.name }}
+        </li>
+      </ul>
+    </div>
   </span>
 </template>
 
@@ -39,11 +41,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-#list-padding{
-    padding-left: 20%;
-    padding-right: 20%;
-}
-
-</style>
