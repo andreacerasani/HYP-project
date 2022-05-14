@@ -12,9 +12,6 @@
         :breed="cat.breed"
       />
     </div>
-    <div>
-      {{city}}
-    </div>
   </div>
 </template>
 
@@ -31,10 +28,8 @@ export default {
     // const { data } = await $axios.get('http://localhost:3000/api/cats')
     
     const { data } = await $axios.get('/api/cats')
-    const { data1 } = await $axios.get('/api/page-info/contactUs')
 
     return {
-      city: data1,
       catList: data,
     }
   },

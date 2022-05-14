@@ -41,30 +41,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .container-md {width: 95%;}
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .container-md {width: 90%;}
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    .container-md {width: 80%;}
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-    .container-md {width: 70%;}
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-    .container-md {width: 60%;}
-}
-</style>
