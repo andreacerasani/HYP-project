@@ -1,5 +1,5 @@
 <template>
-  <div class="main-page">
+  <div class="main-page megabox">
     <the-header />
     <nuxt />
     <the-footer />
@@ -17,3 +17,11 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.megabox{
+  position: relative;
+  padding-bottom: 10%;
+  min-height: 100vh;
+}
+</style>

@@ -2,7 +2,7 @@
   <span>
     <top-image :title-img="titleImg" :bg-img="bgImg" />
     <simple-content :title="title" :description="description" />
-    <ul class="list-group list-group-flush" id="list-padding">
+    <ul id="list-padding" class="list-group list-group-flush" >
       <li v-for="(cat) in catList" :key="cat.id" class="list-group-item " >
         {{cat.name}}
       </li>

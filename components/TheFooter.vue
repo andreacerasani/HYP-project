@@ -1,11 +1,13 @@
 <template>
-  <footer class="link-primary text-center footer">
+  <footer class="link-primary text-center">
     <a>
       <nuxt-link :to="FooterLink.path">
         {{ FooterLink.name }}
       </nuxt-link>
     </a>
-    <p class="polimiText">Politecnico Di Milano <br>Hypermedia Application - 2022</p>
+    <p class="polimiText">
+      Politecnico Di Milano <br />Hypermedia Application - 2022
+    </p>
   </footer>
 </template>
 
@@ -23,8 +25,14 @@ export default {
 }
 </script>
 <style scoped>
-.polimiText{
-  color:grey;
+footer{
+  position:absolute;
+  bottom:0;
+  width: 100%;
+  height:10%;
+}
+.polimiText {
+  color: grey;
   font-style: bold;
 }
 a {
