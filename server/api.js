@@ -59,7 +59,7 @@ const pageContentObject = {
     title_img: 'https://dummyimage.com/800x200/ff',
     bg_img: 'https://dummyimage.com/1500x500',
     title: 'feel free to contact us',
-    description: 'this is a description of a contatct us page blablac balbclabclab clacb',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus c',
   },
   city: {
     title: 'History',
@@ -101,6 +101,27 @@ async function runMainApi() {
       })
     }
     return res.json(filtered)
+  })
+
+
+  app.get('/multipleGets', async (req, res) => {
+    const resultTopic = pageContentObject.contactUs
+    // return res.json(result)
+    const result = await models.Cat.findAll()
+    const final =  []
+    const filtered = []
+
+    for (const element of result) {
+      filtered.push({
+        name: element.name,
+        img: element.img,
+        breed: element.breed,
+        id: element.id,
+      })
+    }
+    final.push(filtered)
+    final.push(resultTopic)
+    return res.json(final)
   })
 
   // HTTP POST api, that will push (and therefore create) a new element in

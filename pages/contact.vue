@@ -2,8 +2,10 @@
   <span>
     <top-image :title-img="titleImg" :bg-img="bgImg" />
     <simple-content :title="title" :description="description" />
-    <ul>
-      <li v-for="cat in catList" :key="cat.id">{{cat.name}}</li>
+    <ul class="list-group list-group-flush" id="list-padding">
+      <li v-for="(cat) in catList" :key="cat.id" class="list-group-item " >
+        {{cat.name}}
+      </li>
     </ul>
   </span>
 </template>
@@ -18,19 +20,18 @@ export default {
     SimpleContent,
   },
   async asyncData({ $axios }) {
-    const { data1 } = await $axios.get('/api/cats')
-    const { data } = await $axios.get('/api/page-info/contactUs')
-    const titleImg = data.title_img
-    const bgImg = data.bg_img
-    const title = data.title
-    const description = data.description
-    
+    const { data } = await $axios.get('/api/multipleGets')
+    const titleImg = data[1].title_img
+    const bgImg = data[1].bg_img
+    const title = data[1].title
+    const description = data[1].description
+
     return {
       titleImg,
       bgImg,
       title,
       description,
-      catList:data1,
+      catList: data[0],
     }
   },
   data() {
@@ -38,3 +39,11 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+#list-padding{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+</style>

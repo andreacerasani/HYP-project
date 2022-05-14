@@ -10,7 +10,7 @@ export default {
   name: 'SimpleContent',
   props: {
     title: {
-      type: String,
+      type: String,    
       required: true,
     },
     description: {
@@ -25,6 +25,7 @@ export default {
 <style scoped>
 #title, #description{
     padding-left: 20%;
+    padding-right: 20%;
     padding-bottom: 4%;
 }
 

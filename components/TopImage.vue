@@ -2,7 +2,7 @@
   <div class="container-fluid container-img px-0">
     <img :src="bgImg" class="img-fluid" />
     <div class="centered">
-      <img :src="titleImg"/>
+      <img :src="titleImg" class="img-fluid"/>
     </div>
   </div>
 </template>
