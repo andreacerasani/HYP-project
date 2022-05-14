@@ -21,6 +21,7 @@
           class="nav-item"
         >
           <nuxt-link :to="navItem.path" class="nav-link">
+            <img :src="navItem.image" alt="" width="30" height="30" />
             {{ navItem.name }}
           </nuxt-link>
         </li>
@@ -36,16 +37,29 @@ export default {
     return {
       headerList: [
         {
-          name: 'Home',
-          path: '/',
+          name: 'Events',
+          path: '/events',
+          image: 'https://dummyimage.com/30x30/000/fff',
         },
         {
-          name: 'List',
-          path: '/list',
+          name: 'Itineraries',
+          path: '/itineraries',
+          image: 'https://dummyimage.com/30x30/000/fff',
         },
         {
-          name: 'About',
-          path: '/about',
+          name: 'Services',
+          path: '/services',
+          image: 'https://dummyimage.com/30x30/000/fff',
+        },
+        {
+          name: 'Points of interest',
+          path: '/poi',
+          image: 'https://dummyimage.com/30x30/000/fff',
+        },
+        {
+          name: 'City',
+          path: '/city',
+          image: 'https://dummyimage.com/30x30/000/fff',
         },
       ],
     }
