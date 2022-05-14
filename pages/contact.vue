@@ -2,11 +2,13 @@
   <span>
     <top-image :title-img="titleImg" :bg-img="bgImg" />
     <simple-content :title="title" :description="description" />
-    <ul class="list-group list-group-flush" id="list-padding">
-      <li v-for="(cat) in catList" :key="cat.id" class="list-group-item " >
-        {{cat.name}}
-      </li>
-    </ul>
+    <div class="container-md">
+      <ul class="list-group list-group-flush ">
+        <li v-for="cat in catList" :key="cat.id" class="list-group-item">
+          {{ cat.name }}
+        </li>
+      </ul>
+    </div>
   </span>
 </template>
 
@@ -41,9 +43,28 @@ export default {
 </script>
 
 <style scoped>
-#list-padding{
-    padding-left: 20%;
-    padding-right: 20%;
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .container-md {width: 95%;}
 }
 
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .container-md {width: 90%;}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .container-md {width: 80%;}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .container-md {width: 70%;}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .container-md {width: 60%;}
+}
 </style>

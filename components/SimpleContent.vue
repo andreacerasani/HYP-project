@@ -1,8 +1,8 @@
 <template>
-    <section>
-        <h1 id="title">{{title}}</h1>
-        <p id="description">{{description}}</p>
-    </section>
+    <div class="container-md">
+        <h1>{{title}}</h1>
+        <p>{{description}}</p>
+    </div>
 </template>
 
 <script>
@@ -21,12 +21,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-#title, #description{
-    padding-left: 20%;
-    padding-right: 20%;
-    padding-bottom: 4%;
-}
-
-</style>
