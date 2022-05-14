@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid">
-    <div class="row align-items-center">
+  <div class="container-xl">
+    <div class="row p-3 align-items-center flex-column-reverse flex-md-row">
       <div class="col text-center">
         <div class="row p-3">
           <h3>{{ title }}</h3>
@@ -16,8 +16,8 @@
           </a>
         </div>
       </div>
-      <div class="col p-5 text-center">
-        <img :src="descrImg" class="rounded-3" />
+      <div class="col text-center">
+        <img :src="descrImg" class="rounded-3 img-fluid" />
       </div>
     </div>
   </div>
