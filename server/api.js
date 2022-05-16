@@ -78,6 +78,26 @@ const pageContentObject = {
       descrImg: 'https://dummyimage.com/600x300',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.',
+      linkName: 'DiscoverMore',
+      linkPath: '/',
+    },
+  },
+  EventsType: {
+    All: {
+      title_img: 'https://dummyimage.com/800x200/ff',
+      bg_img: 'https://dummyimage.com/1500x500',
+    },
+    Summer: {
+      title: 'MAP',
+      descrImg: 'https://dummyimage.com/600x300',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit.',
+    },
+    Winter: {
+      title: 'History',
+      descrImg: 'https://dummyimage.com/600x300',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.',
     },
   },
 }

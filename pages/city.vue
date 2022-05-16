@@ -16,14 +16,16 @@
       :title="titleH"
       :descr-img="descrImgH"
       :description="descriptionH"
+      :link-name="linkName"
+      :link-path="linkPath"
     />
   </div>
 </template>
 
 <script>
 import TopImage from '~/components/TopImage.vue'
-import DescriptionCard from '~/components/cityComponents/DescriptionCard.vue'
-import MapCard from '~/components/cityComponents/MapCard.vue'
+import DescriptionCard from '~/components/DescriptionCard.vue'
+import MapCard from '~/components/MapCard.vue'
 export default {
   name: 'CityPage',
   components: {
@@ -42,6 +44,8 @@ export default {
     const descriptionM = data.Map.description
     const titleImg = data.Top.title_img
     const bgImg = data.Top.bg_img
+    const linkName = data.History.linkName
+    const linkPath = data.History.linkPath
 
     return {
       titleH,
@@ -52,6 +56,8 @@ export default {
       descriptionM,
       titleImg,
       bgImg,
+      linkName,
+      linkPath,
     }
   },
   data() {
