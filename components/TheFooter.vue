@@ -29,7 +29,9 @@ footer{
   position:absolute;
   bottom:0;
   width: 100%;
-  height:10%;
+  height:10vh;
+  padding-top: 3%;
+  padding-bottom: 1%;
 }
 .polimiText {
   color: grey;
