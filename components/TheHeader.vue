@@ -53,7 +53,7 @@ export default {
         },
         {
           name: 'Points of interest',
-          path: '/poi',
+          path: '/points-of-interest',
           image: 'https://dummyimage.com/30x30/000/fff',
         },
         {
