@@ -50,6 +50,7 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+    <hr>
   </div>
 </template>
 

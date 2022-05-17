@@ -1,70 +1,50 @@
 <template>
+  <div>
+    <h1>{{ title }}</h1>
     <div
-      id="carouselExampleCaptions"
+      :id="'carouselExampleCaptions' + numOfCarousel"
       class="carousel slide"
       data-bs-ride="false"
     >
       <div class="carousel-indicators">
         <button
+          v-for="n in amountOfindicatorsNeeded"
+          :key="n"
           type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
+          :data-bs-target="'#carouselExampleIndicators' + numOfCarousel"
+          :class="{ active: n == 1 }"
+          :data-bs-slide-to="n - 1"
+          :aria-label="'Slide' + n"
         ></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active">
+        <div
+          v-for="n in amountOfindicatorsNeeded"
+          :key="n"
+          class="carousel-item"
+          :class="{ active: n == 1 }"
+        >
+          <!-- per accedere fare myarray[n].img o .des o .tit-->
           <img
             src="https://dummyimage.com/1600x500"
             class="d-block w-100 cropped"
             alt=""
           />
           <div class="carousel-caption">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img
-            src="https://dummyimage.com/1600x500"
-            class="d-block w-100 cropped"
-            alt=""
-          />
-          <div class="carousel-caption">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img
-            src="https://dummyimage.com/1600x500"
-            class="d-block w-100 cropped"
-            alt=""
-          />
-          <div class="carousel-caption">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
+            <h5>{{ 'First slide label' + n }}</h5>
+            <p>
+              {{
+                'Some representative placeholder content for the first slide.' +
+                n
+              }}
+            </p>
           </div>
         </div>
       </div>
       <button
         class="carousel-control-prev"
         type="button"
-        data-bs-target="#carouselExampleCaptions"
+        :data-bs-target="'#carouselExampleCaptions' + numOfCarousel"
         data-bs-slide="prev"
       >
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -73,19 +53,44 @@
       <button
         class="carousel-control-next"
         type="button"
-        data-bs-target="#carouselExampleCaptions"
+        :data-bs-target="'#carouselExampleCaptions' + numOfCarousel"
         data-bs-slide="next"
       >
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'ImageCarousel',
-  data() {},
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+    myarray: {
+      type: Array,
+      required: true,
+    },
+    numOfCarousel: {
+      type: Number,
+      required: true,
+    },
+  },
+  data() {
+    const numOfPic = 5
+    return {
+      numOfPic,
+    }
+  },
+  computed: {
+    amountOfindicatorsNeeded() {
+      return Math.ceil(this.numOfPic)
+    },
+  },
 }
 </script>
 
@@ -93,5 +98,19 @@ export default {
 .cropped {
   height: 60vh;
   object-fit: cover;
+}
+h1 {
+  text-align: center;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5vw;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+.carousel-indicators [data-bs-target] {
+  background-color: black;
 }
 </style>

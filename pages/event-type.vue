@@ -14,7 +14,7 @@ import CarouselMultiElement from '~/components/carousels/CarouselMultiElement.vu
 import CarouselImgDes from '~/components/carousels/CarouselImgDes.vue'
 
 export default {
-  name: 'EventSingle',
+  name: 'EventType',
   components: {
     TopImage,
     SimpleContent,
