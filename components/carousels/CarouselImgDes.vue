@@ -25,9 +25,9 @@
           :class="{ active: n == 1 }"
         >
           <!-- -->
-          <description-card 
+          <carousel-item-img-des 
           :descr-img="'https://dummyimage.com/600x300'" 
-          :description="'Ciao io sono una descrizione di '+n"
+          :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id '+n"
           :is-left="false"
            />
         </div>
@@ -55,11 +55,11 @@
 </template>
 
 <script>
-import DescriptionCard from '~/components/DescriptionCard.vue'
+import CarouselItemImgDes from '~/components/carousels/CarouselItemImgDes.vue'
 export default {
   name: 'CarouselImgDes',
   components: {
-    DescriptionCard,
+    CarouselItemImgDes,
   },
   props: {
     title: {
