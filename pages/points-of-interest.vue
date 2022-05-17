@@ -4,11 +4,11 @@
       :title-img="'https://dummyimage.com/800x200/ff'"
       :bg-img="'https://dummyimage.com/1500x500'"
     />
-    <simple-content :description="'questa descrizione molto bella'" />
+    <simple-content :title="'simpleContent1'" :description="'questa descrizione molto bella'" />
 
-    <carousel-multi-element :title="titleCarousel1" :myarray="myArray1" :num-of-carousel="'1'" />
+    <carousel-multi-element :title="'titleCarousel1'" :myarray="myArray1" :num-of-carousel="1" />
     
-    <carousel-multi-element :title="'Title Carousel 2'" :myarray="myArray1" :num-of-carousel="'2'" />
+    <carousel-multi-element :title="'titleCarousel2'" :myarray="myArray1" :num-of-carousel="2" />
   </div>
 </template>
 
@@ -24,7 +24,9 @@ export default {
     CarouselMultiElement,
   },
   data() {
-    return{}
+    return{
+      myArray1: [],
+    }
   },
 }
 </script>
