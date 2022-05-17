@@ -1,7 +1,6 @@
 <template>
   <div>
     <top-image :title-img="titleImg" :bg-img="bgImg" />
-    <!-- INSERT CAROUSEL -->
     <hr>
     <description-card
       :title="title2022"
@@ -28,7 +27,6 @@
       :link-path="linkPathWinter"
       :is-left="false"
     />
-    <hr>
   </div>
 </template>
 
