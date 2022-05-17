@@ -27,10 +27,12 @@ export default {
     link:{
         type:String,
         default: '/city',
-        required: true,
+        required: false,
     }
   },
-  data() {},
+  data() {
+    return {}
+  },
   computed: {},
 }
 </script>
