@@ -54,23 +54,28 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
+      required: false,
+      default:'',
     },
     descrImg: {
       type: String,
-      required: true,
+      required: false,
+      default:'',
     },
     description: {
       type: String,
-      required: true,
+      required: false,
+      default:'',
     },
     linkName: {
       type: String,
-      required: true,
+      required: false,
+      default:'',
     },
     linkPath: {
       type: String,
-      required: true,
+      required: false,
+      default:'',
     },
     isLeft: {
       type: Boolean,
