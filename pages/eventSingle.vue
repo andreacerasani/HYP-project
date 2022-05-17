@@ -1,39 +1,43 @@
 <template>
-    <div>
-        <top-image :title-img="'https://dummyimage.com/800x200/ff'" :bg-img="'https://dummyimage.com/1500x500'" />
-        <simple-content :description="'This is a description of the itinerary Wonderfull place'" />
-        <carousel-img-des :title="'Title carousel prova im'" :myarray="myArray1" :num-of-carousel="'1'" />
-        <carousel-multi-element :title="'Title Carousel 1'" :myarray="myArray1" :num-of-carousel="'2'" />
-    </div>
+  <div>
+    <top-image :title-img="'https://dummyimage.com/800x200/ff'" :bg-img="'https://dummyimage.com/1500x500'" />
+    <simple-content :description="'questa descrizione molto bella'" />
+    <map-card
+      :title="'titleM'"
+      :descr-img="'https://dummyimage.com/1000x600'"
+      :description="'descriptionM'"
+    />
+
+    <image-carousel :title="'Some images'" :myarray="myArray1" :num-of-carousel="'1'" />
+  </div>
 </template>
 
 <script>
-import TopImage from '~/components/TopImage.vue'
+import ImageCarousel from '~/components/carousels/ImageCarousel.vue'
+import MapCard from '~/components/MapCard.vue'
 import SimpleContent from '~/components/SimpleContent.vue'
-import CarouselMultiElement from '~/components/carousels/CarouselMultiElement.vue'
-import CarouselImgDes from '~/components/carousels/CarouselImgDes.vue'
+import TopImage from '~/components/TopImage.vue'
 
 export default {
   name: 'EventSingle',
   components: {
     TopImage,
     SimpleContent,
-    CarouselMultiElement,
-    CarouselImgDes,
+    ImageCarousel,
+    MapCard,
   },
-  async asyncData({ route, $axios }) {
-      const {id} = route.params
-      const {data} = await $axios.get('/api/events/'+id)
-      const nameItinerary=data.name
+  async asyncDat({ route, $axios }) {
+    const { id } = route.params
+    const { data } = await $axios.get('/api/events/' + id)
+    const nameItinerary = data.name
 
-      return{
-         nameItinerary,
-      }
+    return {
+      nameItinerary,
+    }
   },
 
   data() {
-
-      return{}
+    return {}
   },
   methods: {
     backToEvents() {

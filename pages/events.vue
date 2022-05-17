@@ -1,7 +1,6 @@
 <template>
   <div>
     <top-image :title-img="titleImg" :bg-img="bgImg" />
-    <hr>
     <description-card
       :title="title2022"
       :descr-img="descrImg2022"
@@ -10,7 +9,6 @@
       :link-path="linkPath2022"
       :is-left="false"
     />
-    <hr>
     <description-card
       :title="titleSummer"
       :descr-img="descrImgSummer"
@@ -18,7 +16,6 @@
       :link-name="linkNameSummer"
       :link-path="linkPathSummer"
     />
-    <hr>
     <description-card
       :title="titleWinter"
       :descr-img="descrImgWinter"
