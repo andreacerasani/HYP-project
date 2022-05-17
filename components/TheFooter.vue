@@ -1,6 +1,5 @@
 <template>
   <footer class="link-primary text-center">
-    <hr>
     <a>
       <nuxt-link :to="FooterLink.path">
         {{ FooterLink.name }}
