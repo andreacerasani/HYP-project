@@ -11,7 +11,7 @@
           v-for="n in amountOfindicatorsNeeded"
           :key="n"
           type="button"
-          :data-bs-target="'#carouselExampleIndicators' + numOfCarousel"
+          :data-bs-target="'#carouselExampleCaptions' + numOfCarousel"
           :class="{ active: n == 1 }"
           :data-bs-slide-to="n - 1"
           :aria-label="'Slide' + n"
