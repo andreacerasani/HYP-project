@@ -1,3 +1,5 @@
+<!-- Component with a bigger image and a part of text on the right with title and 
+description that when the img shrinks the text goes down   -->
 <template>
   <div class="container-xl">
     <div class="row p-3 align-items-center flex-column flex-md-row">

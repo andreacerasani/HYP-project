@@ -36,16 +36,17 @@ export default {
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/page-info/city')
 
-    const titleH = data.History.title
-    const descrImgH = data.History.descrImg
-    const descriptionH = data.History.description
-    const titleM = data.Map.title
-    const descrImgM = data.Map.descrImg
-    const descriptionM = data.Map.description
-    const titleImg = data.Top.title_img
-    const bgImg = data.Top.bg_img
-    const linkName = data.History.linkName
-    const linkPath = data.History.linkPath
+    const {History, Map, Top} = data
+    const titleH = History.title
+    const descrImgH = History.descrImg
+    const descriptionH = History.description
+    const titleM = Map.title
+    const descrImgM = Map.descrImg
+    const descriptionM = Map.description
+    const titleImg = Top.title_img
+    const bgImg = Top.bg_img
+    const linkName = History.linkName
+    const linkPath = History.linkPath
 
     return {
       titleH,

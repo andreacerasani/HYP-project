@@ -1,3 +1,5 @@
+<!-- Fixed Component without props for the footer  -->
+
 <template>
   <footer class="link-primary text-center">
     <a>

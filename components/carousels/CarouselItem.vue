@@ -1,3 +1,4 @@
+<!-- Component representing a single card inside a carousel with img and title  -->
 <template>
   <a :href="link">
     <div class="card">

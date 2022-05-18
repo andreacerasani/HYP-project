@@ -1,3 +1,5 @@
+<!-- Fixed Component without props with bottons reaching the main pages   -->
+
 <template>
   <div>
     <header

@@ -1,3 +1,4 @@
+<!-- Carusel with 3 cards that change together using component CarouselItem  -->
 <template>
   <div class="container-xl">
     <h1>{{ title }}</h1>
