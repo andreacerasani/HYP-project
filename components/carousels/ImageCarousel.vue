@@ -1,3 +1,5 @@
+<!-- Carusel with a single image full width text and description over it ->
+ it doesn't use any other component  -->
 <template>
   <div>
     <h1>{{ title }}</h1>

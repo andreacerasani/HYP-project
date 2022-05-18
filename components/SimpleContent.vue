@@ -1,3 +1,5 @@
+<!-- Component with title and text that stands alone all width of the page  -->
+
 <template>
     <div class="container-md">
         <h1>{{title}}</h1>

@@ -1,3 +1,5 @@
+<!-- Component with image all width with an img over it to handle the title of the page  -->
+
 <template>
   <div class="container-fluid container-img px-0">
     <img :src="bgImg" class="img-fluid cropped" />
