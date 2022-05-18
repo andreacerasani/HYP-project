@@ -1,3 +1,5 @@
+<!-- Component to put inside a carousel with a single image with description and text on 
+the right and a possible link  -->
 <template>
   <div class="container-fluid">
     <div class="row align-items-center flex-column flex-md-row">

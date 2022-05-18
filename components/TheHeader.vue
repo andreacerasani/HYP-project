@@ -1,3 +1,5 @@
+<!-- Fixed Component without props with bottons reaching the main pages   -->
+
 <template>
   <nav class="navbar navbar-expand-lg navbar-light px-3 header">
     <a class="navbar-brand" href="/">Topolinia</a>

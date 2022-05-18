@@ -1,3 +1,5 @@
+<!-- Component with an image and a part of text on the left or right that when the img shrinks the text goes down
+with a possible link added   -->
 <template>
   <div class="container-xl">
     <div
