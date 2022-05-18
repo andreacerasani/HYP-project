@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid container-img px-0">
-    <img :src="bgImg" class="img-fluid" />
+    <img :src="bgImg" class="img-fluid cropped" />
     <div class="centered">
-      <img :src="titleImg" class="img-fluid"/>
+      <img :src="titleImg" class="img-inner"/>
     </div>
   </div>
 </template>
@@ -33,5 +33,12 @@ export default {
 .container-img {
   position: relative;
   text-align: center;
+}
+.img-inner{
+  width: 70vw;
+}
+.cropped {
+  height: 60vh;
+  object-fit: cover;
 }
 </style>
