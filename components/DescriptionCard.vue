@@ -20,7 +20,9 @@ with a possible link added   -->
         </div>
         <div class="row justify-content-center p-3">
           <span v-if="linkPath !== 'def'">
-            <nuxt-link :to="linkPath"> {{ linkName }} </nuxt-link>
+            <nuxt-link :to="linkPath">
+              <button type="button" class="btn btn-outline-primary">{{ linkName }}</button>
+              </nuxt-link>
           </span>
         </div>
       </div>
@@ -40,7 +42,9 @@ with a possible link added   -->
         </div>
         <div class="row justify-content-center p-3">
           <span v-if="linkPath !== 'def'">
-            <nuxt-link :to="linkPath"> {{ linkName }} </nuxt-link>
+            <nuxt-link :to="linkPath">
+              <button type="button" class="btn btn-outline-primary">{{ linkName }}</button>
+              </nuxt-link>
           </span>
         </div>
       </div>
