@@ -1,54 +1,54 @@
 <!-- Fixed Component without props with bottons reaching the main pages   -->
 
 <template>
-  <div>
-    <header
-      ref="header"
-      class="navbar navbar-expand-lg navbar-light px-3 header nav-down"
+  <header
+    ref="header"
+    class="navbar navbar-expand-lg navbar-light px-3 header nav-down"
+  >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarToggler"
+      aria-controls="navbarToggler"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
     >
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarToggler"
-        aria-controls="navbarToggler"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div id="navbarToggler" class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li>
-            <a class="nav-link" href="/"
-              ><p class="hover-underline-animation">Topolinia</p></a
-            >
-          </li>
-          <li
-            v-for="(navItem, navItemIndex) of headerList"
-            :key="`navItem${navItemIndex}`"
-            class="nav-item"
+    <div id="navbarToggler" class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li>
+          <a class="nav-link" href="/"
+            ><p class="hover-underline-animation">Topolinia</p></a
           >
-            <nuxt-link :to="navItem.path" class="nav-link">
-              <img :src="navItem.image" alt="" width="30" height="30" />
-              <p class="hover-underline-animation">{{ navItem.name }}</p>
-            </nuxt-link>
-          </li>
-        </ul>
-      </div>
-    </header>
-  </div>
+        </li>
+        <li
+          v-for="(navItem, navItemIndex) of headerList"
+          :key="`navItem${navItemIndex}`"
+          class="nav-item"
+        >
+          <nuxt-link :to="navItem.path" class="nav-link">
+            <img :src="navItem.image" alt="" width="30" height="30" />
+            <p class="hover-underline-animation">{{ navItem.name }}</p>
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
+  </header>
 </template>
 
 <script>
 export default {
   name: 'TheHeader',
-  env:{
-    lastScrollTop:0
-  },
   data() {
     return {
+      lastCall: false,
+      lastScroll: 0,
+      navbarHeight: 0,
+      isScrollUp: false,
+      isOnHeader: false,
       headerList: [
         {
           name: 'Events',
@@ -79,56 +79,56 @@ export default {
     }
   },
   beforeMount() {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.onScroll)
+    window.addEventListener('mousemove', this.mouseOverHeader)
   },
   beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.onScroll)
+    window.removeEventListener('mousemove', this.mouseOverHeader)
   },
   methods: {
-    handleScroll() {
-      let didScroll
-      const delta = 5
-      const lastScrollTop=window.scrollY
-      const navbarHeight = this.$refs.header.clientHeight
-      // console.log(navbarHeight)
-      didScroll = true
-      const test = this.$refs.header.classList
-      // const wHeight = window.innerHeight
+    mouseOverHeader(event) {
+      if (event.clientY < this.$refs.header.clientHeight) {
+        this.$refs.header.classList.replace('nav-up', 'nav-down')
+        this.$data.isOnHeader = true
+      } else if (
+        this.$data.isOnHeader &&
+        window.scrollY > this.$refs.header.clientHeight &&
+        !this.$data.isScrollUp
+      ) {
+        this.$refs.header.classList.replace('nav-down', 'nav-up')
+        this.$data.isOnHeader = false
+      }
+    },
+    onScroll(event) {
+      if (this.$data.lastCall) clearTimeout(this.$data.lastCall)
 
-      setInterval(function () {
-        if (didScroll) {
-          hasScrolled()
-          didScroll = false
-        }
-      }, 150)
+      this.$data.navbarHeight = this.$refs.header.clientHeight
 
-      function hasScrolled() {
-        const st = window.scrollY
-        console.log('st:' + st)
-        // Make sure they scroll more than delta
-        if (Math.abs(lastScrollTop- st) <= delta) return
-        // If they scrolled down and are past the navbar, add class .nav-up.
-        // This is necessary so you never see what is "behind" the navbar.
-        if (st > lastScrollTop && st > navbarHeight) {
-          // Scroll Down
-          test.replace('nav-down', 'nav-up')
-        } else if (st < navbarHeight || lastScrollTop - st > 0) {
-          // st < lastScrollTop
-          // st + wHeight < document.height()
-          test.replace('nav-up', 'nav-down')
-        }
-        console.log("las: "+ lastScrollTop)
-        // lastScrollTop = st
+      const that = this
+      this.$data.lastCall = setTimeout(() => {
+        this.$data.lastScroll = window.scrollY
+        that.onScroll(event)
+      }, 50)
 
+      if (
+        window.scrollY > this.$data.lastScroll &&
+        window.scrollY > this.$data.navbarHeight
+      ) {
+        // Scroll Down
+        this.$refs.header.classList.replace('nav-down', 'nav-up')
+        this.$data.isScrollUp = false
+      } else if (
+        window.scrollY < this.$data.navbarHeight ||
+        this.$data.lastScroll - window.scrollY > 0
+      ) {
+        this.$refs.header.classList.replace('nav-up', 'nav-down')
+        this.$data.isScrollUp = true
       }
     },
   },
 }
 </script>
-
-
-
-
 
 <style scoped>
 .header {
