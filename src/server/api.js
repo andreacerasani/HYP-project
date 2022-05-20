@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
-const { Sequelize, DataTypes } = require('sequelize')
-const initialize = require('./initialize').default
+const { Sequelize,  DataTypes } = require('sequelize')
+ const initialize = require('./initialize').default 
 app.use(express.json())
 
 // Development
@@ -20,7 +20,7 @@ const database = new Sequelize(
 // Function that will initialize the connection to the database
 async function initializeDatabaseConnection() {
   await database.authenticate()
-  const Cat = database.define('cat', {
+    const Cat = database.define('cat', {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     breed: DataTypes.STRING,
@@ -31,17 +31,106 @@ async function initializeDatabaseConnection() {
     city: DataTypes.STRING,
   })
   Location.hasMany(Cat)
-  Cat.belongsTo(Location)
+  Cat.belongsTo(Location) 
+
+  const Events = database.define( 'events', { 
+    title: DataTypes.STRING(100), 
+    description: DataTypes.TEXT, 
+    date: DataTypes.DATEONLY, 
+   }) 
+    
+   const Itineraries = database.define('itineraries', { 
+    title: DataTypes.STRING(100), 
+    description: DataTypes.TEXT, 
+   }) 
+    
+   const Images = database.define('images',{ 
+    path: DataTypes.STRING, 
+   }) 
+    
+   const Pois = database.define('pois',{ 
+    title: DataTypes.STRING(100), 
+    description: DataTypes.TEXT, 
+    opening_hours: DataTypes.TIME, 
+    closign_hours: DataTypes.TIME, 
+    ticket: DataTypes.REAL, 
+    address: DataTypes.STRING(100), 
+   }) 
+    
+   const Tags= database.define('tags',{  
+    tag: DataTypes.STRING(50), 
+   }) 
+    
+   const ServicePoints = database.define('service_points', { 
+    name: DataTypes.STRING(100), 
+    opening_hours: DataTypes.TIME, 
+    closign_hours: DataTypes.TIME, 
+    address: DataTypes.STRING(100), 
+   })
+
+   const ServiceTypes = database.define('service_types', {
+    name: DataTypes.STRING(100)
+  })
+
+  const Contacts = database.define('contacts', {
+    landline_phone: DataTypes.STRING(20),
+    mobile_phone: DataTypes.STRING(20),
+    email: DataTypes.STRING(320)
+  })
+
+  Contacts.hasMany(Events)
+  Events.belongsTo(Contacts)
+
+  Events.belongsToMany(Tags, {through: 'events_tags'})
+  Tags.belongsToMany(Events, {through: 'events_tags'})
+
+  Itineraries.belongsToMany(Tags, {through: 'itineraries_tags'})
+  Tags.belongsToMany(Itineraries, {through: 'itineraries_tags'})
+
+  Events.belongsToMany(Pois, {through: 'host'})
+  Pois.belongsToMany(Events, {through: 'host'})
+
+  Itineraries.belongsToMany(Pois, {through: 'involve'})
+  Pois.belongsToMany(Itineraries, {through: 'involve'})
+
+  ServiceTypes.hasMany(ServicePoints)
+  ServicePoints.belongsTo(ServiceTypes)
+
+  Contacts.hasOne(ServicePoints)
+  ServicePoints.belongsTo(Contacts)
+
+  Images.hasOne(ServiceTypes)
+  ServiceTypes.belongsTo(Images)
+
+  Images.belongsToMany(Pois, {through: 'pois_images'})
+  Pois.belongsToMany(Images, {through: 'pois_images'})
+
+  Images.belongsToMany(Events, {through: 'events_images'})
+  Events.belongsToMany(Images, {through: 'events_images'})
+
+  Images.hasOne(Itineraries)
+  Itineraries.belongsTo(Images)
+
+  Contacts.hasOne(Pois)
+  Pois.belongsTo(Contacts)
+
+  // never change this force value -> our database is initialized through SQL script  
   await database.sync({ force: true })
   return {
     Cat,
     Location,
+    Events,
+    Itineraries,
+    Images,
+    Pois,
+    Tags,
+    ServicePoints,
+    ServiceTypes,
+    Contacts
   }
 }
 
-// With this line, our server will know how to parse any incoming request
-// that contains some JSON in the body
-
+// This storage is used for single pages
 const pageContentObject = {
   index: {
     title: 'Homepage',
@@ -116,7 +205,8 @@ const pageContentObject = {
 
 async function runMainApi() {
   const models = await initializeDatabaseConnection()
-  await initialize(models)
+// This function initialize the database, to be used only the first time the website is deployed
+  await initialize(models)  
 
   app.get('/page-info/:topic', (req, res) => {
     const { topic } = req.params
@@ -149,12 +239,18 @@ async function runMainApi() {
   })
 
   app.get('/main-services', async (req, res) => {
-    const result = await models.Cat.findAll()
-    const filtered = []
+    const result = await models.ServiceTypes.findAll(  
+      {
+        include: [{
+          model: models.Images,
+          attributes: ['path']
+        }]
+      })
+     const filtered = []
     for (const element of result) {
       filtered.push({
         title: element.name,
-        img: element.img,
+        img: element.image.path,
       })
     }
     const data = {
@@ -167,7 +263,7 @@ async function runMainApi() {
 
   app.get('/multipleGets', async (req, res) => {
     const resultTopic = pageContentObject.contactUs
-    // return res.json(result)
+    // return res.json(result)  
     const result = await models.Cat.findAll()
     const final = []
     const filtered = []
@@ -187,11 +283,11 @@ async function runMainApi() {
 
   // HTTP POST api, that will push (and therefore create) a new element in
   // our actual database
-  app.post('/cats', async (req, res) => {
+/*   app.post('/cats', async (req, res) => {
     const { body } = req
     await models.Cat.create(body)
     return res.sendStatus(200)
-  })
+  }) */
 }
 
 runMainApi()
