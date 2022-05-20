@@ -1,38 +1,38 @@
-CREATE TABLE "public.Event" (
+CREATE TABLE "Events" (
 	"id" serial NOT NULL,
 	"title" varchar(100) NOT NULL,
 	"description" TEXT NOT NULL,
 	"date" DATE NOT NULL,
 	"idContact" int NOT NULL,
-	CONSTRAINT "Event_pk" PRIMARY KEY ("id")
+	CONSTRAINT "Events_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "public.Itinerary" (
+CREATE TABLE "Itineraries" (
 	"id" serial NOT NULL,
 	"title" varchar(100) NOT NULL,
 	"description" TEXT NOT NULL,
-	CONSTRAINT "Itinerary_pk" PRIMARY KEY ("id")
+	CONSTRAINT "Itineraries_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "public.Image" (
+CREATE TABLE "Images" (
 	"id" serial NOT NULL,
 	"path" varchar(255) NOT NULL UNIQUE,
-	CONSTRAINT "Image_pk" PRIMARY KEY ("id")
+	CONSTRAINT "Images_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "public.Itinerary-Image" (
+CREATE TABLE "Itineraries_Images" (
 	"idItinerary" int NOT NULL,
 	"idImage" int NOT NULL
 ) WITH (
@@ -41,7 +41,7 @@ CREATE TABLE "public.Itinerary-Image" (
 
 
 
-CREATE TABLE "public.Event-Image" (
+CREATE TABLE "Events_Images" (
 	"idEvent" int NOT NULL,
 	"idImage" int NOT NULL
 ) WITH (
@@ -50,7 +50,7 @@ CREATE TABLE "public.Event-Image" (
 
 
 
-CREATE TABLE "public.POI" (
+CREATE TABLE "POIs" (
 	"id" serial NOT NULL,
 	"idContact" int NOT NULL,
 	"title" varchar(100) NOT NULL,
@@ -59,14 +59,14 @@ CREATE TABLE "public.POI" (
 	"closing-hours" TIME NOT NULL,
 	"ticket" real NOT NULL,
 	"address" varchar(100) NOT NULL,
-	CONSTRAINT "POI_pk" PRIMARY KEY ("id")
+	CONSTRAINT "POIs_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "public.POI-Image" (
+CREATE TABLE "POIs_Images" (
 	"idPOI" int NOT NULL,
 	"idImage" int NOT NULL
 ) WITH (
@@ -75,17 +75,17 @@ CREATE TABLE "public.POI-Image" (
 
 
 
-CREATE TABLE "public.Tag" (
+CREATE TABLE "Tags" (
 	"id" serial NOT NULL,
 	"tag" varchar(50) NOT NULL,
-	CONSTRAINT "Tag_pk" PRIMARY KEY ("id")
+	CONSTRAINT "Tags_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "public.Event-Tag" (
+CREATE TABLE "Events_Tags" (
 	"idEvent" int NOT NULL,
 	"idTag" int NOT NULL
 ) WITH (
@@ -94,7 +94,7 @@ CREATE TABLE "public.Event-Tag" (
 
 
 
-CREATE TABLE "public.Itinerary-Tag" (
+CREATE TABLE "Itineraries_Tags" (
 	"idItinerary" int NOT NULL,
 	"idTag" int NOT NULL
 ) WITH (
@@ -103,7 +103,7 @@ CREATE TABLE "public.Itinerary-Tag" (
 
 
 
-CREATE TABLE "public.Service-Point" (
+CREATE TABLE "Service_Points" (
 	"id" serial NOT NULL,
 	"name" varchar(100) NOT NULL,
 	"type" int NOT NULL,
@@ -111,14 +111,14 @@ CREATE TABLE "public.Service-Point" (
 	"closing-hour" TIME NOT NULL,
 	"address" varchar(100) NOT NULL,
 	"idContact" int NOT NULL,
-	CONSTRAINT "Service-Point_pk" PRIMARY KEY ("id")
+	CONSTRAINT "Service_Points_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "public.Host" (
+CREATE TABLE "Host" (
 	"idEvent" int NOT NULL,
 	"idPOI" int NOT NULL
 ) WITH (
@@ -127,7 +127,7 @@ CREATE TABLE "public.Host" (
 
 
 
-CREATE TABLE "public.Involve" (
+CREATE TABLE "Involve" (
 	"idPOI" int NOT NULL,
 	"idItinerary" int NOT NULL
 ) WITH (
@@ -136,48 +136,48 @@ CREATE TABLE "public.Involve" (
 
 
 
-CREATE TABLE "public.Contact" (
+CREATE TABLE "Contacts" (
 	"id" serial NOT NULL,
 	"landline-phone" varchar(20),
 	"mobile-phone" varchar(20),
 	"email" varchar(320),
-	CONSTRAINT "Contact_pk" PRIMARY KEY ("id")
+	CONSTRAINT "Contacts_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "public.TypeService" (
+CREATE TABLE "Service_Types" (
 	"id" serial NOT NULL,
 	"name" varchar(100) NOT NULL,
 	"idImage" int NOT NULL,
-	CONSTRAINT "TypeService_pk" PRIMARY KEY ("id")
+	CONSTRAINT "Service_Types_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-ALTER TABLE "public.Event" ADD CONSTRAINT "Event_fk0" FOREIGN KEY ("idContact") REFERENCES "public.Contact"("id");
+ALTER TABLE "Events" ADD CONSTRAINT "Events_fk0" FOREIGN KEY ("idContact") REFERENCES "Contacts"("id");
 
-ALTER TABLE "public.Event-Tag" ADD CONSTRAINT "Event-Tag_fk0" FOREIGN KEY ("idEvent") REFERENCES "public.Event"("id");
-ALTER TABLE "public.Event-Tag" ADD CONSTRAINT "Event-Tag_fk1" FOREIGN KEY ("idTag") REFERENCES "public.Tag"("id");
+ALTER TABLE "Events_Tags" ADD CONSTRAINT "Events_Tags_fk0s" FOREIGN KEY ("idEvent") REFERENCES "Events"("id");
+ALTER TABLE "Events_Tags" ADD CONSTRAINT "Events_Tags_fk1s" FOREIGN KEY ("idTag") REFERENCES "Tags"("id");
 
-ALTER TABLE "public.Itinerary-Tag" ADD CONSTRAINT "Itinerary-Tag_fk0" FOREIGN KEY ("idItinerary") REFERENCES "public.Itinerary"("id");
-ALTER TABLE "public.Itinerary-Tag" ADD CONSTRAINT "Itinerary-Tag_fk1" FOREIGN KEY ("idTag") REFERENCES "public.Tag"("id");
+ALTER TABLE "Itineraries_Tags" ADD CONSTRAINT "Itineraries_Tags_fk0" FOREIGN KEY ("idItinerary") REFERENCES "Itineraries"("id");
+ALTER TABLE "Itineraries_Tags" ADD CONSTRAINT "Itineraries_Tags_fk1" FOREIGN KEY ("idTag") REFERENCES "Tags"("id");
 
-ALTER TABLE "public.Service-Point" ADD CONSTRAINT "Service-Point_fk0" FOREIGN KEY ("type") REFERENCES "public.TypeService"("id");
-ALTER TABLE "public.Service-Point" ADD CONSTRAINT "Service-Point_fk1" FOREIGN KEY ("idContact") REFERENCES "public.Contact"("id");
+ALTER TABLE "Service_Points" ADD CONSTRAINT "Service_Points_fk0" FOREIGN KEY ("type") REFERENCES "Service_Types"("id");
+ALTER TABLE "Service_Points" ADD CONSTRAINT "Service_Points_fk1" FOREIGN KEY ("idContact") REFERENCES "Contacts"("id");
 
-ALTER TABLE "public.Host" ADD CONSTRAINT "Host_fk0" FOREIGN KEY ("idEvent") REFERENCES "public.Event"("id");
-ALTER TABLE "public.Host" ADD CONSTRAINT "Host_fk1" FOREIGN KEY ("idPOI") REFERENCES "public.POI"("id");
+ALTER TABLE "Host" ADD CONSTRAINT "Host_fk0" FOREIGN KEY ("idEvent") REFERENCES "Events"("id");
+ALTER TABLE "Host" ADD CONSTRAINT "Host_fk1" FOREIGN KEY ("idPOI") REFERENCES "POIs"("id");
 
-ALTER TABLE "public.Involve" ADD CONSTRAINT "Involve_fk0" FOREIGN KEY ("idPOI") REFERENCES "public.POI"("id");
-ALTER TABLE "public.Involve" ADD CONSTRAINT "Involve_fk1" FOREIGN KEY ("idItinerary") REFERENCES "public.Itinerary"("id");
+ALTER TABLE "Involve" ADD CONSTRAINT "Involve_fk0" FOREIGN KEY ("idPOI") REFERENCES "POIs"("id");
+ALTER TABLE "Involve" ADD CONSTRAINT "Involve_fk1" FOREIGN KEY ("idItinerary") REFERENCES "Itineraries"("id");
 
 
-ALTER TABLE "public.TypeService" ADD CONSTRAINT "TypeService_fk0" FOREIGN KEY ("idImage") REFERENCES "public.Image"("id");
+ALTER TABLE "Service_Types" ADD CONSTRAINT "Service_Types_fk0" FOREIGN KEY ("idImage") REFERENCES "Images"("id");
 
 
 
