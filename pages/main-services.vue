@@ -1,0 +1,31 @@
+<template>
+  <div >
+    <top-image :title-img="titleImg" :bg-img="bgImg" />
+    <card-mosaic :items="serviceList" />
+  </div>
+</template>
+
+<script>
+import TopImage from '~/components/TopImage.vue'
+import CardMosaic from '~/components/CardMosaic.vue'
+
+export default {
+  name: 'MainServicesPage',
+  components: {
+    TopImage,
+    CardMosaic,
+  },
+  async asyncData({ $axios }) {
+    // db request
+    const { data } = await $axios.get('/api/main-services')
+    const { titleImg, bgImg, serviceList } = data
+
+    return {
+      titleImg,
+      bgImg,
+      serviceList,
+    }
+  },
+}
+</script>
+

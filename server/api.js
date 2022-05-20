@@ -148,6 +148,23 @@ async function runMainApi() {
     return res.json(filtered)
   })
 
+  app.get('/main-services', async (req, res) => {
+    const result = await models.Cat.findAll()
+    const filtered = []
+    for (const element of result) {
+      filtered.push({
+        title: element.name,
+        img: element.img,
+      })
+    }
+    const data = {
+      titleImg: 'https://dummyimage.com/800x200/ff',
+      bgImg: 'https://dummyimage.com/1500x500',
+      serviceList: filtered
+    }
+    return res.json(data)
+  })
+
   app.get('/multipleGets', async (req, res) => {
     const resultTopic = pageContentObject.contactUs
     // return res.json(result)
