@@ -63,7 +63,7 @@ export default {
         },
         {
           name: 'Services',
-          path: '/services',
+          path: '/main-services',
           image: 'https://dummyimage.com/30x30/aa/00',
         },
         {
