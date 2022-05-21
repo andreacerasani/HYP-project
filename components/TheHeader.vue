@@ -3,7 +3,7 @@
 <template>
   <header
     ref="header"
-    class="navbar navbar-expand-lg navbar-light px-3 header nav-down"
+    class="navbar navbar-expand-xl navbar-light px-3 header nav-down"
   >
     <button
       class="navbar-toggler"
@@ -13,6 +13,7 @@
       aria-controls="navbarToggler"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      @click="toggleClick()"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,9 +21,9 @@
     <div id="navbarToggler" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li>
-          <a class="nav-link" href="/"
-            ><p class="hover-underline-animation">Topolinia</p></a
-          >
+          <nuxt-link to="/" class="nav-link">
+            <p class="hover-underline-animation">Topolinia</p>
+          </nuxt-link>
         </li>
         <li
           v-for="(navItem, navItemIndex) of headerList"
@@ -30,7 +31,7 @@
           class="nav-item"
         >
           <nuxt-link :to="navItem.path" class="nav-link">
-            <img :src="navItem.image" alt="" width="30" height="30" />
+            <img :src="navItem.image" class="img-fluid" />
             <p class="hover-underline-animation">{{ navItem.name }}</p>
           </nuxt-link>
         </li>
@@ -87,16 +88,25 @@ export default {
     window.removeEventListener('mousemove', this.mouseOverHeader)
   },
   methods: {
+    toggleClick() {
+      if (this.$refs.header.classList.contains('header')) {
+        this.$refs.header.classList.replace('header', 'headerToggled')
+      } else {
+        setTimeout(() => {
+          this.$refs.header.classList.replace('headerToggled', 'header')
+        }, 250)
+      }
+    },
     mouseOverHeader(event) {
       if (event.clientY < this.$refs.header.clientHeight) {
-        this.$refs.header.classList.replace('nav-up', 'nav-down')
+        this.$refs.header.classList.remove('nav-up')
         this.$data.isOnHeader = true
       } else if (
         this.$data.isOnHeader &&
         window.scrollY > this.$refs.header.clientHeight &&
         !this.$data.isScrollUp
       ) {
-        this.$refs.header.classList.replace('nav-down', 'nav-up')
+        this.$refs.header.classList.add('nav-up')
         this.$data.isOnHeader = false
       }
     },
@@ -116,13 +126,19 @@ export default {
         window.scrollY > this.$data.navbarHeight
       ) {
         // Scroll Down
-        this.$refs.header.classList.replace('nav-down', 'nav-up')
+        this.$refs.header.classList.add('nav-up')
         this.$data.isScrollUp = false
+        this.$refs.header.classList.remove('header')
+        this.$refs.header.classList.add('header-scolled')
       } else if (
-        window.scrollY < this.$data.navbarHeight ||
-        this.$data.lastScroll - window.scrollY > 0
+        this.$data.lastScroll - window.scrollY > 0 ||
+        window.scrollY <= this.$data.navbarHeight
       ) {
-        this.$refs.header.classList.replace('nav-up', 'nav-down')
+        if (window.scrollY <= this.$data.navbarHeight) {
+          this.$refs.header.classList.remove('header-scolled')
+          this.$refs.header.classList.add('header')
+        }
+        this.$refs.header.classList.remove('nav-up')
         this.$data.isScrollUp = true
       }
     },
@@ -131,19 +147,67 @@ export default {
 </script>
 
 <style scoped>
-.header {
+@media only screen and (max-width: 1200px) {
+  .header {
+    position: fixed;
+    width: 100vw;
+    background: rgba(150, 150, 150);
+    z-index: 3;
+    height: 7.5vh;
+    top: 0;
+
+    transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
+    opacity: 0
+  }
+  .header-scolled {
+    position: fixed;
+    width: 100vw;
+    background: rgb(255, 255, 255, 1);
+    z-index: 3;
+    height: 7.5vh;
+    top: 0;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .header {
+    position: fixed;
+    width: 100vw;
+    background: rgba(150, 150, 150);
+    z-index: 3;
+    height: 10vh;
+    top: 0;
+
+    transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
+    opacity: 0
+  }
+  .header-scolled {
+    position: fixed;
+    width: 100vw;
+    background: rgba(255, 255, 255, 1);
+    z-index: 3;
+    height: 10vh;
+    top: 0;
+  }
+}
+
+.headerToggled {
   position: fixed;
   width: 100vw;
-  background: rgba(150, 150, 150, 0.8);
-  z-index: 2;
-  height: 10vh;
+  background: rgba(150, 150, 150);
+  z-index: 3;
   top: 0;
 }
+
+p {
+  font-size: 3vh;
+}
+
 .nav-up {
   top: -10vh;
 }
-.nav-down {
-}
+
 .logo {
   color: white;
   font-size: 32px;
@@ -155,15 +219,10 @@ export default {
   top: -56px;
 }
 
-li,
-a {
-  margin-top: 1.1vh;
-}
 .hover-underline-animation {
   display: inline-block;
   position: relative;
   color: black;
-  font-size: 1.6vw;
 }
 
 .hover-underline-animation:after {
