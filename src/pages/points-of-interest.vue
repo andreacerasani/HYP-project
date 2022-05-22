@@ -1,7 +1,7 @@
 <template>
   <div>
     <top-image
-      :title-img="'https://dummyimage.com/800x200/ff'"
+      :title="'Points of Interests'"
       :bg-img="'https://dummyimage.com/1500x500'"
     />
     <simple-content :title="'simpleContent1'" :description="'questa descrizione molto bella'" />

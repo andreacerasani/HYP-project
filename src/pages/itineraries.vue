@@ -1,10 +1,8 @@
 <template>
   <div>
-    <top-image :title-img="titleImg" :bg-img="bgImg" />
+    <top-image :title-img="titleImg" :title="'Itineraries'" />
     <carousel-multi-element :title="'titleCarousel1'" :myarray="myArray1" :num-of-carousel="1" />
-    <hr>
     <carousel-multi-element :title="'Title Carousel 2'" :myarray="myArray1" :num-of-carousel="2" />
-    <hr>
   </div>
 </template>
 

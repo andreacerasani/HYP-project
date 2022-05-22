@@ -1,6 +1,6 @@
 <template>
     <div>
-        <top-image :title-img="'https://dummyimage.com/800x200/ff'" :bg-img="'https://dummyimage.com/1500x500'" />
+        <top-image :title="'Evento tipo'" :bg-img="'https://dummyimage.com/1500x500'" />
         <simple-content :description="'This is a description of the itinerary Wonderfull place'" />
         <carousel-img-des :title="'Title carousel prova im'" :myarray="myArray1" :num-of-carousel="1" />
         <carousel-multi-element :title="'Title Carousel 1'" :myarray="myArray1" :num-of-carousel="2" />

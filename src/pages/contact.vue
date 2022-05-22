@@ -1,6 +1,6 @@
 <template>
   <span>
-    <top-image :title-img="titleImg" :bg-img="bgImg" />
+    <top-image :title="'Contact Us'" :bg-img="bgImg" />
     <simple-content :title="title" :description="description" />
     <div class="container-md">
       <ul class="list-group list-group-flush ">
