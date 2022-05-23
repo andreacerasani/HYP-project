@@ -33,20 +33,35 @@ async function initializeDatabaseConnection() {
   Location.hasMany(Cat)
   Cat.belongsTo(Location) 
 
+// ------------------------------------------------------------
+
   const Events = database.define( 'events', { 
     title: DataTypes.STRING(100), 
     description: DataTypes.TEXT, 
     date: DataTypes.DATEONLY, 
-   }) 
+    ticket: DataTypes.REAL
+   },
+   {
+     timestamps: false,
+   }
+   ) 
     
    const Itineraries = database.define('itineraries', { 
     title: DataTypes.STRING(100), 
     description: DataTypes.TEXT, 
-   }) 
+   },
+   {
+    timestamps: false,
+  }
+  ) 
     
    const Images = database.define('images',{ 
     path: DataTypes.STRING, 
-   }) 
+   },
+   {
+    timestamps: false,
+  }
+  ) 
     
    const Pois = database.define('pois',{ 
     title: DataTypes.STRING(100), 
@@ -55,28 +70,48 @@ async function initializeDatabaseConnection() {
     closign_hours: DataTypes.TIME, 
     ticket: DataTypes.REAL, 
     address: DataTypes.STRING(100), 
-   }) 
+   },
+   {
+    timestamps: false,
+  }
+   ) 
     
    const Tags= database.define('tags',{  
     tag: DataTypes.STRING(50), 
-   }) 
+   },
+   {
+    timestamps: false,
+  }
+   ) 
     
    const ServicePoints = database.define('service_points', { 
     name: DataTypes.STRING(100), 
     opening_hours: DataTypes.TIME, 
     closign_hours: DataTypes.TIME, 
     address: DataTypes.STRING(100), 
-   })
+   },
+   {
+    timestamps: false,
+  }
+   )
 
    const ServiceTypes = database.define('service_types', {
     name: DataTypes.STRING(100)
-  })
+  },
+  {
+   timestamps: false,
+ }
+  )
 
   const Contacts = database.define('contacts', {
     landline_phone: DataTypes.STRING(20),
     mobile_phone: DataTypes.STRING(20),
     email: DataTypes.STRING(320)
-  })
+  },
+  {
+   timestamps: false,
+ }
+  )
 
   Contacts.hasMany(Events)
   Events.belongsTo(Contacts)
