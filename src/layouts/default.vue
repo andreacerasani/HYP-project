@@ -21,7 +21,7 @@ export default {
 <style scoped>
 .megabox{
   position: relative;
-  padding-bottom: 10%;
+  padding-bottom: 10vh;
   min-height: 100vh;
 }
 </style>
