@@ -1,8 +1,8 @@
 <template>
   <div>
     <top-image :title-img="titleImg" :title="'Itineraries'" />
-    <carousel-multi-element :title="'titleCarousel1'" :myarray="myArray1" :num-of-carousel="1" />
-    <carousel-multi-element :title="'Title Carousel 2'" :myarray="myArray1" :num-of-carousel="2" />
+    <carousel-multi-element :title="'titleCarousel1'" :my-array="myArray1" :num-of-carousel="1" />
+    <carousel-multi-element :title="'Title Carousel 2'" :my-array="myArray1" :num-of-carousel="2" />
   </div>
 </template>
 
@@ -17,11 +17,10 @@ export default {
   },
   async asyncData({ $axios }) {
       // dati dal db
-      const { data } = await $axios.get('/api/multipleGets')
+       const { data } = await $axios.get('/api/main-services')
+    const { titleImg, bgImg, serviceList } = data
       // fine roba inutile per non dare errorri
 
-      const titleImg= 'https://dummyimage.com/800x200/ff'
-      const bgImg= 'https://dummyimage.com/1500x500'
         const titleCarousel1 ='First Title'
         /*
         const myArray1=[]
@@ -33,7 +32,7 @@ export default {
             })
         }
         */
-        const myArray1= data[0]
+        const myArray1= serviceList
       return{
           titleImg,
           bgImg,

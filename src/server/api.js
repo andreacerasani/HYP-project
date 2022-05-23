@@ -238,6 +238,8 @@ const pageContentObject = {
   },
 }
 
+// ---------------------------------- API
+
 async function runMainApi() {
   const models = await initializeDatabaseConnection()
 // This function initialize the database, to be used only the first time the website is deployed

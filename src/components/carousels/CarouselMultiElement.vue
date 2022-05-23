@@ -26,9 +26,9 @@
           :class="{ active: n == 1 }"
         >
           <!-- da passar title img e link-->
-          <carousel-item :title="'Primo elem' + n" />
-          <carousel-item :title="'Secondo elem' + n" />
-          <carousel-item :title="'Terzo elem' + n" />
+          <carousel-item :title="myArray[n*3].title" :img="myArray[n*3].img" />
+          <carousel-item v-if="(n*3)+1<myLenght" :title="myArray[(n*3)+1].title" :img="myArray[(n*3)+1].img" />
+          <carousel-item v-if="(n*3)+2<myLenght" :title="myArray[(n*3)+2].title" :img="myArray[(n*3)+2].img" />
         </div>
         
       </div>
@@ -67,7 +67,7 @@ export default {
       type: String,
       required: true,
     },
-    myarray: {
+    myArray: {
       type: Array,
       required: true,
     },
@@ -77,16 +77,16 @@ export default {
     },
   },
   data() {
-    // const test=Math.ceil(this.myArray.length / 3)
-    const fintoNumero = 7
+    const myLenght=this.myArray.length
+    // const fintoNumero = 7
     return {
       // test,
-      fintoNumero,
+      myLenght,
     }
   },
   computed: {
     amountOfindicatorsNeeded() {
-      return Math.ceil(this.fintoNumero / 3)
+      return Math.floor(this.myLenght / 3) // giusto è con ceiling
     },
   },
 }

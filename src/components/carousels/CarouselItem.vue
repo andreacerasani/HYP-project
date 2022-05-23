@@ -2,7 +2,11 @@
 <template>
   <a :href="link">
     <div class="card">
-      <img :src="img" class="card-img-top" alt="..." />
+      <div
+        class="card-img-top card-image"
+        :style="{ 'background-image': 'url(' + img + ')' }"
+      ></div>
+      <!--<img :src="img" class="card-img-top" alt="..." />-->
       <div class="card-body">
         <p class="card-text">
           {{ title }}
@@ -25,11 +29,11 @@ export default {
       type: String,
       required: true,
     },
-    link:{
-        type:String,
-        default: '/city',
-        required: false,
-    }
+    link: {
+      type: String,
+      default: '/city',
+      required: false,
+    },
   },
   data() {
     return {}
@@ -39,6 +43,12 @@ export default {
 </script>
 
 <style scoped>
+.card-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vw;
+}
 .card {
   border-bottom-right-radius: 3vw;
   width: 25%;
@@ -50,7 +60,7 @@ export default {
   float: left;
   position: relative;
   background-color: black;
-   box-shadow: 1vw 0.8vw 0.5vw rgb(170,170,170);
+  box-shadow: 1vw 0.8vw 0.5vw rgb(170, 170, 170);
 }
 .card-text {
   text-align: center;
