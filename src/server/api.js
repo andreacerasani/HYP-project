@@ -87,7 +87,7 @@ async function initializeDatabaseConnection() {
    const ServicePoints = database.define('service_points', { 
     name: DataTypes.STRING(100), 
     opening_hours: DataTypes.TIME, 
-    closign_hours: DataTypes.TIME, 
+    closing_hours: DataTypes.TIME, 
     address: DataTypes.STRING(100), 
    },
    {
