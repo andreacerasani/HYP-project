@@ -48,6 +48,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vw;
+  z-index: 1;
 }
 .card {
   border-bottom-right-radius: 3vw;
