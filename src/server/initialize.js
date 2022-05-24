@@ -49,12 +49,13 @@ export default async (models) => {
         },
     ]
     await models.Cat.bulkCreate(catList)
+    /*
     const images = [
         {
             path: "https://dummyimage.com/800x200/ff"
         },
     ]
-
+    
     const myImages = await models.Images.bulkCreate(images)
 
     const serviceTypes = [
@@ -64,4 +65,5 @@ export default async (models) => {
         }
     ]
     await models.ServiceTypes.bulkCreate(serviceTypes)
+    */
 } 

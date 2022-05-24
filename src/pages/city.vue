@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top-image :title-img="titleImg" :bg-img="bgImg" />
+    <top-image :title="'City'" :bg-img="bgImg" />
     <div class="text-center">
       <a href="#Map"> map </a>
       <a href="#History"> history </a>

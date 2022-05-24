@@ -8,7 +8,7 @@
       </nuxt-link>
     </a>
     <p class="polimiText">
-      Politecnico Di Milano <br />Hypermedia Application - 2022
+      Politecnico Di Milano <br />Hypermedia Application - 2022 <br/>~
     </p>
   </footer>
 </template>
@@ -32,8 +32,9 @@ footer{
   bottom:0;
   width: 100%;
   height:10vh;
-  padding-top: 3%;
-  padding-bottom: 1%;
+  padding-top: 3vh;
+  padding-bottom:10vh;
+  
 }
 .polimiText {
   color: grey;

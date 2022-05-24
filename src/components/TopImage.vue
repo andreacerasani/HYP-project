@@ -4,7 +4,7 @@
   <div class="container-fluid container-img px-0">
     <img :src="bgImg" class="img-fluid img-screen" />
     <div class="centered">
-      <img :src="titleImg" class="img-inner" />
+      <h1>{{ title }}</h1>
     </div>
   </div>
 </template>
@@ -13,12 +13,12 @@
 export default {
   name: 'TopImage',
   props: {
-    titleImg: {
+    bgImg: {
       type: String,
       required: true,
     },
-    bgImg: {
-      type: String,
+    title:{
+      type:String,
       required: true,
     },
   },
@@ -26,6 +26,10 @@ export default {
 </script>
 
 <style scoped>
+h1{
+  font-size: 10vw;
+  z-index: 1;
+}
 .centered {
   position: absolute;
   top: 50%;

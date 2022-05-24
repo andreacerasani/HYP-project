@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top-image :title-img="titleImg" :bg-img="bgImg" />
+    <top-image :title="'Eventi'" :bg-img="bgImg" />
     <description-card
       :title="title2022"
       :descr-img="descrImg2022"

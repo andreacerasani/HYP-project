@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top-image :title-img="'https://dummyimage.com/800x200/ff'" :bg-img="'https://dummyimage.com/1500x500'" />
+    <top-image :title="'Evento'" :bg-img="'https://dummyimage.com/1500x500'" />
     <simple-content :description="'questa descrizione molto bella'" />
     <map-card
       :title="'titleM'"
