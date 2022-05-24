@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top-image :title-img="titleImg" :title="'Itineraries'" />
+    <top-image :bg-img="bgImg" :title="'Itineraries'" />
     <carousel-multi-element :title="'titleCarousel1'" :my-array="myArray1" :num-of-carousel="1" />
     <carousel-multi-element :title="'Title Carousel 2'" :my-array="myArray1" :num-of-carousel="2" />
   </div>
