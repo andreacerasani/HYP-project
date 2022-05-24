@@ -21,7 +21,7 @@ for filename in os.listdir(directory):
     # Execute a query
     with open(filepath, 'r') as f:
         next(f)
-        cur.copy_from(f, table, sep=';')
+        cur.copy_from(f, table, sep=';', null='None')
 
     print("Copied from ", filepath, "\n")
 
