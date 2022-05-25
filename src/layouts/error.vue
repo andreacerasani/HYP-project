@@ -1,5 +1,5 @@
 <template>
-  <div class="container position-absolute top-50 start-50 translate-middle">
+  <div class="container">
       <description-card 
       v-if="error.statusCode === 404"
       :descr-img="img" 

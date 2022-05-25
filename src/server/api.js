@@ -169,7 +169,7 @@ async function initializeDatabaseConnection() {
 const pageContentObject = {
   index: {
     title: 'Homepage',
-    image: 'https://fs.i3lab.group/hypermedia/images/index.jpeg',
+    image: '/images/extra/homepage.png',
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
         Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`,
   },
@@ -298,24 +298,19 @@ async function runMainApi() {
     return res.json(data)
   })
 
-  app.get('/multipleGets', async (req, res) => {
-    const resultTopic = pageContentObject.contactUs
-    // return res.json(result)  
-    const result = await models.Cat.findAll()
-    const final = []
-    const filtered = []
+  // %%%%%%%%%%%%%%%%%%%%% Single pages API %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    for (const element of result) {
-      filtered.push({
-        name: element.name,
-        img: element.img,
-        breed: element.breed,
-        id: element.id,
-      })
-    }
-    final.push(filtered)
-    final.push(resultTopic)
-    return res.json(final)
+  app.get('/pois/:id', async (req, res) => { 
+    const { id } = req.params
+    const poi = await models.Pois.findByPk(id, { 
+      include: [ 
+        { 
+          model: models.Images, // include the images
+          attributes: ['path'], 
+        }, 
+      ],  
+    }) 
+    return res.json(poi) 
   })
 
   // HTTP POST api, that will push (and therefore create) a new element in

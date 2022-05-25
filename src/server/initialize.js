@@ -49,21 +49,4 @@ export default async (models) => {
         },
     ]
     await models.Cat.bulkCreate(catList)
-    /*
-    const images = [
-        {
-            path: "https://dummyimage.com/800x200/ff"
-        },
-    ]
-    
-    const myImages = await models.Images.bulkCreate(images)
-
-    const serviceTypes = [
-        {
-            name: "Pharmacy",
-            imageId: myImages[0].id
-        }
-    ]
-    await models.ServiceTypes.bulkCreate(serviceTypes)
-    */
 } 
