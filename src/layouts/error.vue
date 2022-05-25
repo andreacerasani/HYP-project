@@ -38,7 +38,7 @@ export default {
     const img = "/images/extra/error_image.png"
     const linkName = "Go back Home"
     const linkName404 = "Continue Exploring"
-    const linkPath = "./"
+    const linkPath = "/"
     const description404 = "Please continue exploring this wonderful city"
 
     return {
