@@ -1,2 +1,2 @@
-"id","landline_phone","mobile_phone","email"
-1,NULL,NULL,NULL
+id;landline_phone;mobile_phone;email
+1;NULL;NULL;NULL
