@@ -123,7 +123,7 @@ async function initializeDatabaseConnection() {
   Pois.belongsTo(Contacts)
 
   // never change this force value -> our database is initialized through SQL script
-  await database.sync({ force: true })
+  await database.sync({ force: false })
   return {
     Cat,
     Location,
