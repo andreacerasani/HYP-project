@@ -1,3 +1,4 @@
+
 const express = require('express')
 const app = express()
 const { Sequelize, DataTypes, Op } = require('sequelize')
@@ -60,7 +61,7 @@ async function initializeDatabaseConnection() {
     title: DataTypes.STRING(100),
     description: DataTypes.TEXT,
     opening_hours: DataTypes.TIME,
-    closign_hours: DataTypes.TIME,
+    closing_hours: DataTypes.TIME,
     ticket: DataTypes.REAL,
     address: DataTypes.STRING(100),
   })
@@ -274,12 +275,16 @@ async function runMainApi() {
 
   // %%%%%%%%%%%%%%%%%%%%% Single pages API %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  app.get('/pois/:id', async (req, res) => { 
-    const { id } = req.params
-    const poi = await models.Pois.findByPk(id, { 
+  app.get('/pois/:title', async (req, res) => { 
+    const { title } = req.params
+    const titleMod = title.replaceAll("-", " ")
+    const poi = await models.Pois.findOne({
+      where: {
+          title: titleMod
+      },
       include: [ 
         { 
-          model: models.Images, // include the images
+          model: models.Images,
           attributes: ['path'], 
         }, 
       ],  

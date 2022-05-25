@@ -4,14 +4,16 @@
       class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg"
     >
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-        <h1 class="display-4 fw-bold lh-1">{{ title }}</h1>
+        <h1 class="display-4 fw-bold lh-1">
+            {{ title }}
+            </h1>
         <b>Description:</b>
         <p class="lead">
           {{ description }}
         </p>
         <b>Opening hours:</b>
         <p class="lead">
-          {{ opening_hours }} - {{  closing_hours }}
+          {{ opening_hours.substring(0, 5) }} - {{  closing_hours.substring(0, 5) }}
         </p>
         <b>Ticket:</b>
         <p class="lead">
@@ -40,9 +42,11 @@
 export default {
   name: 'SinglePoiPage',
   async asyncData({ route, $axios }) {
-    const { id } = route.params
-    const { poi } = await $axios.get('/api/pois/' + id)
+    const  title  = route.params.title
+    const data = await $axios.get('/api/pois/' + title)
+    const poi = data.data
     return {
+        poi,
       title: poi.title,
       description: poi.description,
       opening_hours: poi.opening_hours,
@@ -59,7 +63,7 @@ export default {
   },
   methods: {
     fromUrl(variable){
-        const result = variable.replace("-", " ")
+        const result = variable.replaceAll("-", " ")
         return result
     },
     backToList() {
