@@ -318,6 +318,31 @@ async function runMainApi() {
     return res.json(final)
   })
 
+  // %%%%%%%%%%%%%%%%%%%%%%%% POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  app.get('/pois', async (req, res) => {
+    const result = await models.Pois.findAll(  
+      {
+        include: [{
+          model: models.Images,
+          attributes: ['path']
+        }]
+      })
+     const filtered = []
+    for (const element of result) {
+      filtered.push({
+        title: element.name,
+        img: element.image[0].path,
+      })
+    }
+    const data = {
+      title: 'Points of Interest',
+      bgImg: 'https://dummyimage.com/1500x500',
+      pois: filtered
+    }
+    return res.json(data)
+  })
+
+
   // HTTP POST api, that will push (and therefore create) a new element in
   // our actual database
 /*   app.post('/cats', async (req, res) => {
