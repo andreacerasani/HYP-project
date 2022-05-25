@@ -24,7 +24,7 @@
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li>
           <nuxt-link to="/" class="nav-link">
-            <p class="hover-underline-animation">Topolinia</p>
+            <p class="hover-underline-animation">Venice</p>
           </nuxt-link>
         </li>
         <li
@@ -33,7 +33,7 @@
           class="nav-item"
         >
           <nuxt-link :to="navItem.path" class="nav-link">
-            <img :src="navItem.image" class="img-fluid" />
+            <img :src="navItem.image" class="img-fluid resized" />
             <p class="hover-underline-animation">{{ navItem.name }}</p>
           </nuxt-link>
         </li>
@@ -57,27 +57,27 @@ export default {
         {
           name: 'Events',
           path: '/events',
-          image: 'https://dummyimage.com/30x30/aa/00',
+          image: '/images/header_icons/event.png',
         },
         {
           name: 'Itineraries',
           path: '/itineraries',
-          image: 'https://dummyimage.com/30x30/aa/00',
+          image: '/images/header_icons/itinerary.png',
         },
         {
           name: 'Services',
           path: '/main-services',
-          image: 'https://dummyimage.com/30x30/aa/00',
+          image: '/images/header_icons/service.png',
         },
         {
           name: 'Points of interest',
           path: '/points-of-interest',
-          image: 'https://dummyimage.com/30x30/aa/00',
+          image: '/images/header_icons/POI.png',
         },
         {
           name: 'City',
           path: '/city',
-          image: 'https://dummyimage.com/30x30/aa/00',
+          image: '/images/header_icons/plus.png',
         },
       ],
     }
@@ -220,4 +220,6 @@ p {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+img.resized { width: 30px; height: auto; }
 </style>
