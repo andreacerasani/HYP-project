@@ -1,2 +1,45 @@
-"id","name","opening_hours","closign_hours","address","serviceTypeId","contactId"
-1,NULL,NULL,NULL,NULL,NULL,NULL
+id;name;opening_hours;closign_hours;address;serviceTypeId;contactId
+1;Gilberto Penzo;08:45;17:30;"Calle Seconda dei Saoneri, 2681, 30125 San Polo, Venezia VE, Italy
+Venice";1;NULL
+2;Casin Dei Nobili;10:00;19:00;Sestiere Dorsoduro 2766/B - 30123 Venezia (VE);1;NULL
+3;Helene Ferruzzi;10:00;19:00;Sestiere Dorsoduro, 2898, 30123 Venezia VE, Italy, Venice;1;NULL
+4;Water Bus;04:30;12:30;NULL;2;NULL
+5;Water Taxi;00:00;00:00;NULL;2;NULL
+6;Gondola;00:00;00:00;NULL;2;NULL
+7;Traghetti;04:30;12:30;NULL;2;NULL
+8;Bus;04:30;12:30;NULL;2;NULL
+9;Farmacia Ai Due San Marchi;09:00;19:30;Campo S. Stin, 2498, 30125 Venezia VE;3;NULL
+10;Farmacia San Polo;09:00;19:30;S. Polo, 2012, 30125 Venezia VE;3;NULL
+11;Farmacia Della Vecchia e del Cedro Imperiale;09:00;19:30;Sestiere di San Marco, 4598, 30124 Venezia VE;3;NULL
+12;Farmacia al Lupo Coronato;09:00;19:30;Campo Santi Filippo e Giacomo, 4513, 30122 Venezia VE;3;NULL
+13;BlueMoon;00:00;00:00;"Piazzale Bucintoro, 1
+30126 Venezia VE";4;NULL
+14;Lungomare;00:00;00:00;"Lungomare Gabriele D' Annunzio
+30100 Venezia VE";4;NULL
+15;San Nicolò;00:00;00:00;"Piazzale Rava'
+30100 Venezia VE";4;NULL
+16;Harry's Bar;10:30;23:00;Calle Vallaresso, 1323, 30124 Venezia VE;5;NULL
+17;Arts Bar Venice;18:30;01:00;Sestiere di S. Marco, 2159, 30124 Venezia VE;5;NULL
+18;Caffè Florian;09:00;00:00;P.za San Marco, 57, 30124 Venezia VE;5;NULL
+19;Skyline Rooftop Bar;17:00;00:00;Giudecca, 810, 30133 Venezia VE;5;NULL
+20;Venice port;00:00;00:00;30100 Venice, Metropolitan City of Venice;6;NULL
+21;Venice Port Authority;00:00;00:00;Fabbricato 13, Santa Marta, 30135 Venezia VE;6;NULL
+22;Porto Marghera;00:00;00:00;30175 Venice, Metropolitan City of Venice;6;NULL
+23;Banca d'Italia;08:15;13:30;S. Marco, 4799A, 30124 Venezia VE;7;NULL
+24;Banco BPM San Leonardo;08:20;16:00;San Leonardo, 1906, 30121 Venezia VE;7;NULL
+25;Banco BPM Cannaregio;08:20;16:00;Cannaregio, 122a, 30121 Venezia VE;7;NULL
+26;Ospedale SS. Giovanni e Paolo;00:00;00:00;Sestiere Castello, 6777, 30122 Venezia VE;8;NULL
+27;Ospedale S. Raffaele Arcangelo;00:00;00:00;Fondamenta Madona de l'Orto, 3458, 30121 Venezia VE;8;NULL
+28;Ospedale Villa Salus Mestre;00:00;00:00;Via Terraglio, 114, 30174 Venezia VE;8;NULL
+29;Polizia Locale Sezione San Marco;00:00;00:00;Sestiere di S. Marco, 52/E, 30124 Venezia VE;9;NULL
+30;Police of Venice;00:00;00:00;Sestiere S. Croce, 500, 30135 Venezia VE;9;NULL
+31;Police Headquarters Of Venice;00:00;00:00;Via Aurelio Nicolodi, 21, 30175 Venezia VE;9;NULL
+32;Punto CRAI;08:30;20:00;Ponte del Teatro, 3988, 30124 Venezia VE;10;NULL
+33;DESPAR Rialto;08:00;21:30;Riva Del Carbon 4790-4791, 4792, 30124 Venezia VE;10;NULL
+34;Supermercato Punto Eat;08:00;20:00;Salizada S. Antonin, 3540, 30122 Venezia VE;10;NULL
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
