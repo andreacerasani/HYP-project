@@ -11,14 +11,18 @@
         <p class="lead">
           {{ description }}
         </p>
-        <b>Opening hours:</b>
-        <p class="lead">
-          {{ opening_hours.substring(0, 5) }} - {{  closing_hours.substring(0, 5) }}
-        </p>
-        <b>Ticket:</b>
-        <p class="lead">
-          {{ ticket }}
-        </p>
+        <div v-if="opening_hours!='00:00:00' || closing_hours!='00:00:00'">
+          <b>Opening hours:</b>
+          <p class="lead">
+            {{ opening_hours.substring(0, 5) }} - {{  closing_hours.substring(0, 5) }}
+          </p>
+        </div>
+        <div v-if="ticket>0">
+          <b>Ticket:</b>
+          <p class="lead">
+            {{ ticket.toFixed(2) }} €
+          </p>
+        </div>
         <div
           class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3"
         >
