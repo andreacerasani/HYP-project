@@ -1,4 +1,4 @@
-id;name;opening_hours;closign_hours;address;serviceTypeId;contactId
+id;name;opening_hours;closing_hours;address;serviceTypeId;contactId
 1;Gilberto Penzo;08:45;17:30;"Calle Seconda dei Saoneri, 2681, 30125 San Polo, Venezia VE, Italy Venice";1;NULL
 2;Casin Dei Nobili;10:00;19:00;Sestiere Dorsoduro 2766/B - 30123 Venezia (VE);1;NULL
 3;Helene Ferruzzi;10:00;19:00;Sestiere Dorsoduro, 2898, 30123 Venezia VE, Italy, Venice;1;NULL
