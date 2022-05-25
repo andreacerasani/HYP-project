@@ -29,6 +29,7 @@ export default {
 h1{
   font-size: 10vw;
   z-index: 1;
+  color: var(--title-color);
 }
 .centered {
   position: absolute;

@@ -34,13 +34,14 @@ footer{
   height:10vh;
   padding-top: 3vh;
   padding-bottom:10vh;
-  
+  background-color: var(--div-color-dark);
 }
 .polimiText {
-  color: grey;
+  color: var(--text-color);
   font-style: bold;
 }
 a {
+  color: var(--link-color);
   text-decoration: none;
 }
 a:hover {

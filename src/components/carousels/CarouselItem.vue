@@ -60,12 +60,13 @@ export default {
   margin-right: 0;
   float: left;
   position: relative;
-  background-color: black;
+  background-color: var(--div-color-light);
   box-shadow: 1vw 0.8vw 0.5vw rgb(170, 170, 170);
 }
+
 .card-text {
   text-align: center;
-  color: white;
+  color: var(--text-color);
   font-size: 2vw;
 }
 .card:hover {
