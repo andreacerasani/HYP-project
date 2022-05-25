@@ -31,7 +31,7 @@
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li>
           <nuxt-link to="/" class="nav-link">
-            <p class="hover-underline-animation">Venice</p>
+            <p class="hover-underline-animation align-middle ps-3">Venice</p>
           </nuxt-link>
         </li>
         <li
@@ -41,7 +41,7 @@
         >
           <nuxt-link :to="navItem.path" class="nav-link">
             <div class="justify-content-center px-3">
-              <img :src="navItem.image" class="align-middle" style="height: 3vh" />
+              <img :src="navItem.image" class="align-middle" style="height: 3vh"/>
               <p class="hover-underline-animation align-middle ps-3" style="height: 3vh">{{ navItem.name }}</p>
             </div>
           </nuxt-link>
@@ -62,7 +62,7 @@ export default {
       isScrollUp: false,
       isOnHeader: false,
       isToggle: false,
-      header_opacity: 'ff',
+      header_opacity: '00',
       header_top: '0vh',
       headerList: [
         {
@@ -122,7 +122,7 @@ export default {
         window.scrollY > this.$refs.header.clientHeight &&
         !this.$data.isScrollUp
       ) {
-        this.$data.header_top = '-10vh'
+        this.$data.header_top = "-"+this.$refs.header.clientHeight+"px"
         this.$data.isOnHeader = false
       }
     },
@@ -143,7 +143,7 @@ export default {
         !this.$data.isToggle
       ) {
         // Scroll Down
-        this.$data.header_top = '-10vh'
+        this.$data.header_top = "-"+this.$refs.header.clientHeight+"px"
         this.$data.isScrollUp = false
         this.$data.header_opacity = 'ff'
       } else if (
@@ -167,7 +167,6 @@ export default {
     position: fixed;
     width: 100vw;
     z-index: 3;
-    height: 7.5vh;
     top: 0;
   }
 }
@@ -176,7 +175,6 @@ export default {
     position: fixed;
     width: 100vw;
     z-index: 3;
-    height: 10vh;
     top: 0;
   }
 }
