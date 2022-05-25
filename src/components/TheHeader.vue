@@ -4,6 +4,8 @@
   <header
     ref="header"
     class="navbar navbar-expand-xl navbar-light px-3 header nav-down"
+    style="transition: opacity 2s; -webkit-transition: opacity 2s"
+    :style="{ backgroundColor: (150, 150, 150, header_opacity) }"
   >
     <button
       class="navbar-toggler"
@@ -50,6 +52,7 @@ export default {
       navbarHeight: 0,
       isScrollUp: false,
       isOnHeader: false,
+      header_opacity: 0,
       headerList: [
         {
           name: 'Events',
@@ -101,6 +104,7 @@ export default {
       if (event.clientY < this.$refs.header.clientHeight) {
         this.$refs.header.classList.remove('nav-up')
         this.$data.isOnHeader = true
+        this.$data.header_opacity = 1
       } else if (
         this.$data.isOnHeader &&
         window.scrollY > this.$refs.header.clientHeight &&
@@ -151,19 +155,6 @@ export default {
   .header {
     position: fixed;
     width: 100vw;
-    background: rgba(150, 150, 150);
-    z-index: 3;
-    height: 7.5vh;
-    top: 0;
-
-    transition: opacity 0.3s;
-    -webkit-transition: opacity 0.3s;
-    opacity: 0
-  }
-  .header-scolled {
-    position: fixed;
-    width: 100vw;
-    background: rgb(255, 255, 255, 1);
     z-index: 3;
     height: 7.5vh;
     top: 0;
@@ -173,19 +164,6 @@ export default {
   .header {
     position: fixed;
     width: 100vw;
-    background: rgba(150, 150, 150);
-    z-index: 3;
-    height: 10vh;
-    top: 0;
-
-    transition: opacity 0.3s;
-    -webkit-transition: opacity 0.3s;
-    opacity: 0
-  }
-  .header-scolled {
-    position: fixed;
-    width: 100vw;
-    background: rgba(255, 255, 255, 1);
     z-index: 3;
     height: 10vh;
     top: 0;
