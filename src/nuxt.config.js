@@ -8,7 +8,7 @@ export default {
     },
   ],
   head: {
-    title: 'Website name',
+    title: 'Venice',
     htmlAttrs: {
       lang: 'en',
     },
