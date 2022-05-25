@@ -272,7 +272,8 @@ async function runMainApi() {
     return res.json(data)
   })
 
-  app.get('/latest-events', async (req, res) => {
+  // HTTP GET api that returns the next 4 upcoming events
+  app.get('/upcoming-events', async (req, res) => {
     const result = await models.Events.findAll({
       where: [
         {
@@ -282,7 +283,7 @@ async function runMainApi() {
         },
       ],
       order: [['date', 'ASC']],
-      limit: 3,
+      limit: 4,
       include: [
         {
           model: models.Images,
@@ -292,6 +293,89 @@ async function runMainApi() {
     })
     return res.json(result)
   })
+
+  // HTTP GET api that returns the next 4 upcoming events in the current year
+  app.get('/upcoming-events/year', async (req, res) => {
+    const currDate = new Date()
+    const result = await models.Events.findAll({
+      where: [
+        {
+          date: {
+            [Op.gte]: currDate,
+            [Op.lte]: new Date(currDate.getFullYear() + '-12-31')
+          },
+        },
+      ],
+      order: [['date', 'ASC']],
+      limit: 4,
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+      ],
+    })
+    return res.json(result)
+  })
+
+  // HTTP GET api that returns the next 4 upcoming summer events
+  app.get('/upcoming-events/summer', async (req, res) => {
+    const currYear = new Date().getFullYear()
+    const result = await models.Events.findAll({
+      where: [
+        {
+          date: {
+            [Op.gte]: currYear + '03-20',
+            [Op.lte]: currYear + '09-23'
+          },
+        },
+      ],
+      order: [['date', 'ASC']],
+      limit: 4,
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+      ],
+    })
+    return res.json(result)
+  })
+
+  // HTTP GET api that returns the winter events
+  app.get('/winter', async (req, res) => {
+    const result = await models.Events.findAll({
+      where: {
+        [Op.or]:[Sequelize.where(Sequelize.fn('to_char', Sequelize.col('date'), 'MMDD'), {[Op.between]: ['0923', '1231']}),
+        Sequelize.where(Sequelize.fn('to_char', Sequelize.col('date'), 'MMDD'), {[Op.between]: ['0101', '0321']})]
+      },
+      order: [['date', 'ASC']],
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+      ],
+    })
+    return res.json(result)
+  })
+
+  // HTTP GET api that returns the summer events
+  app.get('/summer', async (req, res) => {
+    const result = await models.Events.findAll({
+      where: Sequelize.where(Sequelize.fn('to_char', Sequelize.col('date'), 'MMDD'), {[Op.between]: ['0322', '0922']}),
+      order: [['date', 'ASC']],
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+      ],
+    })
+    return res.json(result)
+  })
+
+
 
   // HTTP POST api, that will push (and therefore create) a new element in
   // our actual database
