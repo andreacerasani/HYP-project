@@ -3,9 +3,16 @@
 <template>
   <header
     ref="header"
-    class="navbar navbar-expand-xl navbar-light px-3 header nav-down"
-    style="transition: opacity 2s; -webkit-transition: opacity 2s"
-    :style="{ backgroundColor: (150, 150, 150, header_opacity) }"
+    class="navbar-expand-xl navbar-light px-3 header py-3"
+    style="
+      transition: top 0.5s ease, background-color 0.5s;
+      -webkit-transition: top 0.5s ease, background-color 0.5s;
+    "
+    :style="[
+      isToggle
+        ? { backgroundColor: '#969696', top: header_top }
+        : { backgroundColor: '#969696' + header_opacity, top: header_top },
+    ]"
   >
     <button
       class="navbar-toggler"
@@ -33,8 +40,10 @@
           class="nav-item"
         >
           <nuxt-link :to="navItem.path" class="nav-link">
-            <img :src="navItem.image" class="img-fluid resized" />
-            <p class="hover-underline-animation">{{ navItem.name }}</p>
+            <div class="justify-content-center px-3">
+              <img :src="navItem.image" class="align-middle" style="height: 3vh" />
+              <p class="hover-underline-animation align-middle ps-3" style="height: 3vh">{{ navItem.name }}</p>
+            </div>
           </nuxt-link>
         </li>
       </ul>
@@ -52,7 +61,9 @@ export default {
       navbarHeight: 0,
       isScrollUp: false,
       isOnHeader: false,
-      header_opacity: 0,
+      isToggle: false,
+      header_opacity: 'ff',
+      header_top: '0vh',
       headerList: [
         {
           name: 'Events',
@@ -94,23 +105,24 @@ export default {
     toggleClick() {
       if (this.$refs.header.classList.contains('header')) {
         this.$refs.header.classList.replace('header', 'headerToggled')
+        this.$data.isToggle = true
       } else {
         setTimeout(() => {
           this.$refs.header.classList.replace('headerToggled', 'header')
+          this.$data.isToggle = false
         }, 250)
       }
     },
     mouseOverHeader(event) {
       if (event.clientY < this.$refs.header.clientHeight) {
-        this.$refs.header.classList.remove('nav-up')
+        this.$data.header_top = '0vh'
         this.$data.isOnHeader = true
-        this.$data.header_opacity = 1
       } else if (
         this.$data.isOnHeader &&
         window.scrollY > this.$refs.header.clientHeight &&
         !this.$data.isScrollUp
       ) {
-        this.$refs.header.classList.add('nav-up')
+        this.$data.header_top = '-10vh'
         this.$data.isOnHeader = false
       }
     },
@@ -127,22 +139,21 @@ export default {
 
       if (
         window.scrollY > this.$data.lastScroll &&
-        window.scrollY > this.$data.navbarHeight
+        window.scrollY > this.$data.navbarHeight &&
+        !this.$data.isToggle
       ) {
         // Scroll Down
-        this.$refs.header.classList.add('nav-up')
+        this.$data.header_top = '-10vh'
         this.$data.isScrollUp = false
-        this.$refs.header.classList.remove('header')
-        this.$refs.header.classList.add('header-scolled')
+        this.$data.header_opacity = 'ff'
       } else if (
         this.$data.lastScroll - window.scrollY > 0 ||
         window.scrollY <= this.$data.navbarHeight
       ) {
         if (window.scrollY <= this.$data.navbarHeight) {
-          this.$refs.header.classList.remove('header-scolled')
-          this.$refs.header.classList.add('header')
+          this.$data.header_opacity = '00'
         }
-        this.$refs.header.classList.remove('nav-up')
+        this.$data.header_top = '0vh'
         this.$data.isScrollUp = true
       }
     },
@@ -173,7 +184,6 @@ export default {
 .headerToggled {
   position: fixed;
   width: 100vw;
-  background: rgba(150, 150, 150);
   z-index: 3;
   top: 0;
 }
@@ -182,23 +192,13 @@ p {
   font-size: 3vh;
 }
 
-.nav-up {
-  top: -10vh;
-}
-
 .logo {
   color: white;
   font-size: 32px;
 }
-.navbar {
-  transition: top 0.5s ease;
-}
-.navbar-hide {
-  top: -56px;
-}
 
 .hover-underline-animation {
-  display: inline-block;
+  display: inline;
   position: relative;
   color: black;
 }
@@ -210,7 +210,7 @@ p {
   transform: scaleX(0);
   height: 2px;
   bottom: 0;
-  left: 0;
+  left: 0.6rem;
   background-color: black;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
@@ -220,6 +220,4 @@ p {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-
-img.resized { width: 30px; height: auto; }
 </style>

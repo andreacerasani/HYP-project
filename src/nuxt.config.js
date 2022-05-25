@@ -42,7 +42,6 @@ export default {
   components: {
     dirs: [
       '~/components',
-      '~/components/cityComponents'
     ]
   },
 
