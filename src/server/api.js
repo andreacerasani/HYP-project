@@ -294,7 +294,7 @@ async function runMainApi() {
 
 
   // HTTP GET api that returns the next 4 upcoming events
-  app.get('/latest-events', async (req, res) => {
+  app.get('/upcoming-events', async (req, res) => {
     const result = await models.Events.findAll({
       where: [
         {
