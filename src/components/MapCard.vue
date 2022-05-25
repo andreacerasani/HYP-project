@@ -12,7 +12,7 @@ description that when the img shrinks the text goes down   -->
         </div>
         <div class="row p-2">
           <div>
-            {{ description }}
+            <p>{{ description }}</p>
           </div>
         </div>
       </div>
@@ -43,3 +43,12 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+p{
+  color:var(--text-color);
+}
+h3{
+  color:var(--subtitle-color);
+}
+</style>

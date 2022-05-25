@@ -1,3 +1,13 @@
+:root{
+  --title-color:rgb(0, 109, 139);
+  --text-color: rgb(0,0,0);
+  --link-color: rgb(0,0,255);
+  --div-color-light: rgb(209, 241, 255); 
+  --div-color-dark: rgb(128, 216, 253);
+  --subtitle-color:rgb(0, 90, 110);
+  --button-carousel: rgb(0,0,0);
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .container-md {width: 95%;}

@@ -30,6 +30,9 @@ export default {
 </script>
 
 <style scoped>
+h1{
+  color:var(--subtitle-color);
+}
 img {
   height: 300px;
   margin: 20px 0;
@@ -41,5 +44,6 @@ img {
 }
 p {
   text-align: left;
+  color: var(--text-color);
 }
 </style>

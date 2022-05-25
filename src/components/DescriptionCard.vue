@@ -15,7 +15,7 @@ with a possible link added   -->
         </div>
         <div class="row p-2">
           <div>
-            {{ description }}
+            <p>{{ description }}</p>
           </div>
         </div>
         <div class="row justify-content-center p-3">
@@ -37,7 +37,7 @@ with a possible link added   -->
         </div>
         <div class="row p-2">
           <div>
-            {{ description }}
+            <p>{{ description }}</p>
           </div>
         </div>
         <div class="row justify-content-center p-3">
@@ -93,3 +93,12 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+p{
+  color: var(--title-color);
+}
+h3{
+  color: var(--subtitle-color);
+}
+</style>

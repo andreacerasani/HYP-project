@@ -28,4 +28,10 @@ export default {
 h1, p{
   text-align: center;
 }
+h1{
+  color: var(--title-color);
+}
+p{
+  color:var(--text-color);
+}
 </style>

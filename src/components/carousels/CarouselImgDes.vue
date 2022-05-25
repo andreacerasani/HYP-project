@@ -96,6 +96,7 @@ export default {
 <style scoped>
 h1 {
   text-align: center;
+  color:var(--subtitle-color);
 }
 .carousel-control-prev,
 .carousel-control-next {
@@ -106,6 +107,6 @@ h1 {
   filter: invert(100%);
 }
 .carousel-indicators [data-bs-target] {
-  background-color: black;
+  background-color: var(--button-carousel);
 }
 </style>
