@@ -3,13 +3,13 @@
   <div>
     <div class="page container mt-5">
       <div class="row mt-3">
-      <card
-        v-for="(item, itemIndex) in items"
-        :key="`service-index-${itemIndex}`"
-        :name="item.title"
-        :img="item.img"
-        class="col-sm-2 m-2"
-      />
+        <card
+          v-for="(item, itemIndex) in items"
+          :key="`service-index-${itemIndex}`"
+          :name="item.title"
+          :img="item.img"
+          class="col-sm-2 m-2"
+        />
       </div>
     </div>
   </div>
@@ -45,4 +45,4 @@ export default {
   flex: none;
   align-self:stretch;
 } */
-</style> 
+</style>

@@ -123,7 +123,7 @@ async function initializeDatabaseConnection() {
   Pois.belongsTo(Contacts)
 
   // never change this force value -> our database is initialized through SQL script
-  await database.sync({ force: true })
+  await database.sync({ force: false })
   return {
     Cat,
     Location,
@@ -305,8 +305,34 @@ async function runMainApi() {
      const filtered = []
     for (const element of result) {
       filtered.push({
-        title: element.name,
-        img: element.image[0].path,
+        id: element.id,
+        title: element.title,
+        img: element.images[0].path,
+      })
+    }
+    const data = {
+      title: 'Points of Interest',
+      bgImg: 'https://dummyimage.com/1500x500',
+      pois: filtered
+    }
+    return res.json(data)
+  })
+
+  // %%%%%%%%%%%%%%%%%%%%%% ITINERARIES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  app.get('/itineraries', async (req, res) => {
+    const result = await models.Pois.findAll(  
+      {
+        include: [{
+          model: models.Images,
+          attributes: ['path']
+        }]
+      })
+     const filtered = []
+    for (const element of result) {
+      filtered.push({
+        title: element.title,
+        description: element.description,
+        img: element.image,
       })
     }
     const data = {
