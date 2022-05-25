@@ -221,5 +221,8 @@ p {
   transform-origin: bottom left;
 }
 
-img.resized { width: 30px; height: auto; }
+img.resized { 
+  width: 30px;
+  height: auto; 
+}
 </style>
