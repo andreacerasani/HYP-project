@@ -44,7 +44,7 @@ export default {
       this.$router.push(`/details/${this.id}`)
     },
     toUrl(name){
-      return "/detail/"+name.replaceAll(" ","-")
+      return "/pois/"+name.replaceAll(" ","-")  // Change this line -> directory should not be set here
     }
   },
 }
