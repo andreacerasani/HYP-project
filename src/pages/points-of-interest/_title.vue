@@ -47,7 +47,7 @@ export default {
   name: 'SinglePoiPage',
   async asyncData({ route, $axios }) {
     const  title  = route.params.title
-    const data = await $axios.get('/api/pois/' + title)
+    const data = await $axios.get('/api/points-of-interest/' + title)
     const poi = data.data
     return {
         poi,
