@@ -21,17 +21,18 @@
       </div>
       <div class="carousel-inner">
         <div
-          v-for="n in amountOfindicatorsNeeded"
+          v-for="n in lenght"
           :key="n"
           class="carousel-item"
           :class="{ active: n == 1 }"
         >
           <!-- per accedere fare myarray[n].img o .des o .tit-->
           <img
-            src="https://dummyimage.com/1600x500"
+            :src="myarray[n].img"
             class="d-block w-100 cropped"
             alt=""
           />
+          <!--
           <div class="carousel-caption">
             <h5>{{ 'First slide label' + n }}</h5>
             <p>
@@ -41,6 +42,7 @@
               }}
             </p>
           </div>
+          -->
         </div>
       </div>
       <button
@@ -73,24 +75,24 @@ export default {
       type: String,
       required: true,
     },
-    myarray: {
+    myarray: { 
       type: Array,
       required: true,
     },
-    numOfCarousel: {
+    numOfCarousel: { // numOfCarousel rappresent the index of carousel in the page, must be different in each carousel to make it work in page
       type: Number,
       required: true,
     },
   },
   data() {
-    const numOfPic = 5
+    const lenght = this.myarray.lenght
     return {
-      numOfPic,
+      lenght,
     }
   },
   computed: {
     amountOfindicatorsNeeded() {
-      return Math.ceil(this.numOfPic)
+      return this.lenght
     },
   },
 }
