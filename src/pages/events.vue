@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top-image :title="'Eventi'" :bg-img="'/images/events.png'" />
+    <top-image :title="'Events'" :bg-img="'/images/events.png'" />
     <carousel-img-des
       :title="'Upcoming Events'"
       :myarray="upcoming"

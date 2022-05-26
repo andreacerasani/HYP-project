@@ -222,9 +222,5 @@ p {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-.header-button-hover:hover{
-  /* filter: invert(100%);
-  text-shadow: 0.09vw 0.09vw white; */
-}
 
 </style>
