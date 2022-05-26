@@ -350,9 +350,14 @@ async function runMainApi() {
         { 
           model: models.Images,
           attributes: ['path'], 
-        }, 
+        },
+        { 
+          model: models.Contacts,
+          attributes: ['landline_phone', 'mobile_phone', 'email'],
+        },  
       ],  
     }) 
+    console.log(poi)
     return res.json(poi) 
 })
 
