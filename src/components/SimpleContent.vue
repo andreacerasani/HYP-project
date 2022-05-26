@@ -1,7 +1,7 @@
 <!-- Component with title and text that stands alone all width of the page  -->
 
 <template>
-    <div class="container-md">
+    <div class="container-xl">
         <h1>{{title}}</h1>
         <p>{{description}}</p>
     </div>
@@ -30,7 +30,7 @@ h1, p{
   text-align: center;
 }
 h1{
-  color: var(--title-color);
+  color: var(--subtitle-color);
 }
 p{
   color:var(--text-color);
