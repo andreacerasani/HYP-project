@@ -1,8 +1,16 @@
 <template>
   <div>
     <top-image :bg-img="bgImg" :title="'Itineraries'" />
-    <carousel-multi-element :title="'titleCarousel1'" :my-array="myArray1" :num-of-carousel="1" />
-    <carousel-multi-element :title="'Title Carousel 2'" :my-array="myArray1" :num-of-carousel="2" />
+    <carousel-multi-element
+      :title="'titleCarousel1'"
+      :my-array="myArray1"
+      :num-of-carousel="1"
+    />
+    <carousel-multi-element
+      :title="'Title Carousel 2'"
+      :my-array="myArray1"
+      :num-of-carousel="2"
+    />
   </div>
 </template>
 
@@ -16,13 +24,13 @@ export default {
     CarouselMultiElement,
   },
   async asyncData({ $axios }) {
-      // dati dal db
-       const { data } = await $axios.get('/api/main-services')
+    // dati dal db
+    const { data } = await $axios.get('/api/main-services')
     const { titleImg, bgImg, serviceList } = data
-      // fine roba inutile per non dare errorri
+    // fine roba inutile per non dare errorri
 
-        const titleCarousel1 ='First Title'
-        /*
+    const titleCarousel1 = 'First Title'
+    /*
         const myArray1=[]
         let i=0
         for(i=0; i<7; i++){
@@ -32,13 +40,13 @@ export default {
             })
         }
         */
-        const myArray1= serviceList
-      return{
-          titleImg,
-          bgImg,
-          titleCarousel1,
-          myArray1, 
-      }
+    const myArray1 = serviceList
+    return {
+      titleImg,
+      bgImg,
+      titleCarousel1,
+      myArray1,
+    }
   },
 }
 </script>
