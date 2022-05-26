@@ -21,18 +21,19 @@
       </div>
       <div class="carousel-inner">
         <div
-          v-for="n in lenght"
+          v-for="n in amountOfindicatorsNeeded"
           :key="n"
-          class="carousel-item"
+          class="carousel-item w-100 teo"
+          :style="{ 'background-image': 'url(' + myArray[n-1].img + ')' }"
           :class="{ active: n == 1 }"
         >
-          <!-- per accedere fare myarray[n].img o .des o .tit-->
+          <!-- per accedere fare myarray[n].img o .des o .tit
           <img
-            :src="myarray[n].img"
-            class="d-block w-100 cropped"
+            :src="'https://dummyimage.com/1500x500'"
+            class="d-block  cropped"
             alt=""
           />
-          <!--
+          
           <div class="carousel-caption">
             <h5>{{ 'First slide label' + n }}</h5>
             <p>
@@ -75,7 +76,7 @@ export default {
       type: String,
       required: true,
     },
-    myarray: { 
+    myArray: { // contains only img with the path to show
       type: Array,
       required: true,
     },
@@ -85,20 +86,26 @@ export default {
     },
   },
   data() {
-    const lenght = this.myarray.lenght
+    const myLenght = this.myArray.length
     return {
-      lenght,
+      myLenght,
     }
   },
   computed: {
     amountOfindicatorsNeeded() {
-      return this.lenght
+      return this.myLenght
     },
   },
 }
 </script>
 
 <style scoped>
+.teo{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+}
 .cropped {
   height: 60vh;
   object-fit: cover;

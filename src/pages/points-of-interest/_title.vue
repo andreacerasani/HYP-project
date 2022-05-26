@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <image-carousel :title="'See other images'" :num-of-carousel="1" :myarray="formatArray(images)" />
+    <image-carousel :title="'See other images'" :num-of-carousel="1" :my-array="formatArray(images)" />
   </div>
 </template>
 
