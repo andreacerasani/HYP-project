@@ -8,7 +8,13 @@
       </nuxt-link>
     </a>
     <p class="polimiText">
-      Politecnico Di Milano <br />Hypermedia Application - 2022 <br/>~
+      Politecnico Di Milano
+    </p>
+    <p class="polimiText">
+      Hypermedia Application
+    </p>
+    <p class="polimiText">
+      Worry Whales 2022
     </p>
   </footer>
 </template>
@@ -31,14 +37,17 @@ footer{
   position:absolute;
   bottom:0;
   width: 100%;
-  height:10vh;
+  min-height:10vh;
+  max-height:25vh;
   padding-top: 3vh;
   padding-bottom:10vh;
-  background-color: var(--div-color-dark);
+  /* background-color: var(--div-color-dark); */
+  background-image: linear-gradient(to top, var(--div-color-dark),rgba(255,0,0,0));
 }
 .polimiText {
   color: var(--text-color);
   font-style: bold;
+  margin-bottom: 1vh;
 }
 a {
   color: var(--link-color);
