@@ -292,29 +292,6 @@ async function runMainApi() {
     return res.json(poi) 
 })
 
-
-  // HTTP GET api that returns the next 4 upcoming events
-  app.get('/upcoming-events', async (req, res) => {
-    const result = await models.Events.findAll({
-      where: [
-        {
-          date: {
-            [Op.gte]: new Date(),
-          },
-        },
-      ],
-      order: [['date', 'ASC']],
-      limit: 4,
-      include: [
-        {
-          model: models.Images,
-          attributes: ['path'],
-        },
-      ],
-    })
-    return res.json(result)
-  })
-
   // %%%%%%%%%%%%%%%%%%%%%%%% POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   app.get('/pois', async (req, res) => {
     const result = await models.Pois.findAll(  
@@ -365,16 +342,15 @@ async function runMainApi() {
     return res.json(data)
   })
 
+  // %%%%%%%%%%%%%%%%%%%%%% EVENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  // HTTP GET api that returns the next 4 upcoming events in the current year
-  app.get('/upcoming-events/year', async (req, res) => {
-    const currDate = new Date()
+  // HTTP GET api that returns the next 4 upcoming events
+  app.get('/upcoming-events', async (req, res) => {
     const result = await models.Events.findAll({
       where: [
         {
           date: {
-            [Op.gte]: currDate,
-            [Op.lte]: new Date(currDate.getFullYear() + '-12-31')
+            [Op.gte]: new Date(),
           },
         },
       ],
@@ -390,20 +366,19 @@ async function runMainApi() {
     return res.json(result)
   })
 
-  // HTTP GET api that returns the next 4 upcoming summer events
-  app.get('/upcoming-events/summer', async (req, res) => {
-    const currYear = new Date().getFullYear()
+  // HTTP GET api that returns the events in the current year
+  app.get('/year', async (req, res) => {
+    const currDate = new Date()
     const result = await models.Events.findAll({
       where: [
         {
           date: {
-            [Op.gte]: currYear + '03-20',
-            [Op.lte]: currYear + '09-23'
+            [Op.gte]: currDate,
+            [Op.lte]: new Date(currDate.getFullYear() + '-12-31')
           },
         },
       ],
       order: [['date', 'ASC']],
-      limit: 4,
       include: [
         {
           model: models.Images,
@@ -411,7 +386,13 @@ async function runMainApi() {
         },
       ],
     })
-    return res.json(result)
+    const data = {
+      title: currDate.getFullYear() + ' events',
+      bgImg: 'https://dummyimage.com/1500x500',
+      latest_events: result.slice(0, 3),
+      rest_events:result.slice(3)
+    }
+    return res.json(data)
   })
 
   // HTTP GET api that returns the winter events
@@ -429,7 +410,13 @@ async function runMainApi() {
         },
       ],
     })
-    return res.json(result)
+    const data = {
+      title: 'Winter events',
+      bgImg: 'https://dummyimage.com/1500x500',
+      latest_events: result.slice(0, 3),
+      rest_events:result.slice(3)
+    }
+    return res.json(data)
   })
 
   // HTTP GET api that returns the summer events
@@ -444,7 +431,13 @@ async function runMainApi() {
         },
       ],
     })
-    return res.json(result)
+    const data = {
+      title: 'Summer events',
+      bgImg: 'https://dummyimage.com/1500x500',
+      latest_events: result.slice(0, 3),
+      rest_events:result.slice(3)
+    }
+    return res.json(data)
   })
 
 
