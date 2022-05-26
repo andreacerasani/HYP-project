@@ -28,9 +28,9 @@
         >
           <!-- -->
           <carousel-item-img-des 
-          :descr-img="myarray[n].img" 
-          :title="myarray[n].title"
-          :description="myarray[n].description"
+          :descr-img="myarray[n-1].img" 
+          :title="myarray[n-1].title"
+          :description="myarray[n-1].description"
           :is-left="n%2===0"
            />
         </div>
@@ -80,15 +80,14 @@ export default {
   },
   data() {
     
-    const lenght = this.myArray.length
+    const length = this.myarray.length
     return {
-      // test,
-      lenght,
+      length,
     }
   },
   computed: {
     amountOfindicatorsNeeded() {
-      return this.lenght
+      return this.length
     },
   },
 }

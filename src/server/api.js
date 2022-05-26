@@ -289,30 +289,28 @@ async function runMainApi() {
     }
     return res.json(data)
   })
-
-  // HTTP GET api that returns the next 4 upcoming events
-  app.get('/upcoming-events', async (req, res) => {
-    const result = await models.Events.findAll({
-      where: [
-        {
-          date: {
-            [Op.gte]: new Date(),
-          },
-        },
-      ],
-      order: [['date', 'ASC']],
-      limit: 4,
-      include: [
-        {
-          model: models.Images,
-          attributes: ['path'],
-        },
-      ],
-    })
-    return res.json(result)
-  })
+  
+  // %%%%%%%%%%%%%%%%%%%%% Single pages API %%%%%%%%%%%%%%%%%%%%%%%%%%
 
   // %%%%%%%%%%%%%%%%%%%%%%%% POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  app.get('/pois/:title', async (req, res) => { 
+    const { title } = req.params
+    const titleMod = title.replaceAll("-", " ")
+    const poi = await models.Pois.findOne({
+      where: {
+          title: titleMod
+      },
+      include: [ 
+        { 
+          model: models.Images,
+          attributes: ['path'], 
+        }, 
+      ],  
+    }) 
+    return res.json(poi) 
+  })
+
   app.get('/points-of-interest', async (req, res) => {
     const result = await models.Pois.findAll(  
       {
@@ -411,20 +409,57 @@ async function runMainApi() {
     return res.json(itinerary)
   })
 
-  // HTTP GET api that returns the next 4 upcoming events in the current year
-  app.get('/upcoming-events/year', async (req, res) => {
+  // %%%%%%%%%%%%%%%%%%%%%% EVENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  // HTTP GET api that returns the next 4 upcoming events
+  app.get('/upcoming-events', async (req, res) => {
+    const result = await models.Events.findAll({
+      where: [
+        {
+          date: {
+            [Op.gte]: new Date(),
+          },
+        },
+      ],
+      order: [['date', 'ASC']],
+      limit: 4,
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+      ],
+    })
+    const filtered = []
+    for (const element of result) {
+      let pathImage = null
+      if (element.images.length){
+        pathImage = element.images[0].path
+      }
+      filtered.push({
+        title: element.title,
+        description: element.description,
+        date: element.date,
+        ticket: element.ticket,
+        img: pathImage,
+      })
+    }
+    return res.json(filtered)
+  })
+
+  // HTTP GET api that returns the events in the current year
+  app.get('/year', async (req, res) => {
     const currDate = new Date()
     const result = await models.Events.findAll({
       where: [
         {
           date: {
             [Op.gte]: currDate,
-            [Op.lte]: new Date(currDate.getFullYear() + '-12-31'),
+            [Op.lte]: new Date(currDate.getFullYear() + '-12-31')
           },
         },
       ],
       order: [['date', 'ASC']],
-      limit: 4,
       include: [
         {
           model: models.Images,
@@ -432,31 +467,13 @@ async function runMainApi() {
         },
       ],
     })
-    return res.json(result)
-  })
-
-  // HTTP GET api that returns the next 4 upcoming summer events
-  app.get('/upcoming-events/summer', async (req, res) => {
-    const currYear = new Date().getFullYear()
-    const result = await models.Events.findAll({
-      where: [
-        {
-          date: {
-            [Op.gte]: currYear + '03-20',
-            [Op.lte]: currYear + '09-23',
-          },
-        },
-      ],
-      order: [['date', 'ASC']],
-      limit: 4,
-      include: [
-        {
-          model: models.Images,
-          attributes: ['path'],
-        },
-      ],
-    })
-    return res.json(result)
+    const data = {
+      title: currDate.getFullYear() + ' events',
+      bgImg: 'https://dummyimage.com/1500x500',
+      latest_events: result.slice(0, 3),
+      rest_events:result.slice(3)
+    }
+    return res.json(data)
   })
 
   // HTTP GET api that returns the winter events
@@ -482,7 +499,13 @@ async function runMainApi() {
         },
       ],
     })
-    return res.json(result)
+    const data = {
+      title: 'Winter events',
+      bgImg: 'https://dummyimage.com/1500x500',
+      latest_events: result.slice(0, 3),
+      rest_events:result.slice(3)
+    }
+    return res.json(data)
   })
 
   // HTTP GET api that returns the summer events
@@ -500,7 +523,13 @@ async function runMainApi() {
         },
       ],
     })
-    return res.json(result)
+    const data = {
+      title: 'Summer events',
+      bgImg: 'https://dummyimage.com/1500x500',
+      latest_events: result.slice(0, 3),
+      rest_events:result.slice(3)
+    }
+    return res.json(data)
   })
 
   // HTTP POST api, that will push (and therefore create) a new element in
