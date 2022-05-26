@@ -28,9 +28,9 @@
         >
           <!-- -->
           <carousel-item-img-des 
-          :descr-img="img" 
-          :title="title"
-          :description="description"
+          :descr-img="myarray[n].img" 
+          :title="myarray[n].title"
+          :description="myarray[n].description"
           :is-left="n%2===0"
            />
         </div>
