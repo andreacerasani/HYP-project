@@ -96,7 +96,7 @@ export default {
 
 <style scoped>
 p{
-  color: var(--title-color);
+  color: var(--text-color);
 }
 h3{
   color: var(--subtitle-color);
