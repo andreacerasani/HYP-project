@@ -20,6 +20,12 @@
             <b>Ticket:</b>
             <p class="lead">{{ ticket.toFixed(2) }} €</p>
           </div>
+            <b>Contacts:</b>
+            <p class="lead">
+              landline phone: &emsp; &nbsp;   +39 {{ contact.landline_phone }} <br>
+              mobile phone: &emsp;&emsp;    +39 {{ contact.mobile_phone }} <br>
+              mail:   &emsp; &emsp; &emsp; &emsp; &emsp;        {{ contact.email }}
+            </p>
           <div
             class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3"
           >
@@ -57,7 +63,8 @@ export default {
       closing_hours: poi.closing_hours,
       ticket: poi.ticket,
       address: poi.address,
-      images: poi.images,
+      images: poi.images, 
+      contact: poi.contact
     }
   },
   head() {
