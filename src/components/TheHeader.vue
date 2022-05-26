@@ -88,7 +88,7 @@ export default {
         {
           name: 'City',
           path: '/city',
-          image: '/images/header_icons/plus.png',
+          image: '/images/header_icons/city.png',
         },
       ],
     }
