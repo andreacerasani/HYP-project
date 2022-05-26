@@ -1,4 +1,3 @@
-
 const express = require('express')
 const app = express()
 const { Sequelize, DataTypes, Op } = require('sequelize')
@@ -319,10 +318,11 @@ async function runMainApi() {
       {
         include: [{
           model: models.Images,
-          attributes: ['path']
-        }]
-      })
-     const filtered = []
+          attributes: ['path'],
+        },
+      ],
+    })
+    const filtered = []
     for (const element of result) {
       filtered.push({
         id: element.id,
@@ -333,7 +333,7 @@ async function runMainApi() {
     const data = {
       title: 'Points of Interest',
       bgImg: 'https://dummyimage.com/1500x500',
-      pois: filtered
+      pois: filtered,
     }
     return res.json(data)
   })
@@ -358,14 +358,15 @@ async function runMainApi() {
 
   // %%%%%%%%%%%%%%%%%%%%%% ITINERARIES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   app.get('/itineraries', async (req, res) => {
-    const result = await models.Pois.findAll(  
-      {
-        include: [{
+    const result = await models.Itineraries.findAll({
+      include: [
+        {
           model: models.Images,
-          attributes: ['path']
-        }]
-      })
-     const filtered = []
+          attributes: ['path'],
+        },
+      ],
+    })
+    const filtered = []
     for (const element of result) {
       filtered.push({
         title: element.title,
@@ -374,13 +375,36 @@ async function runMainApi() {
       })
     }
     const data = {
-      title: 'Points of Interest',
+      title: 'Itineraries',
       bgImg: 'https://dummyimage.com/1500x500',
-      pois: filtered
+      pois: filtered,
     }
     return res.json(data)
   })
 
+  // %%%%%%%%%%%%%%%%%%%%% SINGLE-ITINERARY %%%%%%%%%%%%%%%%%%%%%%
+  app.get('/itineraries/:title', async (req, res) => {
+    const { title } = req.params
+    const titleMod = title.replaceAll('-', ' ')
+
+    const itinerary = await models.Itineraries.findOne({
+      where: {
+        title: titleMod,
+      },
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+        {
+          model: models.Pois,
+          attributes: ['title', 'description'],
+          include: [{ model: models.Images, attributes: ['path'] }],
+        },
+      ],
+    })
+    return res.json(itinerary)
+  })
 
   // HTTP GET api that returns the next 4 upcoming events in the current year
   app.get('/upcoming-events/year', async (req, res) => {
@@ -390,7 +414,7 @@ async function runMainApi() {
         {
           date: {
             [Op.gte]: currDate,
-            [Op.lte]: new Date(currDate.getFullYear() + '-12-31')
+            [Op.lte]: new Date(currDate.getFullYear() + '-12-31'),
           },
         },
       ],
@@ -414,7 +438,7 @@ async function runMainApi() {
         {
           date: {
             [Op.gte]: currYear + '03-20',
-            [Op.lte]: currYear + '09-23'
+            [Op.lte]: currYear + '09-23',
           },
         },
       ],
@@ -434,8 +458,16 @@ async function runMainApi() {
   app.get('/winter', async (req, res) => {
     const result = await models.Events.findAll({
       where: {
-        [Op.or]:[Sequelize.where(Sequelize.fn('to_char', Sequelize.col('date'), 'MMDD'), {[Op.between]: ['0923', '1231']}),
-        Sequelize.where(Sequelize.fn('to_char', Sequelize.col('date'), 'MMDD'), {[Op.between]: ['0101', '0321']})]
+        [Op.or]: [
+          Sequelize.where(
+            Sequelize.fn('to_char', Sequelize.col('date'), 'MMDD'),
+            { [Op.between]: ['0923', '1231'] }
+          ),
+          Sequelize.where(
+            Sequelize.fn('to_char', Sequelize.col('date'), 'MMDD'),
+            { [Op.between]: ['0101', '0321'] }
+          ),
+        ],
       },
       order: [['date', 'ASC']],
       include: [
@@ -451,7 +483,10 @@ async function runMainApi() {
   // HTTP GET api that returns the summer events
   app.get('/summer', async (req, res) => {
     const result = await models.Events.findAll({
-      where: Sequelize.where(Sequelize.fn('to_char', Sequelize.col('date'), 'MMDD'), {[Op.between]: ['0322', '0922']}),
+      where: Sequelize.where(
+        Sequelize.fn('to_char', Sequelize.col('date'), 'MMDD'),
+        { [Op.between]: ['0322', '0922'] }
+      ),
       order: [['date', 'ASC']],
       include: [
         {
@@ -462,8 +497,6 @@ async function runMainApi() {
     })
     return res.json(result)
   })
-
-
 
   // HTTP POST api, that will push (and therefore create) a new element in
   // our actual database

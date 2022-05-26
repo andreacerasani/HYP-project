@@ -12,8 +12,9 @@ export default {
   name: 'SimpleContent',
   props: {
     title: {
-      type: String,    
-      required: true,
+      type: String,
+      default: "",    
+      required: false,
     },
     description: {
       type: String,
