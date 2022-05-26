@@ -1,5 +1,5 @@
 :root{
-  --title-color:rgb(0, 109, 139);
+  --title-color:rgb(255,255,255); /*0 109 139*/
   --text-color: rgb(0,0,0);
   --link-color: rgb(0,0,255);
   --div-color-light: rgb(209, 241, 255); 

@@ -10,8 +10,8 @@
     "
     :style="[
       isToggle
-        ? { backgroundColor: '#969696', top: header_top }
-        : { backgroundColor: '#969696' + header_opacity, top: header_top },
+        ? { backgroundColor: '#80D8FD', top: header_top }
+        : { backgroundColor: 	'#80D8FD' + header_opacity, top: header_top },
     ]"
   >
     <button
@@ -37,12 +37,12 @@
         <li
           v-for="(navItem, navItemIndex) of headerList"
           :key="`navItem${navItemIndex}`"
-          class="nav-item"
+          class="nav-item header-button-hover"
         >
           <nuxt-link :to="navItem.path" class="nav-link">
             <div class="justify-content-center px-3">
               <img :src="navItem.image" class="align-middle" style="height: 3vh"/>
-              <p class="hover-underline-animation align-middle ps-3" style="height: 3vh">{{ navItem.name }}</p>
+              <p class="hover-underline-animation align-middle ps-3 mioStile" style="height: 3vh">{{ navItem.name }}</p>
             </div>
           </nuxt-link>
         </li>
@@ -179,6 +179,10 @@ export default {
   }
 }
 
+header{
+   background-image: linear-gradient(to top,rgba(255,0,0,0), var(--div-color-dark));
+
+}
 .headerToggled {
   position: fixed;
   width: 100vw;
@@ -211,11 +215,16 @@ p {
   left: 0.6rem;
   background-color: black;
   transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out; 
 }
 
 .hover-underline-animation:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+.header-button-hover:hover{
+  /* filter: invert(100%);
+  text-shadow: 0.09vw 0.09vw white; */
+}
+
 </style>

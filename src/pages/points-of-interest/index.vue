@@ -25,7 +25,7 @@ export default {
     CardMosaic,
   },
   async asyncData({ $axios }) {
-    const { data } = await $axios.get('/api/Pois')
+    const { data } = await $axios.get('/api/points-of-interest')
     const { title, bgImg, pois } = data
     return {
       title,
