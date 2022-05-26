@@ -10,8 +10,8 @@
     "
     :style="[
       isToggle
-        ? { backgroundColor: '#969696', top: header_top }
-        : { backgroundColor: '#969696' + header_opacity, top: header_top },
+        ? { backgroundColor: '#80D8FD', top: header_top }
+        : { backgroundColor: 	'#80D8FD' + header_opacity, top: header_top },
     ]"
   >
     <button
@@ -178,7 +178,10 @@ export default {
     top: 0;
   }
 }
+header{
+   background-image: linear-gradient(to top,rgba(255,0,0,0), var(--div-color-dark));
 
+}
 .headerToggled {
   position: fixed;
   width: 100vw;
