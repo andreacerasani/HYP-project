@@ -180,8 +180,8 @@ const pageContentObject = {
   },
   city: {
     Top: {
-      title_img: 'https://dummyimage.com/800x200/ff',
-      bg_img: 'https://dummyimage.com/1500x500',
+      title_img: '/images/extra/homepage.png',
+      bg_img: '/images/extra/homepage.png',
     },
     Map: {
       title: 'MAP',

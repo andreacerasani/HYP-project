@@ -1,16 +1,16 @@
 <template>
   <div class="container my-5">
+    <top-image
+      :title="title"
+      :bg-img="images[0].path"
+    />
+    <simple-content
+      :description="description"
+    />
     <div
       class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg"
     >
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-        <h1 class="display-4 fw-bold lh-1">
-            {{ title }}
-            </h1>
-        <b>Description:</b>
-        <p class="lead">
-          {{ description }}
-        </p>
         <div v-if="opening_hours!='00:00:00' || closing_hours!='00:00:00'">
           <b>Opening hours:</b>
           <p class="lead">
@@ -35,16 +35,20 @@
           </button>
         </div>
       </div>
-      <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-        <img class="rounded-lg-3" :src="images[0].path" alt="" width="" />
-      </div>
     </div>
+    <image-carousel
+    :myarray="formatArray(images)"
+    />
   </div>
 </template>
 
 <script>
+import ImageCarousel from '../../components/carousels/ImageCarousel.vue'
+import SimpleContent from '../../components/SimpleContent.vue'
+import TopImage from '../../components/TopImage.vue'
 export default {
   name: 'SinglePoiPage',
+  components: { ImageCarousel, TopImage, SimpleContent },
   async asyncData({ route, $axios }) {
     const  title  = route.params.title
     const data = await $axios.get('/api/points-of-interest/' + title)
@@ -66,6 +70,15 @@ export default {
     }
   },
   methods: {
+    formatArray(images){
+        const formatted = []
+        for(const item of images.slice(1,)){
+          formatted.push({
+            img: item.path,
+        })
+        }
+        return formatted
+    },
     fromUrl(variable){
         const result = variable.replaceAll("-", " ")
         return result
