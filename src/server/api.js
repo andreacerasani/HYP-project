@@ -428,29 +428,6 @@ async function runMainApi() {
     return res.json(result)
   })
 
-
-  // HTTP GET api that returns the next 4 upcoming events
-  app.get('/upcoming-events', async (req, res) => {
-    const result = await models.Events.findAll({
-      where: [
-        {
-          date: {
-            [Op.gte]: new Date(),
-          },
-        },
-      ],
-      order: [['date', 'ASC']],
-      limit: 4,
-      include: [
-        {
-          model: models.Images,
-          attributes: ['path'],
-        },
-      ],
-    })
-    return res.json(result)
-  })
-
   // HTTP GET api that returns the events in the current year
   app.get('/year', async (req, res) => {
     const currDate = new Date()
