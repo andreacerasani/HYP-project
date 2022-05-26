@@ -41,14 +41,20 @@ async function initializeDatabaseConnection() {
   // ------------------------------------------------------------
 
   const Events = database.define('events', {
-    title: DataTypes.STRING(100),
+    title: {
+      type: DataTypes.STRING(100),
+      unique: true
+    },
     description: DataTypes.TEXT,
     date: DataTypes.DATEONLY,
     ticket: DataTypes.REAL,
   })
 
   const Itineraries = database.define('itineraries', {
-    title: DataTypes.STRING(100),
+    title:{ 
+      type: DataTypes.STRING(100),
+      unique: true,
+    },
     description: DataTypes.TEXT,
   })
 
@@ -57,7 +63,10 @@ async function initializeDatabaseConnection() {
   })
 
   const Pois = database.define('pois', {
-    title: DataTypes.STRING(100),
+    title: {
+      type: DataTypes.STRING(100),
+      unique: true
+    },
     description: DataTypes.TEXT,
     opening_hours: DataTypes.TIME,
     closing_hours: DataTypes.TIME,
@@ -66,18 +75,27 @@ async function initializeDatabaseConnection() {
   })
 
   const Tags = database.define('tags', {
-    tag: DataTypes.STRING(50),
+    tag: {
+      type: DataTypes.STRING(50),
+      unique: true
+    }
   })
 
   const ServicePoints = database.define('service_points', {
-    name: DataTypes.STRING(100),
+    name: {
+      type: DataTypes.STRING(100),
+      unique: true
+    },
     opening_hours: DataTypes.TIME,
     closing_hours: DataTypes.TIME,
     address: DataTypes.STRING(100),
   })
 
   const ServiceTypes = database.define('service_types', {
-    name: DataTypes.STRING(100),
+    name: {
+      type: DataTypes.STRING(100),
+      unique: true
+    }
   })
 
   const Contacts = database.define('contacts', {
@@ -122,7 +140,7 @@ async function initializeDatabaseConnection() {
   Contacts.hasOne(Pois)
   Pois.belongsTo(Contacts)
 
-  // never change this force value -> our database is initialized through SQL script
+
   await database.sync({ force: false })
   return {
     Cat,
@@ -161,8 +179,8 @@ const pageContentObject = {
   },
   city: {
     Top: {
-      title_img: 'https://dummyimage.com/800x200/ff',
-      bg_img: 'https://dummyimage.com/1500x500',
+      title_img: '/images/extra/homepage.png',
+      bg_img: '/images/extra/homepage.png',
     },
     Map: {
       title: 'MAP',
@@ -272,25 +290,6 @@ async function runMainApi() {
     return res.json(data)
   })
 
-  // %%%%%%%%%%%%%%%%%%%%% Single pages API %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-  app.get('/pois/:title', async (req, res) => {
-    const { title } = req.params
-    const titleMod = title.replaceAll('-', ' ')
-    const poi = await models.Pois.findOne({
-      where: {
-        title: titleMod,
-      },
-      include: [
-        {
-          model: models.Images,
-          attributes: ['path'],
-        },
-      ],
-    })
-    return res.json(poi)
-  })
-
   // HTTP GET api that returns the next 4 upcoming events
   app.get('/upcoming-events', async (req, res) => {
     const result = await models.Events.findAll({
@@ -313,11 +312,11 @@ async function runMainApi() {
     return res.json(result)
   })
 
-  // %%%%%%%%%%%%%%%%%%%%%%%%% POIS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  app.get('/pois', async (req, res) => {
-    const result = await models.Pois.findAll({
-      include: [
-        {
+  // %%%%%%%%%%%%%%%%%%%%%%%% POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  app.get('/points-of-interest', async (req, res) => {
+    const result = await models.Pois.findAll(  
+      {
+        include: [{
           model: models.Images,
           attributes: ['path'],
         },
@@ -338,6 +337,24 @@ async function runMainApi() {
     }
     return res.json(data)
   })
+
+
+  app.get('/points-of-interest/:title', async (req, res) => { 
+    const { title } = req.params
+    const titleMod = title.replaceAll("-", " ")
+    const poi = await models.Pois.findOne({
+      where: {
+          title: titleMod
+      },
+      include: [ 
+        { 
+          model: models.Images,
+          attributes: ['path'], 
+        }, 
+      ],  
+    }) 
+    return res.json(poi) 
+})
 
   // %%%%%%%%%%%%%%%%%%%%%% ITINERARIES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   app.get('/itineraries', async (req, res) => {

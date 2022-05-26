@@ -2,7 +2,11 @@
 
 <template>
   <div class="container-fluid container-img px-0">
-    <img :src="bgImg" class="img-fluid img-screen" />
+    <div
+      class="img-fluid img-screen format-image"
+      :style="{ 'background-image': 'url(' + bgImg + ')' }"
+    ></div>
+    <!--<img :src="bgImg" class="img-fluid img-screen" />-->
     <div class="centered">
       <h1>{{ title }}</h1>
     </div>
@@ -17,8 +21,8 @@ export default {
       type: String,
       required: true,
     },
-    title:{
-      type:String,
+    title: {
+      type: String,
       required: true,
     },
   },
@@ -26,10 +30,17 @@ export default {
 </script>
 
 <style scoped>
-h1{
+.format-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.6;
+}
+h1 {
   font-size: 10vw;
   z-index: 1;
   color: var(--title-color);
+  text-shadow: 0.3vw 0.3vw black;
 }
 .centered {
   position: absolute;
