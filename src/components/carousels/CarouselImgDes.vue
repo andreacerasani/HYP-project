@@ -28,9 +28,10 @@
         >
           <!-- -->
           <carousel-item-img-des 
-          :descr-img="'https://dummyimage.com/600x300'" 
-          :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id '+n"
-          :is-left="false"
+          :descr-img="img" 
+          :title="title"
+          :description="description"
+          :is-left="n%2===0"
            />
         </div>
       </div>
@@ -69,7 +70,7 @@ export default {
       required: true,
     },
     myarray: {
-      type: Array,
+      type: Array, // img: contain path, title: title desc, description: contain description
       required: true,
     },
     numOfCarousel: {
@@ -78,16 +79,16 @@ export default {
     },
   },
   data() {
-    // const test=Math.ceil(this.myArray.length)
-    const fintoNumero = 7
+    
+    const lenght = this.myArray.length
     return {
       // test,
-      fintoNumero,
+      lenght,
     }
   },
   computed: {
     amountOfindicatorsNeeded() {
-      return Math.ceil(this.fintoNumero)
+      return this.lenght
     },
   },
 }
