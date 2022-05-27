@@ -15,7 +15,7 @@ with a possible link added   -->
         </div>
         <div class="row p-2">
           <div>
-            <p>{{ description }}</p>
+            <p>{{ limitDescription(description,400) }}</p>
           </div>
         </div>
         <div class="row justify-content-center p-3">
@@ -37,7 +37,7 @@ with a possible link added   -->
         </div>
         <div class="row p-2">
           <div>
-            <p>{{ description }}</p>
+            <p>{{ limitDescription(description,400) }}</p>
           </div>
         </div>
         <div class="row justify-content-center p-3">
@@ -91,6 +91,16 @@ export default {
   data() {
     return {}
   },
+  methods:{
+    limitDescription(str = '', num = 1) {
+      const { length: len } = str
+      if (num < len) {
+        return str.slice(0, num) + '...'
+      } else {
+        return str
+      }
+    },
+  }
 }
 </script>
 

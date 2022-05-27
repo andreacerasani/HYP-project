@@ -13,7 +13,7 @@
       :key="index"
       :title="single.title"
       :descr-img="single.images[0].path"
-      :description="limitDescription(single.description, 400)"
+      :description="single.description"
       :link-name="'Discover'"
       :link-path="'/'"
       :is-left="isLeft(index)"
@@ -56,14 +56,6 @@ export default {
     },
     isLeft(index) {
       return index % 2 === 0
-    },
-    limitDescription(str = '', num = 1) {
-      const { length: len } = str
-      if (num < len) {
-        return str.slice(0, num) + '...'
-      } else {
-        return str
-      }
     },
   },
 }
