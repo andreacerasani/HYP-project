@@ -434,7 +434,7 @@ async function runMainApi() {
     for (const element of result) {
       let pathImage = null
       if (element.images.length){
-        pathImage = element.images[0].path
+        pathImage = element.images.sort((a,b) => (a.path > b.path) ? 1 : ((b.path > a.path) ? -1 : 0))[0].path
       }
       filtered.push({
         title: element.title,
