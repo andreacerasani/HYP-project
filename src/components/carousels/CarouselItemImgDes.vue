@@ -1,29 +1,32 @@
 <!-- Component to put inside a carousel with a single image with description and text on 
 the right and a possible link  -->
 <template>
-  <div class="container-fluid">
-    <div class="row align-items-center flex-column flex-md-row">
+  <div class="container-fluid shadow p-3 mb-5 bg-body rounded border">
+    <div class="row align-items-center flex-column flex-md-row ">
       <div class="col offset-md-1 py-3">
         <img :src="descrImg" class="rounded-3 img-fluid mx-auto d-block" />
       </div>
 
-      <div class="col ms-txt text-center">
+      <div class="col ms-txt text-center ">
         <div class="row pb-3">
           <h3>{{ title }}</h3>
         </div>
-        <div class="row pb-2">
+        <div class="row pb-4">
           <div>
-            {{ description }}
+            {{ limitDescription(description, 300) }}
           </div>
         </div>
         <div class="row justify-content-center pb-3">
           <span v-if="linkPath !== 'def'">
-            <nuxt-link :to="linkPath"> {{ linkName }} </nuxt-link>
+            <nuxt-link :to="linkPath">
+              <button type="button" class="btn btn-outline-primary">
+                {{ linkName }}
+              </button>
+            </nuxt-link>
           </span>
         </div>
       </div>
     </div>
-    <hr />
   </div>
 </template>
 
@@ -64,6 +67,16 @@ export default {
   },
   data() {
     return {}
+  },
+  methods: {
+    limitDescription(str = '', num = 1) {
+      const { length: len } = str
+      if (num < len) {
+        return str.slice(0, num) + '...'
+      } else {
+        return str
+      }
+    },
   },
 }
 </script>

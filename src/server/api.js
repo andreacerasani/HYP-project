@@ -193,7 +193,7 @@ const pageContentObject = {
       descrImg: 'https://dummyimage.com/600x300',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.',
-      linkName: 'DiscoverMore',
+      linkName: 'Discover More',
       linkPath: '/',
     },
   },
@@ -207,7 +207,7 @@ const pageContentObject = {
       descrImg: 'https://dummyimage.com/600x300',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.',
-      linkName: 'DiscoverMore',
+      linkName: 'Discover More',
       linkPath: '/',
     },
     Summer: {
@@ -215,7 +215,7 @@ const pageContentObject = {
       descrImg: 'https://dummyimage.com/600x300',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.',
-      linkName: 'DiscoverMore',
+      linkName: 'Discover More',
       linkPath: '/',
     },
     Winter: {
@@ -223,7 +223,7 @@ const pageContentObject = {
       descrImg: 'https://dummyimage.com/600x300',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.',
-      linkName: 'DiscoverMore',
+      linkName: 'Discover More',
       linkPath: '/',
     },
   },
@@ -442,6 +442,7 @@ async function runMainApi() {
         date: element.date,
         ticket: element.ticket,
         img: pathImage,
+        linkPath: "events/" + element.title.replaceAll(' ', '-')
       })
     }
     return res.json(filtered)

@@ -4,8 +4,10 @@
     <carousel-img-des
       :title="'Upcoming Events'"
       :myarray="upcoming"
+      :link-name="'Discover More'"
       :num-of-carousel="1"
     />
+    <hr>
     <description-card
       :title="title2022"
       :descr-img="descrImg2022"
@@ -41,7 +43,7 @@ export default {
   components: {
     TopImage,
     DescriptionCard,
-    CarouselImgDes
+    CarouselImgDes,
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/page-info/eventsType')
