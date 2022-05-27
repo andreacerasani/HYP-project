@@ -7,6 +7,7 @@
       :id="'carouselExampleIndicators' + numOfCarousel"
       class="carousel slide container-xl"
       data-bs-ride="true"
+      data-bs-interval = "7500"
     >
       <div class="carousel-indicators">
         <button
@@ -19,7 +20,7 @@
           :aria-label="'Slide' + n"
         ></button>
       </div>
-      <div class="carousel-inner">
+      <div class="carousel-inner ">
         <div
           v-for="n in amountOfindicatorsNeeded"
           :key="n"
@@ -31,7 +32,8 @@
           :descr-img="myarray[n-1].img" 
           :title="myarray[n-1].title"
           :description="myarray[n-1].description"
-          :is-left="n%2===0"
+          :link-name="linkName"
+          :link-path="myarray[n-1].linkPath"
            />
         </div>
       </div>
@@ -70,8 +72,13 @@ export default {
       required: true,
     },
     myarray: {
-      type: Array, // img: contain path, title: title desc, description: contain description
+      type: Array, // img: contain path, title: title desc, description: contain description, linkPath: link path
       required: true,
+    },
+    linkName:{
+      type: String,
+      required: false,
+      default: ''
     },
     numOfCarousel: {
       type: Number,
