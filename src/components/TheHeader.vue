@@ -191,7 +191,7 @@ header{
 }
 
 p {
-  font-size: 3vh;
+  font-size: 2vmax;
 }
 
 .logo {

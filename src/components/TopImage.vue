@@ -38,7 +38,7 @@ export default {
   opacity: 0.6;
 }
 h1 {
-  font-size: 10vw;
+  font-size: 12vmin;
   z-index: 1;
   color: var(--title-color);
   text-shadow: 0.3vw 0.3vw black;
@@ -59,13 +59,13 @@ h1 {
 
 @media only screen and (max-width: 1500px) {
   .img-screen {
-    height: 33vh;
+    height: 80vmin;
     object-fit: cover;
   }
 }
 @media only screen and (min-width: 1500px) {
   .img-screen {
-    height: 60vh;
+    height: 50vmax;
     object-fit: cover;
   }
 }
