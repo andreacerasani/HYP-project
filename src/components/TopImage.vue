@@ -2,11 +2,12 @@
 
 <template>
   <div class="container-fluid container-img px-0">
-    <div
-      class="img-fluid img-screen format-image"
+   <div
+      class="container-fluid img-screen format-image"
       :style="{ 'background-image': 'url(' + bgImg + ')' }"
-    ></div>
-    <!--<img :src="bgImg" class="img-fluid img-screen" />-->
+    >
+    </div>
+    <!-- <img :src="bgImg" class="img-fluid img-screen format-image" /> -->
     <div class="centered">
       <h1>{{ title }}</h1>
     </div>
@@ -58,13 +59,14 @@ h1 {
 
 @media only screen and (max-width: 1500px) {
   .img-screen {
-    height: 500px;
+    height: 33vh;
     object-fit: cover;
   }
 }
 @media only screen and (min-width: 1500px) {
   .img-screen {
-    width: 100vw;
+    height: 60vh;
+    object-fit: cover;
   }
 }
 </style>
