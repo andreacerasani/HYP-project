@@ -1,16 +1,13 @@
 <!-- Component that shows a page of cards created from the items passed (each item can have title, img, link) -->
 <template>
   <div>
-    <div class="page container mt-5">
-      <div class="row mt-3">
-        <card
+    <div class="container-xl teo">
+      <card
           v-for="(item, itemIndex) in items"
           :key="`service-index-${itemIndex}`"
           :name="item.title"
           :img="item.img"
-          class="col-sm-2 m-2"
         />
-      </div>
     </div>
   </div>
 </template>
@@ -34,15 +31,9 @@ export default {
 </script>
 
 <style scoped>
-/* .container {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: stretch;
-  align-content: flex-start;
+.teo{
+  /* display: flex; */
+  /* justify-content:center; */
+  text-align: center;
 }
-.item{
-  flex: none;
-  align-self:stretch;
-} */
 </style>

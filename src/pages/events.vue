@@ -1,6 +1,11 @@
 <template>
   <div>
-    <top-image :title="'Eventi'" :bg-img="bgImg" />
+    <top-image :title="'Events'" :bg-img="'/images/events.png'" />
+    <carousel-img-des
+      :title="'Upcoming Events'"
+      :myarray="upcoming"
+      :num-of-carousel="1"
+    />
     <description-card
       :title="title2022"
       :descr-img="descrImg2022"
@@ -28,6 +33,7 @@
 </template>
 
 <script>
+import CarouselImgDes from '../components/carousels/CarouselImgDes.vue'
 import TopImage from '~/components/TopImage.vue'
 import DescriptionCard from '~/components/DescriptionCard.vue'
 export default {
@@ -35,11 +41,15 @@ export default {
   components: {
     TopImage,
     DescriptionCard,
+    CarouselImgDes
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/page-info/eventsType')
+    const upcomingEventsData = await $axios.get('/api/upcoming-events')
+    const upcomingEvents = upcomingEventsData.data
 
     return {
+      upcoming: upcomingEvents,
       titleImg: data.Top.title_img,
       bgImg: data.Top.bg_img,
       title2022: data.All.title,

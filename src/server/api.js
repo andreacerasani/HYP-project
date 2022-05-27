@@ -348,9 +348,14 @@ async function runMainApi() {
         { 
           model: models.Images,
           attributes: ['path'], 
-        }, 
+        },
+        { 
+          model: models.Contacts,
+          attributes: ['landline_phone', 'mobile_phone', 'email'],
+        },  
       ],  
     }) 
+    console.log(poi)
     return res.json(poi) 
 })
 
@@ -425,7 +430,21 @@ async function runMainApi() {
         },
       ],
     })
-    return res.json(result)
+    const filtered = []
+    for (const element of result) {
+      let pathImage = null
+      if (element.images.length){
+        pathImage = element.images[0].path
+      }
+      filtered.push({
+        title: element.title,
+        description: element.description,
+        date: element.date,
+        ticket: element.ticket,
+        img: pathImage,
+      })
+    }
+    return res.json(filtered)
   })
 
   // HTTP GET api that returns the events in the current year

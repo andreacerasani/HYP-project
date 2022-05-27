@@ -88,7 +88,7 @@ export default {
         {
           name: 'City',
           path: '/city',
-          image: '/images/header_icons/plus.png',
+          image: '/images/header_icons/city.png',
         },
       ],
     }
@@ -221,10 +221,6 @@ p {
 .hover-underline-animation:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
-}
-.header-button-hover:hover{
-  /* filter: invert(100%);
-  text-shadow: 0.09vw 0.09vw white; */
 }
 
 </style>
