@@ -2,7 +2,7 @@
   <div class="container-xl">
     <div class="px-4 py-2 align-items-center rounded-3 my-border">
       <h3 class="align-center">More information</h3>
-      <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+      <div class="col-lg-9 p-3 p-lg-5 pt-lg-3">
         <div v-if="hourOpening != '00:00:00' && hourClosing != '24:00:00'">
           <b>Opening hours:</b>
           <p class="lead">
@@ -118,4 +118,5 @@ h3 {
   text-align: center;
   color: var(--subtitle-color);
 }
+
 </style>

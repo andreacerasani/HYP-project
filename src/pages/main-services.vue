@@ -1,6 +1,7 @@
 <template>
   <div >
     <top-image :title="'Services'" :bg-img="'/images/services.png'" />
+    <simple-content :title="'Services of Venice'"/>
     <card-mosaic :items="serviceList" />
   </div>
 </template>
