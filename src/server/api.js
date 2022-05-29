@@ -355,7 +355,6 @@ async function runMainApi() {
         },  
       ],  
     }) 
-    console.log(poi)
     return res.json(poi) 
 })
 

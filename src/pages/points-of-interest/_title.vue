@@ -1,16 +1,33 @@
 <template>
   <div>
     <top-image :title="title" :bg-img="images[0].path" />
+    <br>
     <simple-content :description="description" />
-    <contacts :hour-opening="opening_hours" :hour-closing="closing_hours" :ticket="ticket" :phone-mobile="contact.mobile_phone" :phone-landline="contact.landline_phone" :email="contact.email"/>
+    <br>
+    <contacts
+      :hour-opening="opening_hours"
+      :hour-closing="closing_hours"
+      :ticket="ticket"
+      :phone-mobile="contact.mobile_phone"
+      :phone-landline="contact.landline_phone"
+      :email="contact.email"
+    />
+    <br><br>
+    <div class="container-xl">
     <button
-            type="button"
-            class="btn btn-outline-secondary btn-lg px-4"
-            @click="backToList"
-          >
-            Back to list
-          </button>
-    <image-carousel :title="'See other images'" :num-of-carousel="1" :my-array="formatArray(images)" />
+      type="button"
+      class="btn btn-outline-secondary btn-lg px-4 center"
+      @click="backToList"
+    >
+      Back to list
+    </button>
+    </div>
+    <br><br><br>
+    <image-carousel
+      :title="'See other images'"
+      :num-of-carousel="1"
+      :my-array="formatArray(images)"
+    />
   </div>
 </template>
 
@@ -34,8 +51,8 @@ export default {
       closing_hours: poi.closing_hours,
       ticket: poi.ticket,
       address: poi.address,
-      images: poi.images, 
-      contact: poi.contact
+      images: poi.images,
+      contact: poi.contact,
     }
   },
   head() {
@@ -63,3 +80,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+/* button.btn{
+  position: absolute;
+  left: 50%;
+} */
+</style>
