@@ -1,10 +1,13 @@
 <template>
   <div>
     <top-image :title="'City'" :bg-img="bgImg" />
+    <br>
     <div class="text-center">
-      <a href="#Map"> map </a>
-      <a href="#History"> history </a>
+      <a href="#Map"> Map</a> -
+      <a href="#History"> History </a>
     </div>
+    <br>
+    <simple-content :description="'Few cities can claim such a priceless art and history heritage as Venice. This unique city with its magical, spectacular scenery is not just beautiful; it is a real miracle of creative genius: a city built on mud, sand and the slime of a difficult, inhospitable landscape.'"/>
     <map-card
       id="Map"
       :title="titleM"
@@ -26,17 +29,19 @@
 import TopImage from '~/components/TopImage.vue'
 import DescriptionCard from '~/components/DescriptionCard.vue'
 import MapCard from '~/components/MapCard.vue'
+import SimpleContent from '~/components/SimpleContent.vue'
 export default {
   name: 'CityPage',
   components: {
     DescriptionCard,
     MapCard,
     TopImage,
+    SimpleContent,
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/page-info/city')
 
-    const {History, Map, Top} = data
+    const { History, Map, Top } = data
     const titleH = History.title
     const descrImgH = History.descrImg
     const descriptionH = History.description

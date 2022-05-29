@@ -1,25 +1,24 @@
-<!-- Component with title and text that stands alone all width of the page  -->
-
 <template>
     <div class="container-xl">
+        <div class="chapter">
         <h1>{{title}}</h1>
-        <p>{{description}}</p>
+        <p v-for="(par, i) in paragraphs" :key="'p-index'+i">{{par}}</p>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'SimpleContent',
+  name: 'ChapterComponent',
   props: {
     title: {
       type: String,
       default: "",    
       required: false,
     },
-    description: {
-      type: String,
-      default: "",
-      required: false,
+    paragraphs: {
+      type: Array,
+      required: true,
     }
   }
 }
@@ -27,7 +26,7 @@ export default {
 
 <style scoped>
 h1{
-  text-align: center;
+  text-align: left;
 }
 h1{
   color: var(--subtitle-color);
