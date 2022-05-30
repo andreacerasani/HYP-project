@@ -67,7 +67,7 @@ export default {
       linkPathSummer: data.Summer.linkPath,
       titleWinter: data.Winter.title,
       descrImgWinter: data.Winter.descrImg,
-      descriptionWinter: data.Summer.description,
+      descriptionWinter: data.Winter.description,
       linkNameWinter: data.Winter.linkName,
       linkPathWinter: data.Winter.linkPath,
     }

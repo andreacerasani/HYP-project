@@ -3,7 +3,7 @@
 <template>
     <div class="container-xl">
         <h1>{{title}}</h1>
-        <p>{{description}}</p>
+        <p :style="'text-align: '+ textAlign">{{description}}</p>
     </div>
 </template>
 
@@ -20,6 +20,11 @@ export default {
       type: String,
       default: "",
       required: false,
+    },
+    textAlign:{
+      type: String,
+      default: "center",
+      required: false
     }
   }
 }
@@ -34,6 +39,5 @@ h1{
 }
 p{
   color:var(--text-color);
-  text-align: left;
 }
 </style>

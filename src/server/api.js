@@ -327,7 +327,7 @@ const pageContentObject = {
       title: 'All 2022 Events',
       descrImg: 'https://dummyimage.com/600x300',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.',
+      'Discover all the fantastic events organized in the city of Venice during this year. Choose your favorites and plan your visit to Venice so you can have an unforgettable experience. Take part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
       linkName: 'Discover More',
       linkPath: '/',
     },
@@ -335,7 +335,7 @@ const pageContentObject = {
       title: 'Summer Events',
       descrImg: 'https://dummyimage.com/600x300',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.',
+        'During the summer, Venice is colored in the brightest colors. Summer events range from the film festival to the famous Vogalonga. Be inspired by the cheerfulness of Venetians and relax while watching the reflections of the sunset on the water of the lagoon. It\'s never too late to enjoy a vacation.',
       linkName: 'Discover More',
       linkPath: '/',
     },
@@ -343,7 +343,7 @@ const pageContentObject = {
       title: 'Winter Events',
       descrImg: 'https://dummyimage.com/600x300',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.',
+        'In winter, the lagoon is filled with magic. Events such as Carnival, exhibitions and the marathon make Venice even more unique and unforgettable. Not to mention that the sea of the lagoon offers natural shelter from the cold of winter. ',
       linkName: 'Discover More',
       linkPath: '/',
     },
