@@ -43,7 +43,7 @@ with a possible link added   -->
         <div class="row justify-content-center p-3">
           <span v-if="linkPath !== 'def'">
             <nuxt-link :to="linkPath">
-              <button type="button" class="btn btn-outline-primary">{{ linkName }}</button>
+              <button type="button" class="btn">{{ linkName }}</button>
               </nuxt-link>
           </span>
         </div>
@@ -110,5 +110,13 @@ p{
 }
 h3{
   color: var(--subtitle-color);
+}
+button{
+  color: var(--subtitle-color);
+  border-color: var(--subtitle-color);
+}
+button:hover{
+  background-color: var(--subtitle-color);
+  color: white;
 }
 </style>

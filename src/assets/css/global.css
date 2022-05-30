@@ -5,7 +5,9 @@
   --div-color-light: rgb(209, 241, 255); 
   --div-color-dark: rgb(128, 216, 253);
   --subtitle-color:rgb(0, 90, 110);
+  --subtitle-color-light: rgb(0, 156, 190) ;
   --button-carousel: rgb(0,0,0);
+  --button-color:rgb(0,161,228);
 }
 
 /* Extra small devices (phones, 600px and down) */

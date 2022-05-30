@@ -19,7 +19,7 @@ the right and a possible link  -->
         <div class="row justify-content-center pb-3">
           <span v-if="linkPath !== 'def'">
             <nuxt-link :to="linkPath">
-              <button type="button" class="btn btn-outline-primary">
+              <button type="button" class="btn btn-outline-primary my-button">
                 {{ linkName }}
               </button>
             </nuxt-link>
@@ -84,5 +84,13 @@ export default {
 <style scoped>
 .ms-txt {
   padding-right: 5%;
+}
+.my-button{
+  color: var(--subtitle-color);
+  border-color: var(--subtitle-color);
+}
+.my-button:hover{
+  background-color: var(--subtitle-color);
+  color: white;
 }
 </style>

@@ -2,13 +2,13 @@
   <div class="cards">
     <a :href="toUrl(name)">
       <div class="overflow-hide">
-        <div style="position:relative;">
+        <div style="position: relative">
           <div
             class="card-img-top card-image"
             :style="{ 'background-image': 'url(' + img + ')' }"
           ></div>
           <span class="card-bodi">
-            <h5 class="card-title">{{ name }}</h5>
+            <h5 class="card-title text-center">{{ name }}</h5>
           </span>
         </div>
       </div>
@@ -59,6 +59,10 @@ export default {
   border: 4px solid var(--div-color-dark);
   width: 16rem;
   padding: 0;
+  margin-bottom: 1vh;
+  margin-left: 1vh;
+  border-radius: 10%;
+  overflow: hidden;
   background-color: var(--div-color-light);
   display: inline-block;
   vertical-align: top;
@@ -76,12 +80,12 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   height: 30vh;
-  -webkit-filter: grayscale(60%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(60%);
+  -webkit-filter: brightness(50%); /* Safari 6.0 - 9.0 */
+  filter: brightness(70%);
 }
 .card-image:hover {
-  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(0%);
+  -webkit-filter: brightness(100%); /* Safari 6.0 - 9.0 */
+  filter: brightness(100%);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
@@ -89,14 +93,18 @@ export default {
   text-align: left;
   color: var(--title-color);
   text-shadow: 0.1vw 0.1vw black;
+  pointer-events: none;
 }
 .card-bodi {
-  position:absolute;
-  top:5%;
-  left:5%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 100%;
   height: 30%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 .card-bodi:hover {
+
 }
 </style>
