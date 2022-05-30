@@ -6,6 +6,7 @@
       :myarray="upcoming"
       :link-name="'Discover More'"
       :num-of-carousel="1"
+      class="pt-4"
     />
     <hr>
     <description-card

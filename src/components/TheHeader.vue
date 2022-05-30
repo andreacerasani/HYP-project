@@ -11,7 +11,7 @@
     :style="[
       isToggle
         ? { backgroundColor: '#80D8FD', top: header_top }
-        : { backgroundColor: 	'#80D8FD' + header_opacity, top: header_top },
+        : { backgroundColor: '#80D8FD' + header_opacity, top: header_top },
     ]"
   >
     <button
@@ -41,8 +41,17 @@
         >
           <nuxt-link :to="navItem.path" class="nav-link">
             <div class="justify-content-center px-3">
-              <img :src="navItem.image" class="align-middle" style="height: 3vh"/>
-              <p class="hover-underline-animation align-middle ps-3 mioStile" style="height: 3vh">{{ navItem.name }}</p>
+              <img
+                :src="navItem.image"
+                class="align-middle"
+                style="height: 3vh"
+              />
+              <p
+                class="hover-underline-animation align-middle ps-3 mioStile"
+                style="height: 3vh"
+              >
+                {{ navItem.name }}
+              </p>
             </div>
           </nuxt-link>
         </li>
@@ -122,7 +131,7 @@ export default {
         window.scrollY > this.$refs.header.clientHeight &&
         !this.$data.isScrollUp
       ) {
-        this.$data.header_top = "-"+this.$refs.header.clientHeight+"px"
+        this.$data.header_top = '-' + this.$refs.header.clientHeight + 'px'
         this.$data.isOnHeader = false
       }
     },
@@ -143,7 +152,7 @@ export default {
         !this.$data.isToggle
       ) {
         // Scroll Down
-        this.$data.header_top = "-"+this.$refs.header.clientHeight+"px"
+        this.$data.header_top = '-' + this.$refs.header.clientHeight + 'px'
         this.$data.isScrollUp = false
         this.$data.header_opacity = 'ff'
       } else if (
@@ -179,9 +188,12 @@ export default {
   }
 }
 
-header{
-   background-image: linear-gradient(to top,rgba(255,0,0,0), var(--div-color-dark));
-
+header {
+  background-image: linear-gradient(
+    to top,
+    rgba(255, 0, 0, 0),
+    var(--div-color-dark)
+  );
 }
 .headerToggled {
   position: fixed;
@@ -215,12 +227,11 @@ p {
   left: 0.6rem;
   background-color: black;
   transform-origin: bottom right;
-  transition: transform 0.25s ease-out; 
+  transition: transform 0.25s ease-out;
 }
 
 .hover-underline-animation:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-
 </style>

@@ -40,7 +40,7 @@ footer{
   min-height:10vh;
   max-height:25vh;
   padding-top: 3vh;
-  padding-bottom:10vh;
+  padding-bottom:3vh;
   /* background-color: var(--div-color-dark); */
   background-image: linear-gradient(to top, var(--div-color-dark),rgba(255,0,0,0));
 }

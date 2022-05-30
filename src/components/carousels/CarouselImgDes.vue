@@ -5,7 +5,7 @@
     <h1>{{ title }}</h1>
     <div
       :id="'carouselExampleIndicators' + numOfCarousel"
-      class="carousel slide container-xl"
+      class="carousel slide container-xl pt-2"
       data-bs-ride="true"
       data-bs-interval = "7500"
     >
@@ -20,7 +20,7 @@
           :aria-label="'Slide' + n"
         ></button>
       </div>
-      <div class="carousel-inner ">
+      <div class="carousel-inner">
         <div
           v-for="n in amountOfindicatorsNeeded"
           :key="n"
