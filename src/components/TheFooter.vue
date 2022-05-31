@@ -2,20 +2,14 @@
 
 <template>
   <footer class="link-primary text-center">
-    <a>
-      <nuxt-link :to="FooterLink.path">
-        {{ FooterLink.name }}
-      </nuxt-link>
-    </a>
-    <p class="polimiText">
-      Politecnico Di Milano
-    </p>
-    <p class="polimiText">
-      Hypermedia Application
-    </p>
-    <p class="polimiText">
-      Worry Whales 2022
-    </p>
+    <!-- <a :href="FooterLink.path"> -->
+    <nuxt-link :to="FooterLink.path">
+      {{ FooterLink.name }}
+    </nuxt-link>
+    <!-- </a> -->
+    <p class="polimi-text">Politecnico Di Milano</p>
+    <p class="polimi-text">Hypermedia Application</p>
+    <p class="polimi-text">Worry Whales 2022</p>
   </footer>
 </template>
 
@@ -33,23 +27,27 @@ export default {
 }
 </script>
 <style scoped>
-footer{
-  position:absolute;
-  bottom:0;
+footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  min-height:10vh;
-  max-height:25vh;
+  min-height: 10vh;
+  max-height: 25vh;
   padding-top: 3vh;
-  padding-bottom:3vh;
+  padding-bottom: 3vh;
   /* background-color: var(--div-color-dark); */
-  background-image: linear-gradient(to top, var(--div-color-dark),rgba(255,0,0,0));
+  background-image: linear-gradient(
+    to top,
+    var(--div-color-dark),
+    rgba(255, 0, 0, 0)
+  );
 }
-.polimiText {
+.polimi-text {
   color: var(--text-color);
   font-style: bold;
   margin-bottom: 1vh;
 }
-a {
+nuxt-link {
   color: var(--link-color);
   text-decoration: none;
 }
