@@ -7,14 +7,16 @@
 </template>
 
 <script>
-import TopImage from '~/components/TopImage.vue'
-import CardMosaic from '~/components/CardMosaic.vue'
+import TopImage from '~/components/utility/TopImage.vue'
+import CardMosaic from '~/components/mosaics/CardMosaic.vue'
+import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 
 export default {
   name: 'MainServicesPage',
   components: {
     TopImage,
     CardMosaic,
+    SimpleContent,
   },
   async asyncData({ $axios }) {
     // db request

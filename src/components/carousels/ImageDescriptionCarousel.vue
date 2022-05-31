@@ -28,7 +28,7 @@
           :class="{ active: n == 1 }"
         >
           <!-- -->
-          <carousel-item-img-des 
+          <carousel-item
           :descr-img="myarray[n-1].img" 
           :title="myarray[n-1].title"
           :description="myarray[n-1].description"
@@ -60,11 +60,11 @@
 </template>
 
 <script>
-import CarouselItemImgDes from '~/components/carousels/CarouselItemImgDes.vue'
+import carouselItem from '~/components/carousels/items/Item-ImgDesCarousel.vue'
 export default {
   name: 'CarouselImgDes',
   components: {
-    CarouselItemImgDes,
+    carouselItem,
   },
   props: {
     title: {

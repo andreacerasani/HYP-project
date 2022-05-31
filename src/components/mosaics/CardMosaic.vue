@@ -14,7 +14,7 @@
 
 <script>
 // import Card from './Card.vue'
-import Card2 from './Card2.vue'
+import Card2 from '../mosaics/Card2.vue'
 /* import CarouselItem from '~/components/carousels/CarouselItem.vue' */
 export default {
   name: 'CardMosaic',

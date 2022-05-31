@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import CarouselMultiElement from '~/components/carousels/CarouselMultiElement.vue'
-import TopImage from '~/components/TopImage.vue'
+import CarouselMultiElement from '~/components/carousels/MultiElementCarousel.vue'
+import TopImage from '~/components/utility/TopImage.vue'
 export default {
   name: 'ItinerariesPage',
   components: {
