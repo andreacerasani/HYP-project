@@ -20,7 +20,7 @@
           :aria-label="'Slide' + n"
         ></button>
       </div>
-      <div class="carousel-inner">
+      <div class="carousel-inner" style="overflow:visible">
         <div
           v-for="n in amountOfindicatorsNeeded"
           :key="n"
@@ -116,4 +116,5 @@ h1 {
 .carousel-indicators [data-bs-target] {
   background-color: var(--button-carousel);
 }
+
 </style>
