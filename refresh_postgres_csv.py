@@ -8,6 +8,7 @@ directory = "./src/assets/csv"
 file_order = ["images.csv", "contacts.csv", "tags.csv", "events.csv", "service_types.csv", "service_points.csv", "itineraries.csv", "itineraries_tags.csv", "pois.csv", "pois_images.csv", "involve.csv", "host.csv", "events_tags.csv", "events_images.csv"]
 # Open a cursor to perform database operations
 cur = conn.cursor()
+# cur.execute('SET DateStyle = "ISO, DMY";')
 for filename in file_order:
     # Removing .csv extension
     table = os.path.splitext(filename)[0]

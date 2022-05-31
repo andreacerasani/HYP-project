@@ -2,7 +2,7 @@
   <div>
     <top-image
       :title="title"
-      :bg-img="'/images/points-of-interest.png'"
+      :bg-img="'/images/points-of-interest.jpg'"
     />
     <simple-content
       :title="'Venice\'s Points of Interest'"

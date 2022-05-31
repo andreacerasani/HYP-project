@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top-image :title="'Events'" :bg-img="'/images/events.png'" />
+    <top-image :title="'Events'" :bg-img="'/images/events.jpg'" />
     <carousel-img-des
       :title="'Upcoming Events'"
       :myarray="upcoming"
@@ -67,7 +67,7 @@ export default {
       linkPathSummer: data.Summer.linkPath,
       titleWinter: data.Winter.title,
       descrImgWinter: data.Winter.descrImg,
-      descriptionWinter: data.Summer.description,
+      descriptionWinter: data.Winter.description,
       linkNameWinter: data.Winter.linkName,
       linkPathWinter: data.Winter.linkPath,
     }
