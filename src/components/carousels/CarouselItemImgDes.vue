@@ -1,8 +1,8 @@
 <!-- Component to put inside a carousel with a single image with description and text on 
 the right and a possible link  -->
 <template>
-  <div class="container-fluid shadow p-3 mb-5 bg-body rounded border">
-    <div class="row align-items-center flex-column flex-md-row ">
+  <div class="container-xl p-3 mb-5 bg-body rounded">
+    <div class="row align-items-center flex-column flex-md-row my-border">
       <div class="col offset-md-1 py-3">
         <img :src="descrImg" class="rounded-3 img-fluid mx-auto d-block" />
       </div>
@@ -92,5 +92,11 @@ export default {
 .my-button:hover{
   background-color: var(--subtitle-color);
   color: white;
+}
+.my-border {
+  border-style: solid;
+  border-color: var(--div-color-light);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 6;
 }
 </style>
