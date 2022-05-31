@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import CarouselImgDes from '../components/carousels/CarouselImgDes.vue'
-import TopImage from '~/components/TopImage.vue'
-import DescriptionCard from '~/components/DescriptionCard.vue'
+import CarouselImgDes from '../../components/carousels/ImageDescriptionCarousel.vue'
+import TopImage from '~/components/utility/TopImage.vue'
+import DescriptionCard from '~/components/main-elements/DescriptionCard.vue'
 export default {
   name: 'EventsPage',
   components: {

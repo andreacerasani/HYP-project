@@ -86,7 +86,7 @@ export default {
         },
         {
           name: 'Services',
-          path: '/main-services',
+          path: '/services',
           image: '/images/header_icons/service.png',
         },
         {

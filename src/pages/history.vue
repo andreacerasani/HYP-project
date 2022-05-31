@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import TopImage from '~/components/TopImage.vue'
-import ChapterComponent from '~/components/Chapter'
-import HypertextIndex from '~/components/HypertextIndex.vue'
+import TopImage from '~/components/utility/TopImage.vue'
+import ChapterComponent from '~/components/text-elements/Chapter'
+import HypertextIndex from '~/components/utility/HypertextIndex.vue'
 export default {
   name: 'CityPage',
   components: {

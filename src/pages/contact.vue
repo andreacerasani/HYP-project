@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import TopImage from '~/components/TopImage.vue'
-import SimpleContent from '~/components/SimpleContent.vue'
+import TopImage from '~/components/utility/TopImage.vue'
+import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 export default {
   name: 'ContactPage',
   components: {

@@ -56,11 +56,11 @@
 </template>
 
 <script>
-import CarouselItem from '~/components/carousels/CarouselItem.vue'
+import carouselItem from '~/components/carousels/items/Item-MultiElemCarousel.vue'
 export default {
   name: 'CarouselMultiElement',
   components: {
-    CarouselItem,
+    carouselItem,
   },
   props: {
     title: {

@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import SimpleContent from '~/components/SimpleContent.vue'
-import TopImage from '~/components/TopImage.vue'
-import CardMosaic from '~/components/CardMosaic.vue'
+import SimpleContent from '~/components/text-elements/SimpleContent.vue'
+import TopImage from '~/components/utility/TopImage.vue'
+import CardMosaic from '~/components/mosaics/CardMosaic.vue'
 export default {
   name: 'PointsOfInterest',
   components: {

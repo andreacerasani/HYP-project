@@ -26,10 +26,10 @@
 </template>
 
 <script>
-import TopImage from '~/components/TopImage.vue'
-import DescriptionCard from '~/components/DescriptionCard.vue'
-import MapCard from '~/components/MapCard.vue'
-import SimpleContent from '~/components/SimpleContent.vue'
+import TopImage from '~/components/utility/TopImage.vue'
+import DescriptionCard from '~/components/main-elements/DescriptionCard.vue'
+import MapCard from '~/components/main-elements/MapCard.vue'
+import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 export default {
   name: 'CityPage',
   components: {

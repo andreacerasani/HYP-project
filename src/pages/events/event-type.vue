@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import TopImage from '~/components/TopImage.vue'
-import SimpleContent from '~/components/SimpleContent.vue'
-import CarouselMultiElement from '~/components/carousels/CarouselMultiElement.vue'
-import CarouselImgDes from '~/components/carousels/CarouselImgDes.vue'
+import TopImage from '~/components/utility/TopImage.vue'
+import SimpleContent from '~/components/text-elements/SimpleContent.vue'
+import CarouselMultiElement from '~/components/carousels/MultiElementCarousel.vue'
+import CarouselImgDes from '~/components/carousels/ImageDescriptionCarousel.vue'
 
 export default {
   name: 'EventType',

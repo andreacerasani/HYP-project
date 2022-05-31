@@ -33,9 +33,9 @@
 
 <script>
 import ImageCarousel from '../../components/carousels/ImageCarousel.vue'
-import SimpleContent from '../../components/SimpleContent.vue'
-import TopImage from '../../components/TopImage.vue'
-import Contacts from '~/components/Contacts.vue'
+import SimpleContent from '../../components/text-elements/SimpleContent.vue'
+import TopImage from '../../components/utility/TopImage.vue'
+import Contacts from '~/components/main-elements/Contacts.vue'
 export default {
   name: 'SinglePoiPage',
   components: { ImageCarousel, TopImage, SimpleContent, Contacts },
