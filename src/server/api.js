@@ -160,7 +160,7 @@ async function initializeDatabaseConnection() {
 const pageContentObject = {
   index: {
     title: 'Homepage',
-    image: '/images/extra/homepage.png',
+    image: '/images/extra/homepage.jpg',
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
         Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`,
   },
@@ -179,8 +179,8 @@ const pageContentObject = {
   },
   city: {
     Top: {
-      title_img: '/images/extra/homepage.png',
-      bg_img: '/images/extra/homepage.png',
+      title_img: '/images/extra/homepage.jpg',
+      bg_img: '/images/extra/homepage.jpg',
     },
     Map: {
       title: 'MAP',
@@ -190,7 +190,7 @@ const pageContentObject = {
     },
     History: {
       title: 'History',
-      descrImg: '/images/history.png',
+      descrImg: '/images/history.jpg',
       description:
         'Venice is the symbol of wise government and freedom. The lagoon was its only defense, there were no palace guards except the Arsenal workers and no parade ground except the sea. During centuries of feudalism and barbarism, Venice symbolised democracy and civilization.',
       linkName: 'Discover More',
@@ -198,7 +198,7 @@ const pageContentObject = {
     },
   },
   history: {
-    topImage: '/images/history.png',
+    topImage: '/images/history.jpg',
     Chapters: [
       {
         title: 'Origin of the city',
