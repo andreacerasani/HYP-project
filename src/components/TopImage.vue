@@ -3,7 +3,7 @@
 <template>
   <div class="container-fluid container-img px-0">
    <div
-      class="container-fluid img-screen format-image"
+      class="img-screen format-image"
       :style="{ 'background-image': 'url(' + bgImg + ')' }"
     >
     </div>

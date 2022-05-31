@@ -1,7 +1,7 @@
 <!-- Component that shows a page of cards created from the items passed (each item can have title, img, link) -->
 <template>
   <div>
-    <div class="container-xl teo">
+    <div class="container-xl" style="text-align: center;">
       <card-2
           v-for="(item, itemIndex) in items"
           :key="`service-index-${itemIndex}`"
@@ -31,11 +31,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.teo{
-  /* display: flex; */
-  /* justify-content:center; */
-  text-align: center;
-}
-</style>

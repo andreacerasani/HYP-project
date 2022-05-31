@@ -5,7 +5,7 @@
     <h1>{{ title }}</h1>
     <div
       :id="'carouselExampleIndicators' + numOfCarousel"
-      class="carousel slide container-xl pt-2"
+      class="carousel slide pt-2"
       data-bs-ride="true"
       data-bs-interval = "7500"
     >

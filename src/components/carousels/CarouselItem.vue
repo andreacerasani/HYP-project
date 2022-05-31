@@ -1,6 +1,6 @@
 <!-- Component representing a single card inside a carousel with img and title  -->
 <template>
-  <a :href="link">
+  <nuxt-link :to="link">
     <div class="card">
       <div
         class="card-img-top card-image"
@@ -13,7 +13,7 @@
         </p>
       </div>
     </div>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>

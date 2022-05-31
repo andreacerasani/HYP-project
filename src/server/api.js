@@ -529,6 +529,8 @@ async function runMainApi() {
     return res.json(itinerary)
   })
 
+  // %%%%%%%%%%%%%%%%%%%%% SINGLE-service %%%%%%%%%%%%%%%%%%%%%%
+
   // %%%%%%%%%%%%%%%%%%%%%% EVENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   // HTTP GET api that returns the next 4 upcoming events
@@ -652,6 +654,8 @@ async function runMainApi() {
     }
     return res.json(data)
   })
+
+
 
   // HTTP POST api, that will push (and therefore create) a new element in
   // our actual database

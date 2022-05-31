@@ -4,7 +4,8 @@ description that when the img shrinks the text goes down   -->
   <div class="container-xl">
     <div class="row p-3 align-items-center flex-column flex-md-row">
       <div class="col-md-8 text-center">
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1j1jtaD1ZMBgln-8d0QsdbLmBrzXm3sXU&ehbc=2E312F" width="640" height="480"></iframe>
+        <!-- SISTEMARE LARGHEZZA E ALTEZZA MAPPA -->
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1j1jtaD1ZMBgln-8d0QsdbLmBrzXm3sXU&ehbc=2E312F"></iframe>
       </div>
       <div class="col text-center">
         <div class="row p-3">

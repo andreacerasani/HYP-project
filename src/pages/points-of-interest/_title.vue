@@ -1,9 +1,9 @@
 <template>
   <div>
     <top-image :title="title" :bg-img="images[0].path" />
-    <br>
+    <br />
     <simple-content :description="description" />
-    <br>
+    <br />
     <contacts
       :hour-opening="opening_hours"
       :hour-closing="closing_hours"
@@ -12,17 +12,17 @@
       :phone-landline="contact.landline_phone"
       :email="contact.email"
     />
-    <br><br>
+    <br /><br />
     <div class="container-xl">
-    <button
-      type="button"
-      class="btn btn-outline-secondary btn-lg px-4 center"
-      @click="backToList"
-    >
-      Back to list
-    </button>
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-lg px-4 center"
+        @click="backToList"
+      >
+        Back to list
+      </button>
     </div>
-    <br><br><br>
+    <br /><br /><br />
     <image-carousel
       :title="'See other images'"
       :num-of-carousel="1"
