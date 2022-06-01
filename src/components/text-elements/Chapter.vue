@@ -54,6 +54,7 @@ p {
   text-align: left;
 }
 img {
-  width: 40em;
+  max-width: 35em;
+  
 }
 </style>
