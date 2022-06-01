@@ -1,7 +1,7 @@
 <template>
   <div class="container-xl">
     <div class="px-4 py-2 align-items-center rounded-3 my-border">
-      <br>
+      <br />
       <h3 class="align-center">More information</h3>
       <div class="col-lg-9 p-3 p-lg-5 pt-lg-3">
         <div v-if="hourOpening != '00:00:00' && hourClosing != '24:00:00'">
@@ -13,7 +13,7 @@
         </div>
         <div v-if="ticket !== 9999">
           <b>Ticket:</b>
-          <br>
+          <br />
           <p v-if="ticket > 0" class="lead">{{ ticket.toFixed(2) }} €</p>
           <p v-else>Free</p>
         </div>
@@ -24,9 +24,9 @@
             email !== 'none'
           "
         >
-        <hr>
+          <hr />
           <b>Contacts:</b>
-          
+
           <p class="lead">
             <br />
             <span v-if="phoneLandline !== 'none'">
@@ -35,8 +35,10 @@
                 class="icon-img-personalize"
               />
               &nbsp; landline phone: &emsp; &nbsp;
+              <br class="hidden-ss" />
               <a :href="'tel:' + phoneLandline">+39 {{ phoneLandline }}</a>
               <br />
+              <br class="hidden-ss" />
             </span>
             <span v-if="phoneMobile !== 'none'">
               <img
@@ -44,7 +46,9 @@
                 class="icon-img-personalize"
               />
               &nbsp; mobile phone: &emsp;&emsp;
+              <br class="hidden-ss" />
               <a :href="'tel:' + phoneMobile">+39 {{ phoneMobile }}</a> <br />
+              <br class="hidden-ss" />
             </span>
             <span v-if="email !== 'none'">
               <img
@@ -52,6 +56,7 @@
                 class="icon-img-personalize"
               />
               &nbsp; mail: &emsp; &emsp; &emsp; &emsp; &emsp;
+              <br class="hidden-ss" />
               <a :href="'mailto:' + email">{{ email }}</a>
             </span>
           </p>
@@ -100,6 +105,11 @@ export default {
 </script>
 
 <style scoped>
+@media (min-width: 460px) {
+  .hidden-ss {
+    display: none !important;
+  }
+}
 a:hover {
   color: var(--link-color);
 }
@@ -113,7 +123,9 @@ b {
 }
 .icon-img-personalize {
   width: 2vw;
+  min-width: 20px;
   height: 2vw;
+  min-height: 20px;
 }
 .my-border {
   border-style: solid;
@@ -124,5 +136,4 @@ h3 {
   text-align: center;
   color: var(--subtitle-color);
 }
-
 </style>
