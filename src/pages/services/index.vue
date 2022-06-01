@@ -1,7 +1,7 @@
 <template>
-  <div >
+  <div>
     <top-image :title="'Services'" :bg-img="'/images/services.jpg'" />
-    <simple-content :title="'Services of Venice'"/>
+    <simple-content :title="'Services of Venice'" />
     <card-mosaic :items="serviceList" />
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   },
   async asyncData({ $axios }) {
     // db request
-    const { data } = await $axios.get('/api/main-services')
+    const { data } = await $axios.get('/api/services')
     const { titleImg, bgImg, serviceList } = data
 
     return {
@@ -31,4 +31,3 @@ export default {
   },
 }
 </script>
-
