@@ -44,10 +44,10 @@
               <img
                 :src="navItem.image"
                 class="align-middle"
-                style="height: 3vh"
+                style="height: 3vh; min-height: 25px"
               />
               <p
-                class="hover-underline-animation align-middle ps-3 mioStile"
+                class="hover-underline-animation align-middle ps-3"
                 style="height: 3vh"
               >
                 {{ navItem.name }}

@@ -9,7 +9,7 @@ const database = new Sequelize(
   'postgres://postgres:postgres@localhost:5432/hyp',
   {
     define: {
-      timestamps: false,    // Remember to add something similar in the production part
+      timestamps: false, // Remember to add something similar in the production part
     },
   }
 )
@@ -43,7 +43,7 @@ async function initializeDatabaseConnection() {
   const Events = database.define('events', {
     title: {
       type: DataTypes.STRING(100),
-      unique: true
+      unique: true,
     },
     description: DataTypes.TEXT,
     date: DataTypes.DATEONLY,
@@ -51,7 +51,7 @@ async function initializeDatabaseConnection() {
   })
 
   const Itineraries = database.define('itineraries', {
-    title:{ 
+    title: {
       type: DataTypes.STRING(100),
       unique: true,
     },
@@ -65,7 +65,7 @@ async function initializeDatabaseConnection() {
   const Pois = database.define('pois', {
     title: {
       type: DataTypes.STRING(100),
-      unique: true
+      unique: true,
     },
     description: DataTypes.TEXT,
     opening_hours: DataTypes.TIME,
@@ -77,14 +77,14 @@ async function initializeDatabaseConnection() {
   const Tags = database.define('tags', {
     tag: {
       type: DataTypes.STRING(50),
-      unique: true
-    }
+      unique: true,
+    },
   })
 
   const ServicePoints = database.define('service_points', {
     name: {
       type: DataTypes.STRING(100),
-      unique: true
+      unique: true,
     },
     opening_hours: DataTypes.TIME,
     closing_hours: DataTypes.TIME,
@@ -94,8 +94,8 @@ async function initializeDatabaseConnection() {
   const ServiceTypes = database.define('service_types', {
     name: {
       type: DataTypes.STRING(100),
-      unique: true
-    }
+      unique: true,
+    },
   })
 
   const Contacts = database.define('contacts', {
@@ -139,7 +139,6 @@ async function initializeDatabaseConnection() {
 
   Contacts.hasOne(Pois)
   Pois.belongsTo(Contacts)
-
 
   await database.sync({ force: false })
   return {
@@ -222,7 +221,7 @@ const pageContentObject = {
       },
       {
         title: 'Relations with the Byzantine Empire',
-        paragraphs:[
+        paragraphs: [
           'In gratitude for Venetian aid against the Normans, the Byzantine emperor Alexius I Comnenus granted Venice unrestricted trade throughout the Byzantine Empire, with no customs dues, a privilege that marked the beginning of Venetian activity in the East (1082). The Adriatic was not yet secured, however; Dalmatian ports were threatened by the Hungarians and Slavs, with whom it was difficult to come to agreement.',
 
           'Toward the end of the 11th century, the Crusades focused the newly awakened trading interests of the West on the Mediterranean. At first Venice was chiefly concerned with gaining control of the European trading ports of the Byzantine Empire, leaving to private interests the commercial opportunities in Syria and Asia Minor. Although they had been the first to win trade concessions and a commercial quarter in Constantinople, the Venetians antagonized the Byzantines by their arrogance and lawlessness as well as by their superior enterprise. In helping the emperor Manuel I Comnenus drive the Normans out of Corfu (1147–49), they offended him by their aggressive behaviour.',
@@ -240,7 +239,7 @@ const pageContentObject = {
       },
       {
         title: 'Trade conflicts',
-        paragraphs:[
+        paragraphs: [
           'Venetian bitterness against the Byzantines found an outlet in the Fourth Crusade, which captured and sacked Constantinople in 1204 with the doge Enrico Dandolo among its leaders. In the subsequent partition of Byzantine territory between Venetians and Crusaders, Venice acquired a commercial empire in the eastern Mediterranean. It included many of the Aegean islands, most importantly Crete and parts of Euboea, with valuable trading stations and fortified lookout posts on the Greek mainland. The doges adopted the title of Lord of One-Quarter and One-Eighth of the Entire Byzantine Empire (Quartae Partis et Dimidiae Totius Imperii Romaniae Dominator). A special magistrate, appointed from Venice, administered the substantial Venetian colony in Constantinople.',
 
           'In 1261 the Byzantine emperor in exile at Nicaea, with the support of the Genoese, recovered the city and evicted the Venetians. The emperor rewarded the Genoese with privileges that challenged the Venetian monopoly of trade and opened up to Genoa the Black Sea markets. The Venetians retained control of many of the Greek islands, however, and gradually found their way back to partial favour in Byzantium through a series of treaties. But when the last of the Crusader strongholds in Syria fell to the Muslims in 1291, Venetian merchants who had been dispossessed moved north to dispute the Black Sea trade with the Genoese. For nearly two centuries thereafter, Venice and Genoa were periodically at war.'
@@ -249,7 +248,7 @@ const pageContentObject = {
       },
       {
         title: 'The patriciate',
-        paragraphs:[
+        paragraphs: [
           'Meanwhile, at home the Venetian state was being built up. In 1242 the civil statutes of Jacopo Tiepolo regulated civil and economic relations; maritime statutes had been established in 1239. The number of elected members of the Great Council was raised from 45 to 60 and then to 100. The Council of 40 (Quarantia; first mentioned in 1223) received powers of jurisdiction, and the Consiglio dei Rogati (60 members; founded mid-13th century), invested with the control of economic affairs, in time assumed all legislative functions and the honorific title of Senate.',
 
           'In the 11th and 12th centuries the Michiel and Falier families had tried in vain to perpetuate their ducal power, and restrictive electoral systems were instituted to prevent the formation of committed family factions. In the 13th century similar attempts by the Ziani and Tiepolo families also failed. In 1268 an interlocking process of choice by lot and voting alternately among the members of the Great Council was introduced to select the next doge.',
@@ -259,7 +258,7 @@ const pageContentObject = {
       },
       {
         title: 'Struggle for naval supremacy',
-        paragraphs:[
+        paragraphs: [
           'By the beginning of the 14th century the republic was swept into struggles on the mainland of Italy and in the Adriatic and Mediterranean seas. When the Scaligeri came to power in Verona, the republic made alliance with the Carraresi of Padua, with the Florentines, and with the Visconti of Milan, who feared the rise of a strong territorial lordship in the heart of northern Italy. Deviating from its strictly maritime policy, Venice established sovereignty over Treviso, thereby ensuring its own food supply but also taking on the defense of a land frontier.',
 
           'The antagonism and rivalry with Genoa were rekindled. The conflict, carried on mainly in Dalmatia, was made more difficult for all by the spread of the Black Death (1348), by the economic and financial crisis caused by the war itself, and by the ineptitude of the military operations. In the alternation of victories and defeats, both sides exhausted their energies and resources. At last a second anti-Venetian coalition brought the war almost into Venice itself; at Pula (Pola) and at Chioggia, Venice first was defeated and then won the war (1380–81). The Peace of Turin (1381) eliminated Genoese political influence from the Mediterranean and the East, leaving the Venetian government arbiter of the sea routes.'
@@ -268,7 +267,7 @@ const pageContentObject = {
       },
       {
         title: 'Zenith of power',
-        paragraphs:[
+        paragraphs: [
           'The Venetian victory over Genoa took place under the threat of Turkish advance in the East. The Venetians had to negotiate a state of neutrality with the Turks and find another economic base to compensate for the smaller yield now to be expected from trade with the East, so they turned to the Italian mainland, first to rid themselves of neighbouring lordships and then to defend and exploit the rich lands they had acquired. For a time, Venetian territorial rule went no further than the Mincio and Livenza rivers, but beyond the Livenza lay the politically and economically important principality of the patriarch of Aquileia, through which passed the main routes to Germany and to Istria. Because the patriarch could not guarantee peace and order, Venice incorporated the principality in the Venetian domains (1420).',
 
           'Venetian territory now covered roughly the areas of the modern regions of Veneto and Friuli–Venezia Giulia, together with the Istrian Peninsula. The doge Tommaso Mocenigo maintained that his city had reached its political and economic zenith; it had a solid base in Italy that could compensate for its losses in the East, and it should not expect indefinite progress. In fact, efforts to enlarge its conquests might be dangerous, and it was better to preserve, not to risk, its accumulated wealth. Mocenigo’s successors, however, did not heed his warning.'
@@ -277,7 +276,7 @@ const pageContentObject = {
       },
       {
         title: 'Political and economic decline',
-        paragraphs:[
+        paragraphs: [
           'When he became Venice’s doge in 1423, Francesco Foscari embarked upon a series of wars in mainland Italy, particularly against Milan. Greed for conquering new territory involved the Venetians in a tangled web of Italian balance-of-power politics and in conflicts between the great powers of Europe on a scale out of proportion to Venetian forces and direct interests. The Peace of Lodi (1454) was followed by the formation of the Italian League to restore political balance among the Italian states, but the accord was ephemeral and Italy was threatened with foreign intervention.',
 
           'Meanwhile, the Turks were encroaching upon the Byzantine Empire in the East; Thessalonica fell in 1430 and Constantinople in 1453. Further Turkish moves prompted Venice to defend its eastern territories, but in 1470 Euboea fell into Turkish hands. Peace with the Turks was finally achieved in 1479. The Venetians, however, soon became involved in another war, this time with Ferrara. Venice’s conquest of the Polesine region (1484) increased the opposition of the other Italian states to Venetian territorial expansion.'
@@ -286,11 +285,11 @@ const pageContentObject = {
       },
       {
         title: 'Europeans and Turks against Venice',
-        paragraphs:[
+        paragraphs: [
           'This internal discord made Italy a prey to invading foreigners, Spanish, French, and German. By 1508 these powers, together with the pope, the Hungarians, the Savoyards, and the Ferrarese, united to form the League of Cambrai against the Venetians, who were defeated at the Battle of Agnadello. Venice was saved from the worst results of this event by internal discord within the League of Cambrai, but Venetian territories on the mainland were diminished. At the same time, the republic was experiencing an economic crisis. Not only was the Eastern market lost, but the discovery of new lands in the West and new trade routes to the East released Europe from dependence on Venetian merchants. Venice ceased to be a Mediterranean power, and, as a European power, it lacked the advantage that the Atlantic countries had of direct access to the New World.',
 
           'Venetian policy in the 16th century was dictated by the need to keep intact its political, economic, and territorial heritage against the advance of the Turks on the one side and the pressure of the great western European powers on the other. This need supplied the reason for Venice’s intervention in the Italian crisis of the emperor Charles V; for its struggle against the Turks, from the defeat of Préveza in 1538 to the victory of Lepanto and the loss of Cyprus in 1571; and for its tenacious resistance to pressure from the pope. So Venice declined into economic stagnation, embittered by a constitutional conflict between the Consiglio dei Rogati and the Council of Ten for control of the public finances. Venetian peace and neutrality meant defending the immediate interests of the nation but ceasing to take part in problems in which it was not directly concerned. Thus, the spirit of political and religious conservatism grew increasingly tenacious in Venice.',
-          
+
           'A political crisis was created by the papal interdict of Venice in 1606, concerned not with heresy or reform but with temporal prerogatives of the papacy. Paolo Sarpi, the energetic defender of Doge Leonardo Doná’s policy, which had provoked the Roman Curia, never contested the legitimacy of papal power, but in the temporal sphere he denied that it carried any prerogatives superior to the sovereign rights of the state.',
           
           'After a long campaign (1645–69), Crete, Venice’s last possession in the eastern Mediterranean, fell to the Turks, the Venetians being allowed to retain only a few strongholds. This blow to morale was mitigated, however, by the preservation of Dalmatia, and the government, after allying itself with Austria, attempted to reestablish itself in the eastern Mediterranean by liberating the Morea (Peloponnese) from the Turks. There the brilliant campaign of Francesco Morosini in 1684–88 assured Venice of this new Greek territory, which was finally handed over in 1699. But the conquest proved profitless and became an expensive burden, and in 1718 the Morea was returned to the Turks. Thus ended Venetian activity in the eastern and southern Mediterranean, save for an unsuccessful attempt in 1769 on Algerian and Tunisian pirates under Angelo Emo.'
@@ -299,7 +298,7 @@ const pageContentObject = {
       },
       {
         title: 'End of the Venetian republic',
-        paragraphs:[
+        paragraphs: [
           'During its later years the Venetian republic was estranged from the fervour of new ideas germinating in other nations. Venetian life had crystallized inescapably. The plans of Angelo Querini, Giorgio Pisani, and Carlo Contarini, who in the 18th century called themselves reformers, did not go beyond those of the noble class that for three centuries had controlled the government and that existed to uphold ancestral tradition or to satisfy personal ambition.',
 
           'The end of the republic came after the outbreak of the French Revolution. Napoleon, determined to destroy the Venetian oligarchy, claimed as a pretext that Venice was hostile to him and a menace to his line of retreat during his Austrian campaign of 1797. The Peace of Leoben left Venice without an ally, and Ludovico Manin, the last doge, was deposed on May 12, 1797. A provisional democratic municipality was set up in place of the republican government, but later in the same year Venice was handed over to Austria.',
@@ -311,7 +310,7 @@ const pageContentObject = {
       },
       {
         title: 'In unified Italy',
-        paragraphs:[
+        paragraphs: [
           'The subsequent growth of Venice was attendant upon its role in the commercial life of Italy and upon exploitation of its inherent physical and aesthetic attributes. The city had lost a bit of its island character and some of its insular mentality in 1846, when a causeway nearly 2 miles (3 km) in length brought the railway across 222 arches from the mainland. It lost even more in 1932 when a parallel road was built to give access to motor vehicles. Each link was stoutly resisted by persons who wished to leave the city unchanged, and they succeeded in forcing wheeled vehicles to be garaged at the landward edge of the island. Similar battles continue between traditionalists and modernists.',
 
           'In the political sphere, Venice was run by leftist governments immediately after World War II, and these were replaced by centre-left or centrist administrations for much of the 1950s and ’60s. During the events of 1968, there were long occupations by students of the architecture faculty in the city as well as massive strikes by workers at Port Marghera. The 1968 film festival was also the scene of large protests. Later the Socialists ran the city, but their plans for massive development, including a world’s fair proposed in the mid-1980s, were blocked by protests over possible damage to the city. Socialist rule was swept away by corruption scandals in the 1990s, allowing the victory of a reformist intellectual mayor, Massimo Cacciari, who attempted to modernize Venice while protecting its immense heritage. Cacciari’s seven years in power saw many changes in the administration of the city, but he was unable to secure action on such basic structural problems as population loss and high water.',
@@ -333,7 +332,7 @@ const pageContentObject = {
       title: 'All 2022 Events',
       descrImg: 'https://dummyimage.com/600x300',
       description:
-      'Discover all the fantastic events organized in the city of Venice during this year. Choose your favorites and plan your visit to Venice so you can have an unforgettable experience. Take part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
+        'Discover all the fantastic events organized in the city of Venice during this year. Choose your favorites and plan your visit to Venice so you can have an unforgettable experience. Take part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
       linkName: 'Discover More',
       linkPath: '/',
     },
@@ -341,7 +340,7 @@ const pageContentObject = {
       title: 'Summer Events',
       descrImg: 'https://dummyimage.com/600x300',
       description:
-        'During the summer, Venice is colored in the brightest colors. Summer events range from the film festival to the famous Vogalonga. Be inspired by the cheerfulness of Venetians and relax while watching the reflections of the sunset on the water of the lagoon. It\'s never too late to enjoy a vacation.',
+        "During the summer, Venice is colored in the brightest colors. Summer events range from the film festival to the famous Vogalonga. Be inspired by the cheerfulness of Venetians and relax while watching the reflections of the sunset on the water of the lagoon. It's never too late to enjoy a vacation.",
       linkName: 'Discover More',
       linkPath: '/',
     },
@@ -421,27 +420,27 @@ async function runMainApi() {
 
   // %%%%%%%%%%%%%%%%%%%%%%%% POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  app.get('/pois/:title', async (req, res) => { 
+  app.get('/pois/:title', async (req, res) => {
     const { title } = req.params
-    const titleMod = title.replaceAll("-", " ")
+    const titleMod = title.replaceAll('-', ' ')
     const poi = await models.Pois.findOne({
       where: {
-          title: titleMod
+        title: titleMod,
       },
-      include: [ 
-        { 
+      include: [
+        {
           model: models.Images,
-          attributes: ['path'], 
-        }, 
-      ],  
-    }) 
-    return res.json(poi) 
+          attributes: ['path'],
+        },
+      ],
+    })
+    return res.json(poi)
   })
 
   app.get('/points-of-interest', async (req, res) => {
-    const result = await models.Pois.findAll(  
-      {
-        include: [{
+    const result = await models.Pois.findAll({
+      include: [
+        {
           model: models.Images,
           attributes: ['path'],
         },
@@ -463,27 +462,26 @@ async function runMainApi() {
     return res.json(data)
   })
 
-
-  app.get('/points-of-interest/:title', async (req, res) => { 
+  app.get('/points-of-interest/:title', async (req, res) => {
     const { title } = req.params
-    const titleMod = title.replaceAll("-", " ")
+    const titleMod = title.replaceAll('-', ' ')
     const poi = await models.Pois.findOne({
       where: {
-          title: titleMod
+        title: titleMod,
       },
-      include: [ 
-        { 
+      include: [
+        {
           model: models.Images,
-          attributes: ['path'], 
+          attributes: ['path'],
         },
-        { 
+        {
           model: models.Contacts,
           attributes: ['landline_phone', 'mobile_phone', 'email'],
-        },  
-      ],  
-    }) 
-    return res.json(poi) 
-})
+        },
+      ],
+    })
+    return res.json(poi)
+  })
 
   // %%%%%%%%%%%%%%%%%%%%%% ITINERARIES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   app.get('/itineraries', async (req, res) => {
@@ -535,7 +533,67 @@ async function runMainApi() {
     return res.json(itinerary)
   })
 
-  // %%%%%%%%%%%%%%%%%%%%% SINGLE-service %%%%%%%%%%%%%%%%%%%%%%
+  // %%%%%%%%%%%%%%%%%%%%% SERVICES %%%%%%%%%%%%%%%%%%%%%%
+  app.get('/services', async (req, res) => {
+    const result = await models.ServiceTypes.findAll({
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+      ],
+    })
+    const filtered = []
+    for (const element of result) {
+      filtered.push({
+        title: element.name,
+        img: element.image.path,
+      })
+    }
+    const data = {
+      titleImg: 'https://dummyimage.com/800x200/ff',
+      bgImg: 'https://dummyimage.com/1500x500',
+      serviceList: filtered,
+    }
+    return res.json(data)
+  })
+
+  // %%%%%%%%%%%%%%%%%%%%% SINGLE-SERVICE %%%%%%%%%%%%%%%%%%%%%%
+  app.get('/service/:title', async (req, res) => {
+    const { title } = req.params
+    const titleMod = title.replaceAll('-', ' ')
+
+    const mainService = await models.ServiceTypes.findOne({
+      where: {
+        title: titleMod,
+      },
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+      ],
+    })
+
+    const service = await models.ServicePoints.findAll({
+      where: {
+        serviceTypeId: mainService.id,
+      },
+      include: [
+        {
+          model: models.Contacts,
+          attributes: ['landline_phone'],
+        },
+      ],
+    })
+
+    const data = {
+      mainService,
+      service,
+    }
+
+    return res.json(data)
+  })
 
   // %%%%%%%%%%%%%%%%%%%%%% EVENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -561,8 +619,10 @@ async function runMainApi() {
     const filtered = []
     for (const element of result) {
       let pathImage = null
-      if (element.images.length){
-        pathImage = element.images.sort((a,b) => (a.path > b.path) ? 1 : ((b.path > a.path) ? -1 : 0))[0].path
+      if (element.images.length) {
+        pathImage = element.images.sort((a, b) =>
+          a.path > b.path ? 1 : b.path > a.path ? -1 : 0
+        )[0].path
       }
       filtered.push({
         title: element.title,
@@ -570,7 +630,7 @@ async function runMainApi() {
         date: element.date,
         ticket: element.ticket,
         img: pathImage,
-        linkPath: "events/" + element.title.replaceAll(' ', '-')
+        linkPath: 'events/' + element.title.replaceAll(' ', '-'),
       })
     }
     return res.json(filtered)
@@ -584,7 +644,7 @@ async function runMainApi() {
         {
           date: {
             [Op.gte]: currDate,
-            [Op.lte]: new Date(currDate.getFullYear() + '-12-31')
+            [Op.lte]: new Date(currDate.getFullYear() + '-12-31'),
           },
         },
       ],
@@ -600,7 +660,7 @@ async function runMainApi() {
       title: currDate.getFullYear() + ' events',
       bgImg: 'https://dummyimage.com/1500x500',
       latest_events: result.slice(0, 3),
-      rest_events:result.slice(3)
+      rest_events: result.slice(3),
     }
     return res.json(data)
   })
@@ -632,7 +692,7 @@ async function runMainApi() {
       title: 'Winter events',
       bgImg: 'https://dummyimage.com/1500x500',
       latest_events: result.slice(0, 3),
-      rest_events:result.slice(3)
+      rest_events: result.slice(3),
     }
     return res.json(data)
   })
@@ -656,13 +716,11 @@ async function runMainApi() {
       title: 'Summer events',
       bgImg: 'https://dummyimage.com/1500x500',
       latest_events: result.slice(0, 3),
-      rest_events:result.slice(3)
+      rest_events: result.slice(3),
     }
     return res.json(data)
   })
-
-
-
+  
   // HTTP POST api, that will push (and therefore create) a new element in
   // our actual database
   /*   app.post('/cats', async (req, res) => {
