@@ -426,38 +426,29 @@ async function runMainApi() {
   })
 
   // %%%%%%%%%%%%%%%%%%%%% SINGLE-SERVICE %%%%%%%%%%%%%%%%%%%%%%
-  app.get('/service/:title', async (req, res) => {
+  app.get('/services/:title', async (req, res) => {
     const { title } = req.params
+    console.log("afeaoife " + title)
     const titleMod = title.replaceAll('-', ' ')
 
     const mainService = await models.ServiceTypes.findOne({
       where: {
-        title: titleMod,
+        name: titleMod,
       },
       include: [
         {
           model: models.Images,
           attributes: ['path'],
         },
-      ],
-    })
-
-    const service = await models.ServicePoints.findAll({
-      where: {
-        serviceTypeId: mainService.id,
-      },
-      include: [
         {
-          model: models.Contacts,
-          attributes: ['landline_phone'],
+          model: models.ServicePoints,
+          include:[{model: models.Contacts,
+            attributes: ['landline_phone'],}]
         },
       ],
     })
 
-    const data = {
-      mainService,
-      service,
-    }
+    const data = mainService
 
     return res.json(data)
   })

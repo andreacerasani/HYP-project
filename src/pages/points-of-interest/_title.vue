@@ -70,10 +70,6 @@ export default {
       }
       return formatted
     },
-    fromUrl(variable) {
-      const result = variable.replaceAll('-', ' ')
-      return result
-    },
     backToList() {
       this.$router.push('/points-of-interest')
     },

@@ -33,16 +33,11 @@ export default {
   async asyncData({ route, $axios }) {
     const title = route.params
     const data = await $axios.get('/api/services/' + title)
-    console.log(data)
+    console.log(title)
     return {
-      img: data.mainService.images[0].path,
-      title: data.mainService.name,
-      items: data.service,
-    }
-  },
-  head() {
-    return {
-      title: this.name,
+      img: data.image,
+      title: data.name,
+      items: data.service_points,
     }
   },
 }
