@@ -1,10 +1,23 @@
+<!-- Component that can be used to display a chapter with a title and different paragraphs, with the possibility to add an image -->
 <template>
-    <div class="container-xl">
-        <div class="chapter">
-        <h1>{{title}}</h1>
-        <p v-for="(par, i) in paragraphs" :key="'p-index'+i">{{par}}</p>
+  <div class="container-xl">
+    <div class="chapter row">
+      <div class="col-sm-12">
+      <h1>{{ title }}</h1>
+        <img
+          v-if="image !== 'noImg'"
+          :src="image"
+          class="rounded-3 img-fluid float-end ps-4 pb-4 pt-2 pe-4"
+        />
+        <div v-for="(par, i) in paragraphs" :key="'p-index' + i">
+          <p>
+            {{ par }}
+          </p>
         </div>
+      </div>
     </div>
+    <br>
+  </div>
 </template>
 
 <script>
@@ -13,26 +26,35 @@ export default {
   props: {
     title: {
       type: String,
-      default: "",    
+      default: '',
       required: false,
     },
     paragraphs: {
       type: Array,
       required: true,
-    }
-  }
+    },
+    image: {
+      type: String,
+      default: 'noImg',
+      required: false,
+    },
+  },
 }
 </script>
 
 <style scoped>
-h1{
+h1 {
   text-align: left;
 }
-h1{
+h1 {
   color: var(--subtitle-color);
 }
-p{
-  color:var(--text-color);
+p {
+  color: var(--text-color);
   text-align: left;
+}
+img {
+  max-width: 35em;
+  
 }
 </style>
