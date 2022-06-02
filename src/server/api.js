@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const { Sequelize, DataTypes, Op } = require('sequelize')
-const initialize = require('./initialize').default
 app.use(express.json())
 
 // %%%%%%%%%%%%%% Development %%%%%%%%%%%%%%%%%
@@ -25,20 +24,6 @@ const database = new Sequelize(
 // Function that initialize the connection to the database, linking the tables with the objects used in sequelize
 async function initializeDatabaseConnection() {
   await database.authenticate()
-  const Cat = database.define('cat', {
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    breed: DataTypes.STRING,
-    img: DataTypes.STRING,
-  })
-  const Location = database.define('location', {
-    name: DataTypes.STRING,
-    city: DataTypes.STRING,
-  })
-  Location.hasMany(Cat)
-  Cat.belongsTo(Location)
-
-  // ------------------------------------------------------------
 
   const Events = database.define('events', {
     title: {
@@ -142,8 +127,6 @@ async function initializeDatabaseConnection() {
 
   await database.sync({ force: false })
   return {
-    Cat,
-    Location,
     Events,
     Itineraries,
     Images,
@@ -226,8 +209,6 @@ const pageContentObject = {
 
 async function runMainApi() {
   const models = await initializeDatabaseConnection()
-  // This function initialize the database, to be used only the first time the website is deployed
-  await initialize(models)
 
   app.get('/page-info/:topic', (req, res) => {
     const { topic } = req.params
@@ -428,7 +409,6 @@ async function runMainApi() {
   // %%%%%%%%%%%%%%%%%%%%% SINGLE-SERVICE %%%%%%%%%%%%%%%%%%%%%%
   app.get('/services/:title', async (req, res) => {
     const { title } = req.params
-    console.log("afeaoife " + title)
     const titleMod = title.replaceAll('-', ' ')
 
     const mainService = await models.ServiceTypes.findOne({
