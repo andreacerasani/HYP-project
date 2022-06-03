@@ -263,7 +263,7 @@ async function runMainApi() {
     }
     return res.json(data)
   })
-  
+
   // %%%%%%%%%%%%%%%%%%%%% Single pages API %%%%%%%%%%%%%%%%%%%%%%%%%%
 
   // %%%%%%%%%%%%%%%%%%%%%%%% POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -341,18 +341,20 @@ async function runMainApi() {
         },
       ],
     })
+
     const filtered = []
     for (const element of result) {
       filtered.push({
         title: element.title,
-        description: element.description,
-        img: element.image,
+        /* img: element.image.path, */
+        img: "https://dummyimage.com/200x200"
       })
     }
+
     const data = {
       title: 'Itineraries',
       bgImg: 'https://dummyimage.com/1500x500',
-      pois: filtered,
+      itineraries: filtered,
     }
     return res.json(data)
   })
@@ -422,8 +424,7 @@ async function runMainApi() {
         },
         {
           model: models.ServicePoints,
-          include:[{model: models.Contacts,
-            attributes: ['landline_phone'],}]
+          include: [{ model: models.Contacts, attributes: ['landline_phone'] }],
         },
       ],
     })
@@ -558,7 +559,7 @@ async function runMainApi() {
     }
     return res.json(data)
   })
-  
+
   // HTTP POST api, that will push (and therefore create) a new element in
   // our actual database
   /*   app.post('/cats', async (req, res) => {
