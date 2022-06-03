@@ -225,21 +225,6 @@ async function runMainApi() {
     return res.json(result)
   })
 
-  // HTTP GET api that returns all the cats in our actual database
-  app.get('/cats', async (req, res) => {
-    const result = await models.Cat.findAll()
-    const filtered = []
-    for (const element of result) {
-      filtered.push({
-        name: element.name,
-        img: element.img,
-        breed: element.breed,
-        id: element.id,
-      })
-    }
-    return res.json(filtered)
-  })
-
   app.get('/main-services', async (req, res) => {
     const result = await models.ServiceTypes.findAll({
       include: [
@@ -264,26 +249,7 @@ async function runMainApi() {
     return res.json(data)
   })
 
-  // %%%%%%%%%%%%%%%%%%%%% Single pages API %%%%%%%%%%%%%%%%%%%%%%%%%%
-
   // %%%%%%%%%%%%%%%%%%%%%%%% POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-  app.get('/pois/:title', async (req, res) => {
-    const { title } = req.params
-    const titleMod = title.replaceAll('-', ' ')
-    const poi = await models.Pois.findOne({
-      where: {
-        title: titleMod,
-      },
-      include: [
-        {
-          model: models.Images,
-          attributes: ['path'],
-        },
-      ],
-    })
-    return res.json(poi)
-  })
 
   app.get('/points-of-interest', async (req, res) => {
     const result = await models.Pois.findAll({
@@ -436,6 +402,36 @@ async function runMainApi() {
 
   // %%%%%%%%%%%%%%%%%%%%%% EVENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+  app.get('/events/:title', async (req, res) => {
+    const { title } = req.params
+    const titleMod = title.replaceAll('-', ' ')
+    const event = await models.Events.findOne({
+      where: {
+        title: titleMod,
+      },
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+        {
+          model: models.Pois,
+          attributes: ['title', 'address'],
+          include: [
+            {model: models.Images,
+            attributes: ['path']}
+          ],
+        },
+        {
+          model: models.Contacts,
+          attributes: ['landline_phone', 'mobile_phone', 'email'],
+        },
+      ],
+    })
+
+    return res.json(event)
+  })
+
   // HTTP GET api that returns the next 4 upcoming events
   app.get('/upcoming-events', async (req, res) => {
     const result = await models.Events.findAll({
@@ -559,6 +555,9 @@ async function runMainApi() {
     }
     return res.json(data)
   })
+
+
+
 
   // HTTP POST api, that will push (and therefore create) a new element in
   // our actual database
