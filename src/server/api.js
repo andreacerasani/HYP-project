@@ -312,8 +312,7 @@ async function runMainApi() {
     for (const element of result) {
       filtered.push({
         title: element.title,
-        /* img: element.image.path, */
-        img: "https://dummyimage.com/200x200"
+        img: element.image.path,
       })
     }
 
