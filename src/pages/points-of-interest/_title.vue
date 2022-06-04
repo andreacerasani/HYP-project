@@ -5,11 +5,11 @@
     <simple-content :description="description" />
     <br />
     <contacts
-      :hour-opening="opening_hours"
-      :hour-closing="closing_hours"
+      :opening-hour="opening_hours"
+      :closing-hour="closing_hours"
       :ticket="ticket"
-      :phone-mobile="contact.mobile_phone"
-      :phone-landline="contact.landline_phone"
+      :mobile-phone="contact.mobile_phone"
+      :landline-phone="contact.landline_phone"
       :email="contact.email"
     />
     <br /><br />
@@ -41,10 +41,9 @@ export default {
   components: { ImageCarousel, TopImage, SimpleContent, Contacts },
   async asyncData({ route, $axios }) {
     const title = route.params.title
-    const data = await $axios.get('/api/points-of-interest/' + title)
-    const poi = data.data
+    const {data} = await $axios.get('/api/points-of-interest/' + title)
+    const poi = data
     return {
-      poi,
       title: poi.title,
       description: poi.description,
       opening_hours: poi.opening_hours,

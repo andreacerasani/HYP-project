@@ -4,11 +4,17 @@
       <br />
       <h3 class="align-center">More information</h3>
       <div class="col-lg-9 p-3 p-lg-5 pt-lg-3">
-        <div v-if="hourOpening != '00:00:00' && hourClosing != '24:00:00'">
+        <div v-if="date !== null">
+          <b>Date (YYYY/MM/DD) :</b>
+          <p class="lead">
+            {{ date }}
+          </p>
+        </div>
+        <div v-if="openingHour != 'none' && !(openingHour == '00:00:00' && closingHour == '24:00:00')">
           <b>Opening hours:</b>
           <p class="lead">
-            {{ hourOpening.substring(0, 5) }} -
-            {{ hourClosing.substring(0, 5) }}
+            {{ openingHour.substring(0, 5) }} -
+            {{ closingHour.substring(0, 5) }}
           </p>
         </div>
         <div v-if="ticket !== 9999">
@@ -19,8 +25,8 @@
         </div>
         <div
           v-if="
-            phoneLandline !== 'none' ||
-            phoneMobile !== 'none' ||
+            landlinePhone !== 'none' ||
+            mobilePhone !== 'none' ||
             email !== 'none'
           "
         >
@@ -29,25 +35,25 @@
 
           <p class="lead">
             <br />
-            <span v-if="phoneLandline !== 'none'">
+            <span v-if="landlinePhone !== 'none'">
               <img
                 src="/images/icons/phone_icon.png"
                 class="icon-img-personalize"
               />
               &nbsp; landline phone: &emsp; &nbsp;
               <br class="hidden-ss" />
-              <a :href="'tel:' + phoneLandline">+39 {{ phoneLandline }}</a>
+              <a :href="'tel:' + landlinePhone">+39 {{ landlinePhone }}</a>
               <br />
               <br class="hidden-ss" />
             </span>
-            <span v-if="phoneMobile !== 'none'">
+            <span v-if="mobilePhone !== 'none'">
               <img
                 src="/images/icons/phone_icon.png"
                 class="icon-img-personalize"
               />
               &nbsp; mobile phone: &emsp;&emsp;
               <br class="hidden-ss" />
-              <a :href="'tel:' + phoneMobile">+39 {{ phoneMobile }}</a> <br />
+              <a :href="'tel:' + mobilePhone">+39 {{ mobilePhone }}</a> <br />
               <br class="hidden-ss" />
             </span>
             <span v-if="email !== 'none'">
@@ -70,12 +76,17 @@
 export default {
   name: 'ContactsComponent',
   props: {
-    hourOpening: {
+    date: {
+        type: Date,
+      default: null,
+      required: false,
+    },
+    openingHour: {
       type: String,
       default: 'none',
       required: false,
     },
-    hourClosing: {
+    closingHour: {
       type: String,
       default: 'none',
       required: false,
@@ -85,12 +96,12 @@ export default {
       default: 9999,
       required: false,
     },
-    phoneLandline: {
+    landlinePhone: {
       type: String,
       default: 'none',
       required: false,
     },
-    phoneMobile: {
+    mobilePhone: {
       type: String,
       default: 'none',
       required: false,
