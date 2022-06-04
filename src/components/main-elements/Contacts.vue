@@ -2,7 +2,7 @@
   <div class="container-xl">
     <div class="px-4 py-2 align-items-center rounded-3 my-border">
       <br />
-      <h3 class="align-center">More information</h3>
+      <h3 class="align-center">{{title}}</h3>
       <div class="col-lg-9 p-3 p-lg-5 pt-lg-3">
         <div v-if="date !== null">
           <b>Date (YYYY/MM/DD) :</b>
@@ -76,6 +76,11 @@
 export default {
   name: 'ContactsComponent',
   props: {
+    title:{
+      type: String,
+      default: 'More information',
+      required: false,
+    },
     date: {
         type: Date,
       default: null,

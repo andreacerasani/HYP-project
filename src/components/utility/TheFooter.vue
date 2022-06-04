@@ -3,8 +3,8 @@
 <template>
   <footer class="link-primary text-center">
     <!-- <a :href="FooterLink.path"> -->
-    <nuxt-link :to="FooterLink.path">
-      {{ FooterLink.name }}
+    <nuxt-link :to="linkPath">
+      {{ linkName }}
     </nuxt-link>
     <!-- </a> -->
     <p class="polimi-text">Politecnico Di Milano</p>
@@ -16,13 +16,21 @@
 <script>
 export default {
   name: 'TheFooterComponent',
-  data() {
-    return {
-      FooterLink: {
-        name: 'ContactUs',
-        path: '/contact',
-      },
+  props:{
+    linkName:{
+      type: String,
+      required: false,
+      default: 'Contact Us'
+    },
+    linkPath: {
+      type: String,
+      required: false,
+      default: '/contact-us'
     }
+    
+  },
+  data() {
+    return {}
   },
 }
 </script>
