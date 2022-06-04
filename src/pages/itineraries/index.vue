@@ -6,6 +6,7 @@
       :my-array="itineraries"
       :num-of-carousel="1"
     />
+    <simple-content title="All Itineraries"/>
     <mosaic 
     :items="itineraries"
     />
@@ -15,6 +16,7 @@
 <script>
 import CarouselMultiElement from '~/components/carousels/MultiElementCarousel.vue'
 import Mosaic from '~/components/mosaics/CardMosaic.vue'
+import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 export default {
   name: 'ItinerariesPage',
@@ -22,6 +24,7 @@ export default {
     TopImage,
     CarouselMultiElement,
     Mosaic,
+    SimpleContent,
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/itineraries')
