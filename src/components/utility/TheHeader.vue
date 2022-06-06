@@ -3,7 +3,7 @@
 <template>
   <header
     ref="header"
-    class="navbar-expand-xl navbar-light px-3 header py-3"
+    class="navbar-expand-xl navbar-light px-3 header py-2"
     style="
       transition: top 0.5s ease, background-color 0.5s;
       -webkit-transition: top 0.5s ease, background-color 0.5s;
@@ -203,7 +203,8 @@ header {
 }
 
 p {
-  font-size: 2vmax;
+  font-size: large;
+  font-weight: 500;
 }
 
 .logo {
