@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const { Sequelize, DataTypes, Op } = require('sequelize')
-const initialize = require('./initialize').default
 app.use(express.json())
 
 // %%%%%%%%%%%%%% Development %%%%%%%%%%%%%%%%%
@@ -25,20 +24,6 @@ const database = new Sequelize(
 // Function that initialize the connection to the database, linking the tables with the objects used in sequelize
 async function initializeDatabaseConnection() {
   await database.authenticate()
-  const Cat = database.define('cat', {
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    breed: DataTypes.STRING,
-    img: DataTypes.STRING,
-  })
-  const Location = database.define('location', {
-    name: DataTypes.STRING,
-    city: DataTypes.STRING,
-  })
-  Location.hasMany(Cat)
-  Cat.belongsTo(Location)
-
-  // ------------------------------------------------------------
 
   const Events = database.define('events', {
     title: {
@@ -142,8 +127,6 @@ async function initializeDatabaseConnection() {
 
   await database.sync({ force: false })
   return {
-    Cat,
-    Location,
     Events,
     Itineraries,
     Images,
@@ -226,8 +209,6 @@ const pageContentObject = {
 
 async function runMainApi() {
   const models = await initializeDatabaseConnection()
-  // This function initialize the database, to be used only the first time the website is deployed
-  await initialize(models)
 
   app.get('/page-info/:topic', (req, res) => {
     const { topic } = req.params
@@ -242,21 +223,6 @@ async function runMainApi() {
       include: [{ model: models.Location }],
     })
     return res.json(result)
-  })
-
-  // HTTP GET api that returns all the cats in our actual database
-  app.get('/cats', async (req, res) => {
-    const result = await models.Cat.findAll()
-    const filtered = []
-    for (const element of result) {
-      filtered.push({
-        name: element.name,
-        img: element.img,
-        breed: element.breed,
-        id: element.id,
-      })
-    }
-    return res.json(filtered)
   })
 
   app.get('/main-services', async (req, res) => {
@@ -282,27 +248,8 @@ async function runMainApi() {
     }
     return res.json(data)
   })
-  
-  // %%%%%%%%%%%%%%%%%%%%% Single pages API %%%%%%%%%%%%%%%%%%%%%%%%%%
 
   // %%%%%%%%%%%%%%%%%%%%%%%% POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-  app.get('/pois/:title', async (req, res) => {
-    const { title } = req.params
-    const titleMod = title.replaceAll('-', ' ')
-    const poi = await models.Pois.findOne({
-      where: {
-        title: titleMod,
-      },
-      include: [
-        {
-          model: models.Images,
-          attributes: ['path'],
-        },
-      ],
-    })
-    return res.json(poi)
-  })
 
   app.get('/points-of-interest', async (req, res) => {
     const result = await models.Pois.findAll({
@@ -360,18 +307,19 @@ async function runMainApi() {
         },
       ],
     })
+
     const filtered = []
     for (const element of result) {
       filtered.push({
         title: element.title,
-        description: element.description,
-        img: element.image,
+        img: element.image.path,
       })
     }
+
     const data = {
       title: 'Itineraries',
       bgImg: 'https://dummyimage.com/1500x500',
-      pois: filtered,
+      itineraries: filtered,
     }
     return res.json(data)
   })
@@ -428,7 +376,6 @@ async function runMainApi() {
   // %%%%%%%%%%%%%%%%%%%%% SINGLE-SERVICE %%%%%%%%%%%%%%%%%%%%%%
   app.get('/services/:title', async (req, res) => {
     const { title } = req.params
-    console.log("afeaoife " + title)
     const titleMod = title.replaceAll('-', ' ')
 
     const mainService = await models.ServiceTypes.findOne({
@@ -442,8 +389,7 @@ async function runMainApi() {
         },
         {
           model: models.ServicePoints,
-          include:[{model: models.Contacts,
-            attributes: ['landline_phone'],}]
+          include: [{ model: models.Contacts, attributes: ['landline_phone'] }],
         },
       ],
     })
@@ -454,6 +400,36 @@ async function runMainApi() {
   })
 
   // %%%%%%%%%%%%%%%%%%%%%% EVENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  app.get('/events/:title', async (req, res) => {
+    const { title } = req.params
+    const titleMod = title.replaceAll('-', ' ')
+    const event = await models.Events.findOne({
+      where: {
+        title: titleMod,
+      },
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+        {
+          model: models.Pois,
+          attributes: ['title', 'address'],
+          include: [
+            {model: models.Images,
+            attributes: ['path']}
+          ],
+        },
+        {
+          model: models.Contacts,
+          attributes: ['landline_phone', 'mobile_phone', 'email'],
+        },
+      ],
+    })
+
+    return res.json(event)
+  })
 
   // HTTP GET api that returns the next 4 upcoming events
   app.get('/upcoming-events', async (req, res) => {
@@ -578,7 +554,10 @@ async function runMainApi() {
     }
     return res.json(data)
   })
-  
+
+
+
+
   // HTTP POST api, that will push (and therefore create) a new element in
   // our actual database
   /*   app.post('/cats', async (req, res) => {

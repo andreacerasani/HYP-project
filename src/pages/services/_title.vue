@@ -11,12 +11,12 @@
     <image-contacts
       v-for="(item, itemIndex) in items"
       :key="`service-${itemIndex}`"
-      :img="item.img"
+      img="https://dummyimage.com/600x300"
       :address="item.address"
       :closing-hours="item.closing_hours"
       :opening-hours="item.opening_hours"
       :is-left="true"
-      :phone="item.landline_phone"
+      :phone="item.contact.landline_phone"
       :title="item.name"
     />
   </div>
@@ -31,13 +31,13 @@ export default {
   name: 'SingleServicePage',
   components: { TopImage, SimpleContent, ImageContacts },
   async asyncData({ route, $axios }) {
-    const title = route.params
-    const data = await $axios.get('/api/services/' + title)
-    console.log(title)
+    const title = route.params.title
+    const { data } = await $axios.get('/api/services/' + title)
+
     return {
-      img: data.image,
       title: data.name,
-      items: data.service_points,
+      img: data.image.path,
+      items: data.service_points
     }
   },
 }

@@ -31,7 +31,7 @@
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li>
           <nuxt-link to="/" class="nav-link">
-            <p class="hover-underline-animation align-middle ps-3">Venice</p>
+            <p class="hover-underline-animation align-middle ps-3"><img src="/images/header_icons/logo.png" style="height: 5vh; min-height: 50px" /></p>
           </nuxt-link>
         </li>
         <li
