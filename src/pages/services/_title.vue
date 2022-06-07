@@ -15,7 +15,7 @@
       :address="item.address"
       :closing-hours="item.closing_hours"
       :opening-hours="item.opening_hours"
-      :is-left="itemIndex%2"
+      :is-left="itemIndex%2 ===0 "
       :phone="item.contact.landline_phone"
       :title="item.name"
     />
