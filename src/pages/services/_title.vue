@@ -5,7 +5,7 @@
       :description="'Davide scrive la descrizione da bravo filosofo'"
     />
     <div class="container-xl">
-      <img src="https://dummyimage.com/1500x500" />
+      <img src="https://dummyimage.com/800x500" />
     </div>
     <hr />
     <image-contacts
@@ -15,7 +15,7 @@
       :address="item.address"
       :closing-hours="item.closing_hours"
       :opening-hours="item.opening_hours"
-      :is-left="true"
+      :is-left="itemIndex%2"
       :phone="item.contact.landline_phone"
       :title="item.name"
     />
