@@ -313,6 +313,8 @@ async function runMainApi() {
       filtered.push({
         title: element.title,
         img: element.image.path,
+        description: element.description,
+        linkPath: 'itineraries/' + element.title.replaceAll(' ', '-'),
       })
     }
 

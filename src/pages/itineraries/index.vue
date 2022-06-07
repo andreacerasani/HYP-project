@@ -1,20 +1,25 @@
 <template>
   <div>
     <top-image :bg-img="'images/itineraries.jpg'" :title="'Itineraries'" />
-    <carousel-multi-element
+    <!--     <carousel-multi-element
       title="Best Itineraries"
       :my-array="itineraries"
       :num-of-carousel="1"
+    /> -->
+    <img-des-carousel
+      :num-of-carousel="1"
+      title="Best Itineraries"
+      link-name="Discover More"
+      :myarray="filtered"
     />
-    <simple-content title="All Itineraries"/>
-    <mosaic 
-    :items="itineraries"
-    />
+    <simple-content title="All Itineraries" />
+    <mosaic :items="itineraries" />
   </div>
 </template>
 
 <script>
-import CarouselMultiElement from '~/components/carousels/MultiElementCarousel.vue'
+/* import CarouselMultiElement from '~/components/carousels/MultiElementCarousel.vue' */
+import ImgDesCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
 import Mosaic from '~/components/mosaics/CardMosaic.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
@@ -22,7 +27,8 @@ export default {
   name: 'ItinerariesPage',
   components: {
     TopImage,
-    CarouselMultiElement,
+    /* CarouselMultiElement, */
+    ImgDesCarousel,
     Mosaic,
     SimpleContent,
   },
@@ -30,10 +36,23 @@ export default {
     const { data } = await $axios.get('/api/itineraries')
     const { title, bgImg, itineraries } = data
 
+    const filtered = []
+    for (const element of itineraries) {
+      if (element.description != null) {
+        filtered.push({
+          title: element.title,
+          img: element.img,
+          description: element.description,
+          linkPath: element.linkPath,
+        })
+      }
+    }
+
     return {
       title,
       bgImg,
       itineraries,
+      filtered,
     }
   },
 }
