@@ -266,6 +266,7 @@ async function runMainApi() {
         id: element.id,
         title: element.title,
         img: element.images[0].path,
+        linkPath: element.title.replaceAll(' ', '-')
       })
     }
     const data = {
@@ -310,11 +311,15 @@ async function runMainApi() {
 
     const filtered = []
     for (const element of result) {
+      let link = "wip"
+      if(element.description != null){
+        link = 'itineraries/' + element.title.replaceAll(' ', '-')
+      }
       filtered.push({
         title: element.title,
         img: element.image.path,
         description: element.description,
-        linkPath: 'itineraries/' + element.title.replaceAll(' ', '-'),
+        linkPath: link,
       })
     }
 
@@ -365,6 +370,8 @@ async function runMainApi() {
       filtered.push({
         title: element.name,
         img: element.image.path,
+        /* TODO: Change with if description != null when description edded to db */
+        linkPath: element.name,
       })
     }
     const data = {

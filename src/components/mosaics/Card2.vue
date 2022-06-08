@@ -1,6 +1,6 @@
 <template>
   <div class="cards">
-    <a :href="toUrl(name)">
+    <nuxt-link :to="link">
       <div class="overflow-hide">
         <div style="position: relative">
           <div
@@ -12,7 +12,7 @@
           </span>
         </div>
       </div>
-    </a>
+    </nuxt-link>
   </div>
 </template>
 
@@ -28,23 +28,14 @@ export default {
       type: String,
       required: true,
     },
-    id: {
-      type: Number,
-      required: false,
-      default: 1,
-    },
-    breed: {
+    link: {
       type: String,
-      required: false,
-      default: '',
-    },
+      required: true,
+    }
   },
   methods: {
-    goToDetails() {
-      this.$router.push(`/details/${this.id}`)
-    },
-    toUrl(name) {
-      return this.$route.name+'/' + name.replaceAll(' ', '-')
+    toUrl(link) {
+      return this.$route.name+'/' + link.replaceAll(' ', '-')
     },
   },
 }

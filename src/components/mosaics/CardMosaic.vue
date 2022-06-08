@@ -7,19 +7,17 @@
           :key="`service-index-${itemIndex}`"
           :name="item.title"
           :img="item.img"
+          :link="item.linkPath"
         />
     </div>
   </div>
 </template>
 
 <script>
-// import Card from './Card.vue'
 import Card2 from '../mosaics/Card2.vue'
-/* import CarouselItem from '~/components/carousels/CarouselItem.vue' */
 export default {
   name: 'CardMosaic',
   components: {
-    /* CarouselItem, */
     // Card,
     Card2,
   },
