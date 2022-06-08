@@ -1,14 +1,17 @@
 <!-- Component to put inside a carousel with a single image with description and text on 
 the right and a possible link  -->
 <template>
-  <div class=" p-3 mb-5 bg-body rounded my-border">
-    <div class="row align-items-center flex-column flex-md-row ">
-      <div class="col offset-md-1 py-3">
-        <img :src="descrImg" class="rounded-3 img-fluid mx-auto d-block" />
-      </div>
+  <div class="p-3 mb-5 bg-body rounded my-border">
+    <div
+      class="row custom-pad align-items-center justify-content-evenly flex-column flex-md-row overflow-hide"
+    >
+      <div
+        class="col card-image rounded-3"
+        :style="{ 'background-image': 'url(' + descrImg + ')' }"
+      ></div>
 
-      <div class="col ms-txt text-center ">
-        <div class="row pb-3">
+      <div class="col text-center">
+        <div class="row pb-2 pt-3">
           <h3>{{ title }}</h3>
         </div>
         <div class="row pb-4">
@@ -16,7 +19,7 @@ the right and a possible link  -->
             {{ limitDescription(description, 300) }}
           </div>
         </div>
-        <div class="row justify-content-center pb-3">
+        <div class="row justify-content-center">
           <span v-if="linkPath !== 'def'">
             <nuxt-link :to="linkPath">
               <button type="button" class="btn btn-outline-primary my-button">
@@ -82,14 +85,15 @@ export default {
 </script>
 
 <style scoped>
-.ms-txt {
-  padding-right: 5%;
+.custom-pad{
+  padding-left: 5% !important;
+  padding-right: 5% !important
 }
-.my-button{
+.my-button {
   color: var(--subtitle-color);
   border-color: var(--subtitle-color);
 }
-.my-button:hover{
+.my-button:hover {
   background-color: var(--subtitle-color);
   color: white;
 }
@@ -99,5 +103,14 @@ export default {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   z-index: 6;
 }
-
+.overflow-hide {
+  overflow: hidden;
+  padding: 0;
+}
+.card-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 25vmax;
+}
 </style>

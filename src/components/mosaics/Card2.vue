@@ -4,7 +4,7 @@
       <div class="overflow-hide">
         <div style="position: relative">
           <div
-            class="card-img-top card-image"
+            class="card-image"
             :style="{ 'background-image': 'url(' + img + ')' }"
           ></div>
           <span class="card-bodi">
