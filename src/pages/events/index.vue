@@ -1,6 +1,7 @@
 <template>
   <div>
     <top-image :title="'Events'" :bg-img="'/images/events.jpg'" />
+    <breadcrumps page-name="events" />
     <carousel-img-des
       :title="'Upcoming Events'"
       :myarray="upcoming"
@@ -39,12 +40,14 @@
 import CarouselImgDes from '../../components/carousels/ImageDescriptionCarousel.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 import DescriptionCard from '~/components/main-elements/DescriptionCard.vue'
+import Breadcrumps from '~/components/Breadcrumps.vue'
 export default {
   name: 'EventsPage',
   components: {
     TopImage,
     DescriptionCard,
     CarouselImgDes,
+    Breadcrumps,
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/page-info/eventsType')

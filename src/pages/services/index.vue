@@ -1,6 +1,7 @@
 <template>
   <div>
     <top-image :title="'Services'" :bg-img="'/images/services.jpg'" />
+    <breadcrumps page-name="services" />
     <simple-content :title="'Services of Venice'" />
     <card-mosaic :items="serviceList" />
   </div>
@@ -10,6 +11,7 @@
 import TopImage from '~/components/utility/TopImage.vue'
 import CardMosaic from '~/components/mosaics/CardMosaic.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
+import Breadcrumps from '~/components/Breadcrumps.vue'
 
 export default {
   name: 'MainServicesPage',
@@ -17,6 +19,7 @@ export default {
     TopImage,
     CardMosaic,
     SimpleContent,
+    Breadcrumps,
   },
   async asyncData({ $axios }) {
     // db request

@@ -1,6 +1,7 @@
 <template>
   <div>
     <top-image :title="'History'" :bg-img="topImage" />
+    <breadcrumps page-name="History"/>
     <br />
     <hypertext-index :chapters="Chapters" />
     <br />
@@ -19,12 +20,14 @@
 import TopImage from '~/components/utility/TopImage.vue'
 import ChapterComponent from '~/components/text-elements/Chapter'
 import HypertextIndex from '~/components/utility/HypertextIndex.vue'
+import Breadcrumps from '~/components/Breadcrumps.vue'
 export default {
   name: 'CityPage',
   components: {
     TopImage,
     HypertextIndex,
     Chapter: ChapterComponent,
+    Breadcrumps,
   },
 /*   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/page-info/history')

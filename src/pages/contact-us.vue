@@ -1,7 +1,7 @@
 <template>
   <div>
-    <the-header />
     <top-image :title="'Contact Us'" :bg-img="bgImg" />
+    <breadcrumps page-name="contact-us" />
     <simple-content :title="'Vela Spa'" :description="description" />
     <div class="container-md">
       <contacts
@@ -12,26 +12,22 @@
         :opening-hour="openingHour"
       />
     </div>
-    <the-footer :link-name="'Homepage'" :link-path="'/'" />
   </div>
 </template>
 
 <script>
 import TopImage from '~/components/utility/TopImage.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
-import TheHeader from '~/components/utility/TheHeader.vue'
-import TheFooter from '~/components/utility/TheFooter.vue'
 import Contacts from '~/components/main-elements/Contacts.vue'
+import Breadcrumps from '~/components/Breadcrumps.vue'
 export default {
   name: 'ContactPage',
   components: {
     TopImage,
     SimpleContent,
-    TheHeader,
-    TheFooter,
     Contacts,
+    Breadcrumps,
   },
-  layout: 'empty',
   async asyncData({ $axios }) {},
   data() {
     const bgImg = '/images/city-hall.jpg'

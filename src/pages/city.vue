@@ -1,6 +1,7 @@
 <template>
   <div>
     <top-image :title="'City'" :bg-img="bgImg" />
+    <breadcrumps page-name="city" />
     <br>
     <div class="text-center">
       <a href="#Map"> Map</a> -
@@ -30,6 +31,7 @@ import TopImage from '~/components/utility/TopImage.vue'
 import DescriptionCard from '~/components/main-elements/DescriptionCard.vue'
 import MapCard from '~/components/main-elements/MapCard.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
+import Breadcrumps from '~/components/Breadcrumps.vue'
 export default {
   name: 'CityPage',
   components: {
@@ -37,6 +39,7 @@ export default {
     MapCard,
     TopImage,
     SimpleContent,
+    Breadcrumps,
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/page-info/city')

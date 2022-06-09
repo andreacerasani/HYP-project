@@ -1,14 +1,19 @@
 <template>
-    <p>
-      HOME PAGE
-    </p>
+  <div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <p>HOME</p>
+    <breadcrumps page-name="home"/>
+  </div>
 </template>
 
 <script>
+import Breadcrumps from '~/components/Breadcrumps.vue'
 export default {
   name: 'IndexPage',
-  components: {
-  },
+  components: {Breadcrumps},
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/page-info/index')
     const title = data.title
