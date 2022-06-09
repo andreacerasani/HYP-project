@@ -179,12 +179,12 @@ const pageContentObject = {
       bg_img: 'https://dummyimage.com/1500x500',
     },
     All: {
-      title: 'All 2022 Events',
+      title: 'All ' + new Date().getFullYear() + ' events',
       descrImg: 'https://dummyimage.com/600x300',
       description:
         'Discover all the fantastic events organized in the city of Venice during this year. Choose your favorites and plan your visit to Venice so you can have an unforgettable experience. Take part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
       linkName: 'Discover More',
-      linkPath: '/',
+      linkPath: '/events/event-types/year-events',
     },
     Summer: {
       title: 'Summer Events',
@@ -192,7 +192,7 @@ const pageContentObject = {
       description:
         "During the summer, Venice is colored in the brightest colors. Summer events range from the film festival to the famous Vogalonga. Be inspired by the cheerfulness of Venetians and relax while watching the reflections of the sunset on the water of the lagoon. It's never too late to enjoy a vacation.",
       linkName: 'Discover More',
-      linkPath: '/',
+      linkPath: '/events/event-types/summer-events',
     },
     Winter: {
       title: 'Winter Events',
@@ -200,7 +200,7 @@ const pageContentObject = {
       description:
         'In winter, the lagoon is filled with magic. Events such as Carnival, exhibitions and the marathon make Venice even more unique and unforgettable. Not to mention that the sea of the lagoon offers natural shelter from the cold of winter. ',
       linkName: 'Discover More',
-      linkPath: '/',
+      linkPath: '/events/event-types/winter-events',
     },
   },
 }
@@ -213,15 +213,6 @@ async function runMainApi() {
   app.get('/page-info/:topic', (req, res) => {
     const { topic } = req.params
     const result = pageContentObject[topic]
-    return res.json(result)
-  })
-
-  app.get('/cats/:id', async (req, res) => {
-    const id = +req.params.id
-    const result = await models.Cat.findOne({
-      where: { id },
-      include: [{ model: models.Location }],
-    })
     return res.json(result)
   })
 
@@ -410,6 +401,27 @@ async function runMainApi() {
 
   // %%%%%%%%%%%%%%%%%%%%%% EVENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+  function filterEventImages(result){
+    const filtered = []
+    for (const element of result) {
+      let pathImage = null
+      if (element.images.length) {
+        pathImage = element.images.sort((a, b) =>
+          a.path > b.path ? 1 : b.path > a.path ? -1 : 0
+        )[0].path
+      }
+      filtered.push({
+        title: element.title,
+        description: element.description,
+        date: element.date,
+        ticket: element.ticket,
+        img: pathImage,
+        linkPath: 'events/' + element.title.replaceAll(' ', '-'),
+      })
+    }
+    return filtered
+  }
+
   app.get('/events/:title', async (req, res) => {
     const { title } = req.params
     const titleMod = title.replaceAll('-', ' ')
@@ -459,28 +471,11 @@ async function runMainApi() {
         },
       ],
     })
-    const filtered = []
-    for (const element of result) {
-      let pathImage = null
-      if (element.images.length) {
-        pathImage = element.images.sort((a, b) =>
-          a.path > b.path ? 1 : b.path > a.path ? -1 : 0
-        )[0].path
-      }
-      filtered.push({
-        title: element.title,
-        description: element.description,
-        date: element.date,
-        ticket: element.ticket,
-        img: pathImage,
-        linkPath: 'events/' + element.title.replaceAll(' ', '-'),
-      })
-    }
-    return res.json(filtered)
+    return res.json(filterEventImages(result))
   })
 
   // HTTP GET api that returns the events in the current year
-  app.get('/year', async (req, res) => {
+  app.get('/year-events', async (req, res) => {
     const currDate = new Date()
     const result = await models.Events.findAll({
       where: [
@@ -499,17 +494,19 @@ async function runMainApi() {
         },
       ],
     })
+    const filtered = filterEventImages(result)
     const data = {
-      title: currDate.getFullYear() + ' events',
-      bgImg: 'https://dummyimage.com/1500x500',
-      latest_events: result.slice(0, 3),
-      rest_events: result.slice(3),
+      title: pageContentObject.eventsType.All.title,
+      description: pageContentObject.eventsType.All.description,
+      bgImg: pageContentObject.eventsType.All.descrImg,
+      latest_events: filtered.slice(0, 3),
+      rest_events: filtered.slice(3),
     }
     return res.json(data)
   })
 
   // HTTP GET api that returns the winter events
-  app.get('/winter', async (req, res) => {
+  app.get('/winter-events', async (req, res) => {
     const result = await models.Events.findAll({
       where: {
         [Op.or]: [
@@ -531,17 +528,21 @@ async function runMainApi() {
         },
       ],
     })
+
+    const filtered = filterEventImages(result)
+
     const data = {
-      title: 'Winter events',
-      bgImg: 'https://dummyimage.com/1500x500',
-      latest_events: result.slice(0, 3),
-      rest_events: result.slice(3),
+      title: pageContentObject.eventsType.Winter.title,
+      description:  pageContentObject.eventsType.Winter.description,
+      bgImg: pageContentObject.eventsType.Winter.descrImg,
+      latest_events: filtered.slice(0, 3),
+      rest_events: filtered.slice(3),
     }
     return res.json(data)
   })
 
   // HTTP GET api that returns the summer events
-  app.get('/summer', async (req, res) => {
+  app.get('/summer-events', async (req, res) => {
     const result = await models.Events.findAll({
       where: Sequelize.where(
         Sequelize.fn('to_char', Sequelize.col('date'), 'MMDD'),
@@ -555,11 +556,13 @@ async function runMainApi() {
         },
       ],
     })
+    const filtered = filterEventImages(result)
     const data = {
-      title: 'Summer events',
-      bgImg: 'https://dummyimage.com/1500x500',
-      latest_events: result.slice(0, 3),
-      rest_events: result.slice(3),
+      title: pageContentObject.eventsType.Summer.title,
+      description:  pageContentObject.eventsType.Summer.description,
+      bgImg: pageContentObject.eventsType.Summer.descrImg,
+      latest_events: filtered.slice(0, 3),
+      rest_events: filtered.slice(3),
     }
     return res.json(data)
   })
