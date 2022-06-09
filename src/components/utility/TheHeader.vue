@@ -31,7 +31,7 @@
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li>
           <nuxt-link to="/" class="nav-link">
-            <p class="hover-underline-animation align-middle ps-3"><img src="/images/header_icons/logo.png" style="height: 5vh; min-height: 50px" /></p>
+            <p class="align-middle ps-3 hover-zoom"><img src="/images/header_icons/logo.png" style="height: 5vh; min-height: 50px" /></p>
           </nuxt-link>
         </li>
         <li
@@ -234,5 +234,8 @@ p {
 .hover-underline-animation:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+.hover-zoom:hover{
+  transform: scaleX(1.1);
 }
 </style>
