@@ -1,6 +1,6 @@
 <template>
   <div>
-    <top-image :title="nameItinerary" :bg-img="'https://dummyimage.com/1500x500'" />
+    <top-image :title="nameItinerary" :bg-img="imageItinerary" />
     <simple-content :description="descriptionItinerary" />
     <map-card
       :title="'titleM'"
@@ -38,11 +38,11 @@ export default {
     const { title } = route.params
 
     const { data } = await $axios.get('/api/itineraries/' + title)
-
+    
     return {
       nameItinerary: data.title,
       descriptionItinerary: data.description,
-      imageItinerary: data.image,
+      imageItinerary: data.image.path,
       pois: data.pois,
     }
   },
