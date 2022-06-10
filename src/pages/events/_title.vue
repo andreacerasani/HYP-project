@@ -5,8 +5,8 @@
     <simple-content :description="description" />
     <br>
     <map-card
-      :title="'At ' + poi.title"
-      :description="'Address: ' + handleNull(poi.address)"
+      :title="poi.title"
+      :address="handleNull(poi.address)"
     />
 <br>
     <contacts

@@ -9,11 +9,17 @@ description that when the img shrinks the text goes down   -->
       </div>
       <div class="col text-center">
         <div class="row p-3">
-          <h3>{{ title }}</h3>
+          <h3><img src="/images/icons/location.png" /> {{ title }}</h3>
         </div>
         <div class="row p-2">
           <div>
-            <p>{{ description }}</p>
+            <button
+        type="button"
+        class="btn btn-outline-secondary btn-lg px-4 center"
+        @click="discoverMore"
+      >
+        Discover More
+      </button>
           </div>
         </div>
       </div>
@@ -30,11 +36,7 @@ export default {
       type: String,
       required: true,
     },
-    descrImg: {
-      type: String,
-      required: true,
-    },
-    description: {
+    address: {
       type: String,
       required: true,
     },
@@ -42,6 +44,14 @@ export default {
   data() {
     return {}
   },
+  methods: {
+    discoverMore(){
+      this.$router.push('/points-of-interest/'+ this.titleToLink(this.title))
+    },
+    titleToLink(title){
+      return title.replaceAll(' ', '-')
+    }
+  }
 }
 </script>
 
@@ -51,5 +61,9 @@ p{
 }
 h3{
   color:var(--subtitle-color);
+}
+img{
+  height: 3vh;
+  min-height: 25px
 }
 </style>
