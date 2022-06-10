@@ -180,7 +180,7 @@ const pageContentObject = {
     },
     All: {
       title: 'All ' + new Date().getFullYear() + ' events',
-      descrImg: 'https://dummyimage.com/600x300',
+      descrImg: '/images/events/event-types/yearevents.jpg',
       description:
         'Discover all the fantastic events organized in the city of Venice during this year. Choose your favorites and plan your visit to Venice so you can have an unforgettable experience. Take part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
       linkName: 'Discover More',
@@ -188,7 +188,7 @@ const pageContentObject = {
     },
     Summer: {
       title: 'Summer Events',
-      descrImg: 'https://dummyimage.com/600x300',
+      descrImg: '/images/events/event-types/summerevents.jpg',
       description:
         "During the summer, Venice is colored in the brightest colors. Summer events range from the film festival to the famous Vogalonga. Be inspired by the cheerfulness of Venetians and relax while watching the reflections of the sunset on the water of the lagoon. It's never too late to enjoy a vacation.",
       linkName: 'Discover More',
@@ -196,7 +196,7 @@ const pageContentObject = {
     },
     Winter: {
       title: 'Winter Events',
-      descrImg: 'https://dummyimage.com/600x300',
+      descrImg: '/images/events/event-types/winterevents.jpg',
       description:
         'In winter, the lagoon is filled with magic. Events such as Carnival, exhibitions and the marathon make Venice even more unique and unforgettable. Not to mention that the sea of the lagoon offers natural shelter from the cold of winter. ',
       linkName: 'Discover More',
@@ -257,7 +257,7 @@ async function runMainApi() {
         id: element.id,
         title: element.title,
         img: element.images[0].path,
-        linkPath: element.title.replaceAll(' ', '-')
+        linkPath: '/points-of-interest/' + element.title.replaceAll(' ', '-')
       })
     }
     const data = {
@@ -304,7 +304,7 @@ async function runMainApi() {
     for (const element of result) {
       let link = "wip"
       if(element.description != null){
-        link = 'itineraries/' + element.title.replaceAll(' ', '-')
+        link = '/itineraries/' + element.title.replaceAll(' ', '-')
       }
       filtered.push({
         title: element.title,
@@ -402,7 +402,10 @@ async function runMainApi() {
   // %%%%%%%%%%%%%%%%%%%%%% EVENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   function filterEventImages(result){
-    const filtered = []
+    const filtered = {
+      past_events: [],
+      new_events: []
+    }
     for (const element of result) {
       let pathImage = null
       if (element.images.length) {
@@ -410,14 +413,20 @@ async function runMainApi() {
           a.path > b.path ? 1 : b.path > a.path ? -1 : 0
         )[0].path
       }
-      filtered.push({
+      const filteredElement = {
         title: element.title,
         description: element.description,
         date: element.date,
         ticket: element.ticket,
         img: pathImage,
-        linkPath: 'events/' + element.title.replaceAll(' ', '-'),
-      })
+        linkPath: '/events/' + element.title.replaceAll(' ', '-'),
+      }
+      if (new Date(element.date) < new Date()){
+        filtered.past_events.push(filteredElement)
+      }
+      else{
+        filtered.new_events.push(filteredElement)
+      }
     }
     return filtered
   }
@@ -499,8 +508,9 @@ async function runMainApi() {
       title: pageContentObject.eventsType.All.title,
       description: pageContentObject.eventsType.All.description,
       bgImg: pageContentObject.eventsType.All.descrImg,
-      latest_events: filtered.slice(0, 3),
-      rest_events: filtered.slice(3),
+      past_events: filtered.past_events,
+      latest_events: filtered.new_events.slice(0, 3),
+      rest_events: filtered.new_events.slice(3),
     }
     return res.json(data)
   })
@@ -535,8 +545,9 @@ async function runMainApi() {
       title: pageContentObject.eventsType.Winter.title,
       description:  pageContentObject.eventsType.Winter.description,
       bgImg: pageContentObject.eventsType.Winter.descrImg,
-      latest_events: filtered.slice(0, 3),
-      rest_events: filtered.slice(3),
+      past_events: filtered.past_events,
+      latest_events: filtered.new_events.slice(0, 3),
+      rest_events: filtered.new_events.slice(3),
     }
     return res.json(data)
   })
@@ -561,8 +572,9 @@ async function runMainApi() {
       title: pageContentObject.eventsType.Summer.title,
       description:  pageContentObject.eventsType.Summer.description,
       bgImg: pageContentObject.eventsType.Summer.descrImg,
-      latest_events: filtered.slice(0, 3),
-      rest_events: filtered.slice(3),
+      past_events: filtered.past_events,
+      latest_events: filtered.new_events.slice(0, 3),
+      rest_events: filtered.new_events.slice(3),
     }
     return res.json(data)
   })

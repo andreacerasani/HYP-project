@@ -7,7 +7,7 @@
             class="card-image"
             :style="{ 'background-image': 'url(' + img + ')' }"
           ></div>
-          <span class="card-bodi">
+          <span class="card-body">
             <h5 class="card-title text-center">{{ name }}</h5>
           </span>
         </div>
@@ -32,12 +32,7 @@ export default {
       type: String,
       required: true,
     }
-  },
-  methods: {
-    toUrl(link) {
-      return this.$route.name+'/' + link.replaceAll(' ', '-')
-    },
-  },
+  }
 }
 </script>
 
@@ -86,7 +81,7 @@ export default {
   text-shadow: 0.1vw 0.1vw black;
   pointer-events: none;
 }
-.card-bodi {
+.card-body {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -95,7 +90,7 @@ export default {
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
-.card-bodi:hover {
+.card-body:hover {
 
 }
 </style>
