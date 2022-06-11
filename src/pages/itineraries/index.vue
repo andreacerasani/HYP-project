@@ -1,7 +1,7 @@
 <template>
   <div>
     <top-image :bg-img="'images/itineraries.jpg'" :title="'Itineraries'" />
-    <breadcrumps page-name="itineraries" />
+    <breadcrumbs page-name="itineraries" />
     <img-des-carousel
       :num-of-carousel="1"
       title="Best Itineraries"
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Breadcrumps from '~/components/Breadcrumps.vue'
+import Breadcrumbs from '~/components/Breadcrumbs.vue'
 /* import CarouselMultiElement from '~/components/carousels/MultiElementCarousel.vue' */
 import ImgDesCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
 import Mosaic from '~/components/mosaics/CardMosaic.vue'
@@ -28,7 +28,7 @@ export default {
     ImgDesCarousel,
     Mosaic,
     SimpleContent,
-    Breadcrumps,
+    Breadcrumbs,
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/itineraries')

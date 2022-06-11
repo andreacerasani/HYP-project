@@ -1,7 +1,7 @@
 <template>
   <div>
     <top-image :title="'Contact Us'" :bg-img="bgImg" />
-    <breadcrumps page-name="contact-us" />
+    <breadcrumbs page-name="contact-us" />
     <simple-content :title="'Vela Spa'" :description="description" />
     <div class="container-md">
       <contacts
@@ -19,14 +19,14 @@
 import TopImage from '~/components/utility/TopImage.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import Contacts from '~/components/main-elements/Contacts.vue'
-import Breadcrumps from '~/components/Breadcrumps.vue'
+import Breadcrumbs from '~/components/Breadcrumbs.vue'
 export default {
   name: 'ContactPage',
   components: {
     TopImage,
     SimpleContent,
     Contacts,
-    Breadcrumps,
+    Breadcrumbs,
   },
   async asyncData({ $axios }) {},
   data() {
