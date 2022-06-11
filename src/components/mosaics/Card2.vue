@@ -8,6 +8,7 @@
             :style="{ 'background-image': 'url(' + img + ')' }"
           ></div>
           <span class="card-body">
+            <h6 v-if="date !== null" class="card-title text-center">{{formatDate(date)}}</h6>
             <h5 class="card-title text-center">{{ name }}</h5>
           </span>
         </div>
@@ -17,12 +18,20 @@
 </template>
 
 <script>
+import common from '~/mixins/common.js'
+
 export default {
   name: 'Card2Component',
+  mixins: [common] ,
   props: {
     name: {
       type: String,
       required: true,
+    },
+    date: {
+      type: String,
+      required: false,
+      default: null
     },
     img: {
       type: String,

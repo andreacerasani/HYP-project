@@ -73,8 +73,11 @@
 </template>
 
 <script>
+import common from '~/mixins/common.js'
+
 export default {
   name: 'ContactsComponent',
+  mixins: [common] ,
   props: {
     title:{
       type: String,
@@ -82,7 +85,7 @@ export default {
       required: false,
     },
     date: {
-        type: Date,
+        type: String,
       default: null,
       required: false,
     },
@@ -118,11 +121,7 @@ export default {
     },
   },
   methods: {
-    formatDate(date){
-      const realDate = new Date(date)
-      const options = { day: 'numeric', month: 'long', year: 'numeric' };
-      return realDate.toLocaleDateString("en-GB", options)
-    }
+    
   }
 }
 </script>
