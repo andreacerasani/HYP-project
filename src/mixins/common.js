@@ -1,8 +1,6 @@
 
 export default {
     methods: {
-        formatMyDate(val){
-            return "Date: " + val
-        }
+        // You can insert methods here if they are used globally
     }
 }

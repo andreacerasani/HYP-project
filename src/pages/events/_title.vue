@@ -27,7 +27,7 @@
     </div>
     <br /><br /><br />
     <image-carousel
-      :title="'Some images'"
+      :title="'Gallery'"
       :my-array="formatArray(images)"
       :num-of-carousel="1"
     />
