@@ -453,7 +453,7 @@ async function runMainApi() {
         },
       ],
     })
-    return res.json(filterEventImages(result))
+    return res.json(filterEventImages(result).new_events)
   })
 
   // HTTP GET api that returns the events in the current year

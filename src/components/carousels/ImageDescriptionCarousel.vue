@@ -32,6 +32,7 @@
           :descr-img="myarray[n-1].img" 
           :title="myarray[n-1].title"
           :description="myarray[n-1].description"
+          :date="(myarray[n-1].hasOwnProperty('date')) ? myarray[n-1].date : null"
           :link-name="linkName"
           :link-path="myarray[n-1].linkPath"
            />

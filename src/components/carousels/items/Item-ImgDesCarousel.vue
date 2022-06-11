@@ -14,6 +14,9 @@ the right and a possible link  -->
         <div class="row pb-2 pt-3">
           <h3>{{ title }}</h3>
         </div>
+        <div v-if="date !== null">
+          <h5>{{formatDate(date)}}</h5>
+        </div>
         <div class="row pb-4">
           <div>
             {{ limitDescription(description, 300) }}
@@ -34,8 +37,11 @@ the right and a possible link  -->
 </template>
 
 <script>
+import common from '~/mixins/common.js'
+
 export default {
   name: 'DescriptionCard',
+  mixins: [common] ,
   props: {
     title: {
       type: String,
@@ -46,6 +52,11 @@ export default {
       type: String,
       required: false,
       default: '',
+    },
+    date: {
+      type: String,
+      required: false,
+      default: null
     },
     description: {
       type: String,

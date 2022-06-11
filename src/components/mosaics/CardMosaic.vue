@@ -6,6 +6,7 @@
           v-for="(item, itemIndex) in items"
           :key="`service-index-${itemIndex}`"
           :name="item.title"
+          :date="(item.hasOwnProperty('date')) ? item.date : null"
           :img="item.img"
           :link="item.linkPath"
         />
