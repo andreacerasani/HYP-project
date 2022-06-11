@@ -146,33 +146,6 @@ const pageContentObject = {
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
         Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`,
   },
-  contactUs: {
-    title_img: 'https://dummyimage.com/800x200/ff',
-    bg_img: 'https://dummyimage.com/1500x500',
-    title: 'feel free to contact us',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus c',
-  },
-  city: {
-    Top: {
-      title_img: '/images/extra/homepage.jpg',
-      bg_img: '/images/extra/homepage.jpg',
-    },
-    Map: {
-      title: 'MAP',
-      descrImg: 'https://dummyimage.com/600x300',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit.',
-    },
-    History: {
-      title: 'History',
-      descrImg: '/images/history.jpg',
-      description:
-        'Venice is the symbol of wise government and freedom. The lagoon was its only defense, there were no palace guards except the Arsenal workers and no parade ground except the sea. During centuries of feudalism and barbarism, Venice symbolised democracy and civilization.',
-      linkName: 'Discover More',
-      linkPath: '/history',
-    },
-  },
   eventsType: {
     Top: {
       title_img: 'https://dummyimage.com/800x200/ff',
@@ -180,7 +153,7 @@ const pageContentObject = {
     },
     All: {
       title: 'All ' + new Date().getFullYear() + ' events',
-      descrImg: 'https://dummyimage.com/600x300',
+      descrImg: '/images/events/event-types/yearevents.jpg',
       description:
         'Discover all the fantastic events organized in the city of Venice during this year. Choose your favorites and plan your visit to Venice so you can have an unforgettable experience. Take part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
       linkName: 'Discover More',
@@ -188,7 +161,7 @@ const pageContentObject = {
     },
     Summer: {
       title: 'Summer Events',
-      descrImg: 'https://dummyimage.com/600x300',
+      descrImg: '/images/events/event-types/summerevents.jpg',
       description:
         "During the summer, Venice is colored in the brightest colors. Summer events range from the film festival to the famous Vogalonga. Be inspired by the cheerfulness of Venetians and relax while watching the reflections of the sunset on the water of the lagoon. It's never too late to enjoy a vacation.",
       linkName: 'Discover More',
@@ -196,7 +169,7 @@ const pageContentObject = {
     },
     Winter: {
       title: 'Winter Events',
-      descrImg: 'https://dummyimage.com/600x300',
+      descrImg: '/images/events/event-types/winterevents.jpg',
       description:
         'In winter, the lagoon is filled with magic. Events such as Carnival, exhibitions and the marathon make Venice even more unique and unforgettable. Not to mention that the sea of the lagoon offers natural shelter from the cold of winter. ',
       linkName: 'Discover More',
@@ -257,7 +230,7 @@ async function runMainApi() {
         id: element.id,
         title: element.title,
         img: element.images[0].path,
-        linkPath: element.title.replaceAll(' ', '-')
+        linkPath: '/points-of-interest/' + element.title.replaceAll(' ', '-')
       })
     }
     const data = {
@@ -304,7 +277,7 @@ async function runMainApi() {
     for (const element of result) {
       let link = "wip"
       if(element.description != null){
-        link = 'itineraries/' + element.title.replaceAll(' ', '-')
+        link = '/itineraries/' + element.title.replaceAll(' ', '-')
       }
       filtered.push({
         title: element.title,
@@ -402,7 +375,10 @@ async function runMainApi() {
   // %%%%%%%%%%%%%%%%%%%%%% EVENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   function filterEventImages(result){
-    const filtered = []
+    const filtered = {
+      past_events: [],
+      new_events: []
+    }
     for (const element of result) {
       let pathImage = null
       if (element.images.length) {
@@ -410,14 +386,20 @@ async function runMainApi() {
           a.path > b.path ? 1 : b.path > a.path ? -1 : 0
         )[0].path
       }
-      filtered.push({
+      const filteredElement = {
         title: element.title,
         description: element.description,
         date: element.date,
         ticket: element.ticket,
         img: pathImage,
-        linkPath: 'events/' + element.title.replaceAll(' ', '-'),
-      })
+        linkPath: '/events/' + element.title.replaceAll(' ', '-'),
+      }
+      if (new Date(element.date) < new Date()){
+        filtered.past_events.push(filteredElement)
+      }
+      else{
+        filtered.new_events.push(filteredElement)
+      }
     }
     return filtered
   }
@@ -499,8 +481,9 @@ async function runMainApi() {
       title: pageContentObject.eventsType.All.title,
       description: pageContentObject.eventsType.All.description,
       bgImg: pageContentObject.eventsType.All.descrImg,
-      latest_events: filtered.slice(0, 3),
-      rest_events: filtered.slice(3),
+      past_events: filtered.past_events,
+      latest_events: filtered.new_events.slice(0, 3),
+      rest_events: filtered.new_events.slice(3),
     }
     return res.json(data)
   })
@@ -535,8 +518,9 @@ async function runMainApi() {
       title: pageContentObject.eventsType.Winter.title,
       description:  pageContentObject.eventsType.Winter.description,
       bgImg: pageContentObject.eventsType.Winter.descrImg,
-      latest_events: filtered.slice(0, 3),
-      rest_events: filtered.slice(3),
+      past_events: filtered.past_events,
+      latest_events: filtered.new_events.slice(0, 3),
+      rest_events: filtered.new_events.slice(3),
     }
     return res.json(data)
   })
@@ -561,8 +545,9 @@ async function runMainApi() {
       title: pageContentObject.eventsType.Summer.title,
       description:  pageContentObject.eventsType.Summer.description,
       bgImg: pageContentObject.eventsType.Summer.descrImg,
-      latest_events: filtered.slice(0, 3),
-      rest_events: filtered.slice(3),
+      past_events: filtered.past_events,
+      latest_events: filtered.new_events.slice(0, 3),
+      rest_events: filtered.new_events.slice(3),
     }
     return res.json(data)
   })

@@ -5,8 +5,8 @@
     <simple-content :description="description" />
     <br>
     <map-card
-      :title="'At ' + poi.title"
-      :description="'Address: ' + handleNull(poi.address)"
+      :title="poi.title"
+      :address="handleNull(poi.address)"
     />
 <br>
     <contacts
@@ -27,7 +27,7 @@
     </div>
     <br /><br /><br />
     <image-carousel
-      :title="'Some images'"
+      :title="'Gallery'"
       :my-array="formatArray(images)"
       :num-of-carousel="1"
     />

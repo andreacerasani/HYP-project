@@ -12,8 +12,7 @@
     <map-card
       id="Map"
       :title="titleM"
-      :descr-img="descrImgM"
-      :description="descriptionM"
+      :address="''"
     />
     <description-card
       id="History"
@@ -41,10 +40,29 @@ export default {
     SimpleContent,
     Breadcrumbs,
   },
-  async asyncData({ $axios }) {
-    const { data } = await $axios.get('/api/page-info/city')
 
-    const { History, Map, Top } = data
+  data() {
+    const city = {
+    Top: {
+      title_img: '/images/extra/homepage.jpg',
+      bg_img: '/images/extra/homepage.jpg',
+    },
+    Map: {
+      title: 'MAP',
+      descrImg: 'https://dummyimage.com/600x300',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit.',
+    },
+    History: {
+      title: 'History',
+      descrImg: '/images/history.jpg',
+      description:
+        'Venice is the symbol of wise government and freedom. The lagoon was its only defense, there were no palace guards except the Arsenal workers and no parade ground except the sea. During centuries of feudalism and barbarism, Venice symbolised democracy and civilization.',
+      linkName: 'Discover More',
+      linkPath: '/history',
+    },
+  }
+  const { History, Map, Top } = city
     const titleH = History.title
     const descrImgH = History.descrImg
     const descriptionH = History.description
@@ -55,7 +73,6 @@ export default {
     const bgImg = Top.bg_img
     const linkName = History.linkName
     const linkPath = History.linkPath
-
     return {
       titleH,
       descrImgH,
@@ -68,9 +85,6 @@ export default {
       linkName,
       linkPath,
     }
-  },
-  data() {
-    return {}
   },
 }
 </script>
