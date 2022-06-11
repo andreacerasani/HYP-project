@@ -51,7 +51,7 @@ h1 {
 }
 p {
   color: var(--text-color);
-  text-align: left;
+  text-align: justify;
 }
 img {
   max-width: 35em;

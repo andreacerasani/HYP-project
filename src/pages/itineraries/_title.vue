@@ -4,8 +4,7 @@
     <simple-content :description="descriptionItinerary" />
     <map-card
       :title="'titleM'"
-      :descr-img="'https://dummyimage.com/1000x600'"
-      :description="'descriptionM'"
+      :address="''"
     />
     <simple-content :title="'Points of Interest'" />
     <description-card

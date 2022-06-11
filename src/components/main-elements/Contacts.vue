@@ -5,9 +5,9 @@
       <h3 class="align-center">{{title}}</h3>
       <div class="col-lg-9 p-3 p-lg-5 pt-lg-3">
         <div v-if="date !== null">
-          <b>Date (YYYY/MM/DD) :</b>
+          <b>Date:</b>
           <p class="lead">
-            {{ date }}
+            {{ formatDate(date) }}
           </p>
         </div>
         <div v-if="openingHour != 'none' && !(openingHour == '00:00:00' && closingHour == '24:00:00')">
@@ -117,6 +117,13 @@ export default {
       required: false,
     },
   },
+  methods: {
+    formatDate(date){
+      const realDate = new Date(date)
+      const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      return realDate.toLocaleDateString("en-GB", options)
+    }
+  }
 }
 </script>
 
