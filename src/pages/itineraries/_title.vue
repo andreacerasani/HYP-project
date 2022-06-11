@@ -1,6 +1,7 @@
 <template>
   <div>
     <top-image :title="nameItinerary" :bg-img="imageItinerary" />
+    <breadcrumbs :page-name="nameItinerary" :link="$route.path"/>
     <simple-content :description="descriptionItinerary" />
     <map-card
       :title="'titleM'"
@@ -25,6 +26,7 @@ import MapCard from '~/components/main-elements/MapCard.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 import DescriptionCard from '~/components/main-elements/DescriptionCard.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
+import Breadcrumbs from '~/components/Breadcrumbs.vue'
 export default {
   name: 'ItinerarySingle',
   components: {
@@ -32,6 +34,7 @@ export default {
     MapCard,
     DescriptionCard,
     SimpleContent,
+    Breadcrumbs,
   },
   async asyncData({ route, $axios }) {
     const { title } = route.params

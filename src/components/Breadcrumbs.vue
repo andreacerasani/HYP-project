@@ -1,7 +1,25 @@
 <template>
-  <nav aria-label="breadcrumb">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="ms-3 pt-2">
     <ol class="breadcrumb">
-      <li v-for="link in createBread()" :key="link" class="breadcrumb-item" aria-current="page"><nuxt-link :to="link">{{link}}</nuxt-link></li>
+      <template v-for="(item, index) in createBread()">
+        <li
+          v-if="item.pageName !== pageName"
+          :key="index"
+          class="breadcrumb-item"
+          :class="[index === breadLength - 2? '' : 'd-none d-lg-block']"
+          aria-current="page"
+        >
+          <nuxt-link :to="item.link"> {{ item.pageName }}</nuxt-link>
+        </li>
+        <li
+          v-else
+          :key="index"
+          class="breadcrumb-item active d-none d-lg-block"
+          aria-current="page"
+        >
+          {{ item.pageName }}
+        </li>
+      </template>
     </ol>
   </nav>
 </template>
@@ -14,6 +32,10 @@ export default {
       type: String,
       required: true,
     },
+    link: {
+      type: String,
+      required: true,
+    },
   },
 
   data() {
@@ -21,15 +43,18 @@ export default {
       'events',
       'itineraries',
       'services',
-      'points-of-interest',
+      'points of interest',
       'city',
+      'contact us',
     ]
-    return { basePages }
+    const breadLength = 0
+    return { basePages, breadLength}
   },
 
   methods: {
     createBread() {
       if (process.client) {
+        const pageInfo = {pageName: this.pageName, link: this.link }
         const breadJson = sessionStorage.getItem('bread')
         let breadArray
         if (breadJson == null) {
@@ -38,25 +63,32 @@ export default {
           breadArray = JSON.parse(breadJson)
         }
 
-        if (breadArray.includes(this.pageName)) {
+        const indexOfObj = breadArray.findIndex(element => {
+          if (element.pageName === this.pageName){
+            return true
+          }
+          return false
+        })
+
+        if (indexOfObj !== -1) {
           breadArray.splice(
-            breadArray.indexOf(this.pageName) + 1,
+            indexOfObj + 1,
             breadArray.length
           )
-        } else if (this.pageName === 'home') {
-          breadArray = ['home']
-        } else if (this.$data.basePages.includes(this.pageName)) {
-          breadArray = ['home']
-          breadArray.push(this.pageName)
+        }
+        else if (this.$data.basePages.includes(this.pageName)) {
+          breadArray = [pageInfo]
         } else {
-          breadArray.push(this.pageName)
+          breadArray.push(pageInfo)
         }
 
         sessionStorage.setItem('bread', JSON.stringify(breadArray))
 
         if (breadArray.length <= 3) {
+          this.$data.breadLength = breadArray.length
           return breadArray
         } else {
+          this.$data.breadLength = 3
           return breadArray.slice(breadArray.length - 3)
         }
       }
@@ -64,5 +96,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>

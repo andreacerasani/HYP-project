@@ -1,7 +1,7 @@
 <template>
   <div>
     <top-image :title="'Contact Us'" :bg-img="bgImg" />
-    <breadcrumbs page-name="contact-us" />
+    <breadcrumbs page-name="contact us" link="contact us"/>
     <simple-content :title="'Vela Spa'" :description="description" />
     <div class="container-md">
       <contacts

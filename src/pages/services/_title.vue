@@ -1,6 +1,7 @@
 <template>
   <div>
     <top-image :bg-img="img" :title="title" />
+    <breadcrumbs :page-name="title" :link="$route.path"/>
     <simple-content
       :description="'Davide scrive la descrizione da bravo filosofo'"
     />
@@ -23,13 +24,14 @@
 </template>
 
 <script>
+import Breadcrumbs from '~/components/Breadcrumbs.vue'
 import ImageContacts from '~/components/main-elements/ImageContacts.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 
 export default {
   name: 'SingleServicePage',
-  components: { TopImage, SimpleContent, ImageContacts },
+  components: { TopImage, SimpleContent, ImageContacts, Breadcrumbs },
   async asyncData({ route, $axios }) {
     const title = route.params.title
     const { data } = await $axios.get('/api/services/' + title)

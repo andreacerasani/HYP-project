@@ -1,7 +1,7 @@
 <template>
   <div>
     <top-image :title="'History'" :bg-img="topImage" />
-    <breadcrumbs page-name="History"/>
+    <breadcrumbs page-name="history" link="history"/>
     <br />
     <hypertext-index :chapters="Chapters" />
     <br />

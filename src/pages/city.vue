@@ -1,7 +1,7 @@
 <template>
   <div>
     <top-image :title="'City'" :bg-img="bgImg" />
-    <breadcrumbs page-name="city" />
+    <breadcrumbs page-name="city" link="city"/>
     <br>
     <div class="text-center">
       <a href="#Map"> Map</a> -

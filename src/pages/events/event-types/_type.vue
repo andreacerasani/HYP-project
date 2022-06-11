@@ -1,6 +1,7 @@
 <template>
   <div>
     <top-image :title="title" :bg-img="bgImg" />
+    <breadcrumbs :page-name="title" :link="$route.path"/>
     <br>
     <simple-content :description="description" />
     <br /><br /><br />
@@ -20,6 +21,7 @@ import CardMosaic from '~/components/mosaics/CardMosaic.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 import ImageDescriptionCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
+import Breadcrumbs from '~/components/Breadcrumbs.vue'
 
 
 export default {
@@ -28,7 +30,8 @@ export default {
     TopImage,
     SimpleContent,
     CardMosaic,
-    ImageDescriptionCarousel
+    ImageDescriptionCarousel,
+    Breadcrumbs
     
   },
   async asyncData({ route, $axios }) {

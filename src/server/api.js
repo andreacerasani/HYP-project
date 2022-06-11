@@ -334,8 +334,7 @@ async function runMainApi() {
       filtered.push({
         title: element.name,
         img: element.image.path,
-        /* TODO: Change with if description != null when description edded to db */
-        linkPath: element.name,
+        linkPath: '/services/' + element.name.replaceAll(' ', '-')
       })
     }
     const data = {

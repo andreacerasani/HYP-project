@@ -1,6 +1,7 @@
 <template>
   <div>
     <top-image :title="title" :bg-img="images[0].path" />
+    <breadcrumbs :page-name="title" :link="$route.path"/>
     <br />
     <simple-content :description="description" />
     <br />
@@ -36,9 +37,10 @@ import ImageCarousel from '../../components/carousels/ImageCarousel.vue'
 import SimpleContent from '../../components/text-elements/SimpleContent.vue'
 import TopImage from '../../components/utility/TopImage.vue'
 import Contacts from '~/components/main-elements/Contacts.vue'
+import Breadcrumbs from '~/components/Breadcrumbs.vue'
 export default {
   name: 'SinglePoiPage',
-  components: { ImageCarousel, TopImage, SimpleContent, Contacts },
+  components: { ImageCarousel, TopImage, SimpleContent, Contacts, Breadcrumbs },
   async asyncData({ route, $axios }) {
     const title = route.params.title
     const {data} = await $axios.get('/api/points-of-interest/' + title)

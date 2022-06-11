@@ -1,7 +1,7 @@
 <template>
   <div>
     <top-image :bg-img="'images/itineraries.jpg'" :title="'Itineraries'" />
-    <breadcrumbs page-name="itineraries" />
+    <breadcrumbs page-name="itineraries" link="/itineraries"/>
     <img-des-carousel
       :num-of-carousel="1"
       title="Best Itineraries"
