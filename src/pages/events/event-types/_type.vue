@@ -34,7 +34,8 @@ export default {
     Breadcrumbs
     
   },
-  async asyncData({ route, $axios }) {
+  async asyncData({ route, $axios, error }) {
+    try{
     const { type } = route.params
     const { data } = await $axios.get('/api/' + type)
     const eventType = data
@@ -45,6 +46,10 @@ export default {
       bgImg: eventType.bgImg,
       latest_events:eventType.latest_events,
       rest_events:eventType.rest_events
+    }
+    }
+    catch(e){
+      error({ statusCode: 404, message: 'Page not found' })
     }
   }
 }

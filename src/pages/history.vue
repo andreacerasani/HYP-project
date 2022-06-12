@@ -29,16 +29,6 @@ export default {
     Chapter: ChapterComponent,
     Breadcrumbs,
   },
-/*   async asyncData({ $axios }) {
-    const { data } = await $axios.get('/api/page-info/history')
-
-    const { topImage, Chapters } = data
-
-    return {
-      topImage,
-      Chapters,
-    }
-  }, */
   data() {
     const topImage = '/images/history.jpg'
     const Chapters = [

@@ -32,7 +32,8 @@ import TopImage from '~/components/utility/TopImage.vue'
 export default {
   name: 'SingleServicePage',
   components: { TopImage, SimpleContent, ImageContacts, Breadcrumbs },
-  async asyncData({ route, $axios }) {
+  async asyncData({ route, $axios, error }) {
+    try{
     const title = route.params.title
     const { data } = await $axios.get('/api/services/' + title)
 
@@ -40,6 +41,10 @@ export default {
       title: data.name,
       img: data.image.path,
       items: data.service_points
+    }
+    }
+    catch(e){
+      error({ statusCode: 404, message: 'Page not found' })
     }
   },
 }

@@ -36,7 +36,8 @@ export default {
     SimpleContent,
     Breadcrumbs,
   },
-  async asyncData({ route, $axios }) {
+  async asyncData({ route, $axios, error }) {
+    try{
     const { title } = route.params
 
     const { data } = await $axios.get('/api/itineraries/' + title)
@@ -46,6 +47,10 @@ export default {
       descriptionItinerary: data.description,
       imageItinerary: data.image.path,
       pois: data.pois,
+    }
+    }
+    catch(e){
+      error({ statusCode: 404, message: 'Page not found' })
     }
   },
 

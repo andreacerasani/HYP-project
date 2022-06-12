@@ -59,7 +59,8 @@ export default {
     Breadcrumbs,
     ImageDescriptionCarousel,
   },
-  async asyncData({ route, $axios }) {
+  async asyncData({ route, $axios, error }) {
+    try{
     const title = route.params.title
     const { data } = await $axios.get('/api/points-of-interest/' + title)
     const poi = data
@@ -74,6 +75,10 @@ export default {
       images: poi.images,
       contact: poi.contact,
       events,
+    }
+    }
+    catch(e){
+      error({ statusCode: 404, message: 'Page not found' })
     }
   },
   head() {
