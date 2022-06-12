@@ -1,22 +1,19 @@
 <template>
   <div>
     <top-image :title="title" :bg-img="images[0].path" />
-    <breadcrumbs :page-name="title" :link="$route.path"/>
-    <br>
+    <breadcrumbs :page-name="title" :link="$route.path" />
+    <br />
     <simple-content :description="description" />
-    <br>
-    <map-card
-      :title="poi.title"
-      :address="handleNull(poi.address)"
-    />
-<br>
+    <br />
+    <map-card :title="poi.title" :address="handleNull(poi.address)" />
+    <br />
     <contacts
       :date="date"
       :email="contact.email"
       :landline-phone="contact.landline_phone"
       :mobile-phone="contact.mobile_phone"
     />
-<br /><br />
+    <br /><br />
     <div class="container-xl">
       <button
         type="button"
@@ -53,20 +50,25 @@ export default {
     Contacts,
     Breadcrumbs,
   },
-  async asyncData({ route, $axios }) {
+  async asyncData({ route, $axios, error }) {
+    try{
     const { title } = route.params
     const { data } = await $axios.get('/api/events/' + title)
     const event = data
-
-    return {
-      title: event.title,
-      description: event.description,
-      date: event.date,
-      ticket: event.ticket,
-      address: event.address,
-      poi: event.pois[0],
-      images: event.images,
-      contact: event.contact,
+     
+      return {
+        title: event.title,
+        description: event.description,
+        date: event.date,
+        ticket: event.ticket,
+        address: event.address,
+        poi: event.pois[0],
+        images: event.images,
+        contact: event.contact,
+      }
+    }
+    catch(e){
+      error({ statusCode: 404, message: 'Page not found' })
     }
   },
 
@@ -86,9 +88,8 @@ export default {
       }
       return formatted
     },
-    handleNull(address){
-      if(address != null) 
-        return address
+    handleNull(address) {
+      if (address != null) return address
       return this.poi.title
     },
   },

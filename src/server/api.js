@@ -254,11 +254,17 @@ async function runMainApi() {
           attributes: ['path'],
         },
         {
+          model: models.Events,
+          attributes: ['title', 'description', 'date'],
+          include: [{ model: models.Images, attributes: ['path'] }],
+        },
+        {
           model: models.Contacts,
           attributes: ['landline_phone', 'mobile_phone', 'email'],
         },
       ],
     })
+    
     return res.json(poi)
   })
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <top-image :title="title" :bg-img="images[0].path" />
-    <breadcrumbs :page-name="title" :link="$route.path"/>
+    <breadcrumbs :page-name="title" :link="$route.path" />
     <br />
     <simple-content :description="description" />
     <br />
@@ -23,10 +23,19 @@
         See all points of interest
       </button>
     </div>
-    <br /><br /><br />
+    <br />
+    <image-description-carousel
+      v-if="events.length > 0"
+      :title="'Is happening here'"
+      :myarray="events"
+      :link-name="'Discover More'"
+      :num-of-carousel="1"
+      class="pt-1"
+    />
+    <br /><br />
     <image-carousel
       :title="'Gallery'"
-      :num-of-carousel="1"
+      :num-of-carousel="2"
       :my-array="formatArray(images)"
     />
   </div>
@@ -38,13 +47,23 @@ import SimpleContent from '../../components/text-elements/SimpleContent.vue'
 import TopImage from '../../components/utility/TopImage.vue'
 import Contacts from '~/components/main-elements/Contacts.vue'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import ImageDescriptionCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
+
 export default {
   name: 'SinglePoiPage',
-  components: { ImageCarousel, TopImage, SimpleContent, Contacts, Breadcrumbs },
+  components: {
+    ImageCarousel,
+    TopImage,
+    SimpleContent,
+    Contacts,
+    Breadcrumbs,
+    ImageDescriptionCarousel,
+  },
   async asyncData({ route, $axios }) {
     const title = route.params.title
-    const {data} = await $axios.get('/api/points-of-interest/' + title)
+    const { data } = await $axios.get('/api/points-of-interest/' + title)
     const poi = data
+    const events = createArrayEvents(poi.events)
     return {
       title: poi.title,
       description: poi.description,
@@ -54,6 +73,7 @@ export default {
       address: poi.address,
       images: poi.images,
       contact: poi.contact,
+      events,
     }
   },
   head() {
@@ -76,11 +96,17 @@ export default {
     },
   },
 }
+function createArrayEvents(events) {
+  const filtered = []
+  for (const element of events) {
+    filtered.push({
+      title: element.title,
+      img: element.images[0].path,
+      description: element.description,
+      date: element.date,
+      linkPath: '/events/' + element.title.replaceAll(' ', '-'),
+    })
+  }
+  return filtered
+}
 </script>
-
-<style scoped>
-/* button.btn{
-  position: absolute;
-  left: 50%;
-} */
-</style>
