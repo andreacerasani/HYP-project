@@ -20,12 +20,12 @@
         class="btn btn-outline-secondary btn-lg px-4 center"
         @click="backToList"
       >
-        Back to list
+        See all points of interest
       </button>
     </div>
     <br /><br /><br />
     <image-carousel
-      :title="'See other images'"
+      :title="'Gallery'"
       :num-of-carousel="1"
       :my-array="formatArray(images)"
     />
