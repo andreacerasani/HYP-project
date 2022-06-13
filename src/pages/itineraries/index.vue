@@ -15,7 +15,6 @@
 
 <script>
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
-/* import CarouselMultiElement from '~/components/carousels/MultiElementCarousel.vue' */
 import ImgDesCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
 import Mosaic from '~/components/mosaics/CardMosaic.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
@@ -24,7 +23,6 @@ export default {
   name: 'ItinerariesPage',
   components: {
     TopImage,
-    /* CarouselMultiElement, */
     ImgDesCarousel,
     Mosaic,
     SimpleContent,
@@ -51,6 +49,11 @@ export default {
       bgImg,
       itineraries,
       filtered,
+    }
+  },
+  head() {
+    return {
+      title: "Itineraries - VisitVenice",
     }
   },
 }

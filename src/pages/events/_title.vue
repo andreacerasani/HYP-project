@@ -75,6 +75,11 @@ export default {
   data() {
     return {}
   },
+  head() {
+    return {
+      title: this.title,
+    }
+  },
   methods: {
     backToEvents() {
       this.$router.push('/events')

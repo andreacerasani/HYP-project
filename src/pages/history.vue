@@ -165,5 +165,10 @@ export default {
       Chapters
     }
   },
+  head() {
+    return {
+      title: "History of Venice",
+    }
+  },
 }
 </script>

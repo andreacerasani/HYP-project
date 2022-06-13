@@ -36,5 +36,10 @@ export default {
       pois,
     }
   },
+  head() {
+    return {
+      title: "Points of interest - VisitVenice",
+    }
+  },
 }
 </script>

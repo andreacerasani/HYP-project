@@ -28,7 +28,6 @@ export default {
     Contacts,
     Breadcrumbs,
   },
-  async asyncData({ $axios }) {},
   data() {
     const bgImg = '/images/city-hall.jpg'
     const email = 'info@veneziaunica.it'
@@ -43,6 +42,11 @@ export default {
       openingHour,
       closingHour,
       description
+    }
+  },
+  head() {
+    return {
+      title: "Contact Us - VisitVenice",
     }
   },
 }

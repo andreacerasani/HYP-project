@@ -10,7 +10,7 @@
             {{ formatDate(date) }}
           </p>
         </div>
-        <div v-if="openingHour != 'none' && !(openingHour == '00:00:00' && closingHour == '24:00:00')">
+        <div v-if="openingHour != 'none' && !(openingHour == '00:00:00' && (closingHour == '24:00:00' || closingHour == '00:00:00'))">
           <b>Opening hours:</b>
           <p class="lead">
             {{ openingHour.substring(0, 5) }} -

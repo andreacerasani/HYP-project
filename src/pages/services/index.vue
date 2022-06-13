@@ -22,7 +22,6 @@ export default {
     Breadcrumbs,
   },
   async asyncData({ $axios }) {
-    // db request
     const { data } = await $axios.get('/api/services')
     const { titleImg, bgImg, serviceList } = data
 
@@ -30,6 +29,11 @@ export default {
       titleImg,
       bgImg,
       serviceList,
+    }
+  },
+  head() {
+    return {
+      title: "Services - VisitVenice",
     }
   },
 }

@@ -53,9 +53,10 @@ export default {
       error({ statusCode: 404, message: 'Page not found' })
     }
   },
-
-  data() {
-    return {}
+  head() {
+    return {
+      title: this.nameItinerary,
+    }
   },
   methods: {
     backToInieraries() {

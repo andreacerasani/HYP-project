@@ -91,7 +91,7 @@ export default {
   },
   head() {
     return {
-      title: this.name,
+      title: this.title,
     }
   },
   methods: {

@@ -75,8 +75,10 @@ export default {
       linkPathWinter: data.Winter.linkPath,
     }
   },
-  data() {
-    return {}
+  head() {
+    return {
+      title: "Events - VisitVenice",
+    }
   },
 }
 </script>

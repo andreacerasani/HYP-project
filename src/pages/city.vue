@@ -77,5 +77,10 @@ export default {
       linkPath,
     }
   },
+  head() {
+    return {
+      title: "City - VisitVenice",
+    }
+  },
 }
 </script>

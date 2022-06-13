@@ -1,14 +1,19 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   ssr: true,
+  target: "static",
   serverMiddleware: [
     {
       path: '/api',
       handler: '~/server/api.js',
     },
   ],
+/*  this part can be useful if deployed on github pages
+   router: {
+    base: '/VisitVenice/'    
+  }, */
   head: {
-    title: 'Venice',
+    title: 'VisitVenice',
     htmlAttrs: {
       lang: 'en',
     },
@@ -19,7 +24,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/icon.ico' },
       {
         rel: 'stylesheet',
         href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css',
