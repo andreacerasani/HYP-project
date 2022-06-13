@@ -99,7 +99,4 @@ export default {
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
-.card-body:hover {
-
-}
 </style>

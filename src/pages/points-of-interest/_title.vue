@@ -15,6 +15,12 @@
     />
     <br /><br />
     <div class="container-xl">
+    <h1>Location</h1>
+    <br>
+    <div class="ratio ratio-16x9">
+    <map-component :address="address" />
+    </div>
+    <br><br>
       <button
         type="button"
         class="btn btn-outline-secondary btn-lg px-4 center"
@@ -48,6 +54,7 @@ import TopImage from '../../components/utility/TopImage.vue'
 import Contacts from '~/components/main-elements/Contacts.vue'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
 import ImageDescriptionCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
+import MapComponent from '~/components/MapComponent.vue'
 
 export default {
   name: 'SinglePoiPage',
@@ -58,6 +65,7 @@ export default {
     Contacts,
     Breadcrumbs,
     ImageDescriptionCarousel,
+    MapComponent,
   },
   async asyncData({ route, $axios, error }) {
     try{
@@ -115,3 +123,9 @@ function createArrayEvents(events) {
   return filtered
 }
 </script>
+<style scoped>
+h1 {
+  text-align: center;
+  color: var(--subtitle-color);
+}
+</style>

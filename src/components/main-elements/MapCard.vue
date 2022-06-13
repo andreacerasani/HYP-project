@@ -3,9 +3,11 @@ description that when the img shrinks the text goes down   -->
 <template>
   <div class="container-xl">
     <div class="row p-3 align-items-center flex-column flex-md-row">
-      <div class="col-md-8 text-center">
-        <!-- SISTEMARE LARGHEZZA E ALTEZZA MAPPA -->
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1j1jtaD1ZMBgln-8d0QsdbLmBrzXm3sXU&ehbc=2E312F"></iframe>
+      <div class="col text-center">
+        <div class="ratio ratio-16x9">
+        <!-- TODO: maybe we can use this for the itineraries <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1j1jtaD1ZMBgln-8d0QsdbLmBrzXm3sXU&ehbc=2E312F"></iframe> -->
+        <map-component :address="address"/>
+        </div>
       </div>
       <div class="col text-center">
         <div class="row p-3">
@@ -29,8 +31,10 @@ description that when the img shrinks the text goes down   -->
 </template>
 
 <script>
+import MapComponent from '../MapComponent.vue'
 export default {
   name: 'MapCard',
+  components: { MapComponent },
   props: {
     title: {
       type: String,

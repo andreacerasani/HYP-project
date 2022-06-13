@@ -1,4 +1,4 @@
-<!-- Component that shows a page of cards created from the items passed (each item can have title, img, link) -->
+<!-- Component that shows a page of cards created from the items passed (each item can have title, img, link, [date]) -->
 <template>
   <div>
     <div class="container-xl" style="text-align: center;">
