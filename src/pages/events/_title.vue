@@ -90,7 +90,7 @@ export default {
     },
     handleNull(address) {
       if (address != null) return address
-      return this.poi.title
+      return this.poi.title.concat(", Venezia")
     },
   },
 }

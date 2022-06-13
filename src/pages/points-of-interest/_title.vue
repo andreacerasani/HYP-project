@@ -18,7 +18,7 @@
     <h1>Location</h1>
     <br>
     <div class="ratio ratio-16x9">
-    <map-component :address="address" />
+    <map-component :address="handleNull(address)" />
     </div>
     <br><br>
       <button
@@ -106,6 +106,10 @@ export default {
     },
     backToList() {
       this.$router.push('/points-of-interest')
+    },
+    handleNull(address) {
+      if (address != null) return address
+      return this.title.concat(", Venezia")
     },
   },
 }
