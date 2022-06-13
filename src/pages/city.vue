@@ -12,7 +12,8 @@
     <map-card
       id="Map"
       :title="titleM"
-      :address="''"
+      :address="'Venice'"
+      :show-button='false'
     />
     <description-card
       id="History"
@@ -44,14 +45,10 @@ export default {
   data() {
     const city = {
     Top: {
-      title_img: '/images/extra/homepage.jpg',
       bg_img: '/images/extra/homepage.jpg',
     },
     Map: {
-      title: 'MAP',
-      descrImg: 'https://dummyimage.com/600x300',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit.',
+      title: 'Venice',
     },
     History: {
       title: 'History',
@@ -67,9 +64,6 @@ export default {
     const descrImgH = History.descrImg
     const descriptionH = History.description
     const titleM = Map.title
-    const descrImgM = Map.descrImg
-    const descriptionM = Map.description
-    const titleImg = Top.title_img
     const bgImg = Top.bg_img
     const linkName = History.linkName
     const linkPath = History.linkPath
@@ -78,9 +72,6 @@ export default {
       descrImgH,
       descriptionH,
       titleM,
-      descrImgM,
-      descriptionM,
-      titleImg,
       bgImg,
       linkName,
       linkPath,
