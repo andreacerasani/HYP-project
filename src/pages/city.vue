@@ -80,6 +80,7 @@ export default {
   head() {
     return {
       title: "City - VisitVenice",
+      /* TODO: description: "",   for each page */
     }
   },
 }

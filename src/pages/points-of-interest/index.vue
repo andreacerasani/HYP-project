@@ -39,6 +39,7 @@ export default {
   head() {
     return {
       title: "Points of interest - VisitVenice",
+      description: "See all points of interest in the city of Venice"
     }
   },
 }

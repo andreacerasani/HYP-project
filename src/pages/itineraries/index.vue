@@ -54,6 +54,7 @@ export default {
   head() {
     return {
       title: "Itineraries - VisitVenice",
+      description: "Choose among some beautiful itineraries in the city of Venice"
     }
   },
 }

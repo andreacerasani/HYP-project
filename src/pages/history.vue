@@ -168,6 +168,7 @@ export default {
   head() {
     return {
       title: "History of Venice",
+      description: "The history of Venice, from 584 A.D. to 2000 A.D."
     }
   },
 }

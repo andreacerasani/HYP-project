@@ -3,6 +3,7 @@
     <top-image :title="'Contact Us'" :bg-img="bgImg" />
     <breadcrumbs page-name="contact us" link="contact us"/>
     <simple-content :title="'Vela Spa'" :description="description" />
+    <br>
     <div class="container-md">
       <contacts
         :title="'How to reach us'"
@@ -47,6 +48,7 @@ export default {
   head() {
     return {
       title: "Contact Us - VisitVenice",
+      description: "Contacts of the company responsible for tourist information of the town of Venice"
     }
   },
 }
