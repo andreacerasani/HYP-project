@@ -5,9 +5,7 @@
     <simple-content
       :description="'Davide scrive la descrizione da bravo filosofo'"
     />
-    <div class="container-xl">
-      <img src="https://dummyimage.com/800x500" />
-    </div>
+    <map-card :address="address" title="prova"/>
     <hr />
     <image-contacts
       v-for="(item, itemIndex) in items"
@@ -26,12 +24,13 @@
 <script>
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
 import ImageContacts from '~/components/main-elements/ImageContacts.vue'
+import MapCard from '~/components/main-elements/MapCard.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 
 export default {
   name: 'SingleServicePage',
-  components: { TopImage, SimpleContent, ImageContacts, Breadcrumbs },
+  components: { TopImage, SimpleContent, ImageContacts, Breadcrumbs, MapCard },
   async asyncData({ route, $axios, error }) {
     try{
     const title = route.params.title
@@ -45,6 +44,11 @@ export default {
     }
     catch(e){
       error({ statusCode: 404, message: 'Page not found' })
+    }
+  },
+  data(){
+    return{
+      address: "https://www.google.com/maps/d/u/0/embed?mid=1qmgt64eJ4bsRPrK5boiyBN08Z694o60&ehbc=2E312F"
     }
   },
   head() {

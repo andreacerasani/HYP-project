@@ -176,6 +176,11 @@ const pageContentObject = {
       linkPath: '/events/event-types/winter-events',
     },
   },
+  services: {
+    Souvenir_Shop: 'Venice is known to be unforgettable, but having something to bring back memories of your visit is always the best choice. Whether it\'s a gift or something for yourself, the souvenir stores scattered around the city are perfect for buying wonderful items, from carnival masks to miniatures of the world-famous gondolas you\'re sure to find what you\'re looking for.',
+    Public_Transportation: 'Venice is not like any other city, and its public transportation is also not common. In the more central areas of the city there are the usual buses, but to get from one island to another quickly, the city offers frequent boat transportation as well as real water taxi for faster travel',
+    Pharmacy: 'Venice has no shortage of efficient and well-distributed health services with pharmacies scattered throughout the city, some of them historic and with a history to explore.'
+  }
 }
 
 // ---------------------------------- API

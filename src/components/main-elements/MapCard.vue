@@ -6,7 +6,8 @@ description that when the img shrinks the text goes down   -->
       <div class="col text-center">
         <div class="ratio ratio-16x9">
           <!-- TODO: maybe we can use this for the itineraries <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1j1jtaD1ZMBgln-8d0QsdbLmBrzXm3sXU&ehbc=2E312F"></iframe> -->
-          <map-component :address="address" />
+          <!-- map-component :address="address" /> -->
+          <iframe :src="address"></iframe>
         </div>
       </div>
       <div class="col text-center">
@@ -31,10 +32,8 @@ description that when the img shrinks the text goes down   -->
 </template>
 
 <script>
-import MapComponent from '../MapComponent.vue'
 export default {
   name: 'MapCard',
-  components: { MapComponent },
   props: {
     title: {
       type: String,
