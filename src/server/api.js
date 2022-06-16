@@ -179,7 +179,14 @@ const pageContentObject = {
   services: {
     Souvenir_Shop: 'Venice is known to be unforgettable, but having something to bring back memories of your visit is always the best choice. Whether it\'s a gift or something for yourself, the souvenir stores scattered around the city are perfect for buying wonderful items, from carnival masks to miniatures of the world-famous gondolas you\'re sure to find what you\'re looking for.',
     Public_Transportation: 'Venice is not like any other city, and its public transportation is also not common. In the more central areas of the city there are the usual buses, but to get from one island to another quickly, the city offers frequent boat transportation as well as real water taxi for faster travel',
-    Pharmacy: 'Venice has no shortage of efficient and well-distributed health services with pharmacies scattered throughout the city, some of them historic and with a history to explore.'
+    Pharmacy: 'Venice has no shortage of efficient and well-distributed health services with pharmacies scattered throughout the city, some of them historic and with a history to explore.',
+    Beach: 'Venice has a beautiful beach that protects the lagoon in which to spend the hottest days, cooling off in the Adriatic Sea or sunbathing under the Italian sky. The beach is a key element in the defense of the lagoon so pay attention to how you treat this place.',
+    Bar: 'Venice is also a place of leisure, and what better place than a bar to spend time with friends. From old and traditional to new and modern, bars in Venice can satisfy anyone\'s palate by making you spend moments in complete serenity.',
+    Port: 'Venice obviously has several ports, being a city on water it could not be otherwise. From large cruise ships to small private vessels, Venice\'s ports can cater to any need to the fullest.',
+    Bank: 'Venice has branches and pickup points all over the city where you can withdraw the money you need to experience the city to the fullest and support the artisans who are essential to keeping alive the traditional spirit of Venice that makes you feel at home.',
+    Hospital: 'Venice has an efficient, state-of-the-art public health service. The rescue service takes full advantage of the territorial particularities of the city so that it is always efficient in any situation, with personnel specifically trained to operate in the lagoon. For any emergency you can contact the unique number 112.',
+    Police: 'Venice has among its priorities the safety of every citizen and visitor, with patrols and security systems scattered throughout the city so that there is always a safe climate and making it possible to visit the city in complete peace and security. For any emergency you can contact the unique number 112.',
+    SuperMarket: 'Venice has a wide range of well-stocked stores where you can find all the items you may need during your stay in Venice. From personal goods to great Italian food the many SuperMarkets will have what you need.',
   }
 }
 
