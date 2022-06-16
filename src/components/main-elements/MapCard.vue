@@ -5,38 +5,37 @@ When the img shrinks the text goes down
 -->
 <template>
   <div class="container-xl">
-
-    <div
-      v-if="title !== null"
-      class="row p-3 align-items-center flex-column flex-md-row"
-    >
-      <div class="col text-center">
-        <div class="ratio ratio-16x9">
-          <iframe
-            :src="`https://maps.google.com/maps?hl=en&amp;q=${address}&amp;ie=UTF8&amp;z=${zoom}&amp;output=embed`"
-            frameborder="0"
-            scrolling="no"
-            marginheight="0"
-            marginwidth="0"
-          ></iframe>
+    <div v-if="title !== null">
+      <div class="row p-3 align-items-center flex-column flex-md-row">
+        <div class="col text-center">
+          <div class="ratio ratio-16x9">
+            <iframe
+              :src="`https://maps.google.com/maps?hl=en&amp;q=${address}&amp;ie=UTF8&amp;z=${zoom}&amp;output=embed`"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0"
+            ></iframe>
+          </div>
         </div>
-      </div>
-      <div class="col text-center">
-        <div class="row p-3">
-          <h3><img src="/images/icons/location.png" /> {{ title }}</h3>
-        </div>
-        <div class="row p-2">
-          <div v-if="showButton">
-            <button
-              type="button"
-              class="btn btn-outline-secondary btn-lg px-4 center"
-              @click="discoverMore"
-            >
-              Discover More
-            </button>
+        <div class="col text-center">
+          <div class="row p-3">
+            <h3><img src="/images/icons/location.png" /> {{ title }}</h3>
+          </div>
+          <div class="row p-2">
+            <div v-if="showButton">
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-lg px-4 center"
+                @click="discoverMore"
+              >
+                Discover More
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      <hr />
     </div>
 
     <div v-else-if="address == null" class="ratio ratio-21x9">
@@ -44,10 +43,10 @@ When the img shrinks the text goes down
     </div>
 
     <div v-else class="ratio ratio-21x9">
-      <iframe :src="`https://maps.google.com/maps?hl=en&amp;q=${address}&amp;ie=UTF8&amp;z=${zoom}&amp;output=embed`" />
+      <iframe
+        :src="`https://maps.google.com/maps?hl=en&amp;q=${address}&amp;ie=UTF8&amp;z=${zoom}&amp;output=embed`"
+      />
     </div>
-
-    <hr />
   </div>
 </template>
 
