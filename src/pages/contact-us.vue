@@ -48,7 +48,13 @@ export default {
   head() {
     return {
       title: "Contact Us - VisitVenice",
-      description: "Contacts of the company responsible for tourist information of the town of Venice"
+      meta:[
+        {
+          hid: 'description',
+          name: 'description',
+          content: "Contacts of the company responsible for tourist information of the town of Venice"
+        }
+      ]
     }
   },
 }
