@@ -34,6 +34,13 @@ export default {
   head() {
     return {
       title: "Services - VisitVenice",
+      meta:[
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'A collection of the main services useful for a tourist in the city of Venice'
+        }
+      ]
     }
   },
 }

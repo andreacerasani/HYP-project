@@ -80,7 +80,13 @@ export default {
   head() {
     return {
       title: "City - VisitVenice",
-      /* TODO: description: "",   for each page */
+      meta:[
+        {
+          hid: 'description',
+          name: 'description',
+          content: "Map and History of Venice, a magical and spectacular city with a priceless art and history heritage"
+        }
+      ]
     }
   },
 }

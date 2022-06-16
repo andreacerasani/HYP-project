@@ -15,7 +15,7 @@
       :descr-img="single.images[0].path"
       :description="single.description"
       :link-name="'Discover'"
-      :link-path="'/'"
+      :link-path="'/points-of-interest/' + single.title.replaceAll(' ', '-')"
       :is-left="isLeft(index)"
     />
   </div>
