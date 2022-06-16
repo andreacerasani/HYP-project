@@ -5,7 +5,7 @@
     <simple-content
       :description="'Davide scrive la descrizione da bravo filosofo'"
     />
-    <map-card :address="address" title="prova"/>
+    <map-card :web-link="address"/>
     <hr />
     <image-contacts
       v-for="(item, itemIndex) in items"
