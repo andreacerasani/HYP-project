@@ -1,7 +1,7 @@
 <template>
   <div>
     <top-image :title="'Events'" :bg-img="'/images/events.jpg'" />
-    <breadcrumbs page-name="events" link="/events"/>
+    <breadcrumbs page-name="Events" link="/events"/>
     <carousel-img-des
       :title="'Upcoming Events'"
       :myarray="upcoming"

@@ -17,9 +17,7 @@
     <div class="container-xl">
     <h1>Location</h1>
     <br>
-    <div class="ratio ratio-16x9">
-    <map-component :address="handleNull(address)" />
-    </div>
+    <map-card :address="handleNull(address)" />
     <br><br>
       <button
         type="button"
@@ -32,7 +30,7 @@
     <br />
     <image-description-carousel
       v-if="events.length > 0"
-      :title="'Is happening here'"
+      :title="'It\'s happening here'"
       :myarray="events"
       :link-name="'Discover More'"
       :num-of-carousel="1"
@@ -54,7 +52,7 @@ import TopImage from '../../components/utility/TopImage.vue'
 import Contacts from '~/components/main-elements/Contacts.vue'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
 import ImageDescriptionCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
-import MapComponent from '~/components/MapComponent.vue'
+import MapCard from '~/components/main-elements/MapCard.vue'
 
 export default {
   name: 'SinglePoiPage',
@@ -65,7 +63,7 @@ export default {
     Contacts,
     Breadcrumbs,
     ImageDescriptionCarousel,
-    MapComponent,
+    MapCard,
   },
   async asyncData({ route, $axios, error }) {
     try{
