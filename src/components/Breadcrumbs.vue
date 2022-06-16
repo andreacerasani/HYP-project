@@ -1,27 +1,33 @@
 <template>
-  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="ms-3 pt-2">
-    <ol class="breadcrumb">
-      <template v-for="(item, index) in createBread()">
-        <li
-          v-if="item.pageName !== pageName"
-          :key="index"
-          class="breadcrumb-item"
-          :class="[index === breadLength - 2? '' : 'd-none d-lg-block']"
-          aria-current="page"
-        >
-          <nuxt-link :to="item.link"> {{ item.pageName }}</nuxt-link>
-        </li>
-        <li
-          v-else
-          :key="index"
-          class="breadcrumb-item active d-none d-lg-block"
-          aria-current="page"
-        >
-          {{ item.pageName }}
-        </li>
-      </template>
-    </ol>
-  </nav>
+  <div class="container-xl">
+    <nav
+      style="--bs-breadcrumb-divider: '>'"
+      aria-label="breadcrumb"
+      class="ms-3 pt-2"
+    >
+      <ol class="breadcrumb">
+        <template v-for="(item, index) in createBread()">
+          <li
+            v-if="item.pageName !== pageName"
+            :key="index"
+            class="breadcrumb-item fs-4"
+            :class="[index === breadLength - 2 ? '' : 'd-none d-lg-block']"
+            aria-current="page"
+          >
+            <nuxt-link :to="item.link"> {{ item.pageName }}</nuxt-link>
+          </li>
+          <li
+            v-else
+            :key="index"
+            class="breadcrumb-item active d-none d-lg-block fs-4"
+            aria-current="page"
+          >
+            {{ item.pageName }}
+          </li>
+        </template>
+      </ol>
+    </nav>
+  </div>
 </template>
 
 <script>
@@ -40,21 +46,21 @@ export default {
 
   data() {
     const basePages = [
-      'events',
-      'itineraries',
-      'services',
-      'points of interest',
-      'city',
-      'contact us',
+      'Events',
+      'Itineraries',
+      'Services',
+      'Points Of Interest',
+      'City',
+      'Contact Us',
     ]
     const breadLength = 0
-    return { basePages, breadLength}
+    return { basePages, breadLength }
   },
 
   methods: {
     createBread() {
       if (process.client) {
-        const pageInfo = {pageName: this.pageName, link: this.link }
+        const pageInfo = { pageName: this.pageName, link: this.link }
         const breadJson = sessionStorage.getItem('bread')
         let breadArray
         if (breadJson == null) {
@@ -63,20 +69,16 @@ export default {
           breadArray = JSON.parse(breadJson)
         }
 
-        const indexOfObj = breadArray.findIndex(element => {
-          if (element.pageName === this.pageName){
+        const indexOfObj = breadArray.findIndex((element) => {
+          if (element.pageName === this.pageName) {
             return true
           }
           return false
         })
 
         if (indexOfObj !== -1) {
-          breadArray.splice(
-            indexOfObj + 1,
-            breadArray.length
-          )
-        }
-        else if (this.$data.basePages.includes(this.pageName)) {
+          breadArray.splice(indexOfObj + 1, breadArray.length)
+        } else if (this.$data.basePages.includes(this.pageName)) {
           breadArray = [pageInfo]
         } else {
           breadArray.push(pageInfo)
