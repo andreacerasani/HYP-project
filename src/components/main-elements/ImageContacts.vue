@@ -70,7 +70,7 @@
           <div v-if="address !== 'none' && address !== null">
             <b>Address:</b>
             <br />
-            <p class="lead">contenuto:"{{ address }}"</p>
+            <p class="lead">{{ address }}</p>
           </div>
         </div>
       </div>

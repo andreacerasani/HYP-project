@@ -247,7 +247,7 @@ async function runMainApi() {
     }
     const data = {
       title: 'Points of Interest',
-      bgImg: 'https://dummyimage.com/1500x500',
+      bgImg: 'https://dummyimage.com/1500x500', // TODO remove dummyimage
       pois: filtered,
     }
     return res.json(data)

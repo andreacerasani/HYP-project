@@ -1,31 +1,52 @@
-<!-- Component with a bigger image and a part of text on the right with title and 
-description that when the img shrinks the text goes down   -->
+<!-- Component that shows a map, based on the props passed it redemension itself to the correct
+width to have a title and button on the right or be a full screen map. 
+The map can be made from an address or from a weblink.
+When the img shrinks the text goes down
+-->
 <template>
   <div class="container-xl">
-    <div class="row p-3 align-items-center flex-column flex-md-row">
-      <div class="col text-center">
-        <div class="ratio ratio-16x9">
-          <map-component :address="address" />
+    <div v-if="title !== null">
+      <div class="row p-3 align-items-center flex-column flex-md-row">
+        <div class="col text-center">
+          <div class="ratio ratio-16x9">
+            <iframe
+              :src="`https://maps.google.com/maps?hl=en&amp;q=${address}&amp;ie=UTF8&amp;z=${zoom}&amp;output=embed`"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0"
+            ></iframe>
+          </div>
         </div>
-      </div>
-      <div class="col text-center">
-        <div class="row p-3">
-          <h3><img src="/images/icons/location.png" /> {{ title }}</h3>
-        </div>
-        <div class="row p-2">
-          <div v-if="showButton">
-            <button
-              type="button"
-              class="btn btn-outline-secondary btn-lg px-4 center"
-              @click="discoverMore"
-            >
-              Discover More
-            </button>
+        <div class="col text-center">
+          <div class="row p-3">
+            <h3><img src="/images/icons/location.png" /> {{ title }}</h3>
+          </div>
+          <div class="row p-2">
+            <div v-if="showButton">
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-lg px-4 center"
+                @click="discoverMore"
+              >
+                Discover More
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      <hr />
     </div>
-    <hr />
+
+    <div v-else-if="address == null" class="ratio ratio-21x9">
+      <iframe :src="webLink" />
+    </div>
+
+    <div v-else class="ratio ratio-21x9">
+      <iframe
+        :src="`https://maps.google.com/maps?hl=en&amp;q=${address}&amp;ie=UTF8&amp;z=${zoom}&amp;output=embed`"
+      />
+    </div>
   </div>
 </template>
 
@@ -35,20 +56,30 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
+      required: false,
+      default: null,
     },
     address: {
       type: String,
-      required: true,
+      required: false,
+      default: null,
     },
     showButton: {
       type: Boolean,
       required: false,
       default: true,
     },
+    webLink: {
+      type: String,
+      required: false,
+      default: null,
+    },
   },
   data() {
-    return {}
+    const zoom = 15
+    return {
+      zoom,
+    }
   },
   methods: {
     discoverMore() {

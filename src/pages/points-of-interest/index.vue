@@ -39,7 +39,14 @@ export default {
   head() {
     return {
       title: "Points of interest - VisitVenice",
-      description: "See all points of interest in the city of Venice"
+      description: "See all points of interest in the city of Venice",
+      meta:[
+        {
+          hid: 'description',
+          name: 'description',
+          content: "All the main points of interest in the city of Venice"
+        }
+      ]
     }
   },
 }

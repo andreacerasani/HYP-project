@@ -54,7 +54,13 @@ export default {
   head() {
     return {
       title: "Itineraries - VisitVenice",
-      description: "Choose among some beautiful itineraries in the city of Venice"
+      meta:[
+        {
+          hid: 'description',
+          name: 'description',
+          content: "A collection of some interesting itineraries in the city of Venice"
+        }
+      ]
     }
   },
 }

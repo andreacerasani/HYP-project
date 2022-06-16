@@ -78,6 +78,13 @@ export default {
   head() {
     return {
       title: "Events - VisitVenice",
+      meta:[
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'All the events of the city of Venice',
+        }
+      ]
     }
   },
 }
