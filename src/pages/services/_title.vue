@@ -3,14 +3,14 @@
     <top-image :bg-img="img" :title="title" />
     <breadcrumbs :page-name="title" :link="$route.path"/>
     <simple-content
-      :description="'Davide scrive la descrizione da bravo filosofo'"
+      :description="description"
     />
-    <map-card :web-link="address"/>
+    <map-card :web-link="map"/>
     <hr />
     <image-contacts
       v-for="(item, itemIndex) in items"
       :key="`service-${itemIndex}`"
-      img="https://dummyimage.com/600x300"
+      :img="item.image.path"
       :address="item.address"
       :closing-hours="item.closing_hours"
       :opening-hours="item.opening_hours"
@@ -39,16 +39,13 @@ export default {
     return {
       title: data.name,
       img: data.image.path,
+      map: data.map,
+      description: data.description,
       items: data.service_points
     }
     }
     catch(e){
       error({ statusCode: 404, message: 'Page not found' })
-    }
-  },
-  data(){
-    return{
-      address: "https://www.google.com/maps/d/u/0/embed?mid=1qmgt64eJ4bsRPrK5boiyBN08Z694o60&ehbc=2E312F"
     }
   },
   head() {

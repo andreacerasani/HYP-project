@@ -1,7 +1,7 @@
 <template>
   <div class="container-xl">
     <div
-      class="row p-3 align-items-center"
+      class="row p-3 align-items-center justify-content-evenly"
       :class="{
         'flex-column-reverse flex-md-row': isLeft,
         'flex-column flex-md-row': !isLeft,
@@ -39,11 +39,17 @@
         </div>
       </div>
 
-      <div class="col text-center">
+      <!--       <div class="col text-center">
         <img :src="img" class="rounded-3 img-fluid" />
+      </div> -->
+      <div class="col">
+        <div
+          class="card-image rounded-3"
+          :style="{ 'background-image': 'url(' + img + ')' }"
+        ></div>
       </div>
 
-      <div v-if="!isLeft" class="col text-center my-border">
+      <div v-if="!isLeft" class="col pt-2 text-center my-border">
         <div class="row p-3">
           <h3>{{ title }}</h3>
         </div>
@@ -136,5 +142,11 @@ b {
   border-style: solid;
   border-color: var(--div-color-light);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 50vmin;
 }
 </style>
