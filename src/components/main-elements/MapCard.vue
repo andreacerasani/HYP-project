@@ -11,10 +11,6 @@ When the img shrinks the text goes down
           <div class="ratio ratio-16x9">
             <iframe
               :src="`https://maps.google.com/maps?hl=en&amp;q=${address}&amp;ie=UTF8&amp;z=${zoom}&amp;output=embed`"
-              frameborder="0"
-              scrolling="no"
-              marginheight="0"
-              marginwidth="0"
             ></iframe>
           </div>
         </div>
