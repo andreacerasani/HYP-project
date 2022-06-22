@@ -81,6 +81,8 @@ async function initializeDatabaseConnection() {
       type: DataTypes.STRING(100),
       unique: true,
     },
+    map: DataTypes.STRING(100),
+    description: DataTypes.TEXT,
   })
 
   const Contacts = database.define('contacts', {
