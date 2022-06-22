@@ -56,8 +56,6 @@ export default {
 
     return {
       upcoming: upcomingEvents,
-      titleImg: data.Top.title_img,
-      bgImg: data.Top.bg_img,
       title2022: data.All.title,
       descrImg2022: data.All.descrImg,
       description2022: data.All.description,

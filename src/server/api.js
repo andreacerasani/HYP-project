@@ -152,10 +152,6 @@ const pageContentObject = {
         Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`,
   },
   eventsType: {
-    Top: {
-      title_img: 'https://dummyimage.com/800x200/ff',
-      bg_img: 'https://dummyimage.com/1500x500',
-    },
     All: {
       title: 'All ' + new Date().getFullYear() + ' events',
       descrImg: '/images/events/event-types/yearevents.jpg',
@@ -228,6 +224,10 @@ async function runMainApi() {
           attributes: ['path'],
         },
       ],
+      order: [
+        ['id', 'ASC'],
+        [models.Images ,'id', 'ASC']
+      ],
     })
     const filtered = []
     for (const element of result) {
@@ -240,7 +240,7 @@ async function runMainApi() {
     }
     const data = {
       title: 'Points of Interest',
-      bgImg: 'https://dummyimage.com/1500x500', // TODO remove dummyimage
+      bgImg: '/images/points-of-interest.jpg',
       pois: filtered,
     }
     return res.json(data)
@@ -267,6 +267,9 @@ async function runMainApi() {
           model: models.Contacts,
           attributes: ['landline_phone', 'mobile_phone', 'email'],
         },
+      ],
+      order: [
+        [models.Images ,'id', 'ASC']
       ],
     })
 

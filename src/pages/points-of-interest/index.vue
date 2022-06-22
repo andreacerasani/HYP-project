@@ -5,6 +5,7 @@
       :bg-img="'/images/points-of-interest.jpg'"
     />
     <breadcrumbs page-name="Points Of Interest" link="/points-of-interest"/>
+    <!-- TODO: change description or remove -->
     <simple-content
       :title="'Venice\'s Points of Interest'"
       :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.'"
