@@ -7,35 +7,44 @@
         'flex-column flex-md-row': !isLeft,
       }"
     >
-      <div v-if="isLeft" class="col text-center my-border">
-        <div class="row p-3">
+      <div v-if="isLeft" class="col text-start my-border">
+        <div class="row p-3 text-center">
           <h3>{{ title }}</h3>
         </div>
-        <div class="row p-2">
+        <div class="row p-2 ps-5">
+
           <div v-if="phone !== 'none'">
             <b>Phone</b>
             <br />
+            <div class="ps-4">
             <img
               src="/images/icons/phone_icon.png"
               class="icon-img-personalize"
             />
             <a :href="'tel:' + phone">+39 {{ phone }}</a>
+            </div>
           </div>
 
           <div v-if="openingHours != '00:00:00' && closingHours != '24:00:00'">
             <b>Opening hours:</b>
             <br />
+            <div class="ps-4">
             <p class="lead">
               {{ openingHours.substring(0, 5) }} -
               {{ closingHours.substring(0, 5) }}
             </p>
+            </div>
           </div>
 
           <div v-if="address !== 'none' && address !== null">
             <b>Address:</b>
             <br />
+            <div class="ps-4">
             <p class="lead">{{ address }}</p>
+            </div>
           </div>
+
+
         </div>
       </div>
 
@@ -49,34 +58,40 @@
         ></div>
       </div>
 
-      <div v-if="!isLeft" class="col pt-2 text-center my-border">
-        <div class="row p-3">
+      <div v-if="!isLeft" class="col pt-2 text-start my-border">
+        <div class="row p-3 text-center">
           <h3>{{ title }}</h3>
         </div>
-        <div class="row p-2">
+        <div class="row p-2 ps-5">
           <div v-if="phone !== 'none'">
             <b>Phone</b>
             <br />
+            <div class="ps-4">
             <img
               src="/images/icons/phone_icon.png"
               class="icon-img-personalize"
             />
             <a :href="'tel:' + phone">+39 {{ phone }}</a>
+            </div>
           </div>
 
           <div v-if="openingHours != '00:00:00' && closingHours != '24:00:00'">
             <b>Opening hours:</b>
             <br />
+            <div class="ps-4">
             <p class="lead">
               {{ openingHours.substring(0, 5) }} -
               {{ closingHours.substring(0, 5) }}
             </p>
+            </div>
           </div>
 
           <div v-if="address !== 'none' && address !== null">
             <b>Address:</b>
             <br />
+            <div class="ps-4">
             <p class="lead">{{ address }}</p>
+            </div>
           </div>
         </div>
       </div>
