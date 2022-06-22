@@ -19,7 +19,7 @@ for filename in file_order:
     print("Deleted table ", table)
 
     # Execute a query
-    with open(filepath, 'r') as f:
+    with open(filepath, 'r', encoding='utf-8') as f:
         next(f)
         cur.copy_from(f, table, sep=';', null='NULL')
 
