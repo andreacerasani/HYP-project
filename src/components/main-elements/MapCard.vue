@@ -70,12 +70,13 @@ export default {
       required: false,
       default: null,
     },
+    zoom:{
+      type: Number,
+      required: false,
+      default: 15,
+    }
   },
   data() {
-    const zoom = 15
-    return {
-      zoom,
-    }
   },
   methods: {
     discoverMore() {

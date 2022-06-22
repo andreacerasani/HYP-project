@@ -14,6 +14,7 @@
       :title="titleM"
       :address="'Venice'"
       :show-button='false'
+      :zoom="11"
     />
     <description-card
       id="History"
