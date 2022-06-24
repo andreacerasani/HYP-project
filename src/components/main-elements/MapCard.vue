@@ -76,8 +76,6 @@ export default {
       default: 15,
     }
   },
-  data() {
-  },
   methods: {
     discoverMore() {
       this.$router.push('/points-of-interest/' + this.titleToLink(this.title))
