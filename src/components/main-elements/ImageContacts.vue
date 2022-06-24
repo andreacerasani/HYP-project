@@ -20,6 +20,7 @@
             <img
               src="/images/icons/phone_icon.png"
               class="icon-img-personalize"
+              alt="Phone Icon"
             />
             <a :href="'tel:' + phone">+39 {{ phone }}</a>
             </div>
@@ -70,6 +71,7 @@
             <img
               src="/images/icons/phone_icon.png"
               class="icon-img-personalize"
+              alt="Phone Icon"
             />
             <a :href="'tel:' + phone">+39 {{ phone }}</a>
             </div>

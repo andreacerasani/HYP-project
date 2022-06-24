@@ -8,6 +8,7 @@
           v-if="image !== 'noImg'"
           :src="image"
           class="rounded-3 img-fluid float-end ps-4 pb-4 pt-2 pe-4"
+          :alt="removePath(image)"
         />
         <div v-for="(par, i) in paragraphs" :key="'p-index' + i">
           <p>
@@ -21,8 +22,10 @@
 </template>
 
 <script>
+import common from '~/mixins/common'
 export default {
   name: 'ChapterComponent',
+  mixins: [common],
   props: {
     title: {
       type: String,

@@ -16,7 +16,7 @@ When the img shrinks the text goes down
         </div>
         <div class="col text-center">
           <div class="row p-3">
-            <h3><img src="/images/icons/location.png" /> {{ title }}</h3>
+            <h3><img src="/images/icons/location.png" alt="Location Icon" /> {{ title }}</h3>
           </div>
           <div class="row p-2">
             <div v-if="showButton">
