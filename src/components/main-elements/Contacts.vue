@@ -39,6 +39,7 @@
               <img
                 src="/images/icons/phone_icon.png"
                 class="icon-img-personalize"
+                alt="landline Phone Icon"
               />
               &nbsp; landline phone: &emsp; &nbsp;
               <br class="hidden-ss" />
@@ -50,6 +51,7 @@
               <img
                 src="/images/icons/phone_icon.png"
                 class="icon-img-personalize"
+                alt="Mobile Phone Icon"
               />
               &nbsp; mobile phone: &emsp;&emsp;
               <br class="hidden-ss" />
@@ -60,6 +62,7 @@
               <img
                 src="/images/icons/email_icon.png"
                 class="icon-img-personalize"
+                alt="Email Icon"
               />
               &nbsp; mail: &emsp; &emsp; &emsp; &emsp; &emsp;
               <br class="hidden-ss" />
