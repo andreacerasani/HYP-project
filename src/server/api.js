@@ -158,7 +158,7 @@ const pageContentObject = {
       description:
         'Discover all the fantastic events organized in the city of Venice during this year. Choose your favorites and plan your visit to Venice so you can have an unforgettable experience. Take part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
       linkName: 'Discover More',
-      linkPath: '/events/event-types/year-events',
+      linkPath: '/events/event-types/year-events/' + new Date().getFullYear(),
     },
     Summer: {
       title: 'Summer Events',
@@ -166,7 +166,7 @@ const pageContentObject = {
       description:
         "During the summer, Venice is colored in the brightest colors. Summer events range from the film festival to the famous Vogalonga. Be inspired by the cheerfulness of Venetians and relax while watching the reflections of the sunset on the water of the lagoon. It's never too late to enjoy a vacation.",
       linkName: 'Discover More',
-      linkPath: '/events/event-types/summer-events',
+      linkPath: '/events/event-types/summer-events/all',
     },
     Winter: {
       title: 'Winter Events',
@@ -174,7 +174,7 @@ const pageContentObject = {
       description:
         'In winter, the lagoon is filled with magic. Events such as Carnival, exhibitions and the marathon make Venice even more unique and unforgettable. Not to mention that the sea of the lagoon offers natural shelter from the cold of winter. ',
       linkName: 'Discover More',
-      linkPath: '/events/event-types/winter-events',
+      linkPath: '/events/event-types/winter-events/all',
     },
   },
 }
@@ -396,8 +396,8 @@ async function runMainApi() {
 
   function filterEventImages(result) {
     const filtered = {
-      past_events: [],
-      new_events: [],
+      upcoming_events: [],
+      all_events: [],
     }
     for (const element of result) {
       let pathImage = null
@@ -414,11 +414,10 @@ async function runMainApi() {
         img: pathImage,
         linkPath: '/events/' + element.title.replaceAll(' ', '-'),
       }
-      if (new Date(element.date) < new Date()) {
-        filtered.past_events.push(filteredElement)
-      } else {
-        filtered.new_events.push(filteredElement)
+      if (new Date(element.date) >= new Date() && filtered.upcoming_events.length < 3) {
+        filtered.upcoming_events.push(filteredElement)
       }
+      filtered.all_events.push(filteredElement)
     }
     return filtered
   }
@@ -473,39 +472,55 @@ async function runMainApi() {
   })
 
   // HTTP GET api that returns the events in the current year
-  app.get('/year-events', async (req, res) => {
-    const currDate = new Date()
-    const result = await models.Events.findAll({
-      where: [
-        {
-          date: {
-            [Op.gte]: currDate,
-            [Op.lte]: new Date(currDate.getFullYear() + '-12-31'),
+  app.get('/year-events/:year', async (req, res) => {
+    const { year } = req.params
+    let result = ''
+    let title = ''
+    if (year === 'all'){
+      title = 'All Events'
+      result = await models.Events.findAll({
+        order: [['date', 'ASC']],
+        include: [
+          {
+            model: models.Images,
+            attributes: ['path'],
           },
-        },
-      ],
-      order: [['date', 'ASC']],
-      include: [
-        {
-          model: models.Images,
-          attributes: ['path'],
-        },
-      ],
-    })
+        ],
+      })
+    }
+    else{
+      title = 'All ' + year + ' Events'
+      result = await models.Events.findAll({
+        where: [
+          {
+            date: {
+              [Op.gte]: new Date(year + '-01-01'),
+              [Op.lte]: new Date(year + '-12-31'),
+            },
+          },
+        ],
+        order: [['date', 'ASC']],
+        include: [
+          {
+            model: models.Images,
+            attributes: ['path'],
+          },
+        ],
+      })
+    }
     const filtered = filterEventImages(result)
     const data = {
-      title: pageContentObject.eventsType.All.title,
+      title,
       description: pageContentObject.eventsType.All.description,
       bgImg: pageContentObject.eventsType.All.descrImg,
-      past_events: filtered.past_events,
-      latest_events: filtered.new_events.slice(0, 3),
-      rest_events: filtered.new_events.slice(3),
+      upcoming_events: filtered.upcoming_events,
+      all_events: filtered.all_events,
     }
     return res.json(data)
   })
 
   // HTTP GET api that returns the winter events
-  app.get('/winter-events', async (req, res) => {
+  app.get('/winter-events/all', async (req, res) => {
     const result = await models.Events.findAll({
       where: {
         [Op.or]: [
@@ -534,15 +549,14 @@ async function runMainApi() {
       title: pageContentObject.eventsType.Winter.title,
       description: pageContentObject.eventsType.Winter.description,
       bgImg: pageContentObject.eventsType.Winter.descrImg,
-      past_events: filtered.past_events,
-      latest_events: filtered.new_events.slice(0, 3),
-      rest_events: filtered.new_events.slice(3),
+      upcoming_events: filtered.all_events.slice(0, 3),
+      all_events: filtered.all_events,
     }
     return res.json(data)
   })
 
   // HTTP GET api that returns the summer events
-  app.get('/summer-events', async (req, res) => {
+  app.get('/summer-events/all', async (req, res) => {
     const result = await models.Events.findAll({
       where: Sequelize.where(
         Sequelize.fn('to_char', Sequelize.col('date'), 'MMDD'),
@@ -561,9 +575,8 @@ async function runMainApi() {
       title: pageContentObject.eventsType.Summer.title,
       description: pageContentObject.eventsType.Summer.description,
       bgImg: pageContentObject.eventsType.Summer.descrImg,
-      past_events: filtered.past_events,
-      latest_events: filtered.new_events.slice(0, 3),
-      rest_events: filtered.new_events.slice(3),
+      upcoming_events: filtered.all_events.slice(0, 3),
+      all_events: filtered.all_events,
     }
     return res.json(data)
   })
