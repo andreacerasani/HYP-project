@@ -190,30 +190,6 @@ async function runMainApi() {
     return res.json(result)
   })
 
-  app.get('/main-services', async (req, res) => {
-    const result = await models.ServiceTypes.findAll({
-      include: [
-        {
-          model: models.Images,
-          attributes: ['path'],
-        },
-      ],
-    })
-    const filtered = []
-    for (const element of result) {
-      filtered.push({
-        title: element.name,
-        img: element.image.path,
-      })
-    }
-    const data = {
-      titleImg: 'https://dummyimage.com/800x200/ff',
-      bgImg: 'https://dummyimage.com/1500x500',
-      serviceList: filtered,
-    }
-    return res.json(data)
-  })
-
   // %%%%%%%%%%%%%%%%%%%%%%%% POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   app.get('/points-of-interest', async (req, res) => {
@@ -226,7 +202,7 @@ async function runMainApi() {
       ],
       order: [
         ['id', 'ASC'],
-        [models.Images ,'id', 'ASC']
+        [models.Images, 'id', 'ASC'],
       ],
     })
     const filtered = []
@@ -234,18 +210,15 @@ async function runMainApi() {
       filtered.push({
         id: element.id,
         title: element.title,
-        img: element.images[0].path,
+        images: element.images,
         linkPath: '/points-of-interest/' + element.title.replaceAll(' ', '-'),
       })
     }
-    const data = {
-      title: 'Points of Interest',
-      bgImg: '/images/points-of-interest.jpg',
-      pois: filtered,
-    }
+    const data = filtered
     return res.json(data)
   })
 
+  // %%%%%%%%%%%%%%%%%%%%%%%% SINGLE POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   app.get('/points-of-interest/:title', async (req, res) => {
     const { title } = req.params
     const titleMod = title.replaceAll('-', ' ')
@@ -268,12 +241,12 @@ async function runMainApi() {
           attributes: ['landline_phone', 'mobile_phone', 'email'],
         },
       ],
-      order: [
-        [models.Images ,'id', 'ASC']
-      ],
+      order: [[models.Images, 'id', 'ASC']],
     })
 
-    return res.json(poi)
+    const data = poi
+
+    return res.json(data)
   })
 
   // %%%%%%%%%%%%%%%%%%%%%% ITINERARIES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -295,17 +268,14 @@ async function runMainApi() {
       }
       filtered.push({
         title: element.title,
-        img: element.image.path,
+        images: [element.image],
         description: element.description,
         linkPath: link,
       })
     }
 
-    const data = {
-      title: 'Itineraries',
-      bgImg: 'https://dummyimage.com/1500x500',
-      itineraries: filtered,
-    }
+    const data = filtered
+
     return res.json(data)
   })
 
@@ -330,7 +300,10 @@ async function runMainApi() {
         },
       ],
     })
-    return res.json(itinerary)
+
+    const data = itinerary
+
+    return res.json(data)
   })
 
   // %%%%%%%%%%%%%%%%%%%%% SERVICES %%%%%%%%%%%%%%%%%%%%%%
@@ -347,15 +320,12 @@ async function runMainApi() {
     for (const element of result) {
       filtered.push({
         title: element.name,
-        img: element.image.path,
+        images: [element.image],
         linkPath: '/services/' + element.name.replaceAll(' ', '-'),
       })
     }
-    const data = {
-      titleImg: 'https://dummyimage.com/800x200/ff',
-      bgImg: 'https://dummyimage.com/1500x500',
-      serviceList: filtered,
-    }
+    const data = filtered
+
     return res.json(data)
   })
 
@@ -368,7 +338,7 @@ async function runMainApi() {
       where: {
         name: titleMod,
       },
-      attributes:['name','map','description'],
+      attributes: ['name', 'map', 'description'],
       include: [
         {
           model: models.Images,
@@ -400,18 +370,22 @@ async function runMainApi() {
       new_events: [],
     }
     for (const element of result) {
-      let pathImage = null
+      /* let pathImage = null */
       if (element.images.length) {
-        pathImage = element.images.sort((a, b) =>
+        /*         pathImage = element.images.sort((a, b) =>
           a.path > b.path ? 1 : b.path > a.path ? -1 : 0
-        )[0].path
+        )[0].path */
+        element.images = element.images.sort((a, b) =>
+          a.path > b.path ? 1 : b.path > a.path ? -1 : 0
+        )
       }
       const filteredElement = {
         title: element.title,
         description: element.description,
         date: element.date,
         ticket: element.ticket,
-        img: pathImage,
+        /*         img: pathImage, */
+        images: element.images,
         linkPath: '/events/' + element.title.replaceAll(' ', '-'),
       }
       if (new Date(element.date) < new Date()) {
@@ -420,8 +394,11 @@ async function runMainApi() {
         filtered.new_events.push(filteredElement)
       }
     }
+
     return filtered
   }
+
+  // %%%%%%%%%%%%%%%%%%%%%% SINGLE EVENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   app.get('/events/:title', async (req, res) => {
     const { title } = req.params
@@ -447,7 +424,8 @@ async function runMainApi() {
       ],
     })
 
-    return res.json(event)
+    const data = event
+    return res.json(data)
   })
 
   // HTTP GET api that returns the next 4 upcoming events
@@ -469,7 +447,10 @@ async function runMainApi() {
         },
       ],
     })
-    return res.json(filterEventImages(result).new_events)
+
+    const data = filterEventImages(result).new_events
+
+    return res.json(data)
   })
 
   // HTTP GET api that returns the events in the current year
@@ -501,6 +482,7 @@ async function runMainApi() {
       latest_events: filtered.new_events.slice(0, 3),
       rest_events: filtered.new_events.slice(3),
     }
+
     return res.json(data)
   })
 
@@ -538,6 +520,7 @@ async function runMainApi() {
       latest_events: filtered.new_events.slice(0, 3),
       rest_events: filtered.new_events.slice(3),
     }
+
     return res.json(data)
   })
 
@@ -565,6 +548,7 @@ async function runMainApi() {
       latest_events: filtered.new_events.slice(0, 3),
       rest_events: filtered.new_events.slice(3),
     }
+
     return res.json(data)
   })
 

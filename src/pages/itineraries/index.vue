@@ -1,7 +1,7 @@
 <template>
   <div>
     <top-image :bg-img="'images/itineraries.jpg'" :title="'Itineraries'" />
-    <breadcrumbs page-name="Itineraries" link="/itineraries"/>
+    <breadcrumbs page-name="Itineraries" link="/itineraries" />
     <img-des-carousel
       :num-of-carousel="1"
       title="Best Itineraries"
@@ -9,7 +9,7 @@
       :myarray="filtered"
     />
     <simple-content title="All Itineraries" />
-    <mosaic :items="itineraries" />
+    <mosaic :items="data" />
   </div>
 </template>
 
@@ -30,14 +30,14 @@ export default {
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/itineraries')
-    const { title, bgImg, itineraries } = data
+    // const { itineraries } = data
 
     const filtered = []
-    for (const element of itineraries) {
+    for (const element of data) {
       if (element.description != null) {
         filtered.push({
           title: element.title,
-          img: element.img,
+          images: element.images,
           description: element.description,
           linkPath: element.linkPath,
         })
@@ -45,23 +45,51 @@ export default {
     }
 
     return {
-      title,
-      bgImg,
-      itineraries,
+      // itineraries,
+      data,
       filtered,
     }
   },
   head() {
     return {
-      title: "Itineraries - VisitVenice",
-      meta:[
+      title: 'Itineraries - VisitVenice',
+      meta: [
         {
           hid: 'description',
           name: 'description',
-          content: "A collection of some interesting itineraries in the city of Venice"
-        }
-      ]
+          content:
+            'A collection of some interesting itineraries in the city of Venice',
+        },
+      ],
     }
+  },
+  mounted() {
+    const linksJson = sessionStorage.getItem('groupLinks')
+
+    let groupLinks = []
+    if (linksJson == null || linksJson === 'undefined') {
+      groupLinks = [
+        { type: 'services', links: [] },
+        { type: 'events', links: [] },
+        { type: 'pois', links: [] },
+        { type: 'itineraries', links: [] },
+        { type: 'event-type', links: [] },
+      ]
+    } else {
+      groupLinks = JSON.parse(linksJson)
+    }
+
+    const pageLinks = []
+    this.$data.filtered.forEach((element) => {
+      pageLinks.push({
+        title: element.title,
+        linkPath: element.linkPath,
+      })
+    })
+
+    groupLinks[3].links = pageLinks
+
+    sessionStorage.setItem('groupLinks', JSON.stringify(groupLinks))
   },
 }
 </script>

@@ -1,15 +1,13 @@
 <template>
   <div>
-    <top-image :title="nameItinerary" :bg-img="imageItinerary" />
-    <breadcrumbs :page-name="nameItinerary" :link="$route.path"/>
-    <simple-content :description="descriptionItinerary" />
-    <map-card
-      :title="'titleM'"
-      :address="''"
-    />
+    <top-image :title="data.title" :bg-img="data.image.path" />
+    <breadcrumbs :page-name="data.title" :link="$route.path" />
+    <group-links :page-name="data.title" type="itineraries" />
+    <simple-content :description="data.description" />
+    <map-card :title="'titleM'" :address="''" />
     <simple-content :title="'Points of Interest'" />
     <description-card
-      v-for="(single, index) in pois"
+      v-for="(single, index) in data.pois"
       :key="index"
       :title="single.title"
       :descr-img="single.images[0].path"
@@ -37,19 +35,15 @@ export default {
     Breadcrumbs,
   },
   async asyncData({ route, $axios, error }) {
-    try{
-    const { title } = route.params
+    try {
+      const { title } = route.params
 
-    const { data } = await $axios.get('/api/itineraries/' + title)
-    
-    return {
-      nameItinerary: data.title,
-      descriptionItinerary: data.description,
-      imageItinerary: data.image.path,
-      pois: data.pois,
-    }
-    }
-    catch(e){
+      const { data } = await $axios.get('/api/itineraries/' + title)
+
+      return {
+        data,
+      }
+    } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
   },
@@ -57,6 +51,34 @@ export default {
     return {
       title: this.nameItinerary,
     }
+  },
+  mounted() {
+    const linksJson = sessionStorage.getItem('groupLinks')
+
+    let groupLinks = []
+    if (linksJson == null || linksJson === 'undefined') {
+      groupLinks = [
+        { type: 'services', links: [] },
+        { type: 'events', links: [] },
+        { type: 'pois', links: [] },
+        { type: 'itineraries', links: [] },
+        { type: 'event-type', links: [] },
+      ]
+    } else {
+      groupLinks = JSON.parse(linksJson)
+    }
+
+    const pageLinks = []
+    this.$data.data.pois.forEach((element) => {
+      pageLinks.push({
+        title: element.title,
+        linkPath: '/points-of-interest/' + element.title.replaceAll(' ', '-'),
+      })
+    })
+
+    groupLinks[2].links = pageLinks
+
+    sessionStorage.setItem('groupLinks', JSON.stringify(groupLinks))
   },
   methods: {
     backToInieraries() {

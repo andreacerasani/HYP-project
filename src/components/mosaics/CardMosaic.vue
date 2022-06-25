@@ -7,7 +7,7 @@
           :key="`service-index-${itemIndex}`"
           :name="item.title"
           :date="(item.hasOwnProperty('date')) ? item.date : null"
-          :img="item.img"
+          :img="item.images[0].path"
           :link="item.linkPath"
         />
     </div>

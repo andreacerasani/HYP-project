@@ -29,7 +29,7 @@
         >
           <!-- -->
           <carousel-item
-          :descr-img="myarray[n-1].img" 
+          :descr-img="myarray[n-1].images[0].path" 
           :title="myarray[n-1].title"
           :description="myarray[n-1].description"
           :date="(myarray[n-1].hasOwnProperty('date')) ? myarray[n-1].date : null"

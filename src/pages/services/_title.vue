@@ -2,6 +2,7 @@
   <div>
     <top-image :bg-img="img" :title="title" />
     <breadcrumbs :page-name="title" :link="$route.path"/>
+    <group-links :page-name="title" type="services"/>
     <simple-content
       :description="description"
     />
@@ -23,6 +24,7 @@
 
 <script>
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import GroupLinks from '~/components/GroupLinks.vue'
 import ImageContacts from '~/components/main-elements/ImageContacts.vue'
 import MapCard from '~/components/main-elements/MapCard.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
@@ -30,7 +32,7 @@ import TopImage from '~/components/utility/TopImage.vue'
 
 export default {
   name: 'SingleServicePage',
-  components: { TopImage, SimpleContent, ImageContacts, Breadcrumbs, MapCard },
+  components: { TopImage, SimpleContent, ImageContacts, Breadcrumbs, MapCard, GroupLinks },
   async asyncData({ route, $axios, error }) {
     try{
     const title = route.params.title

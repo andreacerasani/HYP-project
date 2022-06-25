@@ -63,11 +63,13 @@ export default {
         const pageInfo = { pageName: this.pageName, link: this.link }
         const breadJson = sessionStorage.getItem('bread')
         let breadArray
-        if (breadJson == null) {
+        if (breadJson == null || breadJson === 'undefined') {
           breadArray = []
         } else {
           breadArray = JSON.parse(breadJson)
         }
+
+        // console.log(breadArray)
 
         const indexOfObj = breadArray.findIndex((element) => {
           if (element.pageName === this.pageName) {

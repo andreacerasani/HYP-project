@@ -2,6 +2,7 @@
   <div>
     <top-image :title="title" :bg-img="images[0].path" />
     <breadcrumbs :page-name="title" :link="$route.path" />
+    <group-links :page-name="title" type="events"/>
     <br />
     <simple-content :description="description" />
     <br />
@@ -35,6 +36,7 @@
 <script>
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
 import ImageCarousel from '~/components/carousels/ImageCarousel.vue'
+import GroupLinks from '~/components/GroupLinks.vue'
 import Contacts from '~/components/main-elements/Contacts.vue'
 import MapCard from '~/components/main-elements/MapCard.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
@@ -49,6 +51,7 @@ export default {
     MapCard,
     Contacts,
     Breadcrumbs,
+    GroupLinks,
   },
   async asyncData({ route, $axios, error }) {
     try{

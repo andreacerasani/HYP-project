@@ -1,18 +1,19 @@
 <template>
   <div>
-    <top-image :title="title" :bg-img="bgImg" />
-    <breadcrumbs :page-name="title" :link="$route.path"/>
+    <top-image :title="data.title" :bg-img="data.bgImg" />
+    <breadcrumbs :page-name="data.title" :link="$route.path"/>
+    <group-links :page-name="data.title" type="event-type"/>
     <br>
-    <simple-content :description="description" />
+    <simple-content :description="data.description" />
     <br /><br /><br />
     <image-description-carousel
     :title="'Latest Events'"
-      :myarray="latest_events"
+      :myarray="data.latest_events"
       :link-name="'Discover More'"
       :num-of-carousel="1"
       class="pt-4"
     />
-    <card-mosaic :items="rest_events"/>
+    <card-mosaic :items="data.rest_events"/>
   </div>
 </template>
 
@@ -22,7 +23,7 @@ import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 import ImageDescriptionCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
-
+import GroupLinks from '~/components/GroupLinks.vue'
 
 export default {
   name: 'EventTypePage',
@@ -31,21 +32,16 @@ export default {
     SimpleContent,
     CardMosaic,
     ImageDescriptionCarousel,
-    Breadcrumbs
-    
+    Breadcrumbs,
+    GroupLinks,
   },
   async asyncData({ route, $axios, error }) {
     try{
     const { type } = route.params
     const { data } = await $axios.get('/api/' + type)
-    const eventType = data
 
     return {
-      title: eventType.title,
-      description: eventType.description,
-      bgImg: eventType.bgImg,
-      latest_events:eventType.latest_events,
-      rest_events:eventType.rest_events
+      data
     }
     }
     catch(e){
@@ -54,8 +50,36 @@ export default {
   },
   head() {
     return {
-      title: this.title.concat(" - VisitVenice"),
+      title: this.data.title.concat(" - VisitVenice"),
     }
   },
+  mounted(){
+    const linksJson = sessionStorage.getItem('groupLinks')
+
+    let groupLinks = []
+    if (linksJson == null || linksJson === 'undefined') {
+      groupLinks = [
+        { type: 'services', links: [] },
+        { type: 'events', links: [] },
+        { type: 'pois', links: [] },
+        { type: 'itineraries', links: [] },
+        { type: 'event-type', links: [] },
+      ]
+    } else {
+      groupLinks = JSON.parse(linksJson)
+    }
+
+    const pageLinks = []
+    this.$data.data.restEvent.forEach((element) => {
+      pageLinks.push({
+        title: element.title,
+        linkPath: element.linkPath,
+      })
+    })
+
+    groupLinks[2].links = pageLinks
+
+    sessionStorage.setItem('groupLinks', JSON.stringify(groupLinks))
+  }
 }
 </script>

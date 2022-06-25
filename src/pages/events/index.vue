@@ -1,36 +1,36 @@
 <template>
   <div>
     <top-image :title="'Events'" :bg-img="'/images/events.jpg'" />
-    <breadcrumbs page-name="Events" link="/events"/>
+    <breadcrumbs page-name="Events" link="/events" />
     <carousel-img-des
       :title="'Upcoming Events'"
-      :myarray="upcoming"
+      :myarray="upcomingEvents"
       :link-name="'Discover More'"
       :num-of-carousel="1"
       class="pt-4"
     />
-    <hr>
+    <hr />
     <description-card
-      :title="title2022"
-      :descr-img="descrImg2022"
-      :description="description2022"
-      :link-name="linkName2022"
-      :link-path="linkPath2022"
+      :title="data.All.title"
+      :descr-img="data.All.descrImg"
+      :description="data.All.description"
+      :link-name="data.All.linkName"
+      :link-path="data.All.linkPath"
       :is-left="false"
     />
     <description-card
-      :title="titleSummer"
-      :descr-img="descrImgSummer"
-      :description="descriptionSummer"
-      :link-name="linkNameSummer"
-      :link-path="linkPathSummer"
+      :title="data.Summer.title"
+      :descr-img="data.Summer.descrImg"
+      :description="data.Summer.description"
+      :link-name="data.Summer.linkName"
+      :link-path="data.Summer.linkPath"
     />
     <description-card
-      :title="titleWinter"
-      :descr-img="descrImgWinter"
-      :description="descriptionWinter"
-      :link-name="linkNameWinter"
-      :link-path="linkPathWinter"
+      :title="data.Winter.title"
+      :descr-img="data.Winter.descrImg"
+      :description="data.Winter.description"
+      :link-name="data.Winter.linkName"
+      :link-path="data.Winter.linkPath"
       :is-left="false"
     />
   </div>
@@ -41,6 +41,7 @@ import CarouselImgDes from '../../components/carousels/ImageDescriptionCarousel.
 import TopImage from '~/components/utility/TopImage.vue'
 import DescriptionCard from '~/components/main-elements/DescriptionCard.vue'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
+
 export default {
   name: 'EventsPage',
   components: {
@@ -55,35 +56,47 @@ export default {
     const upcomingEvents = upcomingEventsData.data
 
     return {
-      upcoming: upcomingEvents,
-      title2022: data.All.title,
-      descrImg2022: data.All.descrImg,
-      description2022: data.All.description,
-      linkName2022: data.All.linkName,
-      linkPath2022: data.All.linkPath,
-      titleSummer: data.Summer.title,
-      descrImgSummer: data.Summer.descrImg,
-      descriptionSummer: data.Summer.description,
-      linkNameSummer: data.Summer.linkName,
-      linkPathSummer: data.Summer.linkPath,
-      titleWinter: data.Winter.title,
-      descrImgWinter: data.Winter.descrImg,
-      descriptionWinter: data.Winter.description,
-      linkNameWinter: data.Winter.linkName,
-      linkPathWinter: data.Winter.linkPath,
+      upcomingEvents,
+      data,
     }
   },
   head() {
     return {
-      title: "Events - VisitVenice",
-      meta:[
+      title: 'Events - VisitVenice',
+      meta: [
         {
           hid: 'description',
           name: 'description',
           content: 'All the events of the city of Venice',
-        }
-      ]
+        },
+      ],
     }
+  },
+  mounted() {
+    const linksJson = sessionStorage.getItem('groupLinks')
+
+    let groupLinks = []
+    if (linksJson == null || linksJson === 'undefined') {
+      groupLinks = [
+        { type: 'services', links: [] },
+        { type: 'events', links: [] },
+        { type: 'pois', links: [] },
+        { type: 'itineraries', links: [] },
+        { type: 'event-type', links: [] },
+      ]
+    } else {
+      groupLinks = JSON.parse(linksJson)
+    }
+
+    const pageLinks = [
+      { title: this.data.All.title, linkPath: this.data.All.linkPath },
+      { title: this.data.Summer.title, linkPath: this.data.Summer.linkPath},
+      { title: this.data.Winter.title, linkPath: this.data.Winter.linkPath},
+    ]
+
+    groupLinks[4].links = pageLinks
+
+    sessionStorage.setItem('groupLinks', JSON.stringify(groupLinks))
   },
 }
 </script>
