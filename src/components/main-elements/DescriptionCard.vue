@@ -28,7 +28,7 @@ with a possible link added   -->
       </div>
 
       <div class="col text-center">
-        <img :src="descrImg" class="rounded-3 img-fluid" />
+        <img :src="descrImg" class="rounded-3 img-fluid" :alt="removePath(descrImg)" />
       </div>
 
       <div v-if="!isLeft" class="col text-center">
@@ -54,8 +54,10 @@ with a possible link added   -->
 </template>
 
 <script>
+import common from '~/mixins/common'
 export default {
   name: 'DescriptionCard',
+  mixins: [common],
   props: {
     title: {
       type: String,
@@ -87,9 +89,6 @@ export default {
       required: false,
       default: true,
     },
-  },
-  data() {
-    return {}
   },
   methods:{
     limitDescription(str = '', num = 1) {

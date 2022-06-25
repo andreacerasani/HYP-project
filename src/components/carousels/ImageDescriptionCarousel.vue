@@ -1,9 +1,11 @@
 <!-- Carusel with a single image with description and text on the right ->
  flow through different CarouselItemImgDes components  -->
 <template>
-  <div class="container-xl">
+  <div 
+  v-if="myarray.length > 0"
+  class="container-xl">
     <h1>{{ title }}</h1>
-    <div
+    <div 
       :id="'carouselExampleIndicators' + numOfCarousel"
       class="carousel slide pt-2"
       data-bs-ride="true"

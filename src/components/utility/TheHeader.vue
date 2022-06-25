@@ -31,7 +31,7 @@
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li>
           <nuxt-link to="/" class="nav-link">
-            <p class="align-middle ps-3 hover-zoom"><img src="/images/header_icons/logo.png" style="height: 5vh; min-height: 50px" /></p>
+            <p class="align-middle ps-3 hover-zoom"><img src="/images/header_icons/logo.png" alt="Page Logo Visit Venice" style="height: 5vh; min-height: 50px" /></p>
           </nuxt-link>
         </li>
         <li
@@ -45,6 +45,7 @@
                 :src="navItem.image"
                 class="align-middle"
                 style="height: 3vh; min-height: 25px"
+                :alt="removePath(navItem.image)"
               />
               <p
                 class="hover-underline-animation align-middle ps-3"
@@ -61,8 +62,10 @@
 </template>
 
 <script>
+import common from '~/mixins/common'
 export default {
   name: 'TheHeader',
+  mixins: [common],
   data() {
     return {
       lastCall: false,

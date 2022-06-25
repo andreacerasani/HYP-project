@@ -10,13 +10,14 @@ When the img shrinks the text goes down
         <div class="col text-center">
           <div class="ratio ratio-16x9">
             <iframe
+              :title="title + 'Map'"
               :src="`https://maps.google.com/maps?hl=en&amp;q=${address}&amp;ie=UTF8&amp;z=${zoom}&amp;output=embed`"
             ></iframe>
           </div>
         </div>
         <div class="col text-center">
           <div class="row p-3">
-            <h3><img src="/images/icons/location.png" /> {{ title }}</h3>
+            <h3><img src="/images/icons/location.png" alt="Location Icon" /> {{ title }}</h3>
           </div>
           <div class="row p-2">
             <div v-if="showButton">
@@ -35,11 +36,12 @@ When the img shrinks the text goes down
     </div>
 
     <div v-else-if="address == null" class="ratio ratio-21x9">
-      <iframe :src="webLink" />
+      <iframe title="Map" :src="webLink" />
     </div>
 
     <div v-else class="ratio ratio-21x9">
       <iframe
+        :title="address + 'Map'"
         :src="`https://maps.google.com/maps?hl=en&amp;q=${address}&amp;ie=UTF8&amp;z=${zoom}&amp;output=embed`"
       />
     </div>
