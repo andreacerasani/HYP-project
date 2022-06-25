@@ -88,13 +88,23 @@ export default {
       groupLinks = JSON.parse(linksJson)
     }
 
-    const pageLinks = [
+    let pageLinks = [
       { title: this.data.All.title, linkPath: this.data.All.linkPath },
-      { title: this.data.Summer.title, linkPath: this.data.Summer.linkPath},
-      { title: this.data.Winter.title, linkPath: this.data.Winter.linkPath},
+      { title: this.data.Summer.title, linkPath: this.data.Summer.linkPath },
+      { title: this.data.Winter.title, linkPath: this.data.Winter.linkPath },
     ]
 
     groupLinks[4].links = pageLinks
+
+    pageLinks = []
+    this.$data.upcomingEvents.forEach((element) => {
+      pageLinks.push({
+        title: element.title,
+        linkPath: element.linkPath,
+      })
+    })
+
+    groupLinks[1].links = pageLinks
 
     sessionStorage.setItem('groupLinks', JSON.stringify(groupLinks))
   },

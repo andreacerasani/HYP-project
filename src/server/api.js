@@ -370,11 +370,7 @@ async function runMainApi() {
       all_events: [],
     }
     for (const element of result) {
-      /* let pathImage = null */
       if (element.images.length) {
-        /*         pathImage = element.images.sort((a, b) =>
-          a.path > b.path ? 1 : b.path > a.path ? -1 : 0
-        )[0].path */
         element.images = element.images.sort((a, b) =>
           a.path > b.path ? 1 : b.path > a.path ? -1 : 0
         )
@@ -384,7 +380,6 @@ async function runMainApi() {
         description: element.description,
         date: element.date,
         ticket: element.ticket,
-        /*         img: pathImage, */
         images: element.images,
         linkPath: '/events/' + element.title.replaceAll(' ', '-'),
       }
@@ -447,7 +442,7 @@ async function runMainApi() {
       ],
     })
 
-    const data = filterEventImages(result).new_events
+    const data = filterEventImages(result).upcoming_events
 
     return res.json(data)
   })

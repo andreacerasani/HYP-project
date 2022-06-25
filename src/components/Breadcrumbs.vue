@@ -69,7 +69,6 @@ export default {
           breadArray = JSON.parse(breadJson)
         }
 
-        // console.log(breadArray)
 
         const indexOfObj = breadArray.findIndex((element) => {
           if (element.pageName === this.pageName) {

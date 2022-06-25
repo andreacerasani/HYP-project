@@ -1,18 +1,21 @@
 <template>
   <div>
-    <top-image :title="title" :bg-img="images[0].path" />
-    <breadcrumbs :page-name="title" :link="$route.path" />
-    <group-links :page-name="title" type="events"/>
+    <top-image :title="data.title" :bg-img="data.images[0].path" />
+    <breadcrumbs :page-name="data.title" :link="$route.path" />
+    <group-links :page-name="data.title" type="events" />
     <br />
-    <simple-content :description="description" />
+    <simple-content :description="data.description" />
     <br />
-    <map-card :title="poi.title" :address="handleNull(poi.address)" />
+    <map-card
+      :title="data.pois[0].title"
+      :address="handleNull(data.pois[0].address)"
+    />
     <br />
     <contacts
-      :date="date"
-      :email="contact.email"
-      :landline-phone="contact.landline_phone"
-      :mobile-phone="contact.mobile_phone"
+      :date="data.date"
+      :email="data.contact.email"
+      :landline-phone="data.contact.landline_phone"
+      :mobile-phone="data.contact.mobile_phone"
     />
     <br /><br />
     <div class="container-xl">
@@ -27,7 +30,7 @@
     <br /><br /><br />
     <image-carousel
       :title="'Gallery'"
-      :my-array="formatArray(images)"
+      :my-array="formatArray(data.images)"
       :num-of-carousel="1"
     />
   </div>
@@ -54,29 +57,16 @@ export default {
     GroupLinks,
   },
   async asyncData({ route, $axios, error }) {
-    try{
-    const { title } = route.params
-    const { data } = await $axios.get('/api/events/' + title)
-    const event = data
-     
+    try {
+      const { title } = route.params
+      const { data } = await $axios.get('/api/events/' + title)
+
       return {
-        title: event.title,
-        description: event.description,
-        date: event.date,
-        ticket: event.ticket,
-        address: event.address,
-        poi: event.pois[0],
-        images: event.images,
-        contact: event.contact,
+        data,
       }
-    }
-    catch(e){
+    } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
-  },
-
-  data() {
-    return {}
   },
   head() {
     return {
@@ -98,7 +88,7 @@ export default {
     },
     handleNull(address) {
       if (address != null) return address
-      return this.poi.title.concat(", Venezia")
+      return this.data.pois[0].title.concat(', Venezia')
     },
   },
 }

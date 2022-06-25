@@ -1,9 +1,9 @@
 <template>
   <div>
-    <top-image :title="title" :bg-img="bgImg" />
-    <breadcrumbs :page-name="title" :link="$route.path" />
+    <top-image :title="data.title" :bg-img="data.bgImg" />
+    <breadcrumbs :page-name="data.title" :link="$route.path" />
     <br />
-    <simple-content :description="description" />
+    <simple-content :description="data.description" />
     <br />
     <div v-if="type === 'year-events'" class="container-xl">
       <div class="dropdown">
@@ -19,14 +19,16 @@
         </a>
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="all">All</a></li>
+          <li><a class="dropdown-item" @click="yearClick('all')">All</a></li>
           <li>
-            <a class="dropdown-item" :href="curr_year">{{
+            <a class="dropdown-item" @click="yearClick(curr_year)">{{
               curr_year
             }}</a>
           </li>
           <li>
-            <a class="dropdown-item" :href="curr_year + 1">{{ curr_year + 1}}</a>
+            <a class="dropdown-item" @click="yearClick(curr_year + 1)">{{
+              curr_year + 1
+            }}</a>
           </li>
         </ul>
       </div>
@@ -34,12 +36,12 @@
     <br /><br />
     <image-description-carousel
       :title="'Upcoming Events'"
-      :myarray="upcoming_events"
+      :myarray="data.upcoming_events"
       :link-name="'Discover More'"
       :num-of-carousel="1"
       class="pt-4"
     />
-    <card-mosaic :items="all_events" />
+    <card-mosaic :items="data.all_events" />
   </div>
 </template>
 
@@ -64,14 +66,8 @@ export default {
       const { type } = route.params
       const { year } = route.params
       const { data } = await $axios.get('/api/' + type + '/' + year)
-      const eventType = data
-
       return {
-        title: eventType.title,
-        description: eventType.description,
-        bgImg: eventType.bgImg,
-        upcoming_events: eventType.upcoming_events,
-        all_events: eventType.all_events,
+        data,
         curr_year: new Date().getFullYear(),
         type: route.params.type,
       }
@@ -81,15 +77,67 @@ export default {
   },
   head() {
     return {
-      title: this.title.concat(' - VisitVenice'),
+      title: this.data.title.concat(' - VisitVenice'),
     }
+  },
+  mounted() {
+    const linksJson = sessionStorage.getItem('groupLinks')
+
+    let groupLinks = []
+    if (linksJson == null || linksJson === 'undefined') {
+      groupLinks = [
+        { type: 'services', links: [] },
+        { type: 'events', links: [] },
+        { type: 'pois', links: [] },
+        { type: 'itineraries', links: [] },
+        { type: 'event-type', links: [] },
+      ]
+    } else {
+      groupLinks = JSON.parse(linksJson)
+    }
+
+    const pageLinks = []
+    this.$data.data.all_events.forEach((element) => {
+      pageLinks.push({
+        title: element.title,
+        linkPath: element.linkPath,
+      })
+    })
+
+    groupLinks[1].links = pageLinks
+
+    sessionStorage.setItem('groupLinks', JSON.stringify(groupLinks))
+  },
+  methods: {
+    yearClick(year) {
+      if (process.client) {
+        
+        const breadJson = sessionStorage.getItem('bread')
+        let breadArray
+        if (breadJson == null || breadJson === 'undefined') {
+          breadArray = []
+        } else {
+          breadArray = JSON.parse(breadJson)
+        }
+        breadArray.pop()
+
+        sessionStorage.setItem('bread', JSON.stringify(breadArray))
+
+        if (year === 'all') {
+          this.$router.push('all')
+        } else if (year === this.curr_year) {
+          this.$router.push(String(this.curr_year))
+        } else {
+          this.$router.push(String(this.curr_year + 1))
+        }
+      }
+    },
   },
 }
 </script>
 
 <style scoped>
-.btn{
+.btn {
   background-color: var(--subtitle-color);
 }
 </style>
-

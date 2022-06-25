@@ -52,9 +52,9 @@ export default {
       groupLinks = JSON.parse(linksJson)
     }
 
-    if (groupLinks.length < 2) return
-
     const choosenGroup = groupLinks.filter((e) => e.type === this.type)[0].links
+
+    if (choosenGroup.length < 2) return
 
     const index = choosenGroup.findIndex((element) => {
       if (element.title === this.pageName) {
