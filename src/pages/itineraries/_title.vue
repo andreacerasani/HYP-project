@@ -3,7 +3,7 @@
     <top-image :title="data.title" :bg-img="data.image.path" />
     <breadcrumbs :page-name="data.title" :link="$route.path" />
     <group-links :page-name="data.title" type="itineraries" />
-    <simple-content :description="data.description" />
+    <simple-content text-align="center" :description="data.description" />
     <map-card :title="'titleM'" :address="''" />
     <simple-content :title="'Points of Interest'" />
     <description-card

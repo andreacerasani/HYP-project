@@ -4,7 +4,7 @@
     <breadcrumbs :page-name="data.title" :link="$route.path" />
     <group-links :page-name="data.title" type="pois" />
     <br />
-    <simple-content :description="data.description" />
+    <simple-content text-align="center" :description="data.description" />
     <br />
     <contacts
       :opening-hour="data.opening_hours"

@@ -4,7 +4,7 @@
     <breadcrumbs :page-name="data.title" :link="$route.path" />
     <group-links :page-name="data.title" type="events" />
     <br />
-    <simple-content :description="data.description" />
+    <simple-content textAlign="center" :description="data.description" />
     <br />
     <map-card
       :title="data.pois[0].title"

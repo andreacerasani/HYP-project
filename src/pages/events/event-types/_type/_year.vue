@@ -3,19 +3,19 @@
     <top-image :title="data.title" :bg-img="data.bgImg" />
     <breadcrumbs :page-name="data.title" :link="$route.path" />
     <br />
-    <simple-content :description="data.description" />
+    <simple-content text-align="center" :description="data.description" />
     <br />
-    <div v-if="type === 'year-events'" class="container-xl">
+    <div v-if="type === 'year-events'" class="container-xl text-center">
       <div class="dropdown">
         <a
           id="dropdownMenuLink"
-          class="btn btn-secondary dropdown-toggle"
+          class="btn btn-lg btn-secondary dropdown-toggle"
           href="#"
           role="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Select Year
+          Select the Year
         </a>
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -111,7 +111,6 @@ export default {
   methods: {
     yearClick(year) {
       if (process.client) {
-        
         const breadJson = sessionStorage.getItem('bread')
         let breadArray
         if (breadJson == null || breadJson === 'undefined') {

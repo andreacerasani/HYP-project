@@ -1,17 +1,27 @@
 <template>
-  <div
-    v-if="prev.title !== '' || next.title !== ''"
-    class="row justify-content-between"
-  >
-    <div v-if="prev.title !== ''" class="col-auto me-auto">
-      <a @click="linkClick('prev')">
-        {{ prev.title }}
-      </a>
-    </div>
-    <div v-if="next.title !== ''" class="col-auto ms-auto">
-      <a @click="linkClick('next')">
-        {{ next.title }}
-      </a>
+  <div class="container-xl">
+    <div
+      v-if="prev.title !== '' || next.title !== ''"
+      class="row justify-content-between size"
+    >
+      <div
+        v-if="prev.title !== ''"
+        class="col-auto btn btn-outline-primary my-button ms-1"
+      >
+        <a @click="linkClick('prev')">
+          <img src="/images/icons/backwards.svg" class="icon-size" />
+          <span class="d-none d-md-inline">{{ prev.title }}</span>
+        </a>
+      </div>
+      <div
+        v-if="next.title !== ''"
+        class="col-auto btn btn-outline-primary my-button me-1"
+      >
+        <a @click="linkClick('next')">
+          <span class="d-none d-md-inline">{{ next.title }}</span>
+          <img src="/images/icons/forward.svg" class="icon-size" />
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -113,3 +123,13 @@ export default {
   },
 }
 </script>
+
+<style>
+.my-button {
+  color: var(--subtitle-color);
+  border-color: var(--subtitle-color);
+}
+.icon-size {
+  height: 30px;
+}
+</style>
