@@ -2,22 +2,14 @@
   <div>
     <top-image :title="'City'" :bg-img="bgImg" />
     <breadcrumbs page-name="City" link="city"/>
-    <br>
-    <div class="text-center">
-      <a href="#Map"> Map</a> -
-      <a href="#History"> History </a>
-    </div>
-    <br>
     <simple-content :description="'Few cities can claim such a priceless art and history heritage as Venice. This unique city with its magical, spectacular scenery is not just beautiful; it is a real miracle of creative genius: a city built on mud, sand and the slime of a difficult, inhospitable landscape.'"/>
     <map-card
-      id="Map"
       :title="titleM"
       :address="'Venice'"
       :show-button='false'
       :zoom="11"
     />
     <description-card
-      id="History"
       :title="titleH"
       :descr-img="descrImgH"
       :description="descriptionH"

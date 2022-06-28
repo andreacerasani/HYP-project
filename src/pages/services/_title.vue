@@ -1,12 +1,10 @@
 <template>
   <div>
     <top-image :bg-img="img" :title="title" />
-    <breadcrumbs :page-name="title" :link="$route.path"/>
-    <group-links :page-name="title" type="services"/>
-    <simple-content
-      :description="description"
-    />
-    <map-card :web-link="map"/>
+    <breadcrumbs :page-name="title" :link="$route.path" />
+    <group-links :page-name="title" type="services" />
+    <simple-content text-align="center" :description="description" />
+    <map-card :web-link="map" />
     <hr />
     <image-contacts
       v-for="(item, itemIndex) in items"
@@ -15,7 +13,7 @@
       :address="item.address"
       :closing-hours="item.closing_hours"
       :opening-hours="item.opening_hours"
-      :is-left="itemIndex%2 ===0 "
+      :is-left="itemIndex % 2 === 0"
       :phone="item.contact.landline_phone"
       :title="item.name"
     />
@@ -32,21 +30,27 @@ import TopImage from '~/components/utility/TopImage.vue'
 
 export default {
   name: 'SingleServicePage',
-  components: { TopImage, SimpleContent, ImageContacts, Breadcrumbs, MapCard, GroupLinks },
+  components: {
+    TopImage,
+    SimpleContent,
+    ImageContacts,
+    Breadcrumbs,
+    MapCard,
+    GroupLinks,
+  },
   async asyncData({ route, $axios, error }) {
-    try{
-    const title = route.params.title
-    const { data } = await $axios.get('/api/services/' + title)
+    try {
+      const title = route.params.title
+      const { data } = await $axios.get('/api/services/' + title)
 
-    return {
-      title: data.name,
-      img: data.image.path,
-      map: data.map,
-      description: data.description,
-      items: data.service_points
-    }
-    }
-    catch(e){
+      return {
+        title: data.name,
+        img: data.image.path,
+        map: data.map,
+        description: data.description,
+        items: data.service_points,
+      }
+    } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
   },

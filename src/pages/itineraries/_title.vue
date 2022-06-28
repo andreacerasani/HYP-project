@@ -13,7 +13,7 @@
       :title="single.title"
       :descr-img="single.images[0].path"
       :description="single.description"
-      :link-name="'Discover'"
+      :link-name="'Discover More'"
       :link-path="'/points-of-interest/' + single.title.replaceAll(' ', '-')"
       :is-left="isLeft(index)"
     />

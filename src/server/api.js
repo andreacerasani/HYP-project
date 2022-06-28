@@ -131,7 +131,7 @@ async function initializeDatabaseConnection() {
   Contacts.hasOne(Pois)
   Pois.belongsTo(Contacts)
 
-  await database.sync({ force: true })
+  await database.sync({ force: false })
   return {
     Events,
     Itineraries,
@@ -144,51 +144,10 @@ async function initializeDatabaseConnection() {
   }
 }
 
-// This storage is used for single pages
-const pageContentObject = {
-  index: {
-    title: 'Homepage',
-    image: '/images/extra/homepage.jpg',
-    description: ``,
-  },
-  eventsType: {
-    All: {
-      title: 'All ' + new Date().getFullYear() + ' events',
-      descrImg: '/images/events/event-types/yearevents.jpg',
-      description:
-        'Discover all the fantastic events organized in the city of Venice during this year.\n Choose your favorites and plan your visit to Venice so you can have an unforgettable experience.\n Take part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
-      linkName: 'Discover More',
-      linkPath: '/events/event-types/year-events/' + new Date().getFullYear(),
-    },
-    Summer: {
-      title: 'Summer Events',
-      descrImg: '/images/events/event-types/summerevents.jpg',
-      description:
-        "During the summer, Venice is colored in the brightest colors. Summer events range from the film festival to the famous Vogalonga. Be inspired by the cheerfulness of Venetians and relax while watching the reflections of the sunset on the water of the lagoon. It's never too late to enjoy a vacation.",
-      linkName: 'Discover More',
-      linkPath: '/events/event-types/summer-events/all',
-    },
-    Winter: {
-      title: 'Winter Events',
-      descrImg: '/images/events/event-types/winterevents.jpg',
-      description:
-        'In winter, the lagoon is filled with magic. Events such as Carnival, exhibitions and the marathon make Venice even more unique and unforgettable. Not to mention that the sea of the lagoon offers natural shelter from the cold of winter. ',
-      linkName: 'Discover More',
-      linkPath: '/events/event-types/winter-events/all',
-    },
-  },
-}
-
 // ---------------------------------- API
 
 async function runMainApi() {
   const models = await initializeDatabaseConnection()
-
-  app.get('/page-info/:topic', (req, res) => {
-    const { topic } = req.params
-    const result = pageContentObject[topic]
-    return res.json(result)
-  })
 
   // %%%%%%%%%%%%%%%%%%%%%%%% POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -494,10 +453,12 @@ async function runMainApi() {
       })
     }
     const filtered = filterEventImages(result)
+
     const data = {
       title,
-      description: pageContentObject.eventsType.All.description,
-      bgImg: pageContentObject.eventsType.All.descrImg,
+      description:
+        'Discover all the fantastic events organized in the city of Venice during this year.\n Choose your favorites and plan your visit to Venice so you can have an unforgettable experience.\n Take part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
+      bgImg: '/images/events/event-types/yearevents.jpg',
       upcoming_events: filtered.upcoming_events,
       all_events: filtered.all_events,
     }
@@ -532,9 +493,10 @@ async function runMainApi() {
     const filtered = filterEventImages(result)
 
     const data = {
-      title: pageContentObject.eventsType.Winter.title,
-      description: pageContentObject.eventsType.Winter.description,
-      bgImg: pageContentObject.eventsType.Winter.descrImg,
+      title: 'Winter Events',
+      description:
+        'In winter, the lagoon is filled with magic. Events such as Carnival, exhibitions and the marathon make Venice even more unique and unforgettable. Not to mention that the sea of the lagoon offers natural shelter from the cold of winter. ',
+      bgImg: '/images/events/event-types/winterevents.jpg',
       upcoming_events: filtered.all_events.slice(0, 3),
       all_events: filtered.all_events,
     }
@@ -557,11 +519,14 @@ async function runMainApi() {
         },
       ],
     })
+
     const filtered = filterEventImages(result)
+
     const data = {
-      title: pageContentObject.eventsType.Summer.title,
-      description: pageContentObject.eventsType.Summer.description,
-      bgImg: pageContentObject.eventsType.Summer.descrImg,
+      title: 'Summer Events',
+      description:
+        "During the summer, Venice is colored in the brightest colors. Summer events range from the film festival to the famous Vogalonga. Be inspired by the cheerfulness of Venetians and relax while watching the reflections of the sunset on the water of the lagoon. It's never too late to enjoy a vacation.",
+      bgImg: '/images/events/event-types/summerevents.jpg',
       upcoming_events: filtered.all_events.slice(0, 3),
       all_events: filtered.all_events,
     }
