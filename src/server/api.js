@@ -40,6 +40,7 @@ async function initializeDatabaseConnection() {
       type: DataTypes.STRING(100),
       unique: true,
     },
+    map: DataTypes.STRING(100),
     description: DataTypes.TEXT,
   })
 
@@ -130,7 +131,7 @@ async function initializeDatabaseConnection() {
   Contacts.hasOne(Pois)
   Pois.belongsTo(Contacts)
 
-  await database.sync({ force: false })
+  await database.sync({ force: true })
   return {
     Events,
     Itineraries,

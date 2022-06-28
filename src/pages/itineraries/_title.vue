@@ -4,7 +4,8 @@
     <breadcrumbs :page-name="data.title" :link="$route.path" />
     <group-links :page-name="data.title" type="itineraries" />
     <simple-content text-align="center" :description="data.description" />
-    <map-card :title="'titleM'" :address="''" />
+    <map-card :web-link="data.map" />
+    <hr>
     <simple-content :title="'Points of Interest'" />
     <description-card
       v-for="(single, index) in data.pois"
