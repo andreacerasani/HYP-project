@@ -6,8 +6,8 @@ When the img shrinks the text goes down
 <template>
   <div class="container-xl">
     <div v-if="title !== null">
-      <div class="row p-3 align-items-center flex-column flex-md-row">
-        <div class="col text-center">
+      <div class="row align-items-center flex-column flex-md-row">
+        <div class="col col-sm-8 text-center">
           <div class="ratio ratio-16x9">
             <iframe
               :title="title + 'Map'"

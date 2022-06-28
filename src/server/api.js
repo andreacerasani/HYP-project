@@ -363,6 +363,12 @@ async function runMainApi() {
 
   // %%%%%%%%%%%%%%%%%%%%%% EVENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+  function sortImages(images) {
+    return images.sort((a, b) =>
+      a.path > b.path ? 1 : b.path > a.path ? -1 : 0
+    )
+  }
+
   function filterEventImages(result) {
     const filtered = {
       upcoming_events: [],
@@ -370,9 +376,7 @@ async function runMainApi() {
     }
     for (const element of result) {
       if (element.images.length) {
-        element.images = element.images.sort((a, b) =>
-          a.path > b.path ? 1 : b.path > a.path ? -1 : 0
-        )
+        element.images = sortImages(element.images)
       }
       const filteredElement = {
         title: element.title,
@@ -382,7 +386,10 @@ async function runMainApi() {
         images: element.images,
         linkPath: '/events/' + element.title.replaceAll(' ', '-'),
       }
-      if (new Date(element.date) >= new Date() && filtered.upcoming_events.length < 3) {
+      if (
+        new Date(element.date) >= new Date() &&
+        filtered.upcoming_events.length < 3
+      ) {
         filtered.upcoming_events.push(filteredElement)
       }
       filtered.all_events.push(filteredElement)
@@ -417,7 +424,10 @@ async function runMainApi() {
       ],
     })
 
+    event.images = sortImages(event.images)
+
     const data = event
+
     return res.json(data)
   })
 
@@ -451,7 +461,7 @@ async function runMainApi() {
     const { year } = req.params
     let result = ''
     let title = ''
-    if (year === 'all'){
+    if (year === 'all') {
       title = 'All Events'
       result = await models.Events.findAll({
         order: [['date', 'ASC']],
@@ -462,8 +472,7 @@ async function runMainApi() {
           },
         ],
       })
-    }
-    else{
+    } else {
       title = 'All ' + year + ' Events'
       result = await models.Events.findAll({
         where: [

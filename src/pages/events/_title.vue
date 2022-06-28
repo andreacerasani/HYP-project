@@ -4,7 +4,7 @@
     <breadcrumbs :page-name="data.title" :link="$route.path" />
     <group-links :page-name="data.title" type="events" />
     <br />
-    <simple-content textAlign="center" :description="data.description" />
+    <simple-content text-align="center" :description="data.description" />
     <br />
     <map-card
       :title="data.pois[0].title"
@@ -79,7 +79,7 @@ export default {
     },
     formatArray(images) {
       const formatted = []
-      for (const item of images.slice(1)) {
+      for (const item of images.slice(0)) {
         formatted.push({
           img: item.path,
         })
