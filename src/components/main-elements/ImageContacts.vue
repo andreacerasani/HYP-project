@@ -49,9 +49,6 @@
         </div>
       </div>
 
-      <!--       <div class="col text-center">
-        <img :src="img" class="rounded-3 img-fluid" />
-      </div> -->
       <div class="col">
         <div
           class="card-image rounded-3"

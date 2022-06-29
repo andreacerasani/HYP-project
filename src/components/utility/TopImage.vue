@@ -1,5 +1,4 @@
-<!-- Component with image all width with an img over it to handle the title of the page  -->
-
+<!-- Component with image all width with an img over it to handle the title of the page -->
 <template>
   <div class="container-fluid container-img px-0">
    <div
@@ -7,7 +6,6 @@
       :style="{ 'background-image': 'url(' + bgImg + ')' }"
     >
     </div>
-    <!-- <img :src="bgImg" class="img-fluid img-screen format-image" /> -->
     <div class="centered">
       <h1>{{ title }}</h1>
     </div>

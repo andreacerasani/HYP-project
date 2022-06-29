@@ -6,9 +6,7 @@
     <div v-if="description !== ''">
       <div class="container-xl" style="white-space: pre-wrap">
         <hr />
-        <h6>
           <p :style="'text-align: ' + textAlign">{{ description }}</p>
-        </h6>
         <hr />
       </div>
     </div>

@@ -19,7 +19,6 @@ import Card2 from '../mosaics/Card2.vue'
 export default {
   name: 'CardMosaic',
   components: {
-    // Card,
     Card2,
   },
   props: {

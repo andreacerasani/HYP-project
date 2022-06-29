@@ -29,7 +29,6 @@
           class="carousel-item"
           :class="{ active: n == 1 }"
         >
-          <!-- -->
           <carousel-item
           :descr-img="myarray[n-1].images[0].path" 
           :title="myarray[n-1].title"

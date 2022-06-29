@@ -199,6 +199,16 @@ async function runMainApi() {
           model: models.Contacts,
           attributes: ['landline_phone', 'mobile_phone', 'email'],
         },
+        {
+          model: models.Itineraries,
+          attributes: ['title', 'description'],
+          include: [
+            {
+              model: models.Images,
+              attributes: ['path'],
+            },
+          ],
+        },
       ],
       order: [[models.Images, 'id', 'ASC']],
     })
@@ -533,14 +543,6 @@ async function runMainApi() {
 
     return res.json(data)
   })
-
-  // HTTP POST api, that will push (and therefore create) a new element in
-  // our actual database
-  /*   app.post('/cats', async (req, res) => {
-    const { body } = req
-    await models.Cat.create(body)
-    return res.sendStatus(200)
-  }) */
 }
 
 runMainApi()

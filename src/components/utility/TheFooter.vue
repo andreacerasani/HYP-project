@@ -2,11 +2,9 @@
 
 <template>
   <footer class="link-primary text-center">
-    <!-- <a :href="FooterLink.path"> -->
     <nuxt-link :to="linkPath">
       {{ linkName }}
     </nuxt-link>
-    <!-- </a> -->
     <p class="polimi-text">Politecnico Di Milano</p>
     <p class="polimi-text">Hypermedia Application</p>
     <p class="polimi-text">Worry Whales 2022</p>
@@ -43,7 +41,6 @@ footer {
   max-height: 25vh;
   padding-top: 3vh;
   padding-bottom: 3vh;
-  /* background-color: var(--div-color-dark); */
   background-image: linear-gradient(
     to top,
     var(--div-color-dark),

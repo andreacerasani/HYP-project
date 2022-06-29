@@ -126,6 +126,7 @@ export default {
       }
     },
     mouseOverHeader(event) {
+      // Handle the event of mouse over the header part to show the header if hidden
       if (event.clientY < this.$refs.header.clientHeight) {
         this.$data.header_top = '0vh'
         this.$data.isOnHeader = true
@@ -139,6 +140,7 @@ export default {
       }
     },
     onScroll(event) {
+      // Handle the scoll event to show or hide the header
       if (this.$data.lastCall) clearTimeout(this.$data.lastCall)
 
       this.$data.navbarHeight = this.$refs.header.clientHeight
@@ -162,6 +164,7 @@ export default {
         this.$data.lastScroll - window.scrollY > 0 ||
         window.scrollY <= this.$data.navbarHeight
       ) {
+        // Scroll Up
         if (window.scrollY <= this.$data.navbarHeight) {
           this.$data.header_opacity = '00'
         }

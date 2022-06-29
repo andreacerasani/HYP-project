@@ -1,3 +1,4 @@
+<!-- Component that create dinamic breadcrumbs links based on the path that the user took on the website -->
 <template>
   <div class="container-xl">
     <nav
@@ -61,6 +62,8 @@ export default {
     createBread() {
       if (process.client) {
         const pageInfo = { pageName: this.pageName, link: this.link }
+
+        // Read the saved breadcrumbs from storage if any else create 
         const breadJson = sessionStorage.getItem('bread')
         let breadArray
         if (breadJson == null || breadJson === 'undefined') {
@@ -69,7 +72,7 @@ export default {
           breadArray = JSON.parse(breadJson)
         }
 
-
+        // Search if the current page as already been visited
         const indexOfObj = breadArray.findIndex((element) => {
           if (element.pageName === this.pageName) {
             return true
@@ -78,15 +81,20 @@ export default {
         })
 
         if (indexOfObj !== -1) {
+          // If the current page as already been visited truncate the bread array
           breadArray.splice(indexOfObj + 1, breadArray.length)
         } else if (this.$data.basePages.includes(this.pageName)) {
+          // If the current page is a base page reset the breadcrumbs
           breadArray = [pageInfo]
         } else {
+          // If it's a new page add it to the breadcrumbs
           breadArray.push(pageInfo)
         }
 
+        // Save the updated breadcrumbs to memory
         sessionStorage.setItem('bread', JSON.stringify(breadArray))
 
+        // Show only the last 3 elements of the breadcrumbs
         if (breadArray.length <= 3) {
           this.$data.breadLength = breadArray.length
           return breadArray

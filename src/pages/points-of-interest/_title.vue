@@ -38,6 +38,15 @@
       class="pt-1"
     />
     <br /><br />
+    <image-description-carousel
+      v-if="data.itineraries.length > 0"
+      :title="'It\'s involved in'"
+      :myarray="data.itineraries"
+      :link-name="'Discover More'"
+      :num-of-carousel="2"
+      class="pt-1"
+    />
+    <br /><br />
     <image-carousel
       :title="'Gallery'"
       :num-of-carousel="2"
@@ -77,6 +86,19 @@ export default {
         e.linkPath = '/events/' + e.title.replaceAll(' ', '-')
       })
 
+      const itineraries = []
+
+      data.itineraries.forEach((i) => {
+        itineraries.push({
+          title: i.title,
+          images: [i.image],
+          description: i.description,
+          linkPath: '/itineraries/' + i.title.replaceAll(' ', '-'),
+        })
+      })
+
+      data.itineraries = itineraries
+
       return {
         title,
         data,
@@ -106,7 +128,7 @@ export default {
       groupLinks = JSON.parse(linksJson)
     }
 
-    const pageLinks = []
+    let pageLinks = []
     this.$data.data.events.forEach((element) => {
       pageLinks.push({
         title: element.title,
@@ -115,6 +137,17 @@ export default {
     })
 
     groupLinks[1].links = pageLinks
+
+    pageLinks = []
+    this.$data.data.itineraries.forEach((element) => {
+      pageLinks.push({
+        title: element.title,
+        linkPath: element.linkPath,
+      })
+    })
+
+    groupLinks[3].links = pageLinks
+
 
     sessionStorage.setItem('groupLinks', JSON.stringify(groupLinks))
   },

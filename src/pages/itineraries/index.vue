@@ -30,7 +30,6 @@ export default {
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/itineraries')
-    // const { itineraries } = data
 
     const filtered = []
     for (const element of data) {
@@ -45,7 +44,6 @@ export default {
     }
 
     return {
-      // itineraries,
       data,
       filtered,
     }

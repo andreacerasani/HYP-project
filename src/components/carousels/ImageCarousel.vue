@@ -27,23 +27,6 @@
           :style="{ 'background-image': 'url(' + myArray[n - 1].img + ')' }"
           :class="{ active: n == 1 }"
         >
-          <!-- per accedere fare myarray[n].img o .des o .tit
-          <img
-            :src="'https://dummyimage.com/1500x500'"
-            class="d-block  cropped"
-            alt=""
-          />
-          
-          <div class="carousel-caption">
-            <h5>{{ 'First slide label' + n }}</h5>
-            <p>
-              {{
-                'Some representative placeholder content for the first slide.' +
-                n
-              }}
-            </p>
-          </div>
-          -->
         </div>
       </div>
       <button
