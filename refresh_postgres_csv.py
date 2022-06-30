@@ -5,7 +5,7 @@ from psycopg2 import sql
 # Connect to your postgres DB
 conn = psycopg2.connect("dbname=hyp user=postgres password=postgres")
 directory = "./src/assets/csv"
-file_order = ["images.csv", "contacts.csv", "tags.csv", "events.csv", "service_types.csv", "service_points.csv", "itineraries.csv", "itineraries_tags.csv", "pois.csv", "pois_images.csv", "involve.csv", "host.csv", "events_tags.csv", "events_images.csv"]
+file_order = ["images.csv", "contacts.csv", "events.csv", "service_types.csv", "service_points.csv", "itineraries.csv", "pois.csv", "pois_images.csv", "involve.csv", "host.csv", "events_images.csv"]
 # Open a cursor to perform database operations
 cur = conn.cursor()
 # cur.execute('SET DateStyle = "ISO, DMY";')

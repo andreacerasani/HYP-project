@@ -120,9 +120,11 @@ export default {
         } else {
           breadArray = JSON.parse(breadJson)
         }
-        breadArray.pop()
 
-        sessionStorage.setItem('bread', JSON.stringify(breadArray))
+        if (breadArray[breadArray.length - 1].pageName === this.$data.data.title) {
+          breadArray.pop()
+          sessionStorage.setItem('bread', JSON.stringify(breadArray))
+        }
 
         if (year === 'all') {
           this.$router.push('all')

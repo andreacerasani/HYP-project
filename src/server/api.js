@@ -60,13 +60,6 @@ async function initializeDatabaseConnection() {
     address: DataTypes.STRING(100),
   })
 
-  const Tags = database.define('tags', {
-    tag: {
-      type: DataTypes.STRING(50),
-      unique: true,
-    },
-  })
-
   const ServicePoints = database.define('service_points', {
     name: {
       type: DataTypes.STRING(100),
@@ -94,12 +87,6 @@ async function initializeDatabaseConnection() {
 
   Contacts.hasMany(Events)
   Events.belongsTo(Contacts)
-
-  Events.belongsToMany(Tags, { through: 'events_tags' })
-  Tags.belongsToMany(Events, { through: 'events_tags' })
-
-  Itineraries.belongsToMany(Tags, { through: 'itineraries_tags' })
-  Tags.belongsToMany(Itineraries, { through: 'itineraries_tags' })
 
   Events.belongsToMany(Pois, { through: 'host' })
   Pois.belongsToMany(Events, { through: 'host' })
@@ -137,7 +124,6 @@ async function initializeDatabaseConnection() {
     Itineraries,
     Images,
     Pois,
-    Tags,
     ServicePoints,
     ServiceTypes,
     Contacts,
