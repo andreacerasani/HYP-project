@@ -1,3 +1,4 @@
+<!-- Page to show the contact of Venice tourism office -->
 <template>
   <div>
     <top-image :title="'Contact Us'" :bg-img="bgImg" />

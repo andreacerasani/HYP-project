@@ -1,3 +1,4 @@
+<!-- Page that show the informations of a sub-category of events -->
 <template>
   <div>
     <top-image :title="data.title" :bg-img="data.bgImg" />
@@ -17,7 +18,7 @@
         >
           Select the Year
         </a>
-
+        <!-- Choose the year -->
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li><a class="dropdown-item" @click="yearClick('all')">All</a></li>
           <li>
@@ -34,6 +35,7 @@
       </div>
     </div>
     <br /><br />
+    <!-- Show the different events -->
     <image-description-carousel
       :title="'Upcoming Events'"
       :myarray="data.upcoming_events"

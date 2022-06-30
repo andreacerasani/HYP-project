@@ -1,3 +1,4 @@
+<!-- Component that show the contact alongside an image -->
 <template>
   <div class="container-xl">
     <div

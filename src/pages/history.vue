@@ -1,3 +1,4 @@
+<!-- History page where the story of Venice is shown --> 
 <template>
   <div>
     <top-image :title="'History'" :bg-img="topImage" />

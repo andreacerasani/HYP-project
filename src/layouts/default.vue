@@ -1,3 +1,4 @@
+<!-- Default layout with header and footer -->
 <template>
   <div class="main-page megabox">
     <the-header />

@@ -1,3 +1,4 @@
+<!-- Page that show all service types -->
 <template>
   <div>
     <top-image :title="'Services'" :bg-img="'/images/services.jpg'" />
