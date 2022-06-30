@@ -43,12 +43,12 @@
       :num-of-carousel="1"
       class="pt-4"
     />
-    <card-mosaic :items="data.all_events" />
+    <mosaic :items="data.all_events" />
   </div>
 </template>
 
 <script>
-import CardMosaic from '~/components/mosaics/CardMosaic.vue'
+import Mosaic from '~/components/mosaics/Mosaic.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 import ImageDescriptionCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
@@ -59,7 +59,7 @@ export default {
   components: {
     TopImage,
     SimpleContent,
-    CardMosaic,
+    Mosaic,
     ImageDescriptionCarousel,
     Breadcrumbs,
   },

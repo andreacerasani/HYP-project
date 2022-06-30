@@ -17,7 +17,7 @@
 <script>
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
 import ImgDesCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
-import Mosaic from '~/components/mosaics/CardMosaic.vue'
+import Mosaic from '~/components/mosaics/Mosaic.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 export default {
