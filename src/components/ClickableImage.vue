@@ -5,7 +5,9 @@
         class="card-image"
         :style="{ 'background-image': 'url(' + img + ')' }"
       ></div>
+      <div v-if="trapezoid" class="trapezoid"></div>
       <div id="card-body" class="p card-body">
+
         <div v-if="date !== null" id="date" class="card-title text-center">
           {{ formatDate(date) }}
         </div>
@@ -39,11 +41,27 @@ export default {
       type: String,
       required: true,
     },
+    trapezoid:{
+      type: Boolean,
+      required:false,
+      default: false,
+    }
+
   },
 }
 </script>
 
 <style scoped>
+.trapezoid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  background: var(--subtitle-color) linear-gradient(to left, var(--subtitle-color), white);
+  clip-path: polygon(35% 100%, 65% 0%, 100% 0%, 100% 100%);
+}
 .cards {
   position: relative;
   border: 4px solid var(--div-color-dark);

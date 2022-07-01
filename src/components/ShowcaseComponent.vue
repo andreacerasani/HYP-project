@@ -33,24 +33,26 @@
           'flex-row flex-md-row': isLeft,
         }"
       >
-        <div class="col-lg-8 col-sm-12 half-side">
+        <div class="col-lg-7 col-sm-12 half-side">
           <div class="pb-3">
             <clickable-image
               :img="content[0].images[0].path"
               :name="content[0].title"
               :link="content[0].linkPath"
               :date="content[0].date"
+              :trapezoid="false"
               class="bigCard"
             />
           </div>
         </div>
 
-        <div class="col-lg-4 half-side">
+        <div class="col-lg-5 half-side">
           <clickable-image
             :img="content[1].images[0].path"
             :name="content[1].title"
             :link="content[1].linkPath"
             :date="content[1].date"
+            :trapezoid="true"
             class="smallCard number-1 flex-fill"
           />
           <br />
@@ -59,6 +61,7 @@
             :name="content[2].title"
             :link="content[2].linkPath"
             :date="content[2].date"
+            :trapezoid="true"
             class="smallCard number-2 flex-fill"
           />
           <br />
@@ -67,6 +70,7 @@
             :name="content[3].title"
             :link="content[3].linkPath"
             :date="content[3].date"
+            :trapezoid="true"
             class="smallCard number-3 flex-fill"
           />
         </div>
