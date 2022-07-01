@@ -53,7 +53,7 @@ export default {
 }
 .cards {
   border: 4px solid var(--div-color-dark);
-  width: 16rem;
+  width: 18rem;
   padding: 0;
   margin-bottom: 1vh;
   margin-left: 1vh;
@@ -74,7 +74,7 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 30vh;
+  height: 16rem;
   -webkit-filter: brightness(50%); /* Safari 6.0 - 9.0 */
   filter: brightness(70%);
 }
@@ -86,6 +86,7 @@ export default {
 }
 .card-title {
   text-align: left;
+  font-size:2rem;
   color: var(--title-color);
   text-shadow: 0.1vw 0.1vw black;
   pointer-events: none;
