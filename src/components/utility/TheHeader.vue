@@ -3,7 +3,7 @@
 <template>
   <header
     ref="header"
-    class="navbar-expand-xl navbar-light px-3 header py-2"
+    class="navbar navbar-expand-xl navbar-light px-3 header py-2"
     style="
       transition: top 0.5s ease, background-color 0.5s;
       -webkit-transition: top 0.5s ease, background-color 0.5s;
@@ -14,6 +14,14 @@
         : { backgroundColor: '#80D8FD' + header_opacity, top: header_top },
     ]"
   >
+    
+    <nuxt-link to="/" class="nav-link navbar-brand hover-zoom">
+        <img
+          src="/images/header_icons/logo.png"
+          alt="Page Logo Visit Venice"
+          style="height: 5vh; min-height: 30px"
+        />
+    </nuxt-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -29,11 +37,6 @@
 
     <div id="navbarToggler" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li>
-          <nuxt-link to="/" class="nav-link">
-            <p class="align-middle ps-3 hover-zoom"><img src="/images/header_icons/logo.png" alt="Page Logo Visit Venice" style="height: 5vh; min-height: 50px" /></p>
-          </nuxt-link>
-        </li>
         <li
           v-for="(navItem, navItemIndex) of headerList"
           :key="`navItem${navItemIndex}`"
@@ -241,7 +244,7 @@ p {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-.hover-zoom:hover{
-  transform: scaleX(1.1);
+.hover-zoom:hover {
+  transform: scale(1.05);
 }
 </style>
