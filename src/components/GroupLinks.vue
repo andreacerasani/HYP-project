@@ -155,10 +155,6 @@ export default {
 </script>
 
 <style>
-.my-button {
-  color: var(--subtitle-color);
-  border-color: var(--subtitle-color);
-}
 .icon-size {
   height: 30px;
   width: 30px;

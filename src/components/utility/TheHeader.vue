@@ -13,15 +13,15 @@
         : { backgroundColor: '#80D8FD' + header_opacity, top: header_top },
     ]"
   >
-    
     <nuxt-link to="/" class="nav-link navbar-brand hover-zoom">
-        <img
-          src="/images/header_icons/logo.png"
-          alt="Page Logo Visit Venice"
-          style="height: 40px;"
-        />
+      <img
+        src="/images/header_icons/logo.png"
+        alt="Page Logo Visit Venice"
+        style="height: 40px"
+      />
     </nuxt-link>
     <button
+      ref="nav_btn"
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -34,7 +34,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbarToggler" class="collapse navbar-collapse">
+    <div
+      id="navbarToggler"
+      ref="navbarToggler"
+      class="collapse navbar-collapse"
+    >
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li
           v-for="(navItem, navItemIndex) of headerList"
@@ -42,11 +46,11 @@
           class="nav-item header-button-hover"
         >
           <nuxt-link :to="navItem.path" class="nav-link">
-            <div class="justify-content-center px-3">
+            <div class="justify-content-center px-3" @click="collapse()">
               <img
                 :src="navItem.image"
                 class="align-middle"
-                style="height: 30px;"
+                style="height: 30px"
                 :alt="removePath(navItem.image)"
               />
               <p
@@ -116,6 +120,11 @@ export default {
     window.removeEventListener('mousemove', this.mouseOverHeader)
   },
   methods: {
+    collapse() {
+      if (window.screen.availWidth < 1200) {
+        this.$refs.nav_btn.click()
+      }
+    },
     toggleClick() {
       if (this.$refs.header.classList.contains('header')) {
         this.$refs.header.classList.replace('header', 'headerToggled')

@@ -20,21 +20,21 @@
       :mobile-phone="data.contact.mobile_phone"
     />
     <br /><br />
-    <div class="container-xl">
-      <button
-        type="button"
-        class="btn btn-outline-secondary btn-lg px-4 center"
-        @click="backToEvents"
-      >
-        Back to events
-      </button>
-    </div>
-    <br /><br /><br />
     <image-carousel
       :title="'Gallery'"
       :my-array="formatArray(data.images)"
       :num-of-carousel="1"
     />
+    <br /><br />
+    <div class="text-center">
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-lg px-4 center my-button"
+        @click="backToEvents"
+      >
+        Back to events
+      </button>
+    </div>
   </div>
 </template>
 

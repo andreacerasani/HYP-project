@@ -100,14 +100,7 @@ export default {
   padding-left: 5% !important;
   padding-right: 5% !important
 }
-.my-button {
-  color: var(--subtitle-color);
-  border-color: var(--subtitle-color);
-}
-.my-button:hover {
-  background-color: var(--subtitle-color);
-  color: white;
-}
+
 .my-border {
   border-style: solid;
   border-color: var(--div-color-light);

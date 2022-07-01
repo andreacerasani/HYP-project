@@ -18,6 +18,16 @@
       :phone="item.contact.landline_phone"
       :title="item.name"
     />
+        <br /><br />
+    <div class="text-center">
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-lg px-4 center my-button"
+        @click="backToServices"
+      >
+        Back to Services
+      </button>
+    </div>
   </div>
 </template>
 
@@ -60,5 +70,10 @@ export default {
       title: this.title,
     }
   },
+  methods: {
+    backToServices(){
+      this.$router.push('/services')
+    }
+  }
 }
 </script>

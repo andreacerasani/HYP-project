@@ -16,20 +16,12 @@
       :email="data.contact.email"
     />
     <br /><br />
-    <div class="container-xl">
+    <div class="container-xl text-center">
       <h1>Location</h1>
       <br />
       <map-card :address="handleNull(data.address)" />
       <br /><br />
-      <button
-        type="button"
-        class="btn btn-outline-secondary btn-lg px-4 center"
-        @click="backToList"
-      >
-        See all points of interest
-      </button>
     </div>
-    <br />
     <!-- Events in this point of interest -->
     <image-description-carousel
       v-if="data.events.length > 0"
@@ -56,6 +48,16 @@
       :num-of-carousel="2"
       :my-array="formatArray(data.images)"
     />
+    <br /><br />
+    <div class="text-center">
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-lg px-4 center my-button"
+        @click="backToList"
+      >
+        Back to Points of Interest
+      </button>
+    </div>
   </div>
 </template>
 
@@ -151,7 +153,6 @@ export default {
     })
 
     groupLinks[3].links = pageLinks
-
 
     sessionStorage.setItem('groupLinks', JSON.stringify(groupLinks))
   },

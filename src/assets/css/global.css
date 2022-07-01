@@ -11,6 +11,15 @@
   --background-color: rgb(255,255,255);
 }
 
+.my-button {
+  color: var(--subtitle-color);
+  border-color: var(--subtitle-color);
+}
+.my-button:hover {
+  background-color: var(--subtitle-color);
+  color: white;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .container-md {width: 95%;}
