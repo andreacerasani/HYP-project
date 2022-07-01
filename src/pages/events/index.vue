@@ -90,6 +90,19 @@ export default {
       },
     }
   },
+  head() {
+    return {
+      title: 'Events - VisitVenice',
+      description: 'See all events in the city of Venice',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'All the main events in the city of Venice',
+        },
+      ],
+    }
+  },
   mounted() {
     const linksJson = sessionStorage.getItem('groupLinks')
 

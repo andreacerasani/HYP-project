@@ -1,60 +1,74 @@
 <template>
-  <div class="outer">
+  <div :class="[isLeft ? 'outerLeft' : 'outerRight']">
     <div class="container-xl">
       <div class="row pt-5 align-items-center">
-        <div class="col text-center">
-          <h1>{{ title }}</h1>
+        <div class="empty-space col-1" />
+        <div class="col-8 text-start">
+          <h1
+            :class="{
+              left: isLeft,
+              right: !isLeft,
+            }"
+          >
+            {{ title }}
+          </h1>
         </div>
         <div class="col text-end pe-5">
           <nuxt-link :to="linkPath">
-            <button type="button" class="btn">{{ linkName }}</button>
+            <button
+              type="button"
+              class="btn"
+              :class="[isLeft ? 'left' : 'right']"
+            >
+              {{ linkName }}
+            </button>
           </nuxt-link>
         </div>
       </div>
 
-      <div class="row pt-3 pb-5 align-items-center">
-        <div class="col-8 flex-container">
-          <div class="ratio ratio-16x9">
+      <div
+        class="row pt-3 pb-5 align-items-center flex-wrap"
+        :class="{
+          'flex-row-reverse ': !isLeft,
+          'flex-row flex-md-row': isLeft,
+        }"
+      >
+        <div class="col-lg-8 col-sm-12 half-side">
+          <div class="pb-3">
             <clickable-image
-              :img="content[0].img"
-              :name="content[0].name"
-              :link="'/events'"
+              :img="content[0].images[0].path"
+              :name="content[0].title"
+              :link="content[0].linkPath"
+              :date="content[0].date"
               class="bigCard"
             />
           </div>
         </div>
 
-        <div class="col-4 three-images">
-          <div class="row">
-            <div class="">
-              <clickable-image
-                :img="content[1].img"
-                :name="content[1].name"
-                :link="'/events'"
-                class="smallCard number-1"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="">
-              <clickable-image
-                :img="content[2].img"
-                :name="content[2].name"
-                :link="'/events'"
-                class="smallCard number-2"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="">
-              <clickable-image
-                :img="content[3].img"
-                :name="content[3].name"
-                :link="'/events'"
-                class="smallCard number-3"
-              />
-            </div>
-          </div>
+        <div class="col-lg-4 half-side">
+          <clickable-image
+            :img="content[1].images[0].path"
+            :name="content[1].title"
+            :link="content[1].linkPath"
+            :date="content[1].date"
+            class="smallCard number-1 flex-fill"
+          />
+          <br />
+          <clickable-image
+            :img="content[2].images[0].path"
+            :name="content[2].title"
+            :link="content[2].linkPath"
+            :date="content[2].date"
+            class="smallCard number-2 flex-fill"
+          />
+          <br />
+          <clickable-image
+            :img="content[3].images[0].path"
+            :name="content[3].title"
+            :link="content[3].linkPath"
+            :date="content[3].date"
+            class="smallCard number-3 flex-fill"
+          />
         </div>
       </div>
     </div>
@@ -88,56 +102,73 @@ export default {
       default: true,
     },
   },
+  mounted() {},
+  methods: {
+    titleClass(isLeft) {
+      if (isLeft) return 'left'
+      return 'right'
+    },
+    outer(isLeft) {
+      if (isLeft) return 'outerLeft'
+      return 'outerRight'
+    },
+  },
 }
 </script>
 
 <style scoped>
-.three-images{
-  height: 60vh;
+.half-side {
   position: relative;
+  height: max(70vh, 370px);
 }
-.flex-container{
-  position: relative;
-  height: 60vh;
-}
+
 .bigCard {
-  width: 90%; 
+  width: 90%;
   height: 60vh;
-  position:absolute;
-  left:50%;
+  min-height: 350px;
+  position: absolute;
+  left: 50%;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
 }
-.smallCard{
+
+.smallCard {
   width: 80%;
   height: 18vh;
-  position:absolute;
-  left:50%;
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
+  min-height: 100px;
+  margin: auto;
 }
-.number-1{
-  top: 1.5vh;
+
+.outerLeft {
+  background: var(--background-color);
 }
-.number-2{
-  top: 21vh;
+.outerRight {
+  background: var(--subtitle-color);
 }
-.number-3{
-  top: 40.5vh;
-}
-.outer {
-  background: gainsboro;
-}
-h1 {
+
+h1.left {
   color: var(--subtitle-color);
 }
+h1.right {
+  color: var(--title-color);
+}
+
 button {
   color: var(--subtitle-color);
-  border-color: var(--subtitle-color);
   background: white;
 }
-button:hover {
+button.left {
+  border-color: var(--subtitle-color);
+}
+button.right {
+  border-color: var(--div-color-light);
+}
+button.left:hover {
   background-color: var(--subtitle-color);
   color: white;
+}
+button.right:hover {
+  background-color: var(--div-color-light);
+  color: black;
 }
 </style>

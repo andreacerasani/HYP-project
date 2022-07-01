@@ -1,4 +1,4 @@
-:root{
+:root{ 
   --title-color:rgb(255,255,255); /*0 109 139*/
   --text-color: rgb(0,0,0);
   --link-color: rgb(0,0,255);
@@ -8,6 +8,7 @@
   --subtitle-color-light: rgb(0, 156, 190) ;
   --button-carousel: rgb(0,0,0);
   --button-color:rgb(0,161,228);
+  --background-color: rgb(255,255,255);
 }
 
 /* Extra small devices (phones, 600px and down) */

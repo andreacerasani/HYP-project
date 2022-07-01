@@ -1,19 +1,15 @@
 <template>
   <div class="cards">
     <nuxt-link :to="link">
-      <div class="overflow-hide">
-        <div style="position: relative">
-          <div
-            class="card-image"
-            :style="{ 'background-image': 'url(' + img + ')' }"
-          >
-          </div>
-          <span class="card-body">
-            <h6 v-if="date !== null" class="card-title text-center">{{formatDate(date)}}</h6>
-            <h5 class="card-title text-center">{{ name }}</h5>
-          </span>
-
+      <div
+        class="card-image"
+        :style="{ 'background-image': 'url(' + img + ')' }"
+      ></div>
+      <div id="card-body" class="p card-body">
+        <div v-if="date !== null" id="date" class="card-title text-center">
+          {{ formatDate(date) }}
         </div>
+        <div class="card-title text-center">{{ name }}</div>
       </div>
     </nuxt-link>
   </div>
@@ -24,7 +20,7 @@ import common from '~/mixins/common.js'
 
 export default {
   name: 'ClickableImage',
-  mixins: [common] ,
+  mixins: [common],
   props: {
     name: {
       type: String,
@@ -33,7 +29,7 @@ export default {
     date: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     img: {
       type: String,
@@ -42,40 +38,27 @@ export default {
     link: {
       type: String,
       required: true,
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped>
-.overflow-hide {
-  overflow: hidden;
-  padding: 0;
-}
 .cards {
+  position: relative;
   border: 4px solid var(--div-color-dark);
-  width: 16rem;
-  padding: 0;
-  margin-bottom: 1vh;
-  margin-left: 1vh;
   border-radius: 3%;
   overflow: hidden;
   background-color: var(--div-color-light);
-  display: inline-block;
-  vertical-align: top;
-  /* float: left; */
 }
 .cards:hover {
   border: 4px solid var(--subtitle-color);
 }
 .card-image {
-  padding-left: 0;
-  padding-right: 0;
-  padding: 0;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 65vh;
+  height: 100%;
   -webkit-filter: brightness(50%); /* Safari 6.0 - 9.0 */
   filter: brightness(70%);
 }
@@ -96,8 +79,12 @@ export default {
   top: 50%;
   left: 50%;
   width: 100%;
-  height: 30%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+}
+.p {
+  font-weight: bold;
+  font-size: 1.25em;
+  font-variant: small-caps;
 }
 </style>
