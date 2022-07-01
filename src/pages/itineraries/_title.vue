@@ -6,7 +6,7 @@
     <group-links :page-name="data.title" type="itineraries" />
     <simple-content text-align="center" :description="data.description" />
     <map-card :web-link="data.map" />
-    <hr>
+    <hr />
     <simple-content :title="'Points of Interest'" />
     <!-- All points of interest involved in the itinerary -->
     <description-card
@@ -19,6 +19,16 @@
       :link-path="'/points-of-interest/' + single.title.replaceAll(' ', '-')"
       :is-left="isLeft(index)"
     />
+    <br /><br />
+    <div class="text-center">
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-lg px-4 center my-button"
+        @click="backToItineraries"
+      >
+        Back to Itineraries
+      </button>
+    </div>
   </div>
 </template>
 
@@ -84,7 +94,7 @@ export default {
     sessionStorage.setItem('groupLinks', JSON.stringify(groupLinks))
   },
   methods: {
-    backToInieraries() {
+    backToItineraries() {
       this.$router.push('/itineraries')
     },
     isLeft(index) {

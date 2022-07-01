@@ -23,7 +23,7 @@ When the img shrinks the text goes down
             <div v-if="showButton">
               <button
                 type="button"
-                class="btn btn-outline-secondary btn-lg px-4 center"
+                class="btn btn-outline-secondary btn-lg px-4 center my-button"
                 @click="discoverMore"
               >
                 Discover More
