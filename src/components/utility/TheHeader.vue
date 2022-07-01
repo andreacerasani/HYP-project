@@ -2,7 +2,7 @@
 <template>
   <header
     ref="header"
-    class="navbar navbar-expand-xl navbar-light px-3 header py-2"
+    class="navbar navbar-expand-xl navbar-light px-4 header py-2"
     style="
       transition: top 0.5s ease, background-color 0.5s;
       -webkit-transition: top 0.5s ease, background-color 0.5s;
@@ -18,7 +18,7 @@
         <img
           src="/images/header_icons/logo.png"
           alt="Page Logo Visit Venice"
-          style="height: 5vh; min-height: 30px"
+          style="height: 40px;"
         />
     </nuxt-link>
     <button
@@ -46,7 +46,7 @@
               <img
                 :src="navItem.image"
                 class="align-middle"
-                style="height: 3vh; min-height: 25px"
+                style="height: 30px;"
                 :alt="removePath(navItem.image)"
               />
               <p
