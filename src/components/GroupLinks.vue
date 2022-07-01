@@ -5,6 +5,7 @@
       v-if="prev.title !== '' || next.title !== ''"
       class="row justify-content-between size"
     >
+    <!-- Previous Button -->
       <div
         class="col-auto btn btn-outline-primary my-button ms-1"
         :style="[
@@ -25,6 +26,7 @@
           <span class="d-none d-md-inline">{{ prev.title }}</span>
         </span>
       </div>
+      <!-- Next Button -->
       <div
         class="col-auto btn btn-outline-primary my-button me-1"
         :style="[

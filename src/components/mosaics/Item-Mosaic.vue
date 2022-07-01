@@ -1,3 +1,4 @@
+<!-- Component that represent a mosaic item -->
 <template>
   <div class="cards">
     <nuxt-link :to="link">
@@ -61,7 +62,6 @@ export default {
   background-color: var(--div-color-light);
   display: inline-block;
   vertical-align: top;
-  /* float: left; */
 }
 .cards:hover {
   border: 4px solid var(--subtitle-color);

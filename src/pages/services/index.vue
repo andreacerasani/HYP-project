@@ -1,15 +1,16 @@
+<!-- Page that show all service types -->
 <template>
   <div>
     <top-image :title="'Services'" :bg-img="'/images/services.jpg'" />
     <breadcrumbs page-name="Services" link="/services" />
     <simple-content :title="'Services of Venice'" />
-    <card-mosaic :items="data" />
+    <mosaic :items="data" />
   </div>
 </template>
 
 <script>
 import TopImage from '~/components/utility/TopImage.vue'
-import CardMosaic from '~/components/mosaics/CardMosaic.vue'
+import Mosaic from '~/components/mosaics/Mosaic.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
 
@@ -17,7 +18,7 @@ export default {
   name: 'MainServicesPage',
   components: {
     TopImage,
-    CardMosaic,
+    Mosaic,
     SimpleContent,
     Breadcrumbs,
   },

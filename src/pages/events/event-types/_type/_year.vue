@@ -1,3 +1,4 @@
+<!-- Page that show the informations of a sub-category of events -->
 <template>
   <div>
     <top-image :title="data.title" :bg-img="data.bgImg" />
@@ -17,7 +18,7 @@
         >
           Select the Year
         </a>
-
+        <!-- Choose the year -->
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <li><a class="dropdown-item" @click="yearClick('all')">All</a></li>
           <li>
@@ -34,6 +35,7 @@
       </div>
     </div>
     <br /><br />
+    <!-- Show the different events -->
     <image-description-carousel
       :title="'Upcoming Events'"
       :myarray="data.upcoming_events"
@@ -41,12 +43,12 @@
       :num-of-carousel="1"
       class="pt-4"
     />
-    <card-mosaic :items="data.all_events" />
+    <mosaic :items="data.all_events" />
   </div>
 </template>
 
 <script>
-import CardMosaic from '~/components/mosaics/CardMosaic.vue'
+import Mosaic from '~/components/mosaics/Mosaic.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 import ImageDescriptionCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
@@ -57,7 +59,7 @@ export default {
   components: {
     TopImage,
     SimpleContent,
-    CardMosaic,
+    Mosaic,
     ImageDescriptionCarousel,
     Breadcrumbs,
   },
@@ -118,9 +120,11 @@ export default {
         } else {
           breadArray = JSON.parse(breadJson)
         }
-        breadArray.pop()
 
-        sessionStorage.setItem('bread', JSON.stringify(breadArray))
+        if (breadArray[breadArray.length - 1].pageName === this.$data.data.title) {
+          breadArray.pop()
+          sessionStorage.setItem('bread', JSON.stringify(breadArray))
+        }
 
         if (year === 'all') {
           this.$router.push('all')

@@ -1,3 +1,4 @@
+<!-- Page that show a single service type with all its service points -->
 <template>
   <div>
     <top-image :bg-img="img" :title="title" />

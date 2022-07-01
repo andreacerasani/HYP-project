@@ -1,3 +1,4 @@
+<!-- Page that show a single point of interest informations -->
 <template>
   <div>
     <top-image :title="data.title" :bg-img="data.images[0].path" />
@@ -29,6 +30,7 @@
       </button>
     </div>
     <br />
+    <!-- Events in this point of interest -->
     <image-description-carousel
       v-if="data.events.length > 0"
       :title="'It\'s happening here'"
@@ -37,7 +39,9 @@
       :num-of-carousel="1"
       class="pt-1"
     />
-    <br /><br />
+    <br />
+    <br />
+    <!-- Itineraries where this point of interest is involved -->
     <image-description-carousel
       v-if="data.itineraries.length > 0"
       :title="'It\'s involved in'"

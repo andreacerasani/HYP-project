@@ -1,3 +1,4 @@
+<!-- Page that show a general info of Venice -->
 <template>
   <div>
     <top-image :title="'City'" :bg-img="bgImg" />

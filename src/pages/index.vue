@@ -1,3 +1,4 @@
+<!-- Homepage of the website -->
 <template>
   <div>
     <video id="bgVideo" autoplay muted loop>

@@ -1,3 +1,4 @@
+<!-- Page that show  -->
 <template>
   <div>
     <top-image
@@ -9,21 +10,21 @@
       :title="'Venice\'s Points of Interest'"
     />
     <br />
-    <card-mosaic :items="data" />
+    <mosaic :items="data" />
   </div>
 </template>
 
 <script>
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
-import CardMosaic from '~/components/mosaics/CardMosaic.vue'
+import Mosaic from '~/components/mosaics/Mosaic.vue'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
 export default {
   name: 'PointsOfInterest',
   components: {
     TopImage,
     SimpleContent,
-    CardMosaic,
+    Mosaic,
     Breadcrumbs,
   },
   async asyncData({ $axios }) {

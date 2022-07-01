@@ -1,3 +1,4 @@
+<!-- Component that show a box with contact info -->
 <template>
   <div class="container-xl">
     <div class="px-4 py-2 align-items-center rounded-3 my-border">

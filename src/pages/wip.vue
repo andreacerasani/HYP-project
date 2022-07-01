@@ -1,3 +1,4 @@
+<!-- Simple page shown when a page is still in Work in Progress -->
 <template>
   <div class="container">
     <br>

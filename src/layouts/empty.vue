@@ -1,3 +1,4 @@
+<!-- Basic empty layout -->
 <template>
   <div class="main-page megabox">
     <nuxt />

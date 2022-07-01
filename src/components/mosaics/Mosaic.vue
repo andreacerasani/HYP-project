@@ -2,7 +2,7 @@
 <template>
   <div>
     <div class="container-xl" style="text-align: center;">
-      <card-2
+      <item
           v-for="(item, itemIndex) in items"
           :key="`service-index-${itemIndex}`"
           :name="item.title"
@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import Card2 from '../mosaics/Card2.vue'
+import item from './Item-Mosaic.vue'
 export default {
-  name: 'CardMosaic',
+  name: 'TheMosaic',
   components: {
-    Card2,
+    item,
   },
   props: {
     items: {

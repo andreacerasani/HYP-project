@@ -1,3 +1,4 @@
+<!-- Page that show the 3 different sub-category of events -->
 <template>
   <div>
     <top-image :title="'Events'" :bg-img="'/images/events.jpg'" />
@@ -10,6 +11,7 @@
       class="pt-4"
     />
     <hr />
+    <!-- All events given a year -->
     <description-card
       :title="All.title"
       :descr-img="All.descrImg"
@@ -18,6 +20,7 @@
       :link-path="All.linkPath"
       :is-left="false"
     />
+    <!-- All events that happen during the summer -->
     <description-card
       :title="Summer.title"
       :descr-img="Summer.descrImg"
@@ -25,6 +28,7 @@
       :link-name="Summer.linkName"
       :link-path="Summer.linkPath"
     />
+    <!-- All events that happen during the winter -->
     <description-card
       :title="Winter.title"
       :descr-img="Winter.descrImg"

@@ -1,3 +1,4 @@
+<!-- Page that show a single itinerary informations -->
 <template>
   <div>
     <top-image :title="data.title" :bg-img="data.image.path" />
@@ -7,6 +8,7 @@
     <map-card :web-link="data.map" />
     <hr>
     <simple-content :title="'Points of Interest'" />
+    <!-- All points of interest involved in the itinerary -->
     <description-card
       v-for="(single, index) in data.pois"
       :key="index"

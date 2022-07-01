@@ -1,3 +1,4 @@
+<!-- Page that show all the informations of a specific event -->
 <template>
   <div>
     <top-image :title="data.title" :bg-img="data.images[0].path" />
@@ -6,6 +7,7 @@
     <br />
     <simple-content text-align="center" :description="data.description" />
     <br />
+    <!-- Shown the point of interest where the event take place -->
     <map-card
       :title="data.pois[0].title"
       :address="handleNull(data.pois[0].address)"
