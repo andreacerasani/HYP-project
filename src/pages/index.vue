@@ -5,7 +5,8 @@
       <source src="video/Venezia_panoramic.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <showcase-component :title="titleEvents" :link-path="'/events'" :content="events" :is-left="true" />
+    <scroll-down-button class="d-lg-block d-none" :address-id="'section1'" />
+    <showcase-component id="section1" :title="titleEvents" :link-path="'/events'" :content="events" :is-left="true" />
     <showcase-component :title="titleItineraries" :link-path="'/itineraries'" :content="itineraries" :is-left="false" />
     <showcase-component :title="titlePois" :link-path="'/points-of-interest'" :content="pois" :is-left="true" />
 
@@ -14,10 +15,11 @@
 </template>
 
 <script>
+import ScrollDownButton from '~/components/ScrollDownButton.vue'
 import ShowcaseComponent from '~/components/ShowcaseComponent.vue'
 export default {
   name: 'IndexPage',
-  components: { ShowcaseComponent },
+  components: { ShowcaseComponent, ScrollDownButton },
    async asyncData({ $axios }) {
       const response1 = await $axios.get('/api/year-events/all')
       const response2 = await $axios.get('/api/itineraries')
