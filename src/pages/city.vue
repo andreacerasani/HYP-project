@@ -39,7 +39,7 @@ export default {
   data() {
     const city = {
     Top: {
-      bg_img: '/images/extra/homepage.jpg',
+      bg_img: '/images/city.jpg',
     },
     Map: {
       title: 'Venice',

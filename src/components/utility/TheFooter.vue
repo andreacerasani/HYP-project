@@ -1,12 +1,15 @@
 <!-- Fixed Component without props for the footer  -->
 <template>
-  <footer class="link-primary text-center">
-    <nuxt-link :to="linkPath">
+  <footer class="link-primary d-flex flex-row flex-wrap justify-content-center">
+    <p class="polimi-text p-3 ">Worry Whales &copy; 2022</p>
+    <p class="pt-3">-</p>
+    <p class="polimi-text p-3">Politecnico Di Milano</p>
+    <p class="pt-3">-</p>
+    <p class="polimi-text p-3">Hypermedia Application</p>
+    <p class="pt-3">-</p>
+    <nuxt-link :to="linkPath" class="p-3">
       {{ linkName }}
     </nuxt-link>
-    <p class="polimi-text">Politecnico Di Milano</p>
-    <p class="polimi-text">Hypermedia Application</p>
-    <p class="polimi-text">Worry Whales 2022</p>
   </footer>
 </template>
 
@@ -37,7 +40,6 @@ footer {
   bottom: 0;
   width: 100%;
   min-height: 10vh;
-  max-height: 25vh;
   padding-top: 3vh;
   padding-bottom: 3vh;
   background-image: linear-gradient(
@@ -47,9 +49,9 @@ footer {
   );
 }
 .polimi-text {
-  color: var(--text-color);
+  color: var(--secondary-text-color);
   font-style: bold;
-  margin-bottom: 1vh;
+  margin-bottom: auto;
 }
 nuxt-link {
   color: var(--link-color);
