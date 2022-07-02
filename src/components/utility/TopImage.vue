@@ -1,11 +1,10 @@
 <!-- Component with image all width with an img over it to handle the title of the page -->
 <template>
   <div class="container-fluid container-img px-0">
-   <div
+    <div
       class="img-screen format-image"
       :style="{ 'background-image': 'url(' + bgImg + ')' }"
-    >
-    </div>
+    ></div>
     <div class="centered">
       <h1>{{ title }}</h1>
     </div>
@@ -51,20 +50,9 @@ h1 {
   position: relative;
   text-align: center;
 }
-.img-inner {
-  width: 70vw;
-}
 
-@media only screen and (max-width: 1500px) {
-  .img-screen {
-    height: 80vmin;
-    object-fit: cover;
-  }
-}
-@media only screen and (min-width: 1500px) {
-  .img-screen {
-    height: 50vmax;
-    object-fit: cover;
-  }
+.img-screen {
+  height: 80vmin;
+  object-fit: cover;
 }
 </style>
