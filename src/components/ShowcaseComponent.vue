@@ -3,7 +3,7 @@
     <div class="container-xl">
       <div class="row pt-5 align-items-center">
         <div class="empty-space col-1" />
-        <div class="col-8 text-start">
+        <div class="col-7 text-start">
           <h1
             :class="{
               left: isLeft,
@@ -13,7 +13,7 @@
             {{ title }}
           </h1>
         </div>
-        <div class="col text-end pe-5">
+        <div class="col-4 text-md-end text-sm-center pe-sm-3 pe-md-5">
           <nuxt-link :to="linkPath">
             <button
               type="button"
@@ -134,6 +134,7 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
+  font-size: 2em;
 }
 
 .smallCard {

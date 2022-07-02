@@ -12,10 +12,10 @@ the right and a possible link  -->
 
       <div class="col text-center">
         <div class="row pb-2 pt-3">
-          <h3>{{ title }}</h3>
+          <p class="text-title">{{ title }}</p>
         </div>
         <div v-if="date !== null">
-          <h5>{{formatDate(date)}}</h5>
+          <p class="text">{{formatDate(date)}}</p>
         </div>
         <div class="row pb-4">
           <div>
@@ -116,5 +116,13 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 25vmax;
+}
+.text{
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.text-title{
+  font-size: 2rem;
+  font-weight: 600;
 }
 </style>

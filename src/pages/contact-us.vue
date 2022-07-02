@@ -3,7 +3,7 @@
   <div>
     <top-image :title="'Contact Us'" :bg-img="bgImg" />
     <breadcrumbs page-name="Contact Us" link="contact us"/>
-    <simple-content text-align="center" :title="'Vela Spa'" :description="description" />
+    <simple-content text-align="justify" :title="'Vela Spa'" :description="description" />
     <br>
     <div class="container-md">
       <contacts

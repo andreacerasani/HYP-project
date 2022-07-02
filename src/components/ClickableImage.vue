@@ -60,7 +60,7 @@ export default {
   height: 100%;
   width: 100%;
   background: var(--subtitle-color) linear-gradient(to left, var(--subtitle-color), white);
-  clip-path: polygon(35% 100%, 65% 0%, 100% 0%, 100% 100%);
+  clip-path: polygon(50% 100%, 65% 0%, 100% 0%, 100% 100%);
 }
 .cards {
   position: relative;
@@ -101,7 +101,7 @@ export default {
   pointer-events: none;
 }
 .p {
-  font-weight: bold;
+  font-weight: 550;
   font-size: 1.25em;
   font-variant: small-caps;
 }

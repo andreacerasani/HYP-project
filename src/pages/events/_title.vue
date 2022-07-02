@@ -5,7 +5,7 @@
     <breadcrumbs :page-name="data.title" :link="$route.path" />
     <group-links :page-name="data.title" type="events" />
     <br />
-    <simple-content text-align="center" :description="data.description" />
+    <simple-content text-align="justify" :description="data.description" />
     <br />
     <!-- Shown the point of interest where the event take place -->
     <map-card

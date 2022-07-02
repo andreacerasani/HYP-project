@@ -4,7 +4,7 @@
     <top-image :title="data.title" :bg-img="data.bgImg" />
     <breadcrumbs :page-name="data.title" :link="$route.path" />
     <br />
-    <simple-content text-align="center" :description="data.description" />
+    <simple-content text-align="justify" :description="data.description" />
     <br />
     <div v-if="type === 'year-events'" class="container-xl text-center">
       <div class="dropdown">
