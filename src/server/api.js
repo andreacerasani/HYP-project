@@ -237,8 +237,6 @@ async function runMainApi() {
 
     const data = sortItineraries(filtered)
 
-    console.log(data)
-
     return res.json(data)
   })
 

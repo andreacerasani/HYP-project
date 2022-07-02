@@ -36,7 +36,7 @@
     <!-- Itineraries where this point of interest is involved -->
     <image-description-carousel
       v-if="data.itineraries.length > 0"
-      :title="'It\'s involved in'"
+      :title="'Plan your trip'"
       :myarray="data.itineraries"
       :link-name="'Discover More'"
       :num-of-carousel="2"

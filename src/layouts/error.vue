@@ -1,6 +1,7 @@
 <!-- Error Layout -->
 <template>
   <div class="container">
+    <br><br>
       <description-card 
       v-if="error.statusCode === 404"
       :descr-img="img" 
