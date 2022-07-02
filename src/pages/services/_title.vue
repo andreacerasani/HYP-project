@@ -68,6 +68,13 @@ export default {
   head() {
     return {
       title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Information about ' + this.data.title + ', a service useful for a tourist in the city of Venice',
+        },
+      ],
     }
   },
   methods: {

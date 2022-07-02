@@ -116,6 +116,13 @@ export default {
   head() {
     return {
       title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Information about ' + this.data.title + ', a point of interest in the city of Venice',
+        },
+      ],
     }
   },
   mounted() {

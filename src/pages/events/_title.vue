@@ -73,6 +73,13 @@ export default {
   head() {
     return {
       title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Information about ' + this.data.title + ', event that takes place at ' + this.data.pois[0].title,
+        },
+      ],
     }
   },
   methods: {
