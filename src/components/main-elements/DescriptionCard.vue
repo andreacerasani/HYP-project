@@ -11,7 +11,7 @@ with a possible link added   -->
     >
       <div v-if="isLeft" class="col text-center">
         <div class="row p-3">
-          <h3>{{ title }}</h3>
+          <p class="text">{{ title }}</p>
         </div>
         <div class="row p-2">
           <div>
@@ -33,7 +33,7 @@ with a possible link added   -->
 
       <div v-if="!isLeft" class="col text-center">
         <div class="row p-3">
-          <h3>{{ title }}</h3>
+          <p class="text">{{ title }}</p>
         </div>
         <div class="row p-2">
           <div>
@@ -107,9 +107,6 @@ export default {
 p{
   color: var(--text-color);
 }
-h3{
-  color: var(--subtitle-color);
-}
 button{
   color: var(--subtitle-color);
   border-color: var(--subtitle-color);
@@ -117,5 +114,10 @@ button{
 button:hover{
   background-color: var(--subtitle-color);
   color: white;
+}
+.text {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--subtitle-color);
 }
 </style>

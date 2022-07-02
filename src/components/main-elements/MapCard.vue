@@ -17,7 +17,7 @@ When the img shrinks the text goes down
         </div>
         <div class="col text-center">
           <div class="row p-3">
-            <h3><img src="/images/icons/location.png" alt="Location Icon" /> {{ title }}</h3>
+            <p class="text"><img src="/images/icons/location.png" alt="Location Icon" /> {{ title }}</p>
           </div>
           <div class="row p-2">
             <div v-if="showButton">
@@ -93,7 +93,9 @@ export default {
 p {
   color: var(--text-color);
 }
-h3 {
+.text {
+  font-size: 2rem;
+  font-weight: 600;
   color: var(--subtitle-color);
 }
 img {
