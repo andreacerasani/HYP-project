@@ -3,7 +3,7 @@
   <div class="container-xl">
     <div class="px-4 py-2 align-items-center rounded-3 my-border">
       <br />
-      <h3 class="align-center">{{title}}</h3>
+      <p class="align-center text">{{ title }}</p>
       <div class="col-lg-9 p-3 p-lg-5 pt-lg-3">
         <div v-if="date !== null">
           <b>Date:</b>
@@ -11,7 +11,15 @@
             {{ formatDate(date) }}
           </p>
         </div>
-        <div v-if="openingHour != 'none' && !(openingHour == '00:00:00' && (closingHour == '24:00:00' || closingHour == '00:00:00'))">
+        <div
+          v-if="
+            openingHour != 'none' &&
+            !(
+              openingHour == '00:00:00' &&
+              (closingHour == '24:00:00' || closingHour == '00:00:00')
+            )
+          "
+        >
           <b>Opening hours:</b>
           <p class="lead">
             {{ openingHour.substring(0, 5) }} -
@@ -81,15 +89,15 @@ import common from '~/mixins/common.js'
 
 export default {
   name: 'ContactsComponent',
-  mixins: [common] ,
+  mixins: [common],
   props: {
-    title:{
+    title: {
       type: String,
       default: 'More information',
       required: false,
     },
     date: {
-        type: String,
+      type: String,
       default: null,
       required: false,
     },
@@ -124,9 +132,7 @@ export default {
       required: false,
     },
   },
-  methods: {
-    
-  }
+  methods: {},
 }
 </script>
 
@@ -158,7 +164,9 @@ b {
   border-color: var(--div-color-light);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-h3 {
+.text {
+  font-size: 2rem;
+  font-weight: 600;
   text-align: center;
   color: var(--subtitle-color);
 }

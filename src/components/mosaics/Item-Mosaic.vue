@@ -14,12 +14,12 @@
               'card-body': date == null,
             }"
           >
-            <h6 v-if="date !== null" class="card-date text-center">
+            <p v-if="date !== null" class="card-date text-center">
               {{ formatDate(date) }}
-            </h6>
-            <h5 class="card-title text-center">
+            </p>
+            <p class="card-title text-center">
               {{ name }}
-            </h5>
+            </p>
           </span>
         </div>
       </div>
@@ -96,6 +96,7 @@ export default {
 .card-date {
   text-align: left;
   font-size: 1.2rem;
+  font-weight: 500;
   color: var(--title-color);
   text-shadow: 0.1vw 0.1vw black;
   pointer-events: none;
@@ -103,6 +104,7 @@ export default {
 .card-title {
   text-align: left;
   font-size: 2rem;
+  font-weight: 500;
   color: var(--title-color);
   text-shadow: 0.1vw 0.1vw black;
   pointer-events: none;
