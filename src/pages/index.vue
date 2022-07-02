@@ -6,11 +6,25 @@
       Your browser does not support the video tag.
     </video>
     <scroll-down-button class="d-lg-block d-none" :address-id="'section1'" />
-    <showcase-component id="section1" :title="titleEvents" :link-path="'/events'" :content="events" :is-left="true" />
-    <showcase-component :title="titleItineraries" :link-path="'/itineraries'" :content="itineraries" :is-left="false" />
-    <showcase-component :title="titlePois" :link-path="'/points-of-interest'" :content="pois" :is-left="true" />
-
-
+    <showcase-component
+      id="section1"
+      :title="titleEvents"
+      :link-path="'/events'"
+      :content="events"
+      :is-left="true"
+    />
+    <showcase-component
+      :title="titleItineraries"
+      :link-path="'/itineraries'"
+      :content="itineraries"
+      :is-left="false"
+    />
+    <showcase-component
+      :title="titlePois"
+      :link-path="'/points-of-interest'"
+      :content="pois"
+      :is-left="true"
+    />
   </div>
 </template>
 
@@ -20,34 +34,88 @@ import ShowcaseComponent from '~/components/ShowcaseComponent.vue'
 export default {
   name: 'IndexPage',
   components: { ShowcaseComponent, ScrollDownButton },
-   async asyncData({ $axios }) {
-      const response1 = await $axios.get('/api/year-events/all')
-      const response2 = await $axios.get('/api/itineraries')
-      const response3 = await $axios.get('/api/points-of-interest')
-      const events = response1.data.all_events
-      const itineraries = response2.data
-      const pois = response3.data
-      return {
-        events,
-        itineraries,
-        pois
-      }
+  async asyncData({ $axios }) {
+    const response1 = await $axios.get('/api/year-events/all')
+    const response2 = await $axios.get('/api/itineraries')
+    const response3 = await $axios.get('/api/points-of-interest')
+    const events = response1.data.all_events.slice(0, 4)
+    const itineraries = response2.data.slice(0, 4)
+    const pois = response3.data.slice(0, 4)
+    return {
+      events,
+      itineraries,
+      pois,
+    }
   },
   data() {
     const el = {
       name: 'Event',
-      img: '/images/events.jpg'
+      img: '/images/events.jpg',
     }
-    const arr = [
-      el, el, el, el
-    ]
+    const arr = [el, el, el, el]
     return {
-      titleEvents: 'IT\'S HAPPENING HERE',
+      titleEvents: "IT'S HAPPENING HERE",
       titleItineraries: 'TAKE A RIDE',
       titlePois: 'YOU CANNOT MISS',
-      arr
+      arr,
     }
-  }
+  },
+  mounted() {
+    // Create Breadcrumbs
+    const breadArray = []
+    sessionStorage.setItem('bread', JSON.stringify(breadArray))
+
+    // Handle GroupLinks
+    const linksJson = sessionStorage.getItem('groupLinks')
+
+    let groupLinks = []
+    if (linksJson == null || linksJson === 'undefined') {
+      groupLinks = [
+        { type: 'services', links: [] },
+        { type: 'events', links: [] },
+        { type: 'pois', links: [] },
+        { type: 'itineraries', links: [] },
+        { type: 'event-type', links: [] },
+      ]
+    } else {
+      groupLinks = JSON.parse(linksJson)
+    }
+
+    // Save events in group links
+    let pageLinks = []
+    this.$data.events.forEach((element) => {
+      pageLinks.push({
+        title: element.title,
+        linkPath: element.linkPath,
+      })
+    })
+
+    groupLinks[1].links = pageLinks
+
+    // Save points of interest in group links
+    pageLinks = []
+    this.$data.pois.forEach((element) => {
+      pageLinks.push({
+        title: element.title,
+        linkPath: element.linkPath,
+      })
+    })
+
+    groupLinks[2].links = pageLinks
+
+    // Save itineraries in group links
+    pageLinks = []
+    this.$data.itineraries.forEach((element) => {
+      pageLinks.push({
+        title: element.title,
+        linkPath: element.linkPath,
+      })
+    })
+
+    groupLinks[3].links = pageLinks
+
+    sessionStorage.setItem('groupLinks', JSON.stringify(groupLinks))
+  },
 }
 </script>
 
