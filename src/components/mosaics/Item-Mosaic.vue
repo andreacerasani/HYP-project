@@ -8,11 +8,18 @@
             class="card-image"
             :style="{ 'background-image': 'url(' + img + ')' }"
           ></div>
-          <span class="card-body">
+          <span
+            :class="{
+              'card-body-date': date !== null,
+              'card-body': date == null,
+            }"
+          >
             <h6 v-if="date !== null" class="card-date text-center">
               {{ formatDate(date) }}
             </h6>
-            <h5 class="card-title text-center">{{ name }}</h5>
+            <h5 class="card-title text-center">
+              {{ name }}
+            </h5>
           </span>
         </div>
       </div>
@@ -102,7 +109,16 @@ export default {
 }
 .card-body {
   position: absolute;
-  top: 30%;
+  top: 45%;
+  left: 50%;
+  width: 100%;
+  height: 20%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.card-body-date {
+  position: absolute;
+  top: 35%;
   left: 50%;
   width: 100%;
   height: 20%;
