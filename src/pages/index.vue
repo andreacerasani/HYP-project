@@ -1,11 +1,12 @@
 <!-- Homepage of the website -->
 <template>
   <div>
-    <video id="bgVideo" autoplay muted loop>
-      <source src="video/Venezia_panoramic.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <scroll-down-button class="d-lg-block d-none" :address-id="'section1'" />
+    <div class="container-fluid fill px-0">
+      <video id="bgVideo" autoplay muted loop>
+        <source src="video/Venezia_panoramic.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
     <showcase-component
       id="section1"
       :title="titleEvents"
@@ -29,11 +30,10 @@
 </template>
 
 <script>
-import ScrollDownButton from '~/components/ScrollDownButton.vue'
 import ShowcaseComponent from '~/components/ShowcaseComponent.vue'
 export default {
   name: 'IndexPage',
-  components: { ShowcaseComponent, ScrollDownButton },
+  components: { ShowcaseComponent },
   async asyncData({ $axios }) {
     const response1 = await $axios.get('/api/year-events/all')
     const response2 = await $axios.get('/api/itineraries')
@@ -124,6 +124,18 @@ export default {
   position: static;
   top: 0;
   right: 0;
-  width: 100%;
+  object-fit: cover;
+}
+.fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 80vmin;
+}
+.fill video {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 </style>

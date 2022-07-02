@@ -118,7 +118,7 @@ async function initializeDatabaseConnection() {
   Contacts.hasOne(Pois)
   Pois.belongsTo(Contacts)
 
-  await database.sync({ force: false })
+  await database.sync({ force: true })
   return {
     Events,
     Itineraries,
