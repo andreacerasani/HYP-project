@@ -3,11 +3,11 @@
   <div class="container-xl">
     <div class="chapter row">
       <div class="col-sm-12">
-      <h1>{{ title }}</h1>
+        <h1>{{ title }}</h1>
         <img
           v-if="image !== 'noImg'"
           :src="image"
-          class="rounded-3 img-fluid float-end ps-4 pb-4 pt-2 pe-4"
+          class="rounded-3 img-fluid float-md-end ps-4 pb-4 pt-2 pe-4"
           :alt="removePath(image)"
         />
         <div v-for="(par, i) in paragraphs" :key="'p-index' + i">
@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <br>
+    <br />
   </div>
 </template>
 
@@ -57,7 +57,7 @@ p {
   text-align: justify;
 }
 img {
-  max-width: 35em;
-  
+  max-width: min(35em, 100%);
+
 }
 </style>
