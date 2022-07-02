@@ -9,7 +9,9 @@
             :style="{ 'background-image': 'url(' + img + ')' }"
           ></div>
           <span class="card-body">
-            <h6 v-if="date !== null" class="card-title text-center">{{formatDate(date)}}</h6>
+            <h6 v-if="date !== null" class="card-date text-center">
+              {{ formatDate(date) }}
+            </h6>
             <h5 class="card-title text-center">{{ name }}</h5>
           </span>
         </div>
@@ -23,7 +25,7 @@ import common from '~/mixins/common.js'
 
 export default {
   name: 'Card2Component',
-  mixins: [common] ,
+  mixins: [common],
   props: {
     name: {
       type: String,
@@ -32,7 +34,7 @@ export default {
     date: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     img: {
       type: String,
@@ -41,8 +43,8 @@ export default {
     link: {
       type: String,
       required: true,
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -84,19 +86,26 @@ export default {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+.card-date {
+  text-align: left;
+  font-size: 1.2rem;
+  color: var(--title-color);
+  text-shadow: 0.1vw 0.1vw black;
+  pointer-events: none;
+}
 .card-title {
   text-align: left;
-  font-size:2rem;
+  font-size: 2rem;
   color: var(--title-color);
   text-shadow: 0.1vw 0.1vw black;
   pointer-events: none;
 }
 .card-body {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   width: 100%;
-  height: 30%;
+  height: 20%;
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
