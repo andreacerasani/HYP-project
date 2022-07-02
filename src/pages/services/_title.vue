@@ -72,7 +72,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: 'Information about ' + this.data.title + ', a service useful for a tourist in the city of Venice',
+          content: 'Information about ' + this.title + ', a service useful for a tourist in the city of Venice',
         },
       ],
     }

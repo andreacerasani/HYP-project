@@ -9,8 +9,8 @@
     <br />
     <!-- Shown the point of interest where the event take place -->
     <map-card
-      :title="data.pois[0].title"
-      :address="handleNull(data.pois[0].address)"
+      :title="data.poi.title"
+      :address="handleNull(data.poi.address)"
     />
     <br />
     <contacts
@@ -77,10 +77,39 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: 'Information about ' + this.data.title + ', event that takes place at ' + this.data.pois[0].title,
+          content:
+            'Information about ' +
+            this.data.title +
+            ', event that takes place at ' +
+            this.data.poi.title,
         },
       ],
     }
+  },
+  mounted() {
+    const linksJson = sessionStorage.getItem('groupLinks')
+
+    let groupLinks = []
+    if (linksJson == null || linksJson === 'undefined') {
+      groupLinks = [
+        { type: 'services', links: [] },
+        { type: 'events', links: [] },
+        { type: 'pois', links: [] },
+        { type: 'itineraries', links: [] },
+        { type: 'event-type', links: [] },
+      ]
+    } else {
+      groupLinks = JSON.parse(linksJson)
+    }
+
+    const pageLinks = [{
+      title: this.$data.data.poi.title,
+      linkPath: '/point-of-interest/' + this.$data.data.poi.title.replaceAll(' ', '-'),
+    }]
+
+    groupLinks[2].links = pageLinks
+
+    sessionStorage.setItem('groupLinks', JSON.stringify(groupLinks))
   },
   methods: {
     backToEvents() {
@@ -97,7 +126,7 @@ export default {
     },
     handleNull(address) {
       if (address != null) return address
-      return this.data.pois[0].title.concat(', Venezia')
+      return this.data.poi.title.concat(', Venezia')
     },
   },
 }

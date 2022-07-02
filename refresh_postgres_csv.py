@@ -15,7 +15,7 @@ cur = conn.cursor()
 
 
 directory = "./src/assets/csv"
-file_order = ["images.csv", "contacts.csv", "events.csv", "service_types.csv", "service_points.csv", "itineraries.csv", "pois.csv", "pois_images.csv", "involve.csv", "host.csv", "events_images.csv"]
+file_order = ["images.csv", "contacts.csv","pois.csv", "events.csv", "service_types.csv", "service_points.csv", "itineraries.csv",  "pois_images.csv", "involve.csv", "events_images.csv"]
 # Open a cursor to perform database operations
 # cur.execute('SET DateStyle = "ISO, DMY";')
 for filename in file_order:

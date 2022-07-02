@@ -111,7 +111,7 @@ export default {
 }
 .card-body {
   position: absolute;
-  top: 45%;
+  top: 40%;
   left: 50%;
   width: 100%;
   height: 20%;

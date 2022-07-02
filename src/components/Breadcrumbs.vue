@@ -14,6 +14,7 @@
             class="breadcrumb-item fs-4"
             :class="[index === breadLength - 2 ? '' : 'd-none d-lg-block']"
             aria-current="page"
+            @click="retriveLinks(item.pageName)"
           >
             <nuxt-link :to="item.link"> {{ item.pageName }}</nuxt-link>
           </li>
@@ -61,9 +62,13 @@ export default {
   methods: {
     createBread() {
       if (process.client) {
-        const pageInfo = { pageName: this.pageName, link: this.link }
+        const pageInfo = {
+          pageName: this.pageName,
+          link: this.link,
+          groupLinks: sessionStorage.getItem('groupLinks'),
+        }
 
-        // Read the saved breadcrumbs from storage if any else create 
+        // Read the saved breadcrumbs from storage if any else create
         const breadJson = sessionStorage.getItem('bread')
         let breadArray
         if (breadJson == null || breadJson === 'undefined') {
@@ -83,6 +88,7 @@ export default {
         if (indexOfObj !== -1) {
           // If the current page as already been visited truncate the bread array
           breadArray.splice(indexOfObj + 1, breadArray.length)
+          this.retriveLinks(this.pageName)
         } else if (this.$data.basePages.includes(this.pageName)) {
           // If the current page is a base page reset the breadcrumbs
           breadArray = [pageInfo]
@@ -90,7 +96,7 @@ export default {
           // If it's a new page add it to the breadcrumbs
           breadArray.push(pageInfo)
         }
-
+        
         // Save the updated breadcrumbs to memory
         sessionStorage.setItem('bread', JSON.stringify(breadArray))
 
@@ -102,6 +108,28 @@ export default {
           this.$data.breadLength = 3
           return breadArray.slice(breadArray.length - 3)
         }
+      }
+    },
+    retriveLinks(pageName) {
+      if (process.client) {
+        const breadJson = sessionStorage.getItem('bread')
+        let breadArray
+        if (breadJson == null || breadJson === 'undefined') {
+          breadArray = []
+        } else {
+          breadArray = JSON.parse(breadJson)
+        }
+
+        // Search if the current page as already been visited
+        const indexOfObj = breadArray.findIndex((element) => {
+          if (element.pageName === pageName) {
+            return true
+          }
+          return false
+        })
+
+        // set the groupLinks to the ones that was when the user visit the page clicked
+        sessionStorage.setItem('groupLinks', breadArray[indexOfObj].groupLinks)
       }
     },
   },

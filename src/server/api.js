@@ -88,8 +88,8 @@ async function initializeDatabaseConnection() {
   Contacts.hasMany(Events)
   Events.belongsTo(Contacts)
 
-  Events.belongsToMany(Pois, { through: 'host' })
-  Pois.belongsToMany(Events, { through: 'host' })
+  Events.belongsTo(Pois)
+  Pois.hasMany(Events)
 
   Itineraries.belongsToMany(Pois, { through: 'involve' })
   Pois.belongsToMany(Itineraries, { through: 'involve' })
@@ -205,6 +205,12 @@ async function runMainApi() {
   })
 
   // %%%%%%%%%%%%%%%%%%%%%% ITINERARIES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  function sortItineraries(itineraries) {
+    return itineraries.sort((a, b) =>
+      a.description != null && b.description == null? -1 : b.description != null && a.description == null ? 1 : 0
+    )
+  }
+
   app.get('/itineraries', async (req, res) => {
     const result = await models.Itineraries.findAll({
       include: [
@@ -229,7 +235,9 @@ async function runMainApi() {
       })
     }
 
-    const data = filtered
+    const data = sortItineraries(filtered)
+
+    console.log(data)
 
     return res.json(data)
   })
