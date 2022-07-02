@@ -48,16 +48,10 @@ export default {
     }
   },
   data() {
-    const el = {
-      name: 'Event',
-      img: '/images/events.jpg',
-    }
-    const arr = [el, el, el, el]
     return {
       titleEvents: "IT'S HAPPENING HERE",
       titleItineraries: 'TAKE A RIDE',
       titlePois: 'YOU CANNOT MISS',
-      arr,
     }
   },
   mounted() {
