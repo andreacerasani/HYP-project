@@ -121,7 +121,7 @@ export default {
   },
   methods: {
     collapse() {
-      if (window.screen.availWidth < 1200) {
+      if (window.innerWidth < 1200) {
         this.$refs.nav_btn.click()
       }
     },
