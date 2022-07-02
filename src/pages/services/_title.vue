@@ -4,7 +4,7 @@
     <top-image :bg-img="img" :title="title" />
     <breadcrumbs :page-name="title" :link="$route.path" />
     <group-links :page-name="title" type="services" />
-    <simple-content text-align="center" :description="description" />
+    <simple-content text-align="justify" :description="description" />
     <map-card :web-link="map" />
     <hr />
     <image-contacts
