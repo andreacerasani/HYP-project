@@ -63,6 +63,13 @@ export default {
   head() {
     return {
       title: this.nameItinerary,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Information about ' + this.data.title + ', an itinerary in the city of Venice',
+        },
+      ],
     }
   },
   mounted() {

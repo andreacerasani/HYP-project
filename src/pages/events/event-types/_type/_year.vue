@@ -80,6 +80,13 @@ export default {
   head() {
     return {
       title: this.data.title.concat(' - VisitVenice'),
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.data.title + ' in the city of Venice',
+        },
+      ],
     }
   },
   mounted() {
