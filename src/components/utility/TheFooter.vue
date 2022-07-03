@@ -66,7 +66,7 @@ footer {
   background-image: linear-gradient(
     to top,
     var(--div-color-light),
-    rgba(255, 0, 0, 0)
+    rgba(255, 255, 255, 0)
   );
 }
 .icon-color {
