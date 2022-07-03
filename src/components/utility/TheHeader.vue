@@ -208,7 +208,7 @@ export default {
 header {
   background-image: linear-gradient(
     to top,
-    rgba(255, 0, 0, 0),
+    rgba(255, 255, 255, 0),
     var(--div-color-dark)
   );
 }
