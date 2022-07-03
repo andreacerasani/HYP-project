@@ -1,4 +1,4 @@
-export default {
+const configDev = {
   // Global page headers: https://go.nuxtjs.dev/config-head
   ssr: true,
   target: "static",
@@ -80,3 +80,93 @@ export default {
     }
   }}
 }
+
+const configProd = {
+  // Global page headers: https://go.nuxtjs.dev/config-head
+  ssr: true,
+  server: {
+    port: process.env.PORT, // default: 3000
+    host: '0.0.0.0'  
+  },
+  serverMiddleware: [
+    {
+      path: '/api',
+      handler: '~/server/api.js',
+    },
+  ],
+/*  this part can be useful if deployed on github pages
+   router: {
+    base: '/VisitVenice/'    
+  }, */
+  head: {
+    title: 'VisitVenice',
+    htmlAttrs: {
+      lang: 'en',
+    },
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Venice Touristic Website with information on Events, Itineraries, Points of Interest and Services of the city' },
+      { name: 'format-detection', content: 'telephone=no' },
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/icon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css',
+      },
+      { 
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css",
+      }
+    ],
+    script: [
+      {
+        src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
+      },
+    ],
+  },
+
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: ['@/assets/css/global.css'],
+
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  plugins: [],
+
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: {
+    dirs: [
+      '~/components',
+    ]
+  },
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [
+    // https://go.nuxtjs.dev/eslint
+    '@nuxtjs/eslint-module',
+  ],
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
+  ],
+
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+    baseURL: "https://hype-project.herokuapp.com/",
+    browserBaseURL: "https://hype-project.herokuapp.com/",
+  },
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {extend(config, { isClient }) {
+    // Extend only webpack config for client-bundle
+    if (isClient) {
+      config.devtool = 'source-map'
+    }
+  }}
+}
+const config = process.env.HEROKU ? configProd : configDev
+
+export default config

@@ -2,9 +2,23 @@ const express = require('express')
 const app = express()
 const { Sequelize, DataTypes, Op } = require('sequelize')
 app.use(express.json())
+let database
 
-// %%%%%%%%%%%%%% Development %%%%%%%%%%%%%%%%%
-const database = new Sequelize(
+// %%%%%%%%%%%%%%% Production (use this code when deploying to production in Heroku)  %%%%%%%%%%%%%%%%%%%%%
+if (process.env.HEROKU) {
+const pg = require('pg')
+pg.defaults.ssl = true
+database = new Sequelize(process.env.DATABASE_URL, {
+  ssl: true,
+  dialectOptions: { ssl: { require: true, rejectUnauthorized: false } },
+  define: {
+    timestamps: false,    // Remember to add something similar in the production part
+  },
+})
+}
+ // %%%%%%%%%%%%%% Development %%%%%%%%%%%%%%%%%
+else {
+database = new Sequelize(
   'postgres://postgres:postgres@localhost:5432/hyp',
   {
     define: {
@@ -12,15 +26,7 @@ const database = new Sequelize(
     },
   }
 )
-
-// %%%%%%%%%%%%%%% Production (use this code when deploying to production in Heroku)  %%%%%%%%%%%%%%%%%%%%%
-// const pg = require('pg')
-// pg.defaults.ssl = true
-// const database = new Sequelize(process.env.DATABASE_URL, {
-//   ssl: true,
-//   dialectOptions: { ssl: { require: true, rejectUnauthorized: false } },
-// })
-
+}
 // Function that initialize the connection to the database, linking the tables with the objects used in sequelize
 async function initializeDatabaseConnection() {
   await database.authenticate()
