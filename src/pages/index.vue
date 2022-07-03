@@ -8,23 +8,25 @@
       </video>
     </div>
     <showcase-component
-      id="section1"
       :title="titleEvents"
       :link-path="'/events'"
       :content="events"
       :is-left="true"
+      :link-name="'See all Events'"
     />
     <showcase-component
       :title="titleItineraries"
       :link-path="'/itineraries'"
       :content="itineraries"
       :is-left="false"
+      :link-name="'See all Itineraries'"
     />
     <showcase-component
       :title="titlePois"
       :link-path="'/points-of-interest'"
       :content="pois"
       :is-left="true"
+      :link-name="'See all Points of Interest'"
     />
   </div>
 </template>
