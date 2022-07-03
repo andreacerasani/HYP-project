@@ -4,7 +4,7 @@
     <div class=" fill px-0">
       <img
         class="overlay"
-        src="/images/header_icons/logo.png"
+        src="/images/header_icons/logo3.png"
         alt="Page Logo Visit Venice"
       />
       <video id="bgVideo" autoplay muted loop>
