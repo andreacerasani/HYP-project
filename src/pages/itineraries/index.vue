@@ -1,4 +1,4 @@
-<!-- Page that show all itineraries -->
+<!-- Page that shows all itineraries -->
 <template>
   <div>
     <top-image :bg-img="'images/itineraries.jpg'" :title="'Itineraries'" />
