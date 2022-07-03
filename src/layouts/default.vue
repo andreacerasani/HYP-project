@@ -23,7 +23,6 @@ export default {
 .megabox{
   overflow: hidden;
   position: relative;
-  padding-bottom: 150px;
   min-height: 100vh;
 }
 </style>
