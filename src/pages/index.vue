@@ -1,11 +1,17 @@
 <!-- Homepage of the website -->
 <template>
   <div>
-    <div class="container-fluid fill px-0">
+    <div class=" fill px-0">
+      <img
+        class="overlay"
+        src="/images/header_icons/logo.png"
+        alt="Page Logo Visit Venice"
+      />
       <video id="bgVideo" autoplay muted loop>
         <source src="video/Venezia_panoramic.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
+      
     </div>
     <showcase-component
       id="section1"
@@ -129,10 +135,19 @@ export default {
   align-items: center;
   overflow: hidden;
   height: 80vmin;
+  position:relative;
 }
 .fill video {
   flex-shrink: 0;
   min-width: 100%;
   min-height: 100%;
+}
+.overlay {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    z-index:1;
+    width: 80vmin;
 }
 </style>
