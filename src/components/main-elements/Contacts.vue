@@ -67,7 +67,7 @@
               <a :href="'tel:' + mobilePhone">+39 {{ mobilePhone }}</a> <br />
               <br class="hidden-ss" />
             </span>
-            <span v-if="email !== 'none'">
+            <span v-if="email !== 'none'" class="text-break">
               <img
                 src="/images/icons/email_icon.png"
                 class="icon-img-personalize"
