@@ -2,7 +2,7 @@
 <template>
   <footer class="link-primary d-flex flex-row flex-wrap justify-content-center">
 
-    <p class="polimi-text p-3 ps-4 me-lg-auto"> <img src="/images/icons/worry_logo.png" width="30em" /> Worry Whales &copy; 2022 </p>
+    <p class="polimi-text p-3 ps-4 me-lg-auto"> <img src="/images/icons/worry_logo.png" width="30em" alt="Worry Whales logo"/> Worry Whales &copy; 2022 </p>
     <p class="polimi-text p-3">Politecnico Di Milano</p>
     <p class="polimi-text p-3">Hypermedia Application</p>
     <nuxt-link :to="linkPath" class="p-3">
@@ -12,6 +12,7 @@
       href="https://www.instagram.com/visitveneziaofficial/"
       target="_blank"
       class="icon-color p-3 ms-lg-auto"
+      aria-label="Instagram link to visitveneziaofficial"
     >
       <i class="bi bi-instagram"></i>
     </a>
@@ -19,6 +20,7 @@
       href="https://www.facebook.com/visitvenezia.eu"
       target="_blank"
       class="icon-color p-3"
+      aria-label="Facebook link to visitvenezia.eu"
     >
       <i class="bi bi-facebook"></i>
     </a>
@@ -26,6 +28,7 @@
       href="https://twitter.com/venice"
       target="_blank"
       class="icon-color p-3 pe-4"
+      aria-label="Twitter link to venice official account"
     >
       <i class="bi bi-twitter"></i>
     </a>

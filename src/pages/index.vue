@@ -3,7 +3,7 @@
   <div>
     <div class="container-fluid fill px-0">
       <video id="bgVideo" autoplay muted loop>
-        <source src="video/Venezia_panoramic.mp4" type="video/mp4" />
+        <source src="video/Venezia_panoramic.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
     </div>

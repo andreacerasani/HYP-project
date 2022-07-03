@@ -17,7 +17,7 @@
       <img
         src="/images/header_icons/logo.png"
         alt="Page Logo Visit Venice"
-        style="height: 40px"
+        height="40"
       />
     </nuxt-link>
     <button
