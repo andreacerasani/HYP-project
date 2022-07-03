@@ -61,6 +61,7 @@ export default {
   width: 100%;
   background: var(--subtitle-color) linear-gradient(to left, var(--subtitle-color), white);
   clip-path: polygon(50% 100%, 65% 0%, 100% 0%, 100% 100%);
+  pointer-events: none;
 }
 .cards {
   position: relative;
