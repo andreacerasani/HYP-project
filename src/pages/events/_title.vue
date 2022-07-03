@@ -22,7 +22,7 @@
     <br /><br />
     <image-carousel
       :title="'Gallery'"
-      :my-array="formatArray(data.images)"
+      :elements-to-show="formatArray(data.images)"
       :num-of-carousel="1"
     />
     <br /><br />

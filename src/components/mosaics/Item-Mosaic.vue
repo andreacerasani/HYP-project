@@ -1,4 +1,4 @@
-<!-- Component that represent a mosaic item -->
+<!-- Component that represent a mosaic item, it is a clickable image with title and optional date. It is thought to be displayed in a grid of item-mosaic  -->
 <template>
   <div class="cards">
     <nuxt-link :to="link">
@@ -31,7 +31,7 @@
 import common from '~/mixins/common.js'
 
 export default {
-  name: 'Card2Component',
+  name: 'ItemMosaicComponent',
   mixins: [common],
   props: {
     name: {

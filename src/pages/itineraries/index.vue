@@ -7,7 +7,7 @@
       :num-of-carousel="1"
       title="Best Itineraries"
       link-name="Discover More"
-      :myarray="filtered"
+      :elements-to-show="filtered"
     />
     <simple-content title="All Itineraries" />
     <mosaic :items="data" />

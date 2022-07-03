@@ -5,6 +5,7 @@ When the img shrinks the text goes down
 -->
 <template>
   <div class="container-xl">
+    <!-- map + title -->
     <div v-if="title !== null">
       <div class="row align-items-center flex-column flex-md-row">
         <div class="col col-sm-8 text-center">
@@ -20,6 +21,8 @@ When the img shrinks the text goes down
             <p class="text"><img src="/images/icons/location.png" alt="Location Icon" /> {{ title }}</p>
           </div>
           <div class="row p-2">
+
+            <!-- optional button -->
             <div v-if="showButton">
               <button
                 type="button"
@@ -35,10 +38,12 @@ When the img shrinks the text goes down
       <hr />
     </div>
 
+    <!-- Map full screen passed via weblink -->
     <div v-else-if="address == null" class="ratio ratio-21x9">
       <iframe title="Map" :src="webLink" />
     </div>
 
+    <!-- Parametric map full screen built on address and optional zoom -->
     <div v-else class="ratio ratio-21x9">
       <iframe
         :title="address + 'Map'"

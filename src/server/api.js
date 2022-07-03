@@ -12,7 +12,7 @@ database = new Sequelize(process.env.DATABASE_URL, {
   ssl: true,
   dialectOptions: { ssl: { require: true, rejectUnauthorized: false } },
   define: {
-    timestamps: false,    // Remember to add something similar in the production part
+    timestamps: false,
   },
 })
 }
@@ -22,7 +22,7 @@ database = new Sequelize(
   'postgres://postgres:postgres@localhost:5432/hyp',
   {
     define: {
-      timestamps: false, // Remember to add something similar in the production part
+      timestamps: false,
     },
   }
 )
@@ -544,7 +544,7 @@ async function runMainApi() {
     return res.json(data)
   })
 
-  // HTTP GET api that returns the events in the current year
+  // HTTP GET api that returns the events in the requested year
   app.get('/year-events/:year', async (req, res) => {
     const { year } = req.params
     let result = ''

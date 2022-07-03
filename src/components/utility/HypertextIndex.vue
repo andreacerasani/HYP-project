@@ -15,7 +15,7 @@ export default {
   name: 'HypertextIndex',
   props: {
     chapters: {
-      type: Array, // The array should contain a series of elements with the atrribute title -> it will be used as href and displayed
+      type: Array, // The array should contain a series of elements with the attribute title -> it will be used as href and displayed
       required: true,
     },
   },
