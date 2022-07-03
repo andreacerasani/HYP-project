@@ -16,7 +16,7 @@
 <script>
 import DescriptionCard from '../components/main-elements/DescriptionCard.vue'
 export default {
-  name: 'ErrorPage',
+  name: 'WorkInProgressPage',
   components: { DescriptionCard },
   layout: 'defaultLayout',
   props: {
@@ -30,7 +30,7 @@ export default {
     const img = '/images/extra/patrick_wip.png'
     const linkName = 'Go back Home'
     const linkPath = '/'
-    const description = 'Please continue exploring this wonderful city'
+    const description = 'This page is not yet completed, Please continue exploring this wonderful city'
 
     return {
       title,
@@ -38,6 +38,18 @@ export default {
       linkName,
       linkPath,
       description,
+    }
+  },
+  head() {
+    return {
+      title: "Work In Progress",
+      meta:[
+        {
+          hid: 'description',
+          name: 'description',
+          content: "This page is not yet completed, please explore other pages of our website"
+        }
+      ]
     }
   },
 }

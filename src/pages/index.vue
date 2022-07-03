@@ -54,6 +54,9 @@ export default {
       titlePois: 'YOU CANNOT MISS',
     }
   },
+
+  // The head values are taken from nuxt.config.js
+
   mounted() {
     // Create Breadcrumbs
     const breadArray = []
