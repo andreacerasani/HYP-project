@@ -135,6 +135,135 @@ async function initializeDatabaseConnection() {
 async function runMainApi() {
   const models = await initializeDatabaseConnection()
 
+ // %%%%%%%%%%%%%%%%%%%%%%%% HOMEPAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ // %%%%%%%%%% POI HOME %%%%%%%%%%%%%%%%%
+  async function getPoisLimit4(){
+    const result = await models.Pois.findAll({
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+      ],
+      limit: 4,
+      order: [
+        ['id', 'ASC'],
+        [models.Images, 'id', 'ASC'],
+      ],
+    })
+    const filtered = []
+    for (const element of result) {
+      filtered.push({
+        id: element.id,
+        title: element.title,
+        images: element.images,
+        linkPath: '/points-of-interest/' + element.title.replaceAll(' ', '-'),
+      })
+    }
+    return filtered
+  }
+
+// %%%%%%%%% ITINERARIES HOME %%%%%%%%%%%%%%%%
+
+  function sortItineraries(itineraries) {
+    return itineraries.sort((a, b) =>
+      a.description != null && b.description == null? -1 : b.description != null && a.description == null ? 1 : 0
+    )
+  }
+
+  async function getItinerariesLimit4(){
+    const result = await models.Itineraries.findAll({
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+      ],
+      limit: 4,
+    })
+
+    const filtered = []
+    for (const element of result) {
+      let link = 'wip'
+      if (element.description != null) {
+        link = '/itineraries/' + element.title.replaceAll(' ', '-')
+      }
+      filtered.push({
+        title: element.title,
+        images: [element.image],
+        description: element.description,
+        linkPath: link,
+      })
+    }
+
+    const itineraries = sortItineraries(filtered)
+
+    return itineraries
+  }
+
+  // %%%%%%%%%% EVENTS HOME %%%%%%%%%%%%%
+
+  function sortImages(images) {
+    return images.sort((a, b) =>
+      a.path > b.path ? 1 : b.path > a.path ? -1 : 0
+    )
+  }
+
+  async function getEventsLimit4(){
+    const result = await models.Events.findAll({
+      where: [
+        {
+          date: {
+            [Op.gte]: new Date(),
+          },
+        },
+      ],
+      order: [['date', 'ASC']],
+      limit: 4,
+      include: [
+        {
+          model: models.Images,
+          attributes: ['path'],
+        },
+      ],
+    })
+
+    const filtered = []
+    for (const element of result) {
+      if (element.images.length) {
+        element.images = sortImages(element.images)
+      }
+      const filteredElement = {
+        title: element.title,
+        description: element.description,
+        date: element.date,
+        ticket: element.ticket,
+        images: element.images,
+        linkPath: '/events/' + element.title.replaceAll(' ', '-'),
+      }
+      filtered.push(filteredElement)
+    }
+    return filtered
+  }
+
+// %%%%%%% ACTUAL REQUEST %%%%%%%
+
+  app.get('/homepage', async (req, res) => {
+    
+  const pois = await getPoisLimit4()
+  const itineraries = await getItinerariesLimit4()
+  const events = await getEventsLimit4()
+
+  const data = {
+    pois,
+    itineraries,
+    events,
+  }
+  return res.json(data)
+})
+
+
   // %%%%%%%%%%%%%%%%%%%%%%%% POINTS OF INTEREST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   app.get('/points-of-interest', async (req, res) => {
@@ -205,11 +334,6 @@ async function runMainApi() {
   })
 
   // %%%%%%%%%%%%%%%%%%%%%% ITINERARIES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  function sortItineraries(itineraries) {
-    return itineraries.sort((a, b) =>
-      a.description != null && b.description == null? -1 : b.description != null && a.description == null ? 1 : 0
-    )
-  }
 
   app.get('/itineraries', async (req, res) => {
     const result = await models.Itineraries.findAll({
@@ -325,11 +449,7 @@ async function runMainApi() {
 
   // %%%%%%%%%%%%%%%%%%%%%% EVENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  function sortImages(images) {
-    return images.sort((a, b) =>
-      a.path > b.path ? 1 : b.path > a.path ? -1 : 0
-    )
-  }
+
 
   function filterEventImages(result) {
     const filtered = {

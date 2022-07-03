@@ -43,12 +43,9 @@ export default {
   name: 'IndexPage',
   components: { ShowcaseComponent },
   async asyncData({ $axios }) {
-    const response1 = await $axios.get('/api/year-events/all')
-    const response2 = await $axios.get('/api/itineraries')
-    const response3 = await $axios.get('/api/points-of-interest')
-    const events = response1.data.all_events.slice(0, 4)
-    const itineraries = response2.data.slice(0, 4)
-    const pois = response3.data.slice(0, 4)
+    const { data } = await $axios.get('/api/homepage')
+    const { events, itineraries, pois } = data
+
     return {
       events,
       itineraries,
