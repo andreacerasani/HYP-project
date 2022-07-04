@@ -2,7 +2,7 @@
 Click on the image will bring to the given link -->
 <template>
   <div class="cards">
-    <nuxt-link id="foc" :to="link" >
+    <nuxt-link class="foc" :to="link" >
       <div
         class="card-image"
         :style="{ 'background-image': 'url(' + img + ')' }"
@@ -54,7 +54,7 @@ export default {
 </script>
 
 <style scoped>
-#foc:focus > .card-image{
+.foc:focus > .card-image{
   -webkit-filter: brightness(100%);
   filter: brightness(100%);
   -webkit-transform: scale(1.1);
