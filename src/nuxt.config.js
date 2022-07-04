@@ -1,5 +1,6 @@
+// %%%%%%%%%%%%%%% DEVELOPMENT CONFIGURATION %%%%%%%%%%%%%%%%%%%%
 const configDev = {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  // Global page headers
   ssr: true,
   target: "static",
   serverMiddleware: [
@@ -41,38 +42,30 @@ const configDev = {
     ],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
+  // Global CSS
   css: ['@/assets/css/global.css'],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
     dirs: [
       '~/components',
     ]
   },
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+    // Workaround to avoid enforcing hard-coded localhost:3000
     baseURL: 'http://localhost:3000',
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {extend(config, { isClient }) {
     // Extend only webpack config for client-bundle
     if (isClient) {
@@ -81,8 +74,10 @@ const configDev = {
   }}
 }
 
+// %%%%%%%%%%%%%%%%%% PRODUCTION CONFIGURATION %%%%%%%%%%%%%%%%%%%%%%%%
+
 const configProd = {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  // Global page headers
   ssr: true,
   server: {
     port: process.env.PORT, // default: 3000
@@ -127,39 +122,32 @@ const configProd = {
     ],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
+  // Global CSS
   css: ['@/assets/css/global.css'],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
     dirs: [
       '~/components',
     ]
   },
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+    // Workaround to avoid enforcing hard-coded localhost:3000
     baseURL: "https://hype-project.herokuapp.com/",
     browserBaseURL: "https://hype-project.herokuapp.com/",
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  // Build Configuration
   build: {extend(config, { isClient }) {
     // Extend only webpack config for client-bundle
     if (isClient) {

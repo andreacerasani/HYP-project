@@ -1,3 +1,5 @@
+<!-- Component that shows 4 objects, one big image and 3 smaller, you can change the order of the columns and the background color setting isLeft prop to true or false. 
+The meaning of the component is to give a showcase of something wider, a button on the top right redirect to the general page with all the objects -->
 <template>
   <div :class="[isLeft ? 'outerLeft' : 'outerRight']">
     <div class="container-xl">
@@ -33,6 +35,7 @@
           'flex-row flex-md-row': isLeft,
         }"
       >
+<!-- big image    -->   
         <div class="col-lg-7 col-sm-12 half-side">
           <div class="pb-3">
             <clickable-image
@@ -46,6 +49,7 @@
           </div>
         </div>
 
+<!-- three small images -->
         <div class="col-lg-5 half-side">
           <clickable-image
             :img="content[1].images[0].path"
@@ -87,17 +91,17 @@ export default {
       type: String,
       required: true,
     },
-    linkName: {
+    linkName: {     // The name displayed on the button on the right
       type: String,
       required: false,
       default: 'See all',
     },
-    linkPath: {
+    linkPath: {     // Link of the button on the right
       type: String,
       required: true,
     },
     content: {
-      type: Array, // Array of at least 4 elements with name, img, (date)
+      type: Array, // Array of at least 4 elements with title, images array, (date) [only the first image of the array will be used]
       required: true,
     },
     isLeft: {

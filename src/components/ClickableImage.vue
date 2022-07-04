@@ -1,3 +1,5 @@
+<!-- Component that shows a clickable image with a title and an optional date, a trapezoid can be added on the right side setting it in the props.
+Click on the image will bring to the given link -->
 <template>
   <div class="cards">
     <nuxt-link :to="link">
@@ -78,11 +80,11 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-  -webkit-filter: brightness(50%); /* Safari 6.0 - 9.0 */
+  -webkit-filter: brightness(50%);
   filter: brightness(70%);
 }
 .card-image:hover {
-  -webkit-filter: brightness(100%); /* Safari 6.0 - 9.0 */
+  -webkit-filter: brightness(100%);
   filter: brightness(100%);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);

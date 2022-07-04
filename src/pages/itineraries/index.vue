@@ -1,4 +1,4 @@
-<!-- Page that show all itineraries -->
+<!-- Page that shows all itineraries -->
 <template>
   <div>
     <top-image :bg-img="'images/itineraries.jpg'" :title="'Itineraries'" />
@@ -7,7 +7,7 @@
       :num-of-carousel="1"
       title="Best Itineraries"
       link-name="Discover More"
-      :myarray="filtered"
+      :elements-to-show="filtered"
     />
     <simple-content title="All Itineraries" />
     <mosaic :items="data" />

@@ -1,3 +1,4 @@
+<!-- Redirect to the relative /events/event-types page showing all events related -->
 <template>
     <div>
         {{redirect(type)}}

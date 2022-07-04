@@ -1,3 +1,4 @@
+<!-- Redirect to the /events page -->
 <template>
     <div>
         {{redirect()}}

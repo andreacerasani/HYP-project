@@ -1,4 +1,4 @@
-<!-- Page that show a single itinerary informations -->
+<!-- Page that shows informations about a single itinerary -->
 <template>
   <div>
     <top-image :title="data.title" :bg-img="data.image.path" />
@@ -52,7 +52,6 @@ export default {
   async asyncData({ route, $axios, error }) {
     try {
       const { title } = route.params
-
       const { data } = await $axios.get('/api/itineraries/' + title)
 
       return {

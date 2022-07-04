@@ -1,4 +1,4 @@
-<!-- Page that show  -->
+<!-- Page that shows all the main points of interest inside a mosaic -->
 <template>
   <div>
     <top-image

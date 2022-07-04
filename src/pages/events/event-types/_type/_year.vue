@@ -38,7 +38,7 @@
     <!-- Show the different events -->
     <image-description-carousel
       :title="'Upcoming Events'"
-      :myarray="data.upcoming_events"
+      :elements-to-show="data.upcoming_events"
       :link-name="'Discover More'"
       :num-of-carousel="1"
       class="pt-4"

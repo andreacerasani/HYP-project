@@ -26,7 +26,7 @@
     <image-description-carousel
       v-if="data.events.length > 0"
       :title="'It\'s happening here'"
-      :myarray="data.events"
+      :elements-to-show="data.events"
       :link-name="'Discover More'"
       :num-of-carousel="1"
       class="pt-1"
@@ -37,7 +37,7 @@
     <image-description-carousel
       v-if="data.itineraries.length > 0"
       :title="'Plan your trip'"
-      :myarray="data.itineraries"
+      :elements-to-show="data.itineraries"
       :link-name="'Discover More'"
       :num-of-carousel="2"
       class="pt-1"
@@ -46,7 +46,7 @@
     <image-carousel
       :title="'Gallery'"
       :num-of-carousel="2"
-      :my-array="formatArray(data.images)"
+      :elements-to-show="formatArray(data.images)"
     />
     <br /><br />
     <div class="text-center">

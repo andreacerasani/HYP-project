@@ -2,7 +2,7 @@
  flow through different CarouselItemImgDes components  -->
 <template>
   <div 
-  v-if="myarray.length > 0"
+  v-if="elementsToShow.length > 0"
   class="container-xl">
     <h1>{{ title }}</h1>
     <div 
@@ -30,12 +30,12 @@
           :class="{ active: n == 1 }"
         >
           <carousel-item
-          :descr-img="myarray[n-1].images[0].path" 
-          :title="myarray[n-1].title"
-          :description="myarray[n-1].description"
-          :date="(myarray[n-1].hasOwnProperty('date')) ? myarray[n-1].date : null"
+          :descr-img="elementsToShow[n-1].images[0].path" 
+          :title="elementsToShow[n-1].title"
+          :description="elementsToShow[n-1].description"
+          :date="(elementsToShow[n-1].hasOwnProperty('date')) ? elementsToShow[n-1].date : null"
           :link-name="linkName"
-          :link-path="myarray[n-1].linkPath"
+          :link-path="elementsToShow[n-1].linkPath"
            />
         </div>
       </div>
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import carouselItem from '~/components/carousels/items/Item-ImgDesCarousel.vue'
+import carouselItem from '~/components/carousels/items/CarouselItem.vue'
 export default {
   name: 'CarouselImgDes',
   components: {
@@ -73,7 +73,7 @@ export default {
       type: String,
       required: true,
     },
-    myarray: {
+    elementsToShow: {
       type: Array, // img: contain path, title: title desc, description: contain description, linkPath: link path
       required: true,
     },
@@ -89,7 +89,7 @@ export default {
   },
   data() {
     
-    const length = this.myarray.length
+    const length = this.elementsToShow.length
     return {
       length,
     }

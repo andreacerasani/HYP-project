@@ -24,7 +24,7 @@
           v-for="n in amountOfindicatorsNeeded"
           :key="n"
           class="carousel-item w-100 image-force"
-          :style="{ 'background-image': 'url(' + myArray[n - 1].img + ')' }"
+          :style="{ 'background-image': 'url(' + elementsToShow[n - 1].img + ')' }"
           :class="{ active: n == 1 }"
         >
         </div>
@@ -35,7 +35,7 @@
         :data-bs-target="'#carouselExampleCaptions' + numOfCarousel"
         data-bs-slide="prev"
       >
-      
+
         <span class="carousel-control-prev-icon cntered" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
@@ -60,8 +60,8 @@ export default {
       type: String,
       required: true,
     },
-    myArray: {
-      // contains only img with the path to show
+    elementsToShow: {
+      // contains only elements with img attribute with the path to show
       type: Array,
       required: true,
     },
@@ -72,7 +72,7 @@ export default {
     },
   },
   data() {
-    const myLenght = this.myArray.length
+    const myLenght = this.elementsToShow.length
     return {
       myLenght,
     }

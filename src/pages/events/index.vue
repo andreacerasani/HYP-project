@@ -5,7 +5,7 @@
     <breadcrumbs page-name="Events" link="/events" />
     <carousel-img-des
       :title="'Upcoming Events'"
-      :myarray="upcomingEvents"
+      :elements-to-show="upcomingEvents"
       :link-name="'Discover More'"
       :num-of-carousel="1"
       class="pt-4"
