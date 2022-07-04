@@ -12,7 +12,7 @@ the right and a possible link  -->
 
       <div class="col text-center">
         <div class="row pb-2 pt-3">
-          <p class="text-title">{{ title }}</p>
+          <h2 class="text-title">{{ title }}</h2>
         </div>
         <div v-if="date !== null">
           <p class="text">{{formatDate(date)}}</p>

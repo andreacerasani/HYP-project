@@ -17,9 +17,9 @@
             <p v-if="date !== null" class="card-date text-center">
               {{ formatDate(date) }}
             </p>
-            <p class="card-title text-center">
+            <h2 class="card-title text-center">
               {{ name }}
-            </p>
+            </h2>
           </span>
         </div>
       </div>
@@ -68,7 +68,7 @@ export default {
   margin-left: 1vh;
   border-radius: 10%;
   overflow: hidden;
-  background-color: var(--div-color-light);
+  background-color: black;
   display: inline-block;
   vertical-align: top;
 }
