@@ -1,4 +1,4 @@
-<!-- Component that shows a list of hyperlinks to the bottom parts of the page -->
+<!-- Component that shows a list of hyperlinks to various parts of the page -->
 <template>
   <div class="container-xl">
     <div class="d-flex justify-content-center flex-wrap">
