@@ -1,7 +1,7 @@
 <!-- Component that represent a mosaic item, it is a clickable image with title and optional date. It is thought to be displayed in a grid of item-mosaic  -->
 <template>
   <div class="cards">
-    <nuxt-link :to="link">
+    <nuxt-link id="foc" :to="link">
       <div class="overflow-hide">
         <div style="position: relative">
           <div
@@ -56,6 +56,12 @@ export default {
 </script>
 
 <style scoped>
+#foc:focus > div > div > .card-image{
+  -webkit-filter: brightness(100%);
+  filter: brightness(100%);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
 .overflow-hide {
   overflow: hidden;
   padding: 0;
@@ -84,11 +90,11 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   height: 16rem;
-  -webkit-filter: brightness(50%); /* Safari 6.0 - 9.0 */
+  -webkit-filter: brightness(50%);
   filter: brightness(70%);
 }
 .card-image:hover {
-  -webkit-filter: brightness(100%); /* Safari 6.0 - 9.0 */
+  -webkit-filter: brightness(100%);
   filter: brightness(100%);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);

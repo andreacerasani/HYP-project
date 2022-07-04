@@ -1,5 +1,5 @@
 <!-- Carusel with a single image with description and text on the right ->
- flow through different CarouselItemImgDes components  -->
+ flow through different CarouselItem components  -->
 <template>
   <div 
   v-if="elementsToShow.length > 0"

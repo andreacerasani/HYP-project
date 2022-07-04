@@ -2,7 +2,7 @@
 Click on the image will bring to the given link -->
 <template>
   <div class="cards">
-    <nuxt-link :to="link">
+    <nuxt-link id="foc" :to="link" >
       <div
         class="card-image"
         :style="{ 'background-image': 'url(' + img + ')' }"
@@ -54,6 +54,12 @@ export default {
 </script>
 
 <style scoped>
+#foc:focus > .card-image{
+  -webkit-filter: brightness(100%);
+  filter: brightness(100%);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
 .trapezoid {
   position: absolute;
   top: 50%;
