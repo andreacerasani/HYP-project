@@ -28,7 +28,8 @@ This part of the project consists in evaluating the usability of the [yesmilano.
 
 This part of the project consists in the design and development of a website for turism, a medium-sized cultural city that needs a website to make itself known and to show its offers.
 
-> The file of the final **Design Document** can be found in the [Design Documentation Folder](Documentation/DesignReport).
+> The file of the final **Design Document** can be found in the [Design Documentation Folder](Documentation/DesignReport). 
+<br>
 > The file of the **Technical Documentation** can be found in the [Technical Documentation Folder](Documentation/TechnicalReport/README.md)
 ---
 
