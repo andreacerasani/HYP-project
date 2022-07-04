@@ -2,7 +2,8 @@
 
 Project for the Hypermedia Applications course at Politecnico di Milano.  
 <br>
-
+The website is accessible at [https://visitvenice.herokuapp.com](https://visitvenice.herokuapp.com/)
+<br>
 ### **Group name:** &nbsp;&nbsp;&nbsp; WorryWhale
 
 ### **Authors**
