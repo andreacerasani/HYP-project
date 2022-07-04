@@ -76,7 +76,7 @@ export default {
   border: 4px solid var(--div-color-dark);
   border-radius: 3%;
   overflow: hidden;
-  background-color: var(--div-color-light);
+  background-color: black;
 }
 .cards:hover {
   border: 4px solid var(--subtitle-color);

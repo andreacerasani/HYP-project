@@ -1,6 +1,7 @@
 <!-- Component with image all width with an img over it to handle the title of the page -->
 <template>
   <div class="container-fluid container-img px-0">
+    <div class="set-opacity centered"></div>
     <div
       class="img-screen format-image"
       :style="{ 'background-image': 'url(' + bgImg + ')' }"
@@ -49,10 +50,19 @@ h1 {
 .container-img {
   position: relative;
   text-align: center;
+  background-color: black;
 }
 
 .img-screen {
   height: 80vmin;
   object-fit: cover;
+}
+
+.set-opacity{
+  height: 100%;
+  width:100%;
+  object-fit: cover;
+  background-color: white;
+  background-size: cover;
 }
 </style>

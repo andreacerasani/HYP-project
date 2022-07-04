@@ -7,7 +7,7 @@
         src="/images/header_icons/logo3.png"
         alt="Page Logo Visit Venice"
       />
-      <video id="bgVideo" autoplay muted loop>
+      <video id="bgVideo" autoplay muted loop alt="View of Venice">
         <source src="video/Venezia_panoramic.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>

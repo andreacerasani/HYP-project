@@ -70,7 +70,7 @@ export default {
         title: 'All ' + new Date().getFullYear() + ' events',
         descrImg: '/images/events/event-types/yearevents.jpg',
         description:
-          'Discover all the fantastic events organized in the city of Venice during this year.\n Choose your favorites and plan your visit to Venice so you can have an unforgettable experience.\n Take part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
+          'Discover all the fantastic events organized in the city of Venice during this year.\nChoose your favorites and plan your visit to Venice so you can have an unforgettable experience.\nTake part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
         linkName: 'Discover More',
         linkPath: '/events/event-types/year-events/' + new Date().getFullYear(),
       },

@@ -1,7 +1,7 @@
 <!-- Component with title and text that stands alone all width of the page  -->
 <template>
   <div>
-    <h1>{{ title }}</h1>
+    <h1 v-if="title !== ''">{{ title }}</h1>
     <div v-if="description !== ''">
       <div class="container-xl" style="white-space: pre-wrap">
         <hr />
@@ -28,7 +28,7 @@ export default {
     },
     textAlign: {
       type: String,
-      default: 'justify',
+      default: 'left',
       required: false,
     },
   },

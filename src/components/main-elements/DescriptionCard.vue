@@ -11,7 +11,7 @@ with a possible link added   -->
     >
       <div v-if="isLeft" class="col text-center">
         <div class="row p-3">
-          <p class="text">{{ title }}</p>
+          <h2 class="text">{{ title }}</h2>
         </div>
         <div class="row p-2">
           <div>
@@ -33,7 +33,7 @@ with a possible link added   -->
 
       <div v-if="!isLeft" class="col text-center">
         <div class="row p-3">
-          <p class="text">{{ title }}</p>
+          <h2 class="text">{{ title }}</h2>
         </div>
         <div class="row p-2">
           <div>

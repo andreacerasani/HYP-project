@@ -3,7 +3,7 @@
   <div class="container-xl">
     <div class="px-4 py-2 align-items-center rounded-3 my-border">
       <br />
-      <p class="align-center text">{{ title }}</p>
+      <h2 class="align-center text">{{ title }}</h2>
       <div class="col-lg-9 p-3 p-lg-5 pt-lg-3">
         <div v-if="date !== null">
           <b>Date:</b>

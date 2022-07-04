@@ -10,7 +10,7 @@
     >
       <div v-if="isLeft" class="col text-start my-border">
         <div class="row p-3 text-center">
-          <p class="text">{{ title }}</p>
+          <h2 class="text">{{ title }}</h2>
         </div>
         <div class="row p-2 ps-5">
 
@@ -59,7 +59,7 @@
 
       <div v-if="!isLeft" class="col pt-2 text-start my-border">
         <div class="row p-3 text-center">
-          <p class="text">{{ title }}</p>
+          <h2 class="text">{{ title }}</h2>
         </div>
         <div class="row p-2 ps-5">
           <div v-if="phone !== 'none'">
