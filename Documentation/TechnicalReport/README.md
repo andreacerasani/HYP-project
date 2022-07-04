@@ -203,7 +203,7 @@ We developed the components having in mind the expandability of the website so t
 
   #### Example
 
-  <img src="./img/HypertextLink.PNG" height="100">
+  <img src="./img/HypertextLink.PNG" height="70">
 
   <br>
 
@@ -221,7 +221,7 @@ We developed the components having in mind the expandability of the website so t
 
   #### Example
 
-  <img src="./img/SimpleContent.PNG" height="300">
+  <img src="./img/SimpleContent.PNG" height="180">
 
   <br>
 
@@ -382,7 +382,7 @@ We developed the components having in mind the expandability of the website so t
   
   #### Example
   
-  <img src="./img/Navigation.PNG" height="80">
+  <img src="./img/Navigation.PNG" height="50">
   
   <br>
 - ## **Breadcrumbs**
@@ -420,4 +420,4 @@ We developed the components having in mind the expandability of the website so t
     
   #### Examples
   
-  <img src="./img/Header.PNG" height="80"><br>
+  <img src="./img/Header.PNG" height="60"><br>
