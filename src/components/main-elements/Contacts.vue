@@ -132,7 +132,6 @@ export default {
       required: false,
     },
   },
-  methods: {},
 }
 </script>
 

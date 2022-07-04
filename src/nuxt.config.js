@@ -1,3 +1,5 @@
+import redirectSSL from 'redirect-ssl'
+
 // %%%%%%%%%%%%%%% DEVELOPMENT CONFIGURATION %%%%%%%%%%%%%%%%%%%%
 const configDev = {
   // Global page headers
@@ -84,6 +86,9 @@ const configProd = {
     host: '0.0.0.0'  
   },
   serverMiddleware: [
+    redirectSSL.create({
+      enabled: process.env.NODE_ENV === 'production'
+     }),
     {
       path: '/api',
       handler: '~/server/api.js',
@@ -143,8 +148,8 @@ const configProd = {
 
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000
-    baseURL: "https://hype-project.herokuapp.com/",
-    browserBaseURL: "https://hype-project.herokuapp.com/",
+    baseURL: "https://visitvenice.herokuapp.com/",
+    browserBaseURL: "https://visitvenice.herokuapp.com/",
   },
 
   // Build Configuration
