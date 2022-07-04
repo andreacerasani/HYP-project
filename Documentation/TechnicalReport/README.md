@@ -54,8 +54,8 @@ While developing the application we followed these particular good practices:
 > - **Google Lighthouse**
 
 <p float="left">
-<img src="./img/wave.png" height="200">
-<img src="./img/lh.png" height="200">
+<img src="./img/Wave.png" height="200">
+<img src="./img/LightHouse.png" height="200">
 </p>
 <br>
 
@@ -66,9 +66,7 @@ While developing the application we followed these particular good practices:
 We developed the website keeping particular attention on the responsivness so that the website is usable and accessible on all device types.
 
 <p float="left">
-<img src="./img/phone.png" height="200">
-<img src="./img/tablet.png" height="270">
-<img src="./img/pc.png" height="300">
+<img src="./img/responsive.png" height="300">
 </p>
 
 <br>
@@ -102,9 +100,8 @@ We developed the components having in mind the expandability of the website so t
 
   #### Example
 
-    <img src="./img/ImgMosaic.png" height="150">
+  <img src="./img/ImgMosaic.PNG" height="300">
 
-  ***
 
   <br>
   
@@ -124,9 +121,8 @@ We developed the components having in mind the expandability of the website so t
 
   #### Example
 
-   <img src="./img/CarouselDescription.png" height="150">
+  <img src="./img/CarouselDescription.PNG" height="300">
 
-  ***
 
   <br>
   
@@ -149,10 +145,8 @@ We developed the components having in mind the expandability of the website so t
 
   #### Example
 
-   <img src="./img/CarouselDescription.png" height="150">
-
-  ***
-
+  <img src="./img/CarouselDescription.PNG" height="300">
+   
   <br>
   
 
@@ -171,10 +165,8 @@ We developed the components having in mind the expandability of the website so t
     <br>
 
   #### Example
-
-    <img src="./img/HomePageComponent.png" height="150">
-
-  ***
+  
+  <img src="./img/HomePageComponent.PNG" height="300">
 
   <br>
 
@@ -194,10 +186,9 @@ We developed the components having in mind the expandability of the website so t
 
   #### Example
 
-    <img src="./img/ClickableImage1.png" height="150">
-    <img src="./img/ClickableImage2.png" height="150">
-  ***
-
+  <img src="./img/ClickableImage1.PNG" height="100">
+  <img src="./img/ClickableImage2.PNG" height="300">
+    
   <br>
   
 - ## **_HypertextIndex_**
@@ -212,9 +203,7 @@ We developed the components having in mind the expandability of the website so t
 
   #### Example
 
-    <img src="./img/HypertextLink.png" height="150">
-
-  ***
+  <img src="./img/HypertextLink.PNG" height="100">
 
   <br>
 
@@ -232,9 +221,7 @@ We developed the components having in mind the expandability of the website so t
 
   #### Example
 
-    <img src="./img/SimpleContent.png" height="150">
-
-  ***
+  <img src="./img/SimpleContent.PNG" height="300">
 
   <br>
 
@@ -252,9 +239,7 @@ We developed the components having in mind the expandability of the website so t
 
   #### Example
 
-  <img src="./img/Paragraph.png" height="210">
-
-  ***
+  <img src="./img/Paragraph.PNG" height="300">
 
   <br>
 
@@ -268,10 +253,9 @@ We developed the components having in mind the expandability of the website so t
 
   #### Example
 
-    <img src="./img/Mosaic.png" height="210">
-
-  ***      
-    <br>
+  <img src="./img/Mosaic.PNG" height="300">
+    
+  <br>
 
 - ## **_Item-Mosaic_**
   Component that represent a mosaic item, it is a clickable image with title and optional date. It is thought to be displayed in a grid of item-mosaic
@@ -287,10 +271,8 @@ We developed the components having in mind the expandability of the website so t
 
   #### Example
 
-    <img src="./img/MosaicItem.png" height="65">
-
-  ***
-
+  <img src="./img/MosaicItem.PNG" height="150">
+  
   <br>
 
 - ## **_ImageContacts_**
@@ -308,13 +290,11 @@ We developed the components having in mind the expandability of the website so t
   | `mobilePhone`  | `String` | Number of the mobile phone. |
   | `email`  | `String` | email address. |
 
-    <br>
+  <br>
 
   #### Example
 
-  <img src="./img/InformationDescription.png" height="300">
-
-  ***
+  <img src="./img/InformationDescription.PNG" height="300">
 
   <br>
 
@@ -333,10 +313,12 @@ We developed the components having in mind the expandability of the website so t
   | `mobilePhone`  | `String` | Number of the mobile phone. |
   | `email`  | `String` | email address. |
   
-    <br>
+  <br>
+  
   #### Example
-  <img src="./img/Information.png" height="250">
-  ***
+  
+  <img src="./img/Information.PNG" height="300">
+  
   <br>
 - ## **_MapCard_**
   Component that shows a map, based on the props passed it redemension itself to the correct width to have a title and button on the right or be a full screen map. The map can be made from an address or from a weblink. When the image shrinks the text goes down
@@ -348,11 +330,13 @@ We developed the components having in mind the expandability of the website so t
   | `webLink` | `String` | Link used for a Google MyMap. |
   | `zoom` | `Number` | Used to zoom on the map. |
 
-    <br>
+  <br>
+  
   #### Example
-  <img src="./img/Maps.png" height="210">
-  <img src="./img/FullMap.png" height="210">
-  ***
+  
+  <img src="./img/Maps.PNG" height="300">
+  <img src="./img/FullMap.PNG" height="300">
+  
   <br>
 - ## **_DescriptionCard_**
      Component with an image and a part of text on the left or right that when the img shrinks the text goes down with a possible link added 
@@ -366,10 +350,12 @@ We developed the components having in mind the expandability of the website so t
   | `isLeft` | `String`| Used to set the image on the left or right. |
   
   
-    <br>
+  <br>
+  
   #### Example
-  <img src="./img/DescriptionImage.png" height="210">
-  ***
+  
+  <img src="./img/DescriptionImage.PNG" height="300">
+  
   <br>
 - ## **_TopImage_**
   Display a full width image with the title of the current page.
@@ -378,10 +364,12 @@ We developed the components having in mind the expandability of the website so t
   | `bgImg` | `String` | Path of the image. |
   | `title` | `String`| Title that will be shown.
   
-    <br>
+  <br>
+  
   #### Example
-  <img src="./img/Top-image.png" height="50">
-  ***
+  
+  <img src="./img/Top-image.PNG" height="300">
+  
   <br>
 - ## **_GroupLinks_**
     Links that help the user to navigate between elements of a group. Each page save the link of elements of each group that is in that page so that when the user navigates in one of those elements we can retrive the corrisponding group links.
@@ -390,10 +378,12 @@ We developed the components having in mind the expandability of the website so t
   | `type` | `String` | Used to choose the right group links from those saved by the parent page.|
   | `pageName`  | `String` | Used to select the current element in the group links so that it's possible to get the previous and next elements.
   
-    <br>
+  <br>
+  
   #### Example
-  <img src="./img/Navigation.png" height="60">
-  ***
+  
+  <img src="./img/Navigation.PNG" height="80">
+  
   <br>
 - ## **Breadcrumbs**
     Dynamic breadcrumbs that follow the path that the user did in the website. Rules implemented:
@@ -409,20 +399,25 @@ We developed the components having in mind the expandability of the website so t
   | `link` | `String` | The link of the page, this will be used when the user click on the breadcrumbs.
   
   <br>
+  
   #### Example
-  <img src="./img/Orientation.png" height="210">
-  ***
+  
+  <img src="./img/Orientation.PNG" height="100">
+  
   <br>
 - ## **_TheFooter_**
   Footer of the website with group icon, contact us and social icons.  
-    <br>
+  <br>
+    
   #### Example
-  <img src="./img/Footer.png" height="40">
-  ***
+  
+  <img src="./img/Footer.PNG" height="80">
+  
   <br>
 - ## **_TheHeader_**
   Responsive header with group icon and landmarks.  
-    <br>
+  <br>
+    
   #### Examples
-  <img src="./img/Header.png" height="40"><br>
-  <img src="./img/header2.png" height="250">
+  
+  <img src="./img/Header.PNG" height="80"><br>
