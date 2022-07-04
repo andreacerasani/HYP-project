@@ -89,11 +89,11 @@ We developed the components having in mind the expandability of the website so t
      Carusel with a single image per slide full width.
 
 
-  | Prop         | Type      | Note |
-  | ------------ | --------- | ---- |
-  | `title`  | `String` | Title to show at the top. |
-  | `elementsToShow`  | `Array` | Contains only elements with the path of the image to show. |
-  | `numOfCarousel`  | `Number` | Rappresent the index of carousel in the page, must be different in each carousel to make it work in page. |
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `title`  | `String` | &check; | Title to show at the top. |
+  | `elementsToShow`  | `Array` | &check; | List of elements to show in the carousel. It consists of only elements with the path of the image to show. |
+  | `numOfCarousel`  | `Number` | &check; | Rappresent the index of carousel in the page, must be different in each carousel to make it work in page. |
   
     <br>
 
@@ -108,12 +108,12 @@ We developed the components having in mind the expandability of the website so t
      Carusel with a single image with description and text on the right.
 
 
-      | Prop         | Type      | Note |
-      | ------------ | --------- | ---- |
-      | `title`  | `String` | Title to show at the top. |
-      | `elementsToShow`  | `Array` | Contains only elements with the path of the image , title , description and linkPath for the button. |
-      | `linkName`  | `String` | Text to show on the button. |
-      | `numOfCarousel`  | `Number` | Rappresent the index of carousel in the page, must be different in each carousel to make it work in page. |
+      | Prop         | Type      | Req | Note |
+      | ------------ | --------- | --- | ---- |
+      | `title`  | `String` | &check; | Title to show at the top of carousel |
+      | `elementsToShow`  | `Array` | &check; | List of elements to show in the carousel. It consists of only elements with some props used by CarouselItem component (the path of the image, title, description, an optional date and linkPath for the button).  |
+      | `linkName`  | `String` | - | Text to show on the button. |
+      | `numOfCarousel`  | `Number` | &check; | Rappresent the index of carousel in the page, must be different in each carousel to make it work in page. |
   
   
     <br>
@@ -128,15 +128,15 @@ We developed the components having in mind the expandability of the website so t
  - ## **_CarouselItem_**
      Component to put inside a carousel with a single image with description and text on the right and a possible link.
 
-      | Prop         | Type      | Note |
-      | ------------ | --------- | ---- |
-      | `title`  | `String` | Title to show at the top. |
-      | `descrImg` | `String` | Path to the image to show.      |
-      | `date`  | `String` | Date to show if the element is an event. |
-      | `description`  | `String` | Text that will be written under the title. |
-      | `linkName`  | `String` | The name displayed on the button on the right. |
-      | `linkPath`  | `String` |  Link of the button on the right. |
-      | `isLeft`  | `String` | Alignment of the text. |
+      | Prop         | Type      | Req | Note |
+      | ------------ | --------- | --- | ---- |
+      | `title`  | `String` | - | Title to show at the top. |
+      | `descrImg` | `String` | - | Path to the image to show.      |
+      | `date`  | `String` | - | Date to show if the element is an event. |
+      | `description`  | `String` | - | Text that will be written under the title. |
+      | `linkName`  | `String` | - | The name displayed on the button on the right. |
+      | `linkPath`  | `String` | - | Link of the button on the right. |
+      | `isLeft`  | `String` | - | Alignment of the text. |
 
   
   
@@ -153,13 +153,13 @@ We developed the components having in mind the expandability of the website so t
     Component that shows 4 objects, one big image and 3 smaller, you can change the order of the columns and the background color setting isLeft prop to true or false. The meaning of the component is to give a showcase of something wider, a button on the top right redirect to the general page with all the objects
 
 
-  | Prop         | Type      | Note |
-  | ------------ | --------- | ---- |
-  | `title`  | `String` | Title to show at the top. |
-  | `linkName`  | `String` | The name displayed on the button on the right. |
-  | `linkPath`  | `String` |  Link of the button on the right. |
-  | `content`  | `String` | Array of at least 4 elements with title, image and date. |
-  | `isLeft`  | `String` | Alignment of the text. |
+  | Prop         | Type      | Req | Note |
+    | ------------ | --------- | --- | ---- |
+  | `title`  | `String` | &check; | Title to show at the top. |
+  | `linkName`  | `String` | - | The name displayed on the button on the right. |
+  | `linkPath`  | `String` | &check; | Link of the button on the right. |
+  | `content`  | `String` | &check; | Array of at least 4 elements with title, image and optional date. |
+  | `isLeft`  | `String` | - | Alignment of the big image. |
   
     <br>
 
@@ -173,13 +173,13 @@ We developed the components having in mind the expandability of the website so t
    Component that shows a clickable image with a title and an optional date, a trapezoid can be added on the right side setting it in the props. Click on the image will bring to the given link.
 
 
-  | Prop         | Type      | Note |
-  | ------------ | --------- | ---- |
-  | `name`  | `String` | Name that will be displayed over the image. |
-  | `date`  | `String` | Date to show if the element is an event. |
-  | `img`   | `String` | Path to the background image. |
-  | `link`  | `String` | Link to redirect to when the image is clicked. 
-  | `trapezoid`  | `Boolean` | Used to choose if use a trapeziod overlay over the image. |
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `name`  | `String` | &check; | Name that will be displayed over the image. |
+  | `date`  | `String` | - | Date to show if the element is an event. |
+  | `img`   | `String` | &check; | Path of the background image. |
+  | `link`  | `String` | &check; | Link to redirect to when the image is clicked. 
+  | `trapezoid`  | `Boolean` | - | If true show a trapeziod overlay over the image. |
 
     <br>
 
@@ -194,9 +194,9 @@ We developed the components having in mind the expandability of the website so t
     Component that shows a list of hyperlinks to various parts of the page.
 
 
-  | Prop         | Type      | Note |
-  | ------------ | --------- | ---- |
-  | `chapters`  | `Array` | Contain a series of elements with the attribute title, it will be used as href and displayed. |
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `chapters`  | `Array` | &check; | Contain a series of elements with the attribute title, it will be used as href and displayed. |
 
     <br>
 
@@ -210,11 +210,11 @@ We developed the components having in mind the expandability of the website so t
     Component with title and text that occupies all width of the page.
 
 
-  | Prop         | Type      | Note |
-  | ------------ | --------- | ---- |
-  | `title`  | `String` | Title of the paragraph. |
-  | `description`  | `String` | Text that will be written under the title. |
-  | `textAlign`  | `String` | Alignment of the text. |
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `title`  | `String` | - | Title of the paragraph. |
+  | `description`  | `String` | - | Text that will be written under the title. |
+  | `textAlign`  | `String` | - | Alignment of the text. |
 
     <br>
 
@@ -228,11 +228,11 @@ We developed the components having in mind the expandability of the website so t
 
   Component that can be used to display a chapter with a title and different paragraphs, with the possibility to add an image. Should be used to format long text.
 
-  | Prop         | Type      | Note |
-  | ------------ | --------- | ---- |
-  | `title`  | `String` | Title of the text. |
-  | `paragraphs`  | `Array` | Array of paragraphs to format. |
-  | `image`  | `String` | Path to the image to show. |
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `title`  | `String` | - | Title of the chapter. |
+  | `paragraphs`  | `Array` | &check; | Array of paragraphs to show. |
+  | `image`  | `String` | - | Path to the image to show. |
 
     <br>
 
@@ -244,9 +244,10 @@ We developed the components having in mind the expandability of the website so t
 
 - ## **_Mosaic_**
     Component that shows a page of cards created from the items passed with title, image and date.
-  | Prop         | Type      | Note |
-  | ------------ | --------- | ---- |
-  | `items`  | `Array` | List of items to show in a mosaic format. |
+    
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `items`  | `Array` | &check; | List of items to show in a mosaic format. The elements in the array must have the required props of the Item-Mosaic Component |
 
     <br>
 
@@ -259,12 +260,12 @@ We developed the components having in mind the expandability of the website so t
 - ## **_Item-Mosaic_**
   Component that represent a mosaic item, it is a clickable image with title and optional date. It is thought to be displayed in a grid of item-mosaic
 
-  | Prop         | Type      | Note |
-  | ------------ | --------- | ---- |
-  | `name`  | `String` | Text to show over the image. |
-  | `date`  | `String` | Date to show if the element is an event. |
-  | `img`  | `String` | Path of the background image. |
-  | `link`  | `String` | Link to the page of the element. |
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `name`  | `String` | &check; | Text to show over the image. |
+  | `date`  | `String` | - | Date to show if the element is an event. |
+  | `img`  | `String` | &check; | Path of the background image. |
+  | `link`  | `String` | &check; | Link to the page of the element. |
 
     <br>
 
@@ -276,19 +277,16 @@ We developed the components having in mind the expandability of the website so t
 
 - ## **_ImageContacts_**
 
-  Component that show the contact alongside an image
-  | Prop       | Type    | Note   |
-  | ---------- | ------- |------- |
-  | `title`  | `String` | Title to show on top. |
-  | `img`  | `String` | Path of the image to show. |
-  | `date`  | `String` | Date used to show when an event take place. |
-  | `openingHour`  | `String` | Opening hour of the business. |
-  | `closingHour`  | `String` | Closing hour of the business. |
-  | `ticket`  | `Number` | Price of the ticket. |
-  | `landlinePhone`  | `String` | Number of the landline phone.  |
-  | `mobilePhone`  | `String` | Number of the mobile phone. |
-  | `email`  | `String` | email address. |
-
+  Component that show the contacts of a business alongside an image
+  
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `title`  | `String` | &check; | Title to show on top. |
+  | `img`  | `String` | - | Path of the image to show. |
+  | `openingHour`  | `String` | - | Opening hour of the business. |
+  | `closingHour`  | `String` | - | Closing hour of the business. |
+  | `phone`  | `String` | - | Number of phone. |
+  | `isLeft` | `Boolean` | &check; | Alignment of text respect to the image. |
   <br>
 
   #### Example
@@ -301,16 +299,16 @@ We developed the components having in mind the expandability of the website so t
 
   Component that show a box with contact info and other informations.
 
-  | Prop       | Type    | Note   |
-  | ---------- | ------- |------- |
-  | `title`  | `String` | Title to show on top. |
-  | `date`  | `String` | Date used to show when an event take place. |
-  | `openingHour`  | `String` | Opening hour of the business. |
-  | `closingHour`  | `String` | Closing hour of the business. |
-  | `ticket`  | `Number` | Price of the ticket. |
-  | `landlinePhone`  | `String` | Number of the landline phone.  |
-  | `mobilePhone`  | `String` | Number of the mobile phone. |
-  | `email`  | `String` | email address. |
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `title`  | `String` | - | Title to show on top. |
+  | `date`  | `String` | - | Date used to show when an event take place. |
+  | `openingHour`  | `String` | - | Opening hour of the business. |
+  | `closingHour`  | `String` | - | Closing hour of the business. |
+  | `ticket`  | `Number` | - | Price of the ticket. |
+  | `landlinePhone`  | `String` | - | Number of the landline phone.  |
+  | `mobilePhone`  | `String` | - | Number of the mobile phone. |
+  | `email`  | `String` | - | Email address. |
   
   <br>
   
@@ -321,14 +319,14 @@ We developed the components having in mind the expandability of the website so t
   <br>
 - ## **_MapCard_**
   Component that shows a map, based on the props passed it redemension itself to the correct width to have a title and button on the right or be a full screen map. The map can be made from an address or from a weblink. When the image shrinks the text goes down
-  | Prop    | Type     | Note |
-  | ------- | -------- | ---- |
-  | `title` | `String` | Title that is shown beside the map.  |
-  | `address` | `String` | Adress of the place to search on GoogleMaps.|
-  | `showButton` | `Boolean` | Used to show the button that redirect to the page of the place shown on the map. |
-  | `webLink` | `String` | Link used for a Google MyMap. |
-  | `zoom` | `Number` | Used to zoom on the map. |
-
+  
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `title` | `String` | - | Title that is shown beside the map.  |
+  | `address` | `String` | - | Adress of the place to search on GoogleMaps.|
+  | `showButton` | `Boolean` | - | if false hide the button that redirect to the page of the point of interest shown on the map. The link is created from the title, hide the button if you are not showing a point of interest address |
+  | `webLink` | `String` | - | Link used for a Google MyMap. |
+  | `zoom` | `Number` | - | Used to zoom on the map. |
   <br>
   
   #### Example
@@ -338,15 +336,16 @@ We developed the components having in mind the expandability of the website so t
   
   <br>
 - ## **_DescriptionCard_**
-     Component with an image and a part of text on the left or right that when the img shrinks the text goes down with a possible link added 
-  | Prop       | Type     | Note |
-  | ---------- | -------- | -----|
-  | `title`    | `String` | Title of the element to show.   |
-  | `descrImg` | `String` | Path to the image to show.      |
-  | `description` | `String`| Descrition of the element. |
-  | `linkName`    | `String` | Text to show on the button.   |
-  | `linkPath` | `String` | Link to the page of the element.      |
-  | `isLeft` | `String`| Used to set the image on the left or right. |
+    Component with an image and a part of text on the left or right that when the img shrinks the text goes down with a possible link added 
+    
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `title`    | `String` | - | Title of the element to show.   |
+  | `descrImg` | `String` | - | Path to the image to show.      |
+  | `description` | `String`| - | Description of the element. |
+  | `linkName`    | `String` | - | Text to show on the button.   |
+  | `linkPath` | `String` | - | Link to the page displayed when clicking on the button      |
+  | `isLeft` | `String`| - | Set the image on the left or right. |
   
   
   <br>
@@ -358,10 +357,11 @@ We developed the components having in mind the expandability of the website so t
   <br>
 - ## **_TopImage_**
   Display a full width image with the title of the current page.
-  | Prop   | Type    | Note      |
-  | ------ | ------- | ----------|
-  | `bgImg` | `String` | Path of the image. |
-  | `title` | `String`| Title that will be shown.
+  
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `bgImg` | `String` | &check; | Path of the image. |
+  | `title` | `String`| &check; | Title that will be shown.
   
   <br>
   
@@ -371,11 +371,12 @@ We developed the components having in mind the expandability of the website so t
   
   <br>
 - ## **_GroupLinks_**
-    Links that help the user to navigate between elements of a group. Each page save the link of elements of each group that is in that page so that when the user navigates in one of those elements we can retrive the corrisponding group links.
-  | Prop   | Type    | Note                                                                  |
-  | ------ | ------- | ----------|
-  | `type` | `String` | Used to choose the right group links from those saved by the parent page.|
-  | `pageName`  | `String` | Used to select the current element in the group links so that it's possible to get the previous and next elements.
+   Links that help the user to navigate between elements of a group. Each page save the link of elements of each group that is in that page so that when the user navigates in one of those elements we can retrive the corrisponding group links.
+   
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `type` | `String` | &check; | Category used to choose the right type of page to retreive group links for, from those saved by the parent page. (services, events, pois, itineraries, event-type)|
+  | `pageName`  | `String` | &check; | Used to select the current element in the group links so that it's possible to get the previous and next elements.|
   
   <br>
   
@@ -387,15 +388,16 @@ We developed the components having in mind the expandability of the website so t
 - ## **Breadcrumbs**
     Dynamic breadcrumbs that follow the path that the user did in the website. Rules implemented:
     - Keep track of each page visited by the user.
-    - If the use visit a page that is present in the breadcrumbs truncate all the links after that.
-    - Only show theb last 3 visited pages.
+    - If the user visit a page that is present in the breadcrumbs truncate all the links after that.
+    - If the user clicks on the Landmarks on the navbar the breadcrumbs are restarted.
+    - Only show the last 3 visited pages.
     - When a user use the group links don't add another link but change the last one.
     <br>
     
-  | Prop           | Type      | Note |
-  | -------------- | --------  | ---- |
-  | `pageName`     | `String`  | The name of the page, this name is the one that will be displayed.|
-  | `link` | `String` | The link of the page, this will be used when the user click on the breadcrumbs.
+  | Prop         | Type      | Req | Note |
+  | ------------ | --------- | --- | ---- |
+  | `pageName`     | `String`  | &check; | The name of the current page, this name is the one that will be displayed as last one.|
+  | `link` | `String` | &check; | The link of the current page, this will be saved and used when the user will click on the breadcrumbs after changing page.|
   
   <br>
   
