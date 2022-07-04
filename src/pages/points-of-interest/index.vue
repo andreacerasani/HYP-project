@@ -6,9 +6,7 @@
       :bg-img="'/images/points-of-interest.jpg'"
     />
     <breadcrumbs page-name="Points Of Interest" link="/points-of-interest" />
-    <simple-content
-      :title="'Venice\'s Points of Interest'"
-    />
+    <simple-content :title="'Venice\'s Points of Interest'" />
     <br />
     <mosaic :items="data" />
   </div>
@@ -19,6 +17,7 @@ import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 import Mosaic from '~/components/mosaics/Mosaic.vue'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import common from '~/mixins/common'
 export default {
   name: 'PointsOfInterest',
   components: {
@@ -27,6 +26,7 @@ export default {
     Mosaic,
     Breadcrumbs,
   },
+  mixins:[common],
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/points-of-interest')
     return {
@@ -47,20 +47,7 @@ export default {
     }
   },
   mounted() {
-    const linksJson = sessionStorage.getItem('groupLinks')
-
-    let groupLinks = []
-    if (linksJson == null || linksJson === 'undefined') {
-      groupLinks = [
-        { type: 'services', links: [] },
-        { type: 'events', links: [] },
-        { type: 'pois', links: [] },
-        { type: 'itineraries', links: [] },
-        { type: 'event-type', links: [] },
-      ]
-    } else {
-      groupLinks = JSON.parse(linksJson)
-    }
+    const groupLinks = this.retriveGroupLinks()
 
     const pageLinks = []
     this.$data.data.forEach((element) => {

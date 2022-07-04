@@ -186,6 +186,7 @@ async function runMainApi() {
           attributes: ['path'],
         },
       ],
+      order:[['id','ASC']],
       limit: 4,
     })
 

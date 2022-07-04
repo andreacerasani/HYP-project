@@ -13,6 +13,7 @@ import TopImage from '~/components/utility/TopImage.vue'
 import Mosaic from '~/components/mosaics/Mosaic.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import common from '~/mixins/common'
 
 export default {
   name: 'MainServicesPage',
@@ -22,6 +23,7 @@ export default {
     SimpleContent,
     Breadcrumbs,
   },
+  mixins:[common],
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/services')
 
@@ -44,20 +46,7 @@ export default {
     }
   },
   mounted() {
-    const linksJson = sessionStorage.getItem('groupLinks')
-
-    let groupLinks = []
-    if (linksJson == null || linksJson === 'undefined') {
-      groupLinks = [
-        { type: 'services', links: [] },
-        { type: 'events', links: [] },
-        { type: 'pois', links: [] },
-        { type: 'itineraries', links: [] },
-        { type: 'event-type', links: [] },
-      ]
-    } else {
-      groupLinks = JSON.parse(linksJson)
-    }
+    const groupLinks = this.retriveGroupLinks()
 
     const pageLinks = []
     this.$data.data.forEach((element) => {

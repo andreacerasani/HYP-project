@@ -70,6 +70,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.vue'
 import ImageDescriptionCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
 import MapCard from '~/components/main-elements/MapCard.vue'
 import GroupLinks from '~/components/GroupLinks.vue'
+import common from '~/mixins/common'
 
 export default {
   name: 'SinglePoiPage',
@@ -83,6 +84,7 @@ export default {
     MapCard,
     GroupLinks,
   },
+  mixins:[common],
   async asyncData({ route, $axios, error }) {
     try {
       const title = route.params.title
@@ -126,20 +128,7 @@ export default {
     }
   },
   mounted() {
-    const linksJson = sessionStorage.getItem('groupLinks')
-
-    let groupLinks = []
-    if (linksJson == null || linksJson === 'undefined') {
-      groupLinks = [
-        { type: 'services', links: [] },
-        { type: 'events', links: [] },
-        { type: 'pois', links: [] },
-        { type: 'itineraries', links: [] },
-        { type: 'event-type', links: [] },
-      ]
-    } else {
-      groupLinks = JSON.parse(linksJson)
-    }
+    const groupLinks = this.retriveGroupLinks()
 
     let pageLinks = []
     this.$data.data.events.forEach((element) => {

@@ -5,7 +5,7 @@
       v-if="prev.title !== '' || next.title !== ''"
       class="row justify-content-between size"
     >
-    <!-- Previous Button -->
+      <!-- Previous Button -->
       <div
         class="col-auto btn btn-outline-primary my-button ms-1"
         :style="[
@@ -52,9 +52,10 @@
 </template>
 
 <script>
+import common from '~/mixins/common'
 export default {
   name: 'GroupLinks',
-
+  mixins: [common],
   props: {
     type: {
       type: String,
@@ -74,18 +75,7 @@ export default {
 
   mounted() {
     // Read group links from storage if any else create
-    const linksJson = sessionStorage.getItem('groupLinks')
-    let groupLinks = []
-    if (linksJson == null || linksJson === 'undefined') {
-      groupLinks = [
-        { type: 'services', links: [] },
-        { type: 'events', links: [] },
-        { type: 'pois', links: [] },
-        { type: 'itineraries', links: [] },
-      ]
-    } else {
-      groupLinks = JSON.parse(linksJson)
-    }
+    const groupLinks = this.retriveGroupLinks()
 
     // Read only the group link of the current page type
     const choosenGroup = groupLinks.filter((e) => e.type === this.type)[0].links

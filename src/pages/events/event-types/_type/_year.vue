@@ -53,6 +53,7 @@ import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
 import ImageDescriptionCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import common from '~/mixins/common'
 
 export default {
   name: 'EventTypePage',
@@ -63,6 +64,7 @@ export default {
     ImageDescriptionCarousel,
     Breadcrumbs,
   },
+  mixins:[common],
   async asyncData({ route, $axios, error }) {
     try {
       const { type } = route.params
@@ -90,20 +92,7 @@ export default {
     }
   },
   mounted() {
-    const linksJson = sessionStorage.getItem('groupLinks')
-
-    let groupLinks = []
-    if (linksJson == null || linksJson === 'undefined') {
-      groupLinks = [
-        { type: 'services', links: [] },
-        { type: 'events', links: [] },
-        { type: 'pois', links: [] },
-        { type: 'itineraries', links: [] },
-        { type: 'event-type', links: [] },
-      ]
-    } else {
-      groupLinks = JSON.parse(linksJson)
-    }
+    const groupLinks = this.retriveGroupLinks()
 
     const pageLinks = []
     this.$data.data.all_events.forEach((element) => {

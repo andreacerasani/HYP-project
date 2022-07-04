@@ -45,6 +45,7 @@ import CarouselImgDes from '../../components/carousels/ImageDescriptionCarousel.
 import TopImage from '~/components/utility/TopImage.vue'
 import DescriptionCard from '~/components/main-elements/DescriptionCard.vue'
 import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import common from '~/mixins/common'
 
 export default {
   name: 'EventsPage',
@@ -54,6 +55,7 @@ export default {
     CarouselImgDes,
     Breadcrumbs,
   },
+  mixins:[common],
   async asyncData({ $axios }) {
     const upcomingEventsData = await $axios.get('/api/upcoming-events')
     const upcomingEvents = upcomingEventsData.data
@@ -103,20 +105,7 @@ export default {
     }
   },
   mounted() {
-    const linksJson = sessionStorage.getItem('groupLinks')
-
-    let groupLinks = []
-    if (linksJson == null || linksJson === 'undefined') {
-      groupLinks = [
-        { type: 'services', links: [] },
-        { type: 'events', links: [] },
-        { type: 'pois', links: [] },
-        { type: 'itineraries', links: [] },
-        { type: 'event-type', links: [] },
-      ]
-    } else {
-      groupLinks = JSON.parse(linksJson)
-    }
+    const groupLinks = this.retriveGroupLinks()
 
     let pageLinks = [
       { title: this.All.title, linkPath: this.All.linkPath },

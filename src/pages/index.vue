@@ -39,9 +39,11 @@
 
 <script>
 import ShowcaseComponent from '~/components/ShowcaseComponent.vue'
+import common from '~/mixins/common'
 export default {
   name: 'IndexPage',
   components: { ShowcaseComponent },
+  mixins:[common],
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/homepage')
     const { events, itineraries, pois } = data
@@ -68,20 +70,7 @@ export default {
     sessionStorage.setItem('bread', JSON.stringify(breadArray))
 
     // Handle GroupLinks
-    const linksJson = sessionStorage.getItem('groupLinks')
-
-    let groupLinks = []
-    if (linksJson == null || linksJson === 'undefined') {
-      groupLinks = [
-        { type: 'services', links: [] },
-        { type: 'events', links: [] },
-        { type: 'pois', links: [] },
-        { type: 'itineraries', links: [] },
-        { type: 'event-type', links: [] },
-      ]
-    } else {
-      groupLinks = JSON.parse(linksJson)
-    }
+    const groupLinks = this.retriveGroupLinks()
 
     // Save events in group links
     let pageLinks = []

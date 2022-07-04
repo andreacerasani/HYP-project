@@ -46,6 +46,7 @@ import Contacts from '~/components/main-elements/Contacts.vue'
 import MapCard from '~/components/main-elements/MapCard.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
 import TopImage from '~/components/utility/TopImage.vue'
+import common from '~/mixins/common'
 
 export default {
   name: 'SingleEventPage',
@@ -58,6 +59,7 @@ export default {
     Breadcrumbs,
     GroupLinks,
   },
+  mixins:[common],
   async asyncData({ route, $axios, error }) {
     try {
       const { title } = route.params
@@ -87,20 +89,7 @@ export default {
     }
   },
   mounted() {
-    const linksJson = sessionStorage.getItem('groupLinks')
-
-    let groupLinks = []
-    if (linksJson == null || linksJson === 'undefined') {
-      groupLinks = [
-        { type: 'services', links: [] },
-        { type: 'events', links: [] },
-        { type: 'pois', links: [] },
-        { type: 'itineraries', links: [] },
-        { type: 'event-type', links: [] },
-      ]
-    } else {
-      groupLinks = JSON.parse(linksJson)
-    }
+    const groupLinks = this.retriveGroupLinks()
 
     const pageLinks = [{
       title: this.$data.data.poi.title,
