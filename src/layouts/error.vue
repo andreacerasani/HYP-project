@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import DescriptionCard from '../components/main-elements/DescriptionCard.vue'
+import DescriptionCard from '../components/informative/DescriptionCard.vue'
 export default {
   name: 'ErrorPage',
   components: { DescriptionCard },

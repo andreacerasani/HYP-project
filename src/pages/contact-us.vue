@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import TopImage from '~/components/utility/TopImage.vue'
+import TopImage from '~/components/informative/TopImage.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
-import Contacts from '~/components/main-elements/Contacts.vue'
-import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import Contacts from '~/components/contacts/Contacts.vue'
+import Breadcrumbs from '~/components/navigation/Breadcrumbs.vue'
 export default {
   name: 'ContactPage',
   components: {

@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import Breadcrumbs from '~/components/Breadcrumbs.vue'
-import GroupLinks from '~/components/GroupLinks.vue'
-import ImageContacts from '~/components/main-elements/ImageContacts.vue'
-import MapCard from '~/components/main-elements/MapCard.vue'
+import Breadcrumbs from '~/components/navigation/Breadcrumbs.vue'
+import GroupLinks from '~/components/navigation/GroupLinks.vue'
+import ImageContacts from '~/components/contacts/ImageContacts.vue'
+import MapCard from '~/components/informative/MapCard.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
-import TopImage from '~/components/utility/TopImage.vue'
+import TopImage from '~/components/informative/TopImage.vue'
 
 export default {
   name: 'SingleServicePage',

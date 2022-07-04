@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import MapCard from '~/components/main-elements/MapCard.vue'
-import TopImage from '~/components/utility/TopImage.vue'
-import DescriptionCard from '~/components/main-elements/DescriptionCard.vue'
+import MapCard from '~/components/informative/MapCard.vue'
+import TopImage from '~/components/informative/TopImage.vue'
+import DescriptionCard from '~/components/informative/DescriptionCard.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
-import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import Breadcrumbs from '~/components/navigation/Breadcrumbs.vue'
 import common from '~/mixins/common'
 export default {
   name: 'ItinerarySingle',

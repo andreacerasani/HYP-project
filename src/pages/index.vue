@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import ShowcaseComponent from '~/components/ShowcaseComponent.vue'
+import ShowcaseComponent from '~/components/informative/ShowcaseComponent.vue'
 import common from '~/mixins/common'
 export default {
   name: 'IndexPage',

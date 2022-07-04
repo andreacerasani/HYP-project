@@ -64,12 +64,12 @@
 <script>
 import ImageCarousel from '../../components/carousels/ImageCarousel.vue'
 import SimpleContent from '../../components/text-elements/SimpleContent.vue'
-import TopImage from '../../components/utility/TopImage.vue'
-import Contacts from '~/components/main-elements/Contacts.vue'
-import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import TopImage from '../../components/informative/TopImage.vue'
+import Contacts from '~/components/contacts/Contacts.vue'
+import Breadcrumbs from '~/components/navigation/Breadcrumbs.vue'
 import ImageDescriptionCarousel from '~/components/carousels/ImageDescriptionCarousel.vue'
-import MapCard from '~/components/main-elements/MapCard.vue'
-import GroupLinks from '~/components/GroupLinks.vue'
+import MapCard from '~/components/informative/MapCard.vue'
+import GroupLinks from '~/components/navigation/GroupLinks.vue'
 import common from '~/mixins/common'
 
 export default {

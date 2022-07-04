@@ -39,13 +39,13 @@
 </template>
 
 <script>
-import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import Breadcrumbs from '~/components/navigation/Breadcrumbs.vue'
 import ImageCarousel from '~/components/carousels/ImageCarousel.vue'
-import GroupLinks from '~/components/GroupLinks.vue'
-import Contacts from '~/components/main-elements/Contacts.vue'
-import MapCard from '~/components/main-elements/MapCard.vue'
+import GroupLinks from '~/components/navigation/GroupLinks.vue'
+import Contacts from '~/components/contacts/Contacts.vue'
+import MapCard from '~/components/informative/MapCard.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
-import TopImage from '~/components/utility/TopImage.vue'
+import TopImage from '~/components/informative/TopImage.vue'
 import common from '~/mixins/common'
 
 export default {

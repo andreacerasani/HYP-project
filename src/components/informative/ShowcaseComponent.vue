@@ -35,7 +35,7 @@ The meaning of the component is to give a showcase of something wider, a button 
           'flex-row flex-md-row': isLeft,
         }"
       >
-<!-- big image    -->   
+        <!-- big image    -->
         <div class="col-lg-7 col-sm-12 half-side">
           <div class="pb-3">
             <clickable-image
@@ -49,7 +49,7 @@ The meaning of the component is to give a showcase of something wider, a button 
           </div>
         </div>
 
-<!-- three small images -->
+        <!-- three small images -->
         <div class="col-lg-5 half-side">
           <clickable-image
             :img="content[1].images[0].path"
@@ -84,19 +84,25 @@ The meaning of the component is to give a showcase of something wider, a button 
 </template>
 
 <script>
+import clickableImage from '~/components/informative/ClickableImage.vue'
 export default {
   name: 'ShowcaseComponent',
+  components: {
+    clickableImage,
+  },
   props: {
     title: {
       type: String,
       required: true,
     },
-    linkName: {     // The name displayed on the button on the right
+    linkName: {
+      // The name displayed on the button on the right
       type: String,
       required: false,
       default: 'See all',
     },
-    linkPath: {     // Link of the button on the right
+    linkPath: {
+      // Link of the button on the right
       type: String,
       required: true,
     },

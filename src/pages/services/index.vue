@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import TopImage from '~/components/utility/TopImage.vue'
+import TopImage from '~/components/informative/TopImage.vue'
 import Mosaic from '~/components/mosaics/Mosaic.vue'
 import SimpleContent from '~/components/text-elements/SimpleContent.vue'
-import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import Breadcrumbs from '~/components/navigation/Breadcrumbs.vue'
 import common from '~/mixins/common'
 
 export default {

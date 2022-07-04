@@ -42,9 +42,9 @@
 
 <script>
 import CarouselImgDes from '../../components/carousels/ImageDescriptionCarousel.vue'
-import TopImage from '~/components/utility/TopImage.vue'
-import DescriptionCard from '~/components/main-elements/DescriptionCard.vue'
-import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import TopImage from '~/components/informative/TopImage.vue'
+import DescriptionCard from '~/components/informative/DescriptionCard.vue'
+import Breadcrumbs from '~/components/navigation/Breadcrumbs.vue'
 import common from '~/mixins/common'
 
 export default {

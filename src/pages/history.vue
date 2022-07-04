@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import TopImage from '~/components/utility/TopImage.vue'
+import TopImage from '~/components/informative/TopImage.vue'
 import ChapterComponent from '~/components/text-elements/Chapter'
-import HypertextIndex from '~/components/utility/HypertextIndex.vue'
-import Breadcrumbs from '~/components/Breadcrumbs.vue'
+import HypertextIndex from '~/components/navigation/HypertextIndex.vue'
+import Breadcrumbs from '~/components/navigation/Breadcrumbs.vue'
 export default {
   name: 'CityPage',
   components: {
