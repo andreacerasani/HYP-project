@@ -1,4 +1,4 @@
-<!-- Component with title and text that stands alone all width of the page  -->
+<!-- Component with title and text that occupies all width of the page  -->
 <template>
   <div>
     <h1 v-if="title !== ''">{{ title }}</h1>
