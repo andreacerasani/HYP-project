@@ -33,7 +33,6 @@ While developing the application we followed these particular good practices:
 - **Comment** every important aspect of the system(html structure, components, server, database structure) in order to facilitate reading.
 - **Accessibility** principles:
   - [x] Brief descriptions of non-text content (such as images) are provided
-  - [x] Labels for form controls, input, and other user interface components are provided
   - [x] Sequences of information or instructions are independent of any presentation
   - [x] Default foreground and background color combinations provide sufficient contrast
   - [x] Text reflows in small viewports and when users make the text larger
