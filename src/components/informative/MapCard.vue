@@ -18,7 +18,7 @@ When the img shrinks the text goes down
         </div>
         <div class="col text-center">
           <div class="row p-3">
-            <h2 class="text"><img src="/images/icons/location.png" alt="Location Icon" /> {{ title }}</h2>
+            <h2 class="text"><img src="images/icons/location.png" alt="Location Icon" /> {{ title }}</h2>
           </div>
           <div class="row p-2">
 

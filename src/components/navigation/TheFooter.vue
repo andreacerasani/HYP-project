@@ -2,7 +2,7 @@
 <template>
   <footer class="link-primary d-flex flex-row flex-wrap justify-content-center">
 
-    <p class="polimi-text p-3 ps-4 me-lg-auto"> <img src="/images/icons/worry_logo.png" width="30em" alt="Worry Whales logo"/> Worry Whale &copy; 2022 </p>
+    <p class="polimi-text p-3 ps-4 me-lg-auto"> <img src="images/icons/worry_logo.png" width="30em" alt="Worry Whales logo"/> Worry Whale &copy; 2022 </p>
     <p class="polimi-text p-3">Politecnico Di Milano</p>
     <p class="polimi-text p-3">Hypermedia Application</p>
     <nuxt-link :to="linkPath" class="p-3">

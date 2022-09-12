@@ -27,7 +27,7 @@ export default {
   },
   data() {
     const title = 'Page Under Construction'
-    const img = '/images/extra/patrick_wip.png'
+    const img = 'images/extra/patrick_wip.png'
     const linkName = 'Go back Home'
     const linkPath = '/'
     const description = 'This page is not yet completed, Please continue exploring this wonderful city'

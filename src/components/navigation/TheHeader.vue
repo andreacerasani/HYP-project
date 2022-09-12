@@ -15,7 +15,7 @@
   >
     <nuxt-link to="/" class="nav-link navbar-brand hover-zoom">
       <img
-        src="/images/header_icons/logo.png"
+        src="images/header_icons/logo.png"
         alt="Page Logo Visit Venice"
         height="40"
       />
@@ -86,27 +86,27 @@ export default {
         {
           name: 'Events',
           path: '/events',
-          image: '/images/header_icons/event.png',
+          image: 'images/header_icons/event.png',
         },
         {
           name: 'Itineraries',
           path: '/itineraries',
-          image: '/images/header_icons/itinerary.png',
+          image: 'images/header_icons/itinerary.png',
         },
         {
           name: 'Services',
           path: '/services',
-          image: '/images/header_icons/service.png',
+          image: 'images/header_icons/service.png',
         },
         {
           name: 'Points of interest',
           path: '/points-of-interest',
-          image: '/images/header_icons/POI.png',
+          image: 'images/header_icons/POI.png',
         },
         {
           name: 'City',
           path: '/city',
-          image: '/images/header_icons/city.png',
+          image: 'images/header_icons/city.png',
         },
       ],
     }

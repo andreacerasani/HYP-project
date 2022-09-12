@@ -19,7 +19,7 @@
             <br />
             <div class="ps-4">
             <img
-              src="/images/icons/phone_icon.png"
+              src="images/icons/phone_icon.png"
               class="icon-img-personalize"
               alt="Phone Icon"
             />
@@ -67,7 +67,7 @@
             <br />
             <div class="ps-4">
             <img
-              src="/images/icons/phone_icon.png"
+              src="images/icons/phone_icon.png"
               class="icon-img-personalize"
               alt="Phone Icon"
             />

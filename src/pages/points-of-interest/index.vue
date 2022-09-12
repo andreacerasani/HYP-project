@@ -3,7 +3,7 @@
   <div>
     <top-image
       :title="'Points of Interest'"
-      :bg-img="'/images/points-of-interest.jpg'"
+      :bg-img="'images/points-of-interest.jpg'"
     />
     <breadcrumbs page-name="Points Of Interest" link="/points-of-interest" />
     <simple-content :title="'Venice\'s Points of Interest'" />

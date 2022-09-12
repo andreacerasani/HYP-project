@@ -1,7 +1,7 @@
 <!-- Page that show all service types -->
 <template>
   <div>
-    <top-image :title="'Services'" :bg-img="'/images/services.jpg'" />
+    <top-image :title="'Services'" :bg-img="'images/services.jpg'" />
     <breadcrumbs page-name="Services" link="/services" />
     <simple-content :title="'Services of Venice'" />
     <mosaic :items="data" />

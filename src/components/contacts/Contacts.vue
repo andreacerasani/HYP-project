@@ -46,7 +46,7 @@
             <br />
             <span v-if="landlinePhone !== 'none'">
               <img
-                src="/images/icons/phone_icon.png"
+                src="images/icons/phone_icon.png"
                 class="icon-img-personalize"
                 alt="landline Phone Icon"
               />
@@ -58,7 +58,7 @@
             </span>
             <span v-if="mobilePhone !== 'none'">
               <img
-                src="/images/icons/phone_icon.png"
+                src="images/icons/phone_icon.png"
                 class="icon-img-personalize"
                 alt="Mobile Phone Icon"
               />
@@ -69,7 +69,7 @@
             </span>
             <span v-if="email !== 'none'" class="text-break">
               <img
-                src="/images/icons/email_icon.png"
+                src="images/icons/email_icon.png"
                 class="icon-img-personalize"
                 alt="Email Icon"
               />

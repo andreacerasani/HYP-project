@@ -39,14 +39,14 @@ export default {
   data() {
     const city = {
     Top: {
-      bg_img: '/images/city.jpg',
+      bg_img: 'images/city.jpg',
     },
     Map: {
       title: 'Venice',
     },
     History: {
       title: 'History',
-      descrImg: '/images/history.jpg',
+      descrImg: 'images/history.jpg',
       description:
         'Venice is the symbol of wise government and freedom. The lagoon was its only defense, there were no palace guards except the Arsenal workers and no parade ground except the sea. During centuries of feudalism and barbarism, Venice symbolised democracy and civilization.',
       linkName: 'Discover More',

@@ -31,7 +31,7 @@ export default {
     Breadcrumbs,
   },
   data() {
-    const topImage = '/images/history.jpg'
+    const topImage = 'images/history.jpg'
     const Chapters = [
       {
         title: 'Origin of the city',
@@ -44,7 +44,7 @@ export default {
         
         'A long succession of serious disputes between leading families concerning the office of doge did not halt the rapid development of trade. Increase in private wealth led to the gradual achievement of internal stability by creating a broader ruling class that was capable of putting a limit to the power of the doge. Gradually a national consciousness developed. Beginning in the late 9th century, the doges were chosen by popular election, though the right was frequently abused during times of civil strife. Finally the group of Rialto islands was solemnly transformed into the city of Venice (civitas Venetiarum).',
         ],
-        image: "/images/history/veniceOldMap1.jpg"
+        image: "images/history/veniceOldMap1.jpg"
       },
       {
         title: 'The new order',
@@ -68,14 +68,14 @@ export default {
           
           'Soon the mutual dislike between Venetians and Byzantines ripened into hatred. The emperor encouraged merchants from the Italian republics of Genoa and Pisa to compete in Byzantine markets, and the Venetians responded by destroying the establishments of their rivals. In 1171, to maintain order in his dominions, the emperor arrested all Venetian residents in Constantinople and the provinces and confiscated their goods. Relations were patched up in 1187 and again in 1198, but the Venetians remained embittered.'
         ],
-        image: "/images/history/bizzantini.jpg"
+        image: "images/history/bizzantini.jpg"
       },
       {
         title: 'The commune of Venice',
         paragraphs:[
           'All this time the expansion of Venice along the borders of the lagoon and across the Adriatic on the Dalmatian coast not only enriched its patrimony but also created an awareness of its own political power. Between 1140 and 1160, in response to the needs of its increased territory and growing economy, Venice underwent a revolutionary change in its political structure, reorganizing itself as a republic. The doge lost his monarchic character, becoming a mere official (though he still assumed resounding titles), and a commune took over the powers, functions, and prerogatives of the state. All political and administrative matters were placed in the hands of the Great Council of 45. A Minor Council of six members exercised executive powers alongside the doge, and magistrates were granted administrative and judicial functions.'
         ],
-        image: "/images/history/flag_republic_of_venice.jpg"
+        image: "images/history/flag_republic_of_venice.jpg"
       },
       {
         title: 'Trade conflicts',
@@ -84,7 +84,7 @@ export default {
 
           'In 1261 the Byzantine emperor in exile at Nicaea, with the support of the Genoese, recovered the city and evicted the Venetians. The emperor rewarded the Genoese with privileges that challenged the Venetian monopoly of trade and opened up to Genoa the Black Sea markets. The Venetians retained control of many of the Greek islands, however, and gradually found their way back to partial favour in Byzantium through a series of treaties. But when the last of the Crusader strongholds in Syria fell to the Muslims in 1291, Venetian merchants who had been dispossessed moved north to dispute the Black Sea trade with the Genoese. For nearly two centuries thereafter, Venice and Genoa were periodically at war.'
         ],
-        image: "/images/history/trade_routes.jpg"
+        image: "images/history/trade_routes.jpg"
       },
       {
         title: 'The patriciate',
@@ -103,7 +103,7 @@ export default {
 
           'The antagonism and rivalry with Genoa were rekindled. The conflict, carried on mainly in Dalmatia, was made more difficult for all by the spread of the Black Death (1348), by the economic and financial crisis caused by the war itself, and by the ineptitude of the military operations. In the alternation of victories and defeats, both sides exhausted their energies and resources. At last a second anti-Venetian coalition brought the war almost into Venice itself; at Pula (Pola) and at Chioggia, Venice first was defeated and then won the war (1380–81). The Peace of Turin (1381) eliminated Genoese political influence from the Mediterranean and the East, leaving the Venetian government arbiter of the sea routes.'
         ],
-        image: "/images/history/navy.jpg"
+        image: "images/history/navy.jpg"
       },
       {
         title: 'Zenith of power',
@@ -112,7 +112,7 @@ export default {
 
           'Venetian territory now covered roughly the areas of the modern regions of Veneto and Friuli–Venezia Giulia, together with the Istrian Peninsula. The doge Tommaso Mocenigo maintained that his city had reached its political and economic zenith; it had a solid base in Italy that could compensate for its losses in the East, and it should not expect indefinite progress. In fact, efforts to enlarge its conquests might be dangerous, and it was better to preserve, not to risk, its accumulated wealth. Mocenigo’s successors, however, did not heed his warning.'
         ],
-        image: "/images/history/1420.jpg"
+        image: "images/history/1420.jpg"
       },
       {
         title: 'Political and economic decline',
@@ -133,7 +133,7 @@ export default {
           
           'After a long campaign (1645–69), Crete, Venice’s last possession in the eastern Mediterranean, fell to the Turks, the Venetians being allowed to retain only a few strongholds. This blow to morale was mitigated, however, by the preservation of Dalmatia, and the government, after allying itself with Austria, attempted to reestablish itself in the eastern Mediterranean by liberating the Morea (Peloponnese) from the Turks. There the brilliant campaign of Francesco Morosini in 1684–88 assured Venice of this new Greek territory, which was finally handed over in 1699. But the conquest proved profitless and became an expensive burden, and in 1718 the Morea was returned to the Turks. Thus ended Venetian activity in the eastern and southern Mediterranean, save for an unsuccessful attempt in 1769 on Algerian and Tunisian pirates under Angelo Emo.'
         ],
-        image: "/images/history/battle_with_turks.jpg"
+        image: "images/history/battle_with_turks.jpg"
       },
       {
         title: 'End of the Venetian republic',
@@ -144,7 +144,7 @@ export default {
           
           'In 1848 the revolutionary leader Daniele Manin set up a provisional republican government, but it fell the following year. After the defeat of Austria by the Prussians in 1866, Venice was ceded to Italy, which had been a united kingdom since 1861.'
         ],
-        image: "/images/history/end_venice_republic.jpg"
+        image: "images/history/end_venice_republic.jpg"
         
       },
       {
@@ -158,7 +158,7 @@ export default {
 
           'In a broad sense, the entire history of Venice has been that of a struggle to control and utilize the environment, and indeed the most urgent problems confronting the present-day city are environmental. In the second half of the 20th century, the deterioration of ancient buildings and art treasures, which had long been associated with natural phenomena such as flooding and subsidence, was intensified by an atmosphere laden with sulfuric acid, much of it generated by industrial and domestic smoke. As in other cities in which monuments and works of art stand exposed, air pollution corroded and defaced many priceless examples of stonework from the Venetian past. Severely damaging storms and floods in November 1966 stimulated increased efforts to rescue the historic city from environmental destruction, yet flood-control projects (big and small) have been blocked through a combination of inefficiency, corruption, and overprotection of Venice through special laws and ecological politics. Venice has always been a city of production, from the invention of mass boat and ship construction in the Arsenal to the industrialization of Port Marghera. If the campaign for preservation fails, there seems little that can be done to arrest the city’s decline—unless the battle is won by those who adore this most sublime of all cities.'
         ],
-        image: "/images/history/veniceOldMap2.jpg"
+        image: "images/history/veniceOldMap2.jpg"
       },
     ]
     return {

@@ -31,7 +31,7 @@ export default {
     Breadcrumbs,
   },
   data() {
-    const bgImg = '/images/city-hall.jpg'
+    const bgImg = 'images/city-hall.jpg'
     const email = 'info@veneziaunica.it'
     const phone = '041 2424'
     const openingHour = '07:30'

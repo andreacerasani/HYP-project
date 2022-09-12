@@ -587,7 +587,7 @@ async function runMainApi() {
       title,
       description:
         'Discover all the fantastic events organized in the city of Venice during this year.\nChoose your favorites and plan your visit to Venice so you can have an unforgettable experience.\nTake part in the Venetian tradition or get carried away by the uniqueness that new events bring to the lagoon every year.',
-      bgImg: '/images/events/event-types/yearevents.jpg',
+      bgImg: 'images/events/event-types/yearevents.jpg',
       upcoming_events: filtered.upcoming_events,
       all_events: filtered.all_events,
     }
@@ -625,7 +625,7 @@ async function runMainApi() {
       title: 'Winter Events',
       description:
         'In winter, the lagoon is filled with magic. Events such as Carnival, exhibitions and the marathon make Venice even more unique and unforgettable. Not to mention that the sea of the lagoon offers natural shelter from the cold of winter. ',
-      bgImg: '/images/events/event-types/winterevents.jpg',
+      bgImg: 'images/events/event-types/winterevents.jpg',
       upcoming_events: filtered.all_events.slice(0, 3),
       all_events: filtered.all_events,
     }
@@ -655,7 +655,7 @@ async function runMainApi() {
       title: 'Summer Events',
       description:
         "During the summer, Venice is colored in the brightest colors. Summer events range from the film festival to the famous Vogalonga. Be inspired by the cheerfulness of Venetians and relax while watching the reflections of the sunset on the water of the lagoon. It's never too late to enjoy a vacation.",
-      bgImg: '/images/events/event-types/summerevents.jpg',
+      bgImg: 'images/events/event-types/summerevents.jpg',
       upcoming_events: filtered.all_events.slice(0, 3),
       all_events: filtered.all_events,
     }

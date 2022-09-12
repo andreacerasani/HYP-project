@@ -19,7 +19,7 @@
       >
         <span>
           <img
-            src="/images/icons/backwards.svg"
+            src="images/icons/backwards.svg"
             class="icon-size"
             alt="backwards arrow"
           />
@@ -41,7 +41,7 @@
         <span>
           <span class="d-none d-md-inline">{{ next.title }}</span>
           <img
-            src="/images/icons/forward.svg"
+            src="images/icons/forward.svg"
             class="icon-size"
             alt="forward arrow"
           />

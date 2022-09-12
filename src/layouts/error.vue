@@ -37,7 +37,7 @@ export default {
   data() {
     const title404 = 'Page not found'
     const title = 'An error occurred'
-    const img = '/images/extra/error_image.jpg'
+    const img = 'images/extra/error_image.jpg'
     const linkName = 'Go back Home'
     const linkName404 = 'Continue Exploring'
     const linkPath = '/'
