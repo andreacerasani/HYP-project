@@ -11,10 +11,10 @@ const configDev = {
       handler: '~/server/api.js',
     },
   ],
-/*  this part can be useful if deployed on github pages
+/*  this part can be useful if deployed on github pages */
    router: {
-    base: '/VisitVenice/'    
-  }, */
+    base: '/HYP-project/'    
+  }, 
   head: {
     title: 'VisitVenice',
     htmlAttrs: {
