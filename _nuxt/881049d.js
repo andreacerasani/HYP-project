@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[22],{362:function(e,t,n){"use strict";n.r(t);var r={name:"EventTypeCurrentYearPage",asyncData:function(e){var t=e.route;e.$axios,e.error;return{type:t.params.type}},methods:{redirect:function(e){this.$router.push("/events/event-types/"+e+"/all")}}},o=n(19),component=Object(o.a)(r,(function(){var e=this,t=e.$createElement;return(e._self._c||t)("div",[e._v("\n    "+e._s(e.redirect(e.type))+"\n")])}),[],!1,null,null,null);t.default=component.exports}}]);
+//# sourceMappingURL=881049d.js.map

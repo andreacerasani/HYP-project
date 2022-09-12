@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[23],{361:function(e,n,t){"use strict";t.r(n);var r={name:"EventTypesPage",methods:{redirect:function(){this.$router.push("/events")}}},c=t(19),component=Object(c.a)(r,(function(){var e=this,n=e.$createElement;return(e._self._c||n)("div",[e._v("\n    "+e._s(e.redirect())+"\n")])}),[],!1,null,null,null);n.default=component.exports}}]);
+//# sourceMappingURL=25ec1c3.js.map
