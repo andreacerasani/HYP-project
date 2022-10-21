@@ -2,7 +2,7 @@
 
 Project for the Hypermedia Applications course at Politecnico di Milano.  
 <br>
-The website is accessible at [https://visitvenice.herokuapp.com](https://visitvenice.herokuapp.com/)
+The website is accessible at [andreacerasani@github.io/HYP-project](https://andreacerasani.github.io/HYP-project/)
 <br>
 ### **Group name:** &nbsp;&nbsp;&nbsp; WorryWhale
 
@@ -14,7 +14,6 @@ The website is accessible at [https://visitvenice.herokuapp.com](https://visitve
 - Andrea Cerasani ([@andreacerasani](https://github.com/andreacerasani)) 
   <br>
 
-#### Final score: -/30L
 
 ---
 
